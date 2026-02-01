@@ -1,0 +1,95 @@
+name: Deploy Trinity Frontend
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-frontend:
+    name: Deploy Frontend (Cloudflare Pages)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Build and Deploy BODY (arif-fazil.com)
+      - name: Build BODY (arif-fazil.com)
+        run: |
+          cd body
+          npm ci
+          npm run build
+          cp public/*.jpg dist/ 2>/dev/null || true
+          cp public/*.png dist/ 2>/dev/null || true
+
+      - name: Deploy BODY to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: arif-fazil
+          directory: body/dist
+
+      # Build and Deploy SOUL (apex.arif-fazil.com)
+      - name: Build SOUL (apex.arif-fazil.com)
+        run: |
+          cd soul
+          npm ci
+          npm run build
+          cp public/*.jpg dist/ 2>/dev/null || true
+          cp public/*.png dist/ 2>/dev/null || true
+
+      - name: Deploy SOUL to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: apex-dpf
+          directory: soul/dist
+
+      # Build and Deploy DOCS (arifos.arif-fazil.com)
+      - name: Build DOCS (arifos.arif-fazil.com)
+        run: |
+          cd docs
+          npm ci
+          npm run build
+
+      - name: Deploy DOCS to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: arifos-docs
+          directory: docs/dist
+
+  verify:
+    name: Verify Sites Online
+    needs: deploy-frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check BODY (arif-fazil.com)
+        run: curl -sf https://arif-fazil.com > /dev/null && echo "BODY ONLINE" || echo "BODY check failed"
+
+      - name: Check SOUL (apex.arif-fazil.com)
+        run: curl -sf https://apex.arif-fazil.com > /dev/null && echo "SOUL ONLINE" || echo "SOUL check failed"
+
+      - name: Check DOCS (arifos.arif-fazil.com)
+        run: curl -sf https://arifos.arif-fazil.com > /dev/null && echo "DOCS ONLINE" || echo "DOCS check failed"
+
+      - name: Alignment Report
+        run: |
+          echo "========================================"
+          echo "  TRINITY FRONTEND — ALIGNMENT REPORT"
+          echo "========================================"
+          echo "  BODY:  https://arif-fazil.com         (Cloudflare Pages)"
+          echo "  SOUL:  https://apex.arif-fazil.com    (Cloudflare Pages)"
+          echo "  DOCS:  https://arifos.arif-fazil.com  (Cloudflare Pages)"
+          echo "========================================"
+          echo "  DITEMPA BUKAN DIBERI"
+          echo "========================================"
