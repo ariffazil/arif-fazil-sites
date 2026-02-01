@@ -33,7 +33,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: arif-fazil
+          projectName: ariffazil
           directory: body/dist
 
       # Build and Deploy SOUL (apex.arif-fazil.com)
@@ -50,7 +50,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: apex-dpf
+          projectName: apex
           directory: soul/dist
 
       # Build and Deploy DOCS (arifos.arif-fazil.com)
@@ -65,7 +65,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: arifos-docs
+          projectName: arifos
           directory: docs/dist
 
   verify:
