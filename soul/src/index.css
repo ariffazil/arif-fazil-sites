@@ -33,6 +33,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   html {
@@ -65,29 +66,120 @@
   color: white;
 }
 
-/* Mathematical symbols */
-.math-symbol {
-  font-family: 'Times New Roman', serif;
-  font-style: italic;
+/* Serif font for headings and mathematical context */
+.font-serif {
+  font-family: 'Source Serif 4', 'Georgia', serif;
+}
+
+/* Monospace for code and formulas */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* KaTeX overrides for dark theme */
+.katex {
+  font-size: 1.1em;
+  color: #e5e7eb;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+}
+
+.katex-display > .katex {
+  font-size: 1.15em;
+}
+
+/* Math block container */
+.math-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+/* Citation reference styling */
+.cite-ref {
+  color: #60a5fa;
+  font-size: 0.75em;
+  vertical-align: super;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.cite-ref:hover {
+  color: #93bbfc;
+  text-decoration: underline;
+}
+
+/* Reference list styling */
+.reference-item {
+  padding-left: 2rem;
+  text-indent: -2rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #9ca3af;
+}
+
+.reference-item:hover {
+  color: #d1d5db;
+}
+
+/* Scholarly section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(234, 179, 8, 0.3) 50%,
+    transparent 100%
+  );
+  margin: 3rem 0;
+}
+
+/* Table styling for constitutional floors */
+.floor-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.floor-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+}
+
+.floor-table td {
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.875rem;
+  color: #d1d5db;
+}
+
+.floor-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* Geometric animations */
 @keyframes rotate-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(234, 179, 8, 0.5);
-  }
+  0%, 100% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(234, 179, 8, 0.5); }
 }
 
 .animate-rotate-slow {
@@ -98,27 +190,16 @@
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
-/* Sacred geometry grid */
-.sacred-grid {
-  background-image: 
-    linear-gradient(rgba(234, 179, 8, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(234, 179, 8, 0.05) 1px, transparent 1px),
-    linear-gradient(45deg, rgba(234, 179, 8, 0.02) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(234, 179, 8, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px, 50px 50px, 70.71px 70.71px, 70.71px 70.71px;
-}
-
 /* Code block styling */
 .code-block {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Formula styling */
-.formula {
-  font-family: 'Times New Roman', serif;
-  font-style: italic;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 /* Gradient text */
@@ -132,6 +213,41 @@
 /* Glass effect */
 .glass-apex {
   background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* BibTeX export button */
+.bibtex-btn {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.25rem;
+  color: #9ca3af;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.bibtex-btn:hover {
+  border-color: rgba(234, 179, 8, 0.5);
+  color: #fbbf24;
+}
+
+/* Disclaimer banner */
+.disclaimer {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  color: #93c5fd;
+}
+
+/* Sacred geometry grid - subtle background */
+.sacred-grid {
+  background-image:
+    linear-gradient(rgba(234, 179, 8, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 179, 8, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
