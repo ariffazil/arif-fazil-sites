@@ -260,7 +260,7 @@ const HARD_FLOORS = [
 
 const SOFT_FLOORS = [
   { id: 'F3', name: 'Tri-Witness', constraint: 'Consensus weight W ≥ 0.95', basis: 'Byzantine consensus [20]', lit: 'Distributed computing' },
-  { id: 'F4', name: 'Clarity', constraint: 'ΔS ≤ 0 (entropy reduction)', basis: 'Shannon entropy [13]', lit: 'Information theory' },
+  { id: 'F4', name: 'Clarity', constraint: 'ΔS ≤ 0 (entropy reduction)', basis: 'Shannon [3], Kolmogorov [13]', lit: 'Information theory' },
   { id: 'F6', name: 'Empathy', constraint: "Cohen's kappa κ ≥ 0.70", basis: 'Inter-rater agreement [31]', lit: 'Statistical reliability' },
   { id: 'F7', name: 'Humility', constraint: 'Confidence interval [0.03, 0.05]', basis: 'Bayesian uncertainty [15]', lit: 'Statistical inference' },
   { id: 'F8', name: 'Genius', constraint: "Spearman's g-factor ≥ 0.80", basis: 'Psychometric intelligence [32]', lit: 'Cognitive science' },
@@ -287,7 +287,7 @@ const REFERENCES: string[] = [
   'Krakovna, V., et al. (2020). "Specification gaming: The flip side of AI ingenuity." <em>DeepMind Blog</em>.',
   'Perez, E., et al. (2022). "Red teaming language models with language models." <em>EMNLP</em>.',
   'Landauer, R. (1961). "Irreversibility and heat generation in the computing process." <em>IBM Journal of Research and Development</em>, 5(3), 183–191.',
-  'Shannon, C.E. (1948). "A mathematical theory of communication." <em>Bell System Technical Journal</em>, 27(3), 379–423.',
+  'Kolmogorov, A.N. (1965). "Three approaches to the quantitative definition of information." <em>Problems of Information Transmission</em>, 1(1), 1–7.',
   'Nash, J. (1950). "Equilibrium points in n-person games." <em>PNAS</em>, 36(1), 48–49.',
   'Gelman, A., et al. (2013). <em>Bayesian Data Analysis</em> (3rd ed.). CRC Press.',
   'Khalil, H.K. (2002). <em>Nonlinear Systems</em> (3rd ed.). Prentice Hall.',
@@ -650,7 +650,7 @@ function App() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-gray-400 mb-3">
-                    Information content <InlineMath tex="I = -\log_2 P(x)" /> measures surprise<Cite n={13} />.
+                    Information content <InlineMath tex="I = -\log_2 P(x)" /> measures surprise<Cite n={[3,13]} />.
                     The clarity requirement mandates output entropy ≤ input
                     entropy (<InlineMath tex="\Delta S \leq 0" />).
                   </p>
@@ -687,7 +687,7 @@ function App() {
                   <tr>
                     <td className="font-medium text-white">Clarity</td>
                     <td><InlineMath tex="\Delta S \leq 0" /></td>
-                    <td className="text-gray-400 text-xs">Shannon entropy reduction<Cite n={13} /></td>
+                    <td className="text-gray-400 text-xs">Shannon entropy reduction<Cite n={[3,13]} /></td>
                     <td className="text-gray-400 text-xs">Output must reduce uncertainty</td>
                   </tr>
                   <tr>
@@ -1802,7 +1802,7 @@ audit_trail = await arifos.vault.get_history({
             </p>
             <p className="text-gray-400 leading-relaxed mb-6">
               The system is constructed on thermodynamic principles (Landauer<Cite n={12} />),
-              information theory (Shannon<Cite n={13} />), game theory (Nash<Cite n={14} />),
+              information theory (Shannon<Cite n={3} />, Kolmogorov<Cite n={13} />), game theory (Nash<Cite n={14} />),
               and philosophical frameworks (Kant<Cite n={36} />, Rawls<Cite n={25} />,
               Turing<Cite n={29} />). It does not claim to resolve all alignment problems but
               provides a verifiable, auditable, and thermodynamically honest approach to
