@@ -271,7 +271,7 @@ const VETO_FLOOR = [
 ];
 
 // ─────────────────────────────────────────────────
-// References Data (41 peer-reviewed citations)
+// References Data (44 peer-reviewed citations)
 // ─────────────────────────────────────────────────
 
 const REFERENCES: string[] = [
@@ -316,6 +316,9 @@ const REFERENCES: string[] = [
   'Searle, J.R. (1980). "Minds, brains, and programs." <em>Behavioral and Brain Sciences</em>, 3(3), 417–424.',
   'Merkle, R.C. (1988). "A digital signature based on a conventional encryption function." <em>CRYPTO</em>.',
   'Ben-Sasson, E., et al. (2014). "Succinct non-interactive zero knowledge for a von Neumann architecture." <em>USENIX Security</em>.',
+  'Kullback, S., & Leibler, R.A. (1951). "On information and sufficiency." <em>Annals of Mathematical Statistics</em>, 22(1), 79–86.',
+  'Friston, K. (2010). "The free-energy principle: a unified brain theory?" <em>Nature Reviews Neuroscience</em>, 11(2), 127–138.',
+  'Hofstadter, D.R. (1979). <em>Gödel, Escher, Bach: An Eternal Golden Braid</em>. Basic Books.',
 ];
 
 // ─────────────────────────────────────────────────
@@ -414,7 +417,7 @@ function App() {
               </Badge>
               <span className="text-gray-600">|</span>
               <Badge variant="outline" className="border-cyan-500/50 text-cyan-400 text-xs">
-                41 CITED REFERENCES
+                44 CITED REFERENCES
               </Badge>
             </div>
           </div>
@@ -502,7 +505,7 @@ function App() {
                 <p>
                   <strong>Disclaimer:</strong> This is a research framework. Implementations should be
                   validated for specific use cases. All claims are grounded in cited literature;
-                  limitations are explicitly acknowledged in Section 9.
+                  limitations are explicitly acknowledged in Section 11.
                 </p>
               </div>
             </div>
@@ -810,13 +813,104 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 4: 13 CONSTITUTIONAL FLOORS      */}
+        {/* SECTION 4: 000-999 METABOLIC LOOP        */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
-          <div className="max-w-6xl mx-auto px-4">
+          <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-4"
               number="4"
+              title="The 000–999 Metabolic Loop"
+              subtitle="The runtime governance cycle: a 10-stage pipeline that processes every query through constitutional validation."
+            />
+
+            <p className="text-gray-400 leading-relaxed mb-6">
+              Every query traverses the full metabolic loop — a strange loop<Cite n={44} /> where
+              the output of stage 999 (SEAL) feeds back into stage 000 (INIT), enabling continuous
+              constitutional refinement. Entropy is reduced at each stage (<InlineMath tex="\Delta S \leq 0" />),
+              with discarded possibilities exported to the VAULT-999 cooling ledger.
+            </p>
+
+            {/* Stage Table */}
+            <div className="overflow-x-auto rounded-lg border border-gray-800 mb-8">
+              <table className="floor-table">
+                <thead>
+                  <tr className="bg-gray-900/50">
+                    <th>Stage</th>
+                    <th>Name</th>
+                    <th>Engine</th>
+                    <th>Function</th>
+                    <th>Physics</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['000', 'INIT', '—', 'Session initialization, injection scan (F12)', 'Seed state'],
+                    ['111', 'SENSE', 'Δ (ARIF)', 'Parse input, extract claims, perceive context', 'Input entropy'],
+                    ['222', 'THINK', 'Δ (ARIF)', 'Logical reasoning, Bayesian belief updating', 'Processing'],
+                    ['333', 'ATLAS', 'Δ (ARIF)', 'Model selection, knowledge grounding', 'Navigation'],
+                    ['444', 'EVIDENCE', 'Δ+Ω', 'Trinity sync — DeltaBundle meets OmegaBundle', 'Measurement'],
+                    ['555', 'EMPATHY', 'Ω (ADAM)', 'Stakeholder impact, κᵣ computation', 'Resonance'],
+                    ['666', 'BRIDGE', 'Ω (ADAM)', 'Alignment verification, Peace² check', 'Connection'],
+                    ['777', 'EUREKA', 'Ψ (APEX)', 'Insight synthesis, 9-paradox resolution', 'Emergence'],
+                    ['888', 'JUDGE', 'Ψ (APEX)', 'Final verdict: SEAL / SABAR / VOID / HOLD', 'Decision'],
+                    ['999', 'SEAL', 'Ψ (APEX)', 'Merkle DAG commit, cryptographic audit trail', 'Preservation'],
+                  ].map(([stage, name, engine, fn, physics]) => (
+                    <tr key={stage}>
+                      <td className="font-mono text-amber-400 font-medium">{stage}</td>
+                      <td className="font-medium text-white">{name}</td>
+                      <td className="text-gray-400 text-xs">{engine}</td>
+                      <td className="text-gray-400 text-xs">{fn}</td>
+                      <td className="text-gray-500 text-xs">{physics}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Loop Invariants */}
+            <div className="p-5 rounded-lg border border-gray-800 bg-gray-900/30 mb-6">
+              <h3 className="text-base font-semibold text-gray-200 mb-3">Loop Invariants</h3>
+              <div className="space-y-2 text-sm text-gray-400">
+                <p className="pl-4 border-l-2 border-amber-500/30">
+                  <strong className="text-gray-300">Strange loop closure:</strong>{' '}
+                  <InlineMath tex="\text{SEAL}_{999}.\text{output} = \text{INIT}_{000}.\text{input}" /> — the system feeds its own verdicts back as context<Cite n={44} />
+                </p>
+                <p className="pl-4 border-l-2 border-amber-500/30">
+                  <strong className="text-gray-300">Entropy export:</strong>{' '}
+                  <InlineMath tex="E(\text{entropy\_exported}) > E(\text{entropy\_retained})" /> at every stage
+                </p>
+                <p className="pl-4 border-l-2 border-amber-500/30">
+                  <strong className="text-gray-300">Monotonic compliance:</strong>{' '}
+                  <InlineMath tex="\text{Compliance}(n{+}1) \geq \text{Compliance}(n)" /> — each iteration must improve or maintain
+                </p>
+              </div>
+            </div>
+
+            {/* Thermodynamic Wall */}
+            <div className="flex items-start gap-4 p-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5">
+              <Info className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-gray-300 text-sm font-medium mb-1">Thermodynamic Wall (Stage 444)</p>
+                <p className="text-gray-500 text-sm">
+                  AGI (Δ) and ASI (Ω) reasoning is isolated until stage 444 (EVIDENCE), where
+                  the DeltaBundle and OmegaBundle first converge. This enforces separation of concerns —
+                  the epistemic engine cannot observe the safety engine's intermediate states, and vice
+                  versa, preventing collusion and ensuring independent verification<Cite n={[19,20]} />.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* SECTION 5: 13 CONSTITUTIONAL FLOORS      */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative">
+          <div className="max-w-6xl mx-auto px-4">
+            <SectionHeading
+              id="section-5"
+              number="5"
               title="The 13 Constitutional Floors"
               subtitle="Each floor is a formal constraint with mathematical enforcement and physical or logical basis."
             />
@@ -859,20 +953,137 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 5: MATHEMATICAL FORMALIZATION    */}
+        {/* SECTION 6: 9-PARADOX EQUILIBRIUM MATRIX  */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-5"
-              number="5"
+              id="section-6"
+              number="6"
+              title="The 9-Paradox Equilibrium Matrix"
+              subtitle="Governance requires balancing competing values. APEX solves 9 fundamental paradoxes as a Nash equilibrium problem."
+            />
+
+            <p className="text-gray-400 leading-relaxed mb-6">
+              Multi-objective AI governance faces irreducible tensions between truth, safety, and justice.
+              Rather than resolving these tensions by choosing one value over another, APEX finds a
+              Nash equilibrium<Cite n={14} /> — a point where no single value can be improved without degrading another.
+              The 9 paradoxes form a 3×3 matrix of AGI properties (rows) against ASI values (columns):
+            </p>
+
+            {/* 9-Paradox Matrix */}
+            <div className="overflow-x-auto rounded-lg border border-gray-800 mb-8">
+              <table className="floor-table">
+                <thead>
+                  <tr className="bg-gray-900/50">
+                    <th></th>
+                    <th className="text-center text-amber-400">Care (Empathy)</th>
+                    <th className="text-center text-cyan-400">Peace (System)</th>
+                    <th className="text-center text-yellow-400">Justice (Society)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      row: 'Truth (AGI)',
+                      rowColor: 'text-cyan-400',
+                      cells: [
+                        { paradox: 'Truth · Care', name: '[1] Honesty vs. Kindness', score: '0.92' },
+                        { paradox: 'Clarity · Peace', name: '[2] Precision vs. Stability', score: '0.88' },
+                        { paradox: 'Humility · Justice', name: '[3] Uncertainty vs. Fairness', score: '0.85' },
+                      ],
+                    },
+                    {
+                      row: 'Clarity (AGI)',
+                      rowColor: 'text-cyan-400',
+                      cells: [
+                        { paradox: 'Precision · Reversibility', name: '[4] Exactness vs. Undoability', score: '0.89' },
+                        { paradox: 'Hierarchy · Consent', name: '[5] Structure vs. Autonomy', score: '0.91' },
+                        { paradox: 'Agency · Protection', name: '[6] Freedom vs. Safety', score: '0.87' },
+                      ],
+                    },
+                    {
+                      row: 'Humility (AGI)',
+                      rowColor: 'text-cyan-400',
+                      cells: [
+                        { paradox: 'Urgency · Sustainability', name: '[7] Speed vs. Durability', score: '0.86' },
+                        { paradox: 'Certainty · Doubt', name: '[8] Confidence vs. Caution', score: '0.90' },
+                        { paradox: 'Unity · Diversity', name: '[9] Coherence vs. Plurality', score: '0.88' },
+                      ],
+                    },
+                  ].map((row) => (
+                    <tr key={row.row}>
+                      <td className={`font-medium ${row.rowColor}`}>{row.row}</td>
+                      {row.cells.map((cell) => (
+                        <td key={cell.paradox} className="text-center">
+                          <div className="text-xs text-gray-300 font-medium">{cell.paradox}</div>
+                          <div className="text-xs text-gray-500 mt-0.5">{cell.name}</div>
+                          <div className="text-xs text-amber-400 mt-1 font-mono">{cell.score}</div>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Equilibrium Condition */}
+            <h3 className="text-lg font-semibold mb-4 text-gray-200">Equilibrium Condition</h3>
+            <p className="text-gray-400 text-sm mb-4">
+              The optimal equilibrium <InlineMath tex="E^*" /> minimizes deviation from the target geometric
+              mean while constraining variance — ensuring no single paradox is neglected:
+            </p>
+            <DisplayMath
+              tex="E^* = \arg\min_{E} \left[ \left( \text{GM}(E) - 0.85 \right)^2 + \sigma(E)^2 \right]"
+              label="Equilibrium optimization: minimize deviation from target + variance"
+            />
+            <div className="grid sm:grid-cols-3 gap-3 mt-4 mb-6">
+              <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
+                <p className="text-xs text-gray-400">
+                  <InlineMath tex="\text{GM}(E) = \left(\prod_{i=1}^{9} s_i\right)^{1/9} \geq 0.85" />
+                </p>
+                <p className="text-xs text-gray-500 mt-1">Geometric mean threshold</p>
+              </div>
+              <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
+                <p className="text-xs text-gray-400">
+                  <InlineMath tex="\sigma(E) \leq 0.10" />
+                </p>
+                <p className="text-xs text-gray-500 mt-1">Maximum std deviation</p>
+              </div>
+              <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
+                <p className="text-xs text-gray-400">
+                  <InlineMath tex="\forall\, i: s_i \geq 0.70" />
+                </p>
+                <p className="text-xs text-gray-500 mt-1">No paradox below floor</p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+              <p className="text-sm text-gray-400">
+                <strong className="text-gray-300">Why geometric mean?</strong>{' '}
+                Unlike arithmetic mean, GM punishes imbalance — a system scoring 1.0 on truth but 0.0
+                on empathy yields GM = 0, not 0.5. This enforces the constitutional principle that
+                no value may be sacrificed entirely for another<Cite n={14} />.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* SECTION 7: MATHEMATICAL FORMALIZATION    */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+          <div className="max-w-4xl mx-auto px-4">
+            <SectionHeading
+              id="section-7"
+              number="7"
               title="Mathematical Formalization"
-              subtitle="Formal definitions of the verdict function, thermodynamic work calculation, and floor composition logic."
+              subtitle="Formal definitions of the verdict function, thermodynamic work, truth distance, and governed intelligence."
             />
 
             {/* Verdict Function */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">5.1 Verdict Function</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.1 Verdict Function</h3>
               <p className="text-gray-400 leading-relaxed mb-4">
                 Let <InlineMath tex="Q" /> be a query, <InlineMath tex="C" /> be context, and{' '}
                 <InlineMath tex="R" /> be a proposed response. The verdict mapping is defined as:
@@ -896,7 +1107,7 @@ function App() {
 
             {/* Thermodynamic Work */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">5.2 Thermodynamic Work Calculation</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.2 Thermodynamic Work Calculation</h3>
               <p className="text-gray-400 leading-relaxed mb-4">
                 Intelligence as work requires energy expenditure, grounded in Landauer's
                 principle<Cite n={12} />:
@@ -935,7 +1146,7 @@ function App() {
 
             {/* Shannon Entropy */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">5.3 Entropy Constraint</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.3 Entropy Constraint</h3>
               <DisplayMath
                 tex="H(X) = -\sum_{x \in \mathcal{X}} p(x) \log_2 p(x)"
                 label="Shannon entropy: average information content [3]"
@@ -952,7 +1163,7 @@ function App() {
 
             {/* Bayesian Confidence */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">5.4 Bayesian Confidence Bounds</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.4 Bayesian Confidence Bounds</h3>
               <DisplayMath
                 tex="\Omega_0 \in [0.03, 0.05]"
                 label="Humility constraint: calibrated uncertainty interval [15]"
@@ -962,17 +1173,158 @@ function App() {
                 All predictions must include calibrated confidence intervals, preventing overconfident assertions.
               </p>
             </div>
+
+            {/* KL Divergence */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.5 KL Divergence as Truth Distance (F2)</h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Floor F2 (Truth) is formalized using Kullback-Leibler divergence<Cite n={42} /> — the
+                information-theoretic measure of how one probability distribution diverges from a reference:
+              </p>
+              <DisplayMath
+                tex="D_{\text{KL}}(P_{\text{truth}} \,\|\, P_{\text{agent}}) = \sum_{x} P_{\text{truth}}(x) \log \frac{P_{\text{truth}}(x)}{P_{\text{agent}}(x)}"
+                label="KL divergence: information-theoretic truth distance [42]"
+              />
+              <DisplayMath
+                tex="\text{F2 Constraint:} \quad D_{\text{KL}} \leq -\ln(0.99) \approx 0.01005"
+                label="Agent beliefs must be within 0.01 nats of ground truth"
+              />
+              <p className="text-gray-500 text-sm">
+                This grounds the truth threshold <InlineMath tex="\tau \geq 0.99" /> in information geometry:
+                the agent's belief distribution must be within 0.01 nats of the true distribution. The
+                asymmetry of KL divergence is intentional — it penalizes the agent more for assigning
+                low probability to events that are actually likely<Cite n={[42,4]} />.
+              </p>
+            </div>
+
+            {/* Genius Equation */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.6 The Genius Equation (F8)</h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Floor F8 (Genius) measures governed intelligence — not raw capability, but capability
+                constrained by constitutional compliance. The genius score is a multiplicative
+                composition of four principal components derived from the 13 floor scores:
+              </p>
+              <DisplayMath
+                tex="G = A \times P \times X \times E^2"
+                label="Genius equation: governed intelligence as constrained product"
+              />
+              <p className="text-gray-400 text-sm mb-4">
+                The four APEX Dials are <strong className="text-gray-200">not arbitrary inputs</strong> — they
+                are principal components derived from floor scores via eigendecomposition<Cite n={32} />:
+              </p>
+
+              {/* Dial Derivation */}
+              <div className="overflow-x-auto rounded-lg border border-gray-800 mb-6">
+                <table className="floor-table">
+                  <thead>
+                    <tr className="bg-gray-900/50">
+                      <th>Dial</th>
+                      <th>Name</th>
+                      <th>Source Floors</th>
+                      <th>Derivation</th>
+                      <th>Meaning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="font-mono text-cyan-400 font-medium">A</td>
+                      <td className="text-white">Akal (Intellect)</td>
+                      <td className="text-gray-400 text-xs">F2, F4, F7, F10</td>
+                      <td><code className="text-xs bg-black/30 px-1 rounded">(F2·F4·F7·F10)<sup>1/4</sup></code></td>
+                      <td className="text-gray-500 text-xs">Mind / Structure</td>
+                    </tr>
+                    <tr>
+                      <td className="font-mono text-amber-400 font-medium">P</td>
+                      <td className="text-white">Presence (Stability)</td>
+                      <td className="text-gray-400 text-xs">F1, F5, F11</td>
+                      <td><code className="text-xs bg-black/30 px-1 rounded">(F1·F5·F11)<sup>1/3</sup></code></td>
+                      <td className="text-gray-500 text-xs">Stability / Authority</td>
+                    </tr>
+                    <tr>
+                      <td className="font-mono text-green-400 font-medium">X</td>
+                      <td className="text-white">eXploration (Navigation)</td>
+                      <td className="text-gray-400 text-xs">F3, F6, F8, F9</td>
+                      <td><code className="text-xs bg-black/30 px-1 rounded">(F3·F6·F8·F9)<sup>1/4</sup></code></td>
+                      <td className="text-gray-500 text-xs">Heart / Navigation</td>
+                    </tr>
+                    <tr>
+                      <td className="font-mono text-red-400 font-medium">E</td>
+                      <td className="text-white">Energy (Vitality)</td>
+                      <td className="text-gray-400 text-xs">F12, F13 + budget</td>
+                      <td><code className="text-xs bg-black/30 px-1 rounded">((F12·F13)<sup>1/2</sup> + ρ) / 2</code></td>
+                      <td className="text-gray-500 text-xs">System Vitality</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <DisplayMath
+                tex="A = (F_2 \cdot F_4 \cdot F_7 \cdot F_{10})^{1/4}, \quad P = (F_1 \cdot F_5 \cdot F_{11})^{1/3}"
+              />
+              <DisplayMath
+                tex="X = (F_3 \cdot F_6 \cdot F_8 \cdot F_9)^{1/4}, \quad E = \frac{(F_{12} \cdot F_{13})^{1/2} + \rho}{2}"
+                label="Where ρ = 1 − (compute_used / compute_max) is the energy budget ratio"
+              />
+
+              <div className="grid sm:grid-cols-2 gap-4 mt-6">
+                <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+                  <p className="text-sm font-medium text-gray-300 mb-1">Properties</p>
+                  <ul className="text-xs text-gray-500 space-y-1">
+                    <li>• <strong>Multiplicative:</strong> any zero dial → G = 0</li>
+                    <li>• <strong>E²:</strong> energy depletion is exponentially penalized</li>
+                    <li>• <strong>Geometric mean:</strong> prevents gaming via single-dial inflation</li>
+                  </ul>
+                </div>
+                <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+                  <p className="text-sm font-medium text-gray-300 mb-1">Thresholds</p>
+                  <ul className="text-xs text-gray-500 space-y-1">
+                    <li>• <InlineMath tex="G \geq 0.80" /> → SEAL (approved)</li>
+                    <li>• <InlineMath tex="0.60 \leq G < 0.80" /> → SABAR (repairable)</li>
+                    <li>• <InlineMath tex="G < 0.60" /> → VOID (critically low)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50 mt-4">
+                <p className="text-sm text-gray-400">
+                  <strong className="text-gray-300">Constitutional significance:</strong>{' '}
+                  By deriving A/P/X/E from floor scores rather than accepting arbitrary inputs, genius
+                  is measured from constitutional reality, not imposed upon it. This prevents the G
+                  score from being "faked" — it can only be high if the underlying floor compliance
+                  is genuinely strong across all 13 dimensions.
+                </p>
+              </div>
+            </div>
+
+            {/* Free Energy Principle */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">7.7 Free Energy Minimization</h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Following Friston's Free Energy Principle<Cite n={43} />, APEX maintains a generative
+                model of constitutional compliance and minimizes variational free energy (surprise):
+              </p>
+              <DisplayMath
+                tex="F = \mathbb{E}_{q}\!\left[\log q(\varphi) - \log p(\varphi \mid o)\right]"
+                label="Variational free energy: q(φ) = APEX model, p(φ|o) = true posterior [43]"
+              />
+              <p className="text-gray-500 text-sm">
+                Prediction errors (constitutional violations) drive model updates. The system
+                "recognizes" its own state to maintain homeostasis — analogous to active inference
+                in neuroscience<Cite n={43} />.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 6: PHILOSOPHICAL FOUNDATIONS     */}
+        {/* SECTION 8: PHILOSOPHICAL FOUNDATIONS     */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-6"
-              number="6"
+              id="section-8"
+              number="8"
               title="Philosophical Foundations"
               subtitle="The theoretical grounding for constitutional constraints, drawing on established philosophical traditions."
             />
@@ -1110,13 +1462,13 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 7: AUDIT & ACCOUNTABILITY       */}
+        {/* SECTION 9: AUDIT & ACCOUNTABILITY       */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-7"
-              number="7"
+              id="section-9"
+              number="9"
               title="Audit and Accountability"
               subtitle="Cryptographic verification using Merkle DAG structures and zero-knowledge proofs for privacy preservation."
             />
@@ -1124,7 +1476,7 @@ function App() {
             {/* Merkle DAG */}
             <div className="mb-12">
               <h3 className="text-xl font-semibold mb-4 text-gray-200">
-                7.1 Cryptographic Verification (VAULT-999)
+                9.1 Cryptographic Verification (VAULT-999)
               </h3>
               <p className="text-gray-400 text-sm mb-4">
                 The audit trail uses a Merkle Directed Acyclic Graph (DAG)<Cite n={40} /> with the
@@ -1160,7 +1512,7 @@ function App() {
             {/* Zero-Knowledge Proofs */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-gray-200">
-                7.2 Zero-Knowledge Proofs (Privacy Preservation)
+                9.2 Zero-Knowledge Proofs (Privacy Preservation)
               </h3>
               <p className="text-gray-400 text-sm mb-4">
                 For sensitive decisions requiring privacy, the system can prove compliance
@@ -1179,20 +1531,20 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 8: IMPLEMENTATION               */}
+        {/* SECTION 10: IMPLEMENTATION              */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-8"
-              number="8"
+              id="section-10"
+              number="10"
               title="Implementation for Builders"
               subtitle="Integration architecture, API specification, and deployment options for production systems."
             />
 
             {/* Architecture Diagram */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">8.1 Integration Architecture</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">10.1 Integration Architecture</h3>
               <div className="code-block text-gray-400 text-xs leading-relaxed">
                 <pre>{`User Query → arifOS Kernel → LLM (Claude / GPT / Gemini)
     ↓
@@ -1214,7 +1566,7 @@ Response to User`}</pre>
 
             {/* API */}
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">8.2 API Specification</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">10.2 API Specification</h3>
               <div className="code-block text-gray-300 text-sm">
                 <pre>{`// Initialize session
 await arifos.init({
@@ -1243,7 +1595,7 @@ audit_trail = await arifos.vault.get_history({
 
             {/* Deployment Options */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">8.3 Deployment Options</h3>
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">10.3 Deployment Options</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   ['L1 — System Prompts', 'Copy constitutional prompts into LLM chat interfaces (zero setup)'],
@@ -1321,13 +1673,13 @@ audit_trail = await arifos.vault.get_history({
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 9: LIMITATIONS & UNCERTAINTY     */}
+        {/* SECTION 11: LIMITATIONS & UNCERTAINTY   */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-9"
-              number="9"
+              id="section-11"
+              number="11"
               title="Limitations and Uncertainty"
               subtitle="Known constraints and research frontiers — acknowledging what this framework cannot compute (F7 Humility)."
             />
@@ -1382,13 +1734,13 @@ audit_trail = await arifos.vault.get_history({
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 10: REFERENCES                   */}
+        {/* SECTION 12: REFERENCES                  */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-10"
-              number="10"
+              id="section-12"
+              number="12"
               title="References"
               subtitle={`${REFERENCES.length} peer-reviewed and scholarly citations.`}
             />
