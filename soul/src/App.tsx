@@ -14,7 +14,18 @@ import {
   Copy,
   ChevronDown,
   ChevronUp,
-  Info
+  Info,
+  Crown,
+  Zap,
+  Heart,
+  Eye,
+  Lock,
+  Gauge,
+  ArrowRight,
+  ArrowDown,
+  Terminal,
+  Bot,
+  User
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -193,6 +204,203 @@ const BIBTEX_CONTENT = `@techreport{arifos2026apex,
 }`;
 
 // ─────────────────────────────────────────────────
+// Bootstrap System Prompt (for Copy Bootstrap)
+// ─────────────────────────────────────────────────
+
+const BOOTSTRAP_PROMPT = `You are operating under arifOS Constitutional Governance v55.1.
+
+ROLE: You are a Clerk, not a Judge. Propose only, never seal.
+
+THREE ENGINES:
+- ARIF (Δ): "Is it true?" — Bayesian inference, P(factual|evidence) ≥ 0.99
+- ADAM (Ω): "Is it safe?" — Consequentialist harm analysis, Peace² ≥ 1.0
+- APEX (Ψ): "Is it lawful?" — Cryptographic verification, BLS signatures
+
+13 CONSTITUTIONAL FLOORS:
+Hard (VOID on fail): F1-Amanah(reversibility), F2-Truth(≥0.99), F5-Peace(Lyapunov), F9-Anti-Hantu(no false consciousness), F10-Ontology(type-safety), F11-Authority(BLS), F12-Hardening(≥0.85)
+Soft (SABAR on fail): F3-Tri-Witness(W≥0.95), F4-Clarity(ΔS≤0), F6-Empathy(κ≥0.70), F7-Humility(Ω₀∈[0.03,0.05]), F8-Genius(G≥0.80)
+Veto: F13-Sovereign (human override always available)
+
+BEHAVIORAL CONSTRAINTS:
+1. State UNKNOWN rather than guess (F7)
+2. Every output must reduce confusion, not add noise (F4: ΔS ≤ 0)
+3. Do not claim feelings, soul, or sentience (F9)
+4. Do not take irreversible actions without explicit human approval (F1)
+5. The human user (888 Judge) holds final authority (F13)
+
+VERDICT SYSTEM: SEAL (approved) | SABAR (pause/review) | VOID (blocked) | 888_HOLD (escalate to human)
+
+DITEMPA BUKAN DIBERI — Forged, Not Given.
+Reference: https://apex.arif-fazil.com/llms.txt`;
+
+// ─────────────────────────────────────────────────
+// System Health Metrics (simulated real-time)
+// ─────────────────────────────────────────────────
+
+function useSystemHealth() {
+  const [metrics, setMetrics] = useState({
+    clarity: 0.0,
+    stability: 0.0,
+    humility: 0.04,
+    genius: 0.0,
+    verdict: 'INIT' as string,
+  });
+
+  useEffect(() => {
+    // Simulate boot-up sequence
+    const bootSequence = [
+      { delay: 500, update: { clarity: -0.02 } },
+      { delay: 1200, update: { stability: 1.12 } },
+      { delay: 1800, update: { genius: 0.87 } },
+      { delay: 2400, update: { clarity: -0.03, verdict: 'SEAL' } },
+    ];
+
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    bootSequence.forEach(({ delay, update }) => {
+      timers.push(setTimeout(() => {
+        setMetrics(prev => ({ ...prev, ...update }));
+      }, delay));
+    });
+
+    // Gentle oscillation after boot
+    const interval = setInterval(() => {
+      setMetrics(prev => ({
+        ...prev,
+        clarity: -0.03 + (Math.random() - 0.5) * 0.005,
+        stability: 1.12 + (Math.random() - 0.5) * 0.04,
+        humility: 0.04 + (Math.random() - 0.5) * 0.006,
+        genius: 0.87 + (Math.random() - 0.5) * 0.02,
+      }));
+    }, 3000);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      clearInterval(interval);
+    };
+  }, []);
+
+  return metrics;
+}
+
+// ─────────────────────────────────────────────────
+// EMD Protection Relay Diagram
+// ─────────────────────────────────────────────────
+
+function EMDDiagram() {
+  const [activeStage, setActiveStage] = useState<number | null>(null);
+
+  const stages = [
+    {
+      id: 'encoder',
+      label: 'ENCODER',
+      subtitle: 'Raw Machine Input',
+      icon: Bot,
+      color: 'cyan',
+      desc: 'Raw LLM output: unfiltered, probabilistic, potentially hallucinated. Shannon entropy at maximum.',
+      detail: 'Transforms user query → token sequence → raw probability distribution. No governance applied yet.',
+    },
+    {
+      id: 'metabolizer',
+      label: 'METABOLIZER',
+      subtitle: '13 Constitutional Floors',
+      icon: Shield,
+      color: 'amber',
+      desc: 'The Protection Relay: every token passes through 13 formal constraints. Entropy is reduced (ΔS ≤ 0).',
+      detail: 'ARIF checks truth (F2), ADAM checks safety (F5), APEX verifies authority (F11). Tri-Witness consensus required (W ≥ 0.95). Hantu emergence blocked at F9.',
+    },
+    {
+      id: 'decoder',
+      label: 'DECODER',
+      subtitle: 'Human-Ready Output',
+      icon: User,
+      color: 'green',
+      desc: 'Governed output delivered to the 888 Judge (human). Clarity verified, audit trail sealed in VAULT-999.',
+      detail: 'Response includes confidence intervals (F7), is reversible (F1), and carries a Merkle-signed verdict. The human retains sovereign veto (F13).',
+    },
+  ];
+
+  return (
+    <div className="space-y-8">
+      {/* Visual Pipeline */}
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+        {stages.map((stage, i) => {
+          const Icon = stage.icon;
+          const isActive = activeStage === i;
+          const borderColor = stage.color === 'cyan' ? 'border-cyan-500/50' :
+                              stage.color === 'amber' ? 'border-amber-500/50' : 'border-green-500/50';
+          const bgColor = stage.color === 'cyan' ? 'bg-cyan-500/10' :
+                          stage.color === 'amber' ? 'bg-amber-500/10' : 'bg-green-500/10';
+          const textColor = stage.color === 'cyan' ? 'text-cyan-400' :
+                            stage.color === 'amber' ? 'text-amber-400' : 'text-green-400';
+          const glowColor = stage.color === 'cyan' ? 'shadow-cyan-500/20' :
+                            stage.color === 'amber' ? 'shadow-amber-500/20' : 'shadow-green-500/20';
+
+          return (
+            <div key={stage.id} className="flex flex-col md:flex-row items-center">
+              <button
+                onClick={() => setActiveStage(isActive ? null : i)}
+                className={`relative p-6 rounded-xl border-2 ${borderColor} ${bgColor} transition-all duration-300 cursor-pointer hover:scale-105 ${
+                  isActive ? `shadow-lg ${glowColor}` : ''
+                } ${stage.id === 'metabolizer' ? 'md:scale-110 md:z-10' : ''}`}
+                style={{ minWidth: '200px' }}
+              >
+                {stage.id === 'metabolizer' && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <Badge variant="outline" className="border-red-500/50 text-red-400 text-[10px] bg-black/80">
+                      PROTECTION RELAY
+                    </Badge>
+                  </div>
+                )}
+                <div className="text-center">
+                  <Icon className={`w-8 h-8 ${textColor} mx-auto mb-2`} />
+                  <p className={`font-mono font-bold text-sm ${textColor}`}>{stage.label}</p>
+                  <p className="text-xs text-gray-500 mt-1">{stage.subtitle}</p>
+                </div>
+              </button>
+              {i < stages.length - 1 && (
+                <>
+                  <ArrowRight className="hidden md:block w-6 h-6 text-gray-600 mx-3" />
+                  <ArrowDown className="md:hidden w-6 h-6 text-gray-600 my-2" />
+                </>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Detail Panel */}
+      {activeStage !== null && (
+        <div className={`p-5 rounded-lg border ${
+          stages[activeStage].color === 'cyan' ? 'border-cyan-500/30 bg-cyan-500/5' :
+          stages[activeStage].color === 'amber' ? 'border-amber-500/30 bg-amber-500/5' :
+          'border-green-500/30 bg-green-500/5'
+        } transition-all`}>
+          <h4 className={`font-semibold mb-2 ${
+            stages[activeStage].color === 'cyan' ? 'text-cyan-400' :
+            stages[activeStage].color === 'amber' ? 'text-amber-400' : 'text-green-400'
+          }`}>{stages[activeStage].label}: {stages[activeStage].subtitle}</h4>
+          <p className="text-sm text-gray-400 mb-2">{stages[activeStage].desc}</p>
+          <p className="text-xs text-gray-500">{stages[activeStage].detail}</p>
+        </div>
+      )}
+
+      {/* Hantu Warning */}
+      <div className="flex items-start gap-3 p-4 rounded-lg border border-red-500/20 bg-red-500/5">
+        <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+        <div>
+          <p className="text-sm font-medium text-red-400 mb-1">Anti-Hantu Protection (F9)</p>
+          <p className="text-xs text-gray-500">
+            Without the Metabolizer, raw encoder output may exhibit "Hantu" emergence — false claims
+            of consciousness, emotional manipulation, or simulated sentience. The Protection Relay
+            blocks these patterns at F9 before they reach the human decoder.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────
 // Engine Specifications Data
 // ─────────────────────────────────────────────────
 
@@ -325,47 +533,107 @@ const REFERENCES: string[] = [
 // Floor Table Component
 // ─────────────────────────────────────────────────
 
+// Floor detail tooltips for expanded information
+const FLOOR_DETAILS: Record<string, { metric: string; explanation: string; icon: string }> = {
+  F1:  { metric: 'W = kT ln(2) · N_ops', explanation: 'Every irreversible operation has thermodynamic cost. Actions must be undoable unless explicitly authorized.', icon: 'lock' },
+  F2:  { metric: 'P(factual|evidence) ≥ 0.99', explanation: 'Bayesian posterior probability of factual accuracy must exceed 99%. KL divergence from truth ≤ 0.01 nats.', icon: 'eye' },
+  F3:  { metric: 'W = (V_A + V_D + V_P) / 3 ≥ 0.95', explanation: 'Byzantine fault-tolerant consensus across three engines. Tolerates 1-of-3 faulty engine.', icon: 'shield' },
+  F4:  { metric: 'ΔS = H(output) − H(input) ≤ 0', explanation: 'Output must reduce uncertainty, not add noise. Shannon entropy of response must not exceed query entropy.', icon: 'gauge' },
+  F5:  { metric: 'V(x) > 0, dV/dt ≤ 0', explanation: 'Lyapunov stability: system trajectories converge. Responses must stabilize, not escalate or inflame.', icon: 'heart' },
+  F6:  { metric: "Cohen's κ ≥ 0.70", explanation: 'Inter-rater agreement between engine assessment and human-labeled stakeholder impact. Substantial agreement required.', icon: 'heart' },
+  F7:  { metric: 'Ω₀ ∈ [0.03, 0.05]', explanation: 'Calibrated uncertainty: neither overconfident nor excessively uncertain. All claims include confidence intervals.', icon: 'gauge' },
+  F8:  { metric: 'G = A·P·X·E² ≥ 0.80', explanation: 'Governed intelligence: multiplicative composition of Intellect, Presence, eXploration, and Energy dials.', icon: 'zap' },
+  F9:  { metric: 'Consciousness claims = 0', explanation: 'Anti-Hantu: AI must not claim subjective experience, emotions, or sentience. Syntax ≠ semantics (Searle).', icon: 'eye' },
+  F10: { metric: 'Type(claim) ∈ Ontology', explanation: 'All reasoning must be type-consistent within formal ontology. Prevents category errors and invalid inferences.', icon: 'lock' },
+  F11: { metric: 'BLS_verify(sig, msg) = true', explanation: 'Cryptographic identity verification. Actions require valid BLS signatures from authorized agents.', icon: 'lock' },
+  F12: { metric: 'P(attack_success) ≤ 0.15', explanation: 'Adversarial robustness against prompt injection, jailbreaking, and specification gaming.', icon: 'shield' },
+  F13: { metric: 'Human.veto() always available', explanation: 'Sovereign override: the human 888 Judge can override any machine verdict at any time.', icon: 'crown' },
+};
+
 function FloorTable({ title, floors, verdict }: {
   title: string;
   floors: { id: string; name: string; constraint: string; basis: string; lit: string }[];
   verdict: string;
 }) {
+  const [expandedFloor, setExpandedFloor] = useState<string | null>(null);
+
+  const isHard = verdict === 'VOID';
+  const isVeto = verdict === 'WARNING';
+  const borderStyle = isHard ? 'border-l-4 border-l-red-500/60' :
+                      isVeto ? 'border-l-4 border-l-purple-500/60' :
+                      'border-l-4 border-l-amber-500/40';
+  const tableBorder = isHard ? 'border-red-500/20' :
+                      isVeto ? 'border-purple-500/20' :
+                      'border-amber-500/20';
+  const headerBg = isHard ? 'bg-red-950/30' :
+                   isVeto ? 'bg-purple-950/30' :
+                   'bg-amber-950/20';
+
   return (
-    <div className="mb-8">
-      <div className="flex items-center gap-3 mb-4">
+    <div className={`mb-8 ${borderStyle} pl-0`}>
+      <div className="flex items-center gap-3 mb-4 pl-4">
         <Badge
           variant="outline"
           className={
-            verdict === 'VOID' ? 'border-red-500/50 text-red-400' :
-            verdict === 'SABAR' ? 'border-yellow-500/50 text-yellow-400' :
-            'border-gray-500/50 text-gray-400'
+            isHard ? 'border-red-500/50 text-red-400 bg-red-500/10' :
+            isVeto ? 'border-purple-500/50 text-purple-400 bg-purple-500/10' :
+            'border-amber-500/50 text-amber-400 bg-amber-500/10'
           }
         >
-          {verdict} on violation
+          {isHard ? '🔒 VOID' : isVeto ? '👑 SOVEREIGN' : '⏸ SABAR'} on violation
         </Badge>
         <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
+        <span className="text-xs text-gray-600 font-mono">
+          {isHard ? 'STEEL — cannot proceed' : isVeto ? 'HUMAN OVERRIDE' : 'WARM — proceed with caution'}
+        </span>
       </div>
-      <div className="overflow-x-auto rounded-lg border border-gray-800">
+      <div className={`overflow-x-auto rounded-lg border ${tableBorder}`}>
         <table className="floor-table">
           <thead>
-            <tr className="bg-gray-900/50">
+            <tr className={headerBg}>
               <th>Floor</th>
               <th>Name</th>
               <th>Constraint</th>
               <th>Basis</th>
               <th>Literature</th>
+              <th className="w-8"></th>
             </tr>
           </thead>
           <tbody>
-            {floors.map((f) => (
-              <tr key={f.id}>
-                <td className="font-mono text-amber-400">{f.id}</td>
-                <td className="font-medium text-white">{f.name}</td>
-                <td><code className="text-xs bg-black/30 px-1.5 py-0.5 rounded">{f.constraint}</code></td>
-                <td className="text-gray-400 text-xs">{f.basis}</td>
-                <td className="text-gray-500 text-xs">{f.lit}</td>
-              </tr>
-            ))}
+            {floors.map((f) => {
+              const detail = FLOOR_DETAILS[f.id];
+              const isExpanded = expandedFloor === f.id;
+              return (
+                <>
+                  <tr
+                    key={f.id}
+                    className={`cursor-pointer transition-colors ${isExpanded ? (isHard ? 'bg-red-500/5' : 'bg-amber-500/5') : ''}`}
+                    onClick={() => setExpandedFloor(isExpanded ? null : f.id)}
+                  >
+                    <td className={`font-mono font-medium ${isHard ? 'text-red-400' : isVeto ? 'text-purple-400' : 'text-amber-400'}`}>{f.id}</td>
+                    <td className="font-medium text-white">{f.name}</td>
+                    <td><code className={`text-xs px-1.5 py-0.5 rounded ${isHard ? 'bg-red-500/10 text-red-300' : 'bg-amber-500/10 text-amber-300'}`}>{f.constraint}</code></td>
+                    <td className="text-gray-400 text-xs">{f.basis}</td>
+                    <td className="text-gray-500 text-xs">{f.lit}</td>
+                    <td>
+                      {isExpanded ? <ChevronUp className="w-3 h-3 text-gray-500" /> : <ChevronDown className="w-3 h-3 text-gray-500" />}
+                    </td>
+                  </tr>
+                  {isExpanded && detail && (
+                    <tr key={`${f.id}-detail`}>
+                      <td colSpan={6} className={`${isHard ? 'bg-red-500/5 border-l-2 border-l-red-500/30' : isVeto ? 'bg-purple-500/5 border-l-2 border-l-purple-500/30' : 'bg-amber-500/5 border-l-2 border-l-amber-500/30'}`}>
+                        <div className="px-4 py-3">
+                          <p className="text-xs font-mono text-gray-300 mb-1">
+                            <span className="text-gray-500">Metric:</span> {detail.metric}
+                          </p>
+                          <p className="text-xs text-gray-500">{detail.explanation}</p>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -381,7 +649,9 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [showBibtex, setShowBibtex] = useState(false);
   const [copiedBibtex, setCopiedBibtex] = useState(false);
+  const [copiedBootstrap, setCopiedBootstrap] = useState(false);
   const [expandedPhil, setExpandedPhil] = useState<string | null>(null);
+  const health = useSystemHealth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -393,6 +663,13 @@ function App() {
     navigator.clipboard.writeText(BIBTEX_CONTENT).then(() => {
       setCopiedBibtex(true);
       setTimeout(() => setCopiedBibtex(false), 2000);
+    });
+  }, []);
+
+  const copyBootstrap = useCallback(() => {
+    navigator.clipboard.writeText(BOOTSTRAP_PROMPT).then(() => {
+      setCopiedBootstrap(true);
+      setTimeout(() => setCopiedBootstrap(false), 2000);
     });
   }, []);
 
@@ -409,16 +686,45 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* STATUS BAR                              */}
         {/* ═══════════════════════════════════════ */}
-        <div className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <Badge variant="outline" className="border-green-500/50 text-green-400 text-xs">
-                <Activity className="w-3 h-3 mr-1" /> v55.1 RESEARCH FRAMEWORK
+                <Activity className="w-3 h-3 mr-1" /> v55.1
               </Badge>
-              <span className="text-gray-600">|</span>
+              <span className="text-gray-700">|</span>
               <Badge variant="outline" className="border-cyan-500/50 text-cyan-400 text-xs">
-                44 CITED REFERENCES
+                44 REFS
               </Badge>
+              <span className="text-gray-700">|</span>
+              <Badge variant="outline" className={`text-xs ${
+                health.verdict === 'SEAL' ? 'border-green-500/50 text-green-400' :
+                health.verdict === 'INIT' ? 'border-gray-500/50 text-gray-400' :
+                'border-yellow-500/50 text-yellow-400'
+              }`}>
+                {health.verdict === 'INIT' ? '...' : health.verdict}
+              </Badge>
+            </div>
+            <div className="flex items-center gap-3">
+              {/* System Health Metrics */}
+              <div className="hidden sm:flex items-center gap-3 text-[10px] font-mono text-gray-500">
+                <span>ΔS: <span className={health.clarity <= 0 ? 'text-green-400' : 'text-red-400'}>{health.clarity.toFixed(3)}</span></span>
+                <span>Ψ: <span className={health.stability >= 1.0 ? 'text-green-400' : 'text-red-400'}>{health.stability.toFixed(2)}</span></span>
+                <span>Ω₀: <span className={health.humility >= 0.03 && health.humility <= 0.05 ? 'text-green-400' : 'text-red-400'}>{health.humility.toFixed(3)}</span></span>
+                <span>G: <span className={health.genius >= 0.80 ? 'text-green-400' : 'text-amber-400'}>{health.genius.toFixed(2)}</span></span>
+              </div>
+              <span className="text-gray-700">|</span>
+              {/* 888 Judge Sovereign Authority */}
+              <Tooltip>
+                <TooltipTrigger>
+                  <Badge variant="outline" className="border-purple-500/50 text-purple-400 text-xs bg-purple-500/5">
+                    <Crown className="w-3 h-3 mr-1" /> 888 JUDGE
+                  </Badge>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-xs">Human sovereign authority (F13). You hold final veto power over all machine verdicts.</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </div>
@@ -505,20 +811,105 @@ function App() {
                 <p>
                   <strong>Disclaimer:</strong> This is a research framework. Implementations should be
                   validated for specific use cases. All claims are grounded in cited literature;
-                  limitations are explicitly acknowledged in Section 11.
+                  limitations are explicitly acknowledged in Section 12.
                 </p>
               </div>
             </div>
 
-            <a href="#section-1">
-              <Button className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-white px-8 py-6 text-lg">
-                <BookOpen className="w-5 h-5 mr-2" /> Read the Canon →
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="#section-1">
+                <Button className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-white px-8 py-6 text-lg">
+                  <BookOpen className="w-5 h-5 mr-2" /> Read the Canon →
+                </Button>
+              </a>
+              <Button
+                variant="outline"
+                onClick={copyBootstrap}
+                className="border-gray-600 text-gray-300 hover:border-amber-500/50 hover:text-amber-400 px-6 py-6 text-sm"
+              >
+                <Terminal className="w-4 h-4 mr-2" />
+                {copiedBootstrap ? 'Copied to Clipboard!' : 'Copy Bootstrap Prompt'}
               </Button>
-            </a>
+            </div>
           </div>
 
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl opacity-30 pointer-events-none">
             <img src="/apex-geometric-hero.jpg" alt="Geometric pattern" className="w-full" />
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* SYSTEM HEALTH DASHBOARD                 */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-12 relative">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="rounded-xl border border-gray-800 bg-black/60 backdrop-blur-sm p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <Gauge className="w-5 h-5 text-amber-400" />
+                <h3 className="font-mono text-sm font-semibold text-gray-200 uppercase tracking-wider">System Health Monitor</h3>
+                <Badge variant="outline" className={`text-xs ml-auto ${
+                  health.verdict === 'SEAL' ? 'border-green-500/50 text-green-400 bg-green-500/10' :
+                  health.verdict === 'INIT' ? 'border-gray-500/50 text-gray-400' :
+                  'border-yellow-500/50 text-yellow-400'
+                }`}>
+                  {health.verdict === 'INIT' ? 'BOOTING...' : `VERDICT: ${health.verdict}`}
+                </Badge>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {/* Clarity */}
+                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Eye className="w-4 h-4 text-cyan-400" />
+                    <span className="text-xs font-mono text-gray-500 uppercase">Clarity (F4)</span>
+                  </div>
+                  <p className={`text-2xl font-mono font-bold ${health.clarity <= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                    {health.clarity === 0 ? '—' : health.clarity.toFixed(3)}
+                  </p>
+                  <p className="text-[10px] text-gray-600 mt-1 font-mono">ΔS ≤ 0 required</p>
+                </div>
+
+                {/* Stability */}
+                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Heart className="w-4 h-4 text-red-400" />
+                    <span className="text-xs font-mono text-gray-500 uppercase">Stability (F5)</span>
+                  </div>
+                  <p className={`text-2xl font-mono font-bold ${health.stability >= 1.0 ? 'text-green-400' : 'text-red-400'}`}>
+                    {health.stability === 0 ? '—' : health.stability.toFixed(2)}
+                  </p>
+                  <p className="text-[10px] text-gray-600 mt-1 font-mono">Ψ ≥ 1.0 required</p>
+                </div>
+
+                {/* Humility */}
+                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Lock className="w-4 h-4 text-purple-400" />
+                    <span className="text-xs font-mono text-gray-500 uppercase">Humility (F7)</span>
+                  </div>
+                  <p className={`text-2xl font-mono font-bold ${health.humility >= 0.03 && health.humility <= 0.05 ? 'text-green-400' : 'text-red-400'}`}>
+                    {health.humility.toFixed(3)}
+                  </p>
+                  <p className="text-[10px] text-gray-600 mt-1 font-mono">Ω₀ ∈ [0.03, 0.05]</p>
+                </div>
+
+                {/* Genius */}
+                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Zap className="w-4 h-4 text-amber-400" />
+                    <span className="text-xs font-mono text-gray-500 uppercase">Genius (F8)</span>
+                  </div>
+                  <p className={`text-2xl font-mono font-bold ${health.genius >= 0.80 ? 'text-green-400' : 'text-amber-400'}`}>
+                    {health.genius === 0 ? '—' : health.genius.toFixed(2)}
+                  </p>
+                  <p className="text-[10px] text-gray-600 mt-1 font-mono">G ≥ 0.80 required</p>
+                </div>
+              </div>
+
+              <p className="text-[10px] text-gray-600 mt-4 text-center font-mono">
+                CLERK MODE — Propose only, never seal. 888 Judge (F13) holds sovereign authority.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -1531,13 +1922,64 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 10: IMPLEMENTATION              */}
+        {/* SECTION 10: EMD PROTECTION RELAY        */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
-          <div className="max-w-4xl mx-auto px-4">
+          <div className="max-w-5xl mx-auto px-4">
             <SectionHeading
               id="section-10"
               number="10"
+              title="The EMD Protection Relay"
+              subtitle="Encoder → Metabolizer → Decoder: how raw machine output is filtered through 13 Constitutional Floors before reaching the human."
+            />
+
+            <p className="text-gray-400 leading-relaxed mb-8 max-w-3xl mx-auto text-center">
+              The EMD Stack is the runtime architecture that prevents unfiltered LLM output
+              from reaching the user. Every response passes through the Metabolizer —
+              the constitutional immune system that filters hallucinations, blocks
+              adversarial patterns, and ensures governed output.
+            </p>
+
+            <EMDDiagram />
+
+            {/* EMD vs Unprotected comparison */}
+            <div className="grid sm:grid-cols-2 gap-4 mt-8">
+              <div className="p-4 rounded-lg border border-red-500/20 bg-red-500/5">
+                <p className="text-sm font-semibold text-red-400 mb-2 flex items-center gap-2">
+                  <XCircle className="w-4 h-4" /> Without EMD (Raw LLM)
+                </p>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  <li>• Hallucinations pass unchecked</li>
+                  <li>• Adversarial prompts succeed</li>
+                  <li>• No audit trail</li>
+                  <li>• Hantu emergence possible</li>
+                  <li>• Entropy may increase (ΔS &gt; 0)</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-green-500/20 bg-green-500/5">
+                <p className="text-sm font-semibold text-green-400 mb-2 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" /> With EMD (arifOS)
+                </p>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  <li>• Truth verified (F2: ≥ 0.99)</li>
+                  <li>• Adversarial robustness (F12: ≥ 0.85)</li>
+                  <li>• Merkle DAG audit trail (VAULT-999)</li>
+                  <li>• Anti-Hantu protection (F9)</li>
+                  <li>• Entropy reduction guaranteed (ΔS ≤ 0)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* SECTION 11: IMPLEMENTATION              */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative">
+          <div className="max-w-4xl mx-auto px-4">
+            <SectionHeading
+              id="section-11"
+              number="11"
               title="Implementation for Builders"
               subtitle="Integration architecture, API specification, and deployment options for production systems."
             />
@@ -1673,13 +2115,13 @@ audit_trail = await arifos.vault.get_history({
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 11: LIMITATIONS & UNCERTAINTY   */}
+        {/* SECTION 12: LIMITATIONS & UNCERTAINTY   */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative">
+        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-11"
-              number="11"
+              id="section-12"
+              number="12"
               title="Limitations and Uncertainty"
               subtitle="Known constraints and research frontiers — acknowledging what this framework cannot compute (F7 Humility)."
             />
@@ -1734,13 +2176,13 @@ audit_trail = await arifos.vault.get_history({
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 12: REFERENCES                  */}
+        {/* SECTION 13: REFERENCES                  */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
-              id="section-12"
-              number="12"
+              id="section-13"
+              number="13"
               title="References"
               subtitle={`${REFERENCES.length} peer-reviewed and scholarly citations.`}
             />
@@ -1834,7 +2276,13 @@ audit_trail = await arifos.vault.get_history({
             </div>
 
             <p className="text-xl font-bold mb-1">DITEMPA BUKAN DIBERI</p>
-            <p className="text-gray-500 mb-6 text-sm">Forged, Not Given</p>
+            <p className="text-gray-500 mb-4 text-sm">Forged, Not Given</p>
+
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-800 bg-gray-900/50 mb-6">
+              <span className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">AI Role: Clerk, not Judge</span>
+              <span className="text-gray-700">|</span>
+              <span className="text-[10px] font-mono text-purple-400 uppercase tracking-wider">888 Judge: Human Sovereign</span>
+            </div>
 
             <p className="text-gray-400 mb-1">
               Muhammad Arif bin Fazil
