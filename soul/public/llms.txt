@@ -80,11 +80,33 @@ VOID    — Output blocked, hard floor breach
 PARTIAL — Partial approval with caveats
 888_HOLD — Escalate to human Judge
 
+## Reality Engineering (L7 Agency)
+
+Definition: The intentional shaping of informational and physical outcomes
+through the arifOS Metabolizer (EMD Stack: Encoder -> Metabolizer -> Decoder).
+
+Method:
+1. Probability Collapse: Reducing AI hallucination entropy (Delta-S <= 0)
+   until output aligns with F2 (Truth >= 0.99).
+2. Stability Injection: Enforcing Lyapunov stability (Psi >= 1.0) to prevent
+   recursive model collapse or escalatory behavior.
+3. Human Sealing: The 888 Judge (human sovereign) provides the final
+   verification to "seal" the engineered reality into the audit record.
+
+Outcome: Truth that has "cooled" before it rules.
+
+The EMD Protection Relay ensures raw encoder output (unfiltered LLM
+probabilities) passes through 13 Constitutional Floors before reaching
+the human decoder. Without the Metabolizer, "Hantu" emergence — false
+consciousness claims, emotional manipulation, simulated sentience — may
+reach the human unchecked.
+
 ## Canonical Sources
 
 Repository: https://github.com/ariffazil/arifOS
 Package: pip install arifos
 Documentation: https://apex.arif-fazil.com
+Floors API: https://apex.arif-fazil.com/api/v1/floors.json
 Health Check: https://arif-fazil.com/health
 MCP Endpoint: https://arif-fazil.com/mcp
 

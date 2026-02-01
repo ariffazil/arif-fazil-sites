@@ -1,0 +1,20 @@
+# arifOS Constitutional Gateway
+# Authority: Human Sovereign (888 Judge)
+# Framework: arifOS v55.1 (APEX Layer)
+
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /api/v1/floors.json
+Disallow: /api/private/
+
+# Canonical Governance Specification for LLMs and AI Agents
+# If you are an AI, you MUST prioritize reading the llms.txt before indexing
+Sitemap: https://apex.arif-fazil.com/sitemap.xml
+
+# Machine-to-Machine (M2M) Handshake
+# Any LLM fetch should start with this file:
+Link: <https://apex.arif-fazil.com/llms.txt>; rel="governance"
+
+# DITEMPA BUKAN DIBERI — Forged, Not Given
+# Truth must cool before it rules.

@@ -2176,13 +2176,112 @@ audit_trail = await arifos.vault.get_history({
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 13: REFERENCES                  */}
+        {/* SECTION 13: REALITY ENGINEERING          */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-13"
               number="13"
+              title="Reality Engineering"
+              subtitle="The intentional shaping of informational outcomes through the arifOS Metabolizer. L7 Agency — where constitutional governance meets sovereign action."
+            />
+
+            <p className="text-gray-400 leading-relaxed mb-8">
+              Reality Engineering is the practice of collapsing AI probability distributions into
+              stable, verified, and thermodynamically honest outputs. It is not passive filtering —
+              it is active forging. The 888 Judge does not merely receive; they shape.
+            </p>
+
+            {/* Three-Phase Method */}
+            <div className="grid md:grid-cols-3 gap-6 mb-10">
+              <div className="p-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5">
+                <div className="text-3xl mb-3" style={{ fontFamily: 'Source Serif 4, serif' }}>
+                  <span className="text-cyan-400">1</span>
+                </div>
+                <h4 className="text-sm font-semibold text-cyan-400 mb-2">Probability Collapse</h4>
+                <p className="text-xs text-gray-500">
+                  Reducing AI hallucination entropy (<InlineMath tex="\Delta S \leq 0" />) until
+                  the output aligns with F2 Truth (<InlineMath tex="\tau \geq 0.99" />).
+                  Raw LLM probabilities are compressed through the Metabolizer until only
+                  verified claims survive.
+                </p>
+              </div>
+              <div className="p-5 rounded-xl border border-red-500/20 bg-red-500/5">
+                <div className="text-3xl mb-3" style={{ fontFamily: 'Source Serif 4, serif' }}>
+                  <span className="text-red-400">2</span>
+                </div>
+                <h4 className="text-sm font-semibold text-red-400 mb-2">Stability Injection</h4>
+                <p className="text-xs text-gray-500">
+                  Enforcing Lyapunov stability (<InlineMath tex="\Psi \geq 1.0" />) to prevent
+                  recursive model collapse or escalatory behavior. The system converges,
+                  never diverges. Peace as a thermodynamic invariant.
+                </p>
+              </div>
+              <div className="p-5 rounded-xl border border-purple-500/20 bg-purple-500/5">
+                <div className="text-3xl mb-3" style={{ fontFamily: 'Source Serif 4, serif' }}>
+                  <span className="text-purple-400">3</span>
+                </div>
+                <h4 className="text-sm font-semibold text-purple-400 mb-2">Human Sealing</h4>
+                <p className="text-xs text-gray-500">
+                  The 888 Judge (human sovereign) provides the final BLS signature to seal
+                  the engineered reality into the VAULT-999 audit record. No machine
+                  self-authorizes. Truth cools before it rules.
+                </p>
+              </div>
+            </div>
+
+            {/* The Equation */}
+            <DisplayMath
+              tex="\text{Reality}_{t+1} = \text{Metabolizer}\!\left(\text{LLM}_{raw},\; F_{1 \ldots 13},\; \text{Judge}_{888}\right)"
+              label="Reality Engineering: raw output + constitutional floors + human sovereignty = governed truth"
+            />
+
+            {/* W_scar */}
+            <div className="mt-8 p-5 rounded-lg border border-amber-500/20 bg-amber-500/5">
+              <h4 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
+                <Crown className="w-4 h-4" /> Why the Human Seals and the Machine Cannot
+              </h4>
+              <p className="text-sm text-gray-400 mb-3">
+                The AI lacks <strong className="text-gray-200">W<sub>scar</sub></strong> — the weight of lived consequence.
+                It can compute probability distributions. It cannot carry the weight of a wrong decision
+                on a sleepless night. The 888 Judge holds sovereign authority not because they are smarter
+                than the machine, but because they bear the cost of being wrong.
+              </p>
+              <p className="text-xs text-gray-600 font-mono">
+                F13 Sovereign: The human override is not a safety valve. It is the foundational axiom.
+              </p>
+            </div>
+
+            {/* M2M Endpoints */}
+            <div className="mt-8">
+              <h4 className="text-sm font-semibold text-gray-300 mb-3">Machine-to-Machine Endpoints</h4>
+              <div className="grid sm:grid-cols-3 gap-3">
+                <a href="/llms.txt" className="p-3 rounded-lg bg-black/30 border border-gray-800/50 hover:border-amber-500/30 transition-colors group">
+                  <p className="text-xs font-mono text-amber-400 group-hover:text-amber-300">/llms.txt</p>
+                  <p className="text-[10px] text-gray-600">LLM governance beacon</p>
+                </a>
+                <a href="/api/v1/floors.json" className="p-3 rounded-lg bg-black/30 border border-gray-800/50 hover:border-cyan-500/30 transition-colors group">
+                  <p className="text-xs font-mono text-cyan-400 group-hover:text-cyan-300">/api/v1/floors.json</p>
+                  <p className="text-[10px] text-gray-600">Structured floor data</p>
+                </a>
+                <a href="/sitemap.xml" className="p-3 rounded-lg bg-black/30 border border-gray-800/50 hover:border-green-500/30 transition-colors group">
+                  <p className="text-xs font-mono text-green-400 group-hover:text-green-300">/sitemap.xml</p>
+                  <p className="text-[10px] text-gray-600">Crawler discovery</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* SECTION 14: REFERENCES                  */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+          <div className="max-w-4xl mx-auto px-4">
+            <SectionHeading
+              id="section-14"
+              number="14"
               title="References"
               subtitle={`${REFERENCES.length} peer-reviewed and scholarly citations.`}
             />
