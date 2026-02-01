@@ -47,42 +47,70 @@ const FLOORS = [
   { id: 'F13', name: 'Sovereign', desc: 'Human override', icon: Users, color: 'green' },
 ];
 
-// MCP Tools data
+// MCP Tools data — 7 canonical tools from codebase/mcp/core/tool_registry.py
 const MCP_TOOLS = [
   {
     name: '_init_',
-    description: 'Initialize session with identity verification',
-    params: ['action', 'session_id', 'user_token'],
-    returns: 'Session context with budget allocation',
+    stage: '000',
+    description: 'Session initialization with identity verification, injection detection, budget allocation',
+    params: ['action', 'query', 'session_id', 'user_token'],
+    actions: ['init', 'gate', 'reset', 'validate', 'authorize'],
+    returns: 'session_id, authority_level, budget_allocated, injection_check_passed',
     color: 'blue'
   },
   {
     name: '_agi_',
-    description: 'Deep reasoning and pattern recognition',
-    params: ['action', 'query', 'context'],
-    returns: 'Sense → Think → Reflect → Forge',
-    color: 'amber'
+    stage: '111–333',
+    description: 'Deep reasoning engine (Δ Delta). Implements SENSE → THINK → FORGE',
+    params: ['action', 'query', 'context', 'session_id', 'lane'],
+    actions: ['sense', 'think', 'reflect', 'reason', 'atlas', 'forge', 'physics', 'full'],
+    returns: 'entropy_delta, omega_0, precision, vote, floor_scores',
+    color: 'cyan'
   },
   {
     name: '_asi_',
-    description: 'Safety evaluation and empathy assessment',
-    params: ['action', 'query', 'agi_context'],
-    returns: 'Evidence → Empathize → Evaluate → Act',
+    stage: '444–777',
+    description: 'Safety engine (Ω Omega). Implements EMPATHY → ALIGN → SOCIETY',
+    params: ['action', 'query', 'reasoning', 'agi_context', 'session_id'],
+    actions: ['evidence', 'empathize', 'evaluate', 'act', 'witness', 'stakeholder', 'full'],
+    returns: 'empathy_kappa_r, peace_squared, reversibility_score, vote',
     color: 'rose'
   },
   {
     name: '_apex_',
-    description: 'Judicial consensus and final verdicts',
-    params: ['action', 'query', 'agi_context', 'asi_context'],
-    returns: 'SEAL / SABAR / VOID / 888_HOLD',
+    stage: '888',
+    description: 'Judicial engine (Ψ Psi). 9-paradox equilibrium solver, final verdicts',
+    params: ['action', 'query', 'verdict', 'agi_context', 'asi_context', 'session_id'],
+    actions: ['eureka', 'judge', 'forge', 'proof', 'seal', 'full'],
+    returns: 'final_verdict, trinity_score, paradox_scores, equilibrium',
     color: 'violet'
   },
   {
     name: '_vault_',
-    description: 'Tamper-proof Merkle-tree sealing',
-    params: ['action', 'decision_data', 'verdict'],
-    returns: 'Cryptographic seal with hash chain',
+    stage: '999',
+    description: 'Immutable ledger with Merkle-tree sealing. Implements F1 Amanah (Trust)',
+    params: ['action', 'verdict', 'decision_data', 'target', 'session_id'],
+    actions: ['seal', 'list', 'read', 'write', 'propose'],
+    returns: 'merkle_root, seal_id, integrity_hash, status',
     color: 'emerald'
+  },
+  {
+    name: '_trinity_',
+    stage: '000→999',
+    description: 'Complete metabolic loop. Single-call: AGI → ASI → APEX → VAULT',
+    params: ['query', 'session_id', 'auto_seal', 'context'],
+    actions: ['full'],
+    returns: 'agi_result, asi_result, apex_result, vault_result, final_verdict',
+    color: 'amber'
+  },
+  {
+    name: '_reality_',
+    stage: 'External',
+    description: 'Fact-checking via external sources. Implements F7 Humility',
+    params: ['query', 'session_id'],
+    actions: ['check'],
+    returns: 'verified, confidence, sources, caveats',
+    color: 'orange'
   },
 ];
 
@@ -110,17 +138,6 @@ response = client.ask(
     "Analyze this data",
     tri_witness_threshold=0.95
 )`;
-
-const MCP_EXAMPLE = `{
-  "tool": "_trinity_",
-  "params": {
-    "query": "Evaluate this claim",
-    "context": {
-      "stakes": "HIGH",
-      "domain": "technical"
-    }
-  }
-}`;
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -255,7 +272,7 @@ function App() {
 
           {/* Description */}
           <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
-            Constitutional AI governance framework with 13 safety floors, 5 MCP tools, and 
+            Constitutional AI governance framework with 13 safety floors, 7 MCP tools, and
             cryptographic verification. Every decision is measured, witnessed, and sealed.
           </p>
 
@@ -416,7 +433,7 @@ function App() {
               <Terminal className="w-4 h-4 text-amber-400" />
               <span className="text-sm text-amber-400">Model Context Protocol</span>
             </div>
-            <h2 className="text-4xl font-bold mb-4">5 MCP Tools</h2>
+            <h2 className="text-4xl font-bold mb-4">7 MCP Tools</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               The complete metabolic loop from initialization through cryptographic sealing.
               Each tool enforces constitutional constraints.
@@ -432,7 +449,7 @@ function App() {
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <code className={`text-lg font-mono ${colors.text}`}>{tool.name}</code>
-                      <Badge variant="outline" className="text-xs">MCP</Badge>
+                      <Badge variant="outline" className="text-xs">{tool.stage}</Badge>
                     </div>
                     <CardDescription className="text-gray-400">
                       {tool.description}
@@ -451,6 +468,16 @@ function App() {
                         </div>
                       </div>
                       <div>
+                        <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Actions</p>
+                        <div className="flex flex-wrap gap-1">
+                          {tool.actions.map(action => (
+                            <code key={action} className={`text-xs px-2 py-0.5 rounded ${colors.bg} ${colors.text}`}>
+                              {action}
+                            </code>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
                         <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Returns</p>
                         <p className="text-sm text-gray-400">{tool.returns}</p>
                       </div>
@@ -459,49 +486,25 @@ function App() {
                 </Card>
               );
             })}
+          </div>
 
-            {/* Trinity Card - Full Width */}
-            <Card className="bg-gray-900/30 border-gray-800 md:col-span-2 lg:col-span-3">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <code className="text-xl font-mono text-violet-400">_trinity_</code>
-                    <CardDescription className="mt-2 text-gray-400">
-                      Complete metabolic loop: AGI → ASI → APEX → VAULT. Single-call constitutional evaluation.
-                    </CardDescription>
-                  </div>
-                  <div className="w-12 h-12 rounded-lg bg-violet-500/20 flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-violet-400" />
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-black/50 rounded-lg p-4 border border-gray-800">
-                    <p className="text-xs text-gray-500 mb-2">Request</p>
-                    <pre className="text-xs text-cyan-400 overflow-x-auto">
-{MCP_EXAMPLE}
-                    </pre>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Pipeline</p>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">_agi_</Badge>
-                      <ChevronRight className="w-4 h-4 text-gray-600" />
-                      <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30">_asi_</Badge>
-                      <ChevronRight className="w-4 h-4 text-gray-600" />
-                      <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">_apex_</Badge>
-                      <ChevronRight className="w-4 h-4 text-gray-600" />
-                      <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">_vault_</Badge>
-                    </div>
-                    <p className="text-sm text-gray-400 mt-4">
-                      The trinity tool orchestrates all 5 stages in sequence, producing 
-                      a cryptographically sealed verdict with full audit trail.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Pipeline Visualization */}
+          <div className="mt-10 p-6 rounded-xl bg-gray-900/30 border border-gray-800">
+            <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Full Pipeline (_trinity_)</p>
+            <div className="flex items-center gap-2 flex-wrap justify-center">
+              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">_init_</Badge>
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30">_agi_</Badge>
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30">_asi_</Badge>
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">_apex_</Badge>
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">_vault_</Badge>
+            </div>
+            <p className="text-sm text-gray-500 text-center mt-4">
+              _trinity_ orchestrates the complete 000→999 loop. _reality_ provides external fact-checking at any stage.
+            </p>
           </div>
         </div>
       </section>
