@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   playwright:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -29,6 +30,7 @@ jobs:
         run: npx playwright install --with-deps chromium || true
       - name: Run audit (best-effort)
         working-directory: sites/arif-fazil.com
-        run: npx playwright test --reporter=list || echo "⚠️ playwright soft-fail"
+        run: npx playwright test --reporter=list || echo "⚠️ playwright 
+          soft-fail"
         env:
           CI: "true"

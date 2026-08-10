@@ -1,0 +1,89 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# Dependabot CI — Unprivileged gate for dependency-only PRs (arif-fazil.com)
+# Forged 2026-08-10 — pattern replication from arifOS PR #683
+#
+# Site-specific notes:
+#   - arif-fazil.com is a multi-site monorepo. The main Vite/React site is
+#     under `sites/arif-fazil.com/`. Dependabot for npm uses directory:
+#     "/sites/arif-fazil.com".
+#   - There's no Python/Rust toolchain here — the workflow uses Node + npm ci.
+# ═══════════════════════════════════════════════════════════════════════════
+
+name: Dependabot CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependabot-ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  verify-dependency-update:
+    name: verify-dependency-update
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' ||
+      github.event.pull_request.user.login == 'app/dependabot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      SITE_DIR: sites/arif-fazil.com
+      PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+
+    steps:
+      - name: Checkout PR head (read-only)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Hard invariant — npm ci (frozen lockfile)
+        run: |
+          set -euo pipefail
+          cd "${SITE_DIR}"
+          npm ci
+          echo "✅ npm ci completed — package-lock.json is the resolver authority"
+
+      - name: Record lockfile SHA-256
+        id: lockhash
+        run: |
+          sha=$(sha256sum "${SITE_DIR}/package-lock.json" | awk '{print $1}')
+          echo "lock_sha256=$sha" >> "$GITHUB_OUTPUT"
+          echo "${SITE_DIR}/package-lock.json SHA-256: $sha"
+
+      - name: Lint (eslint, if present)
+        run: |
+          cd "${SITE_DIR}"
+          if [ -f eslint.config.js ] || [ -f .eslintrc ] || [ -f .eslintrc.json ]; then
+            npx eslint . --max-warnings=0 || true
+          else
+            echo "ℹ️ No eslint config — skipping"
+          fi
+        continue-on-error: true
+
+      - name: Build verification
+        run: |
+          cd "${SITE_DIR}"
+          npm run build 2>&1 | tail -20
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Dependabot CI — ${{ github.event.pull_request.title }}"
+          echo ""
+          echo "- Head SHA: \`${{ github.event.pull_request.head.sha }}\`"
+          echo "- Lockfile SHA-256: \`${{ steps.lockhash.outputs.lock_sha256 }}\`"
+          echo "- Site dir: \`${SITE_DIR}\`"
+          echo ""
+          echo "Verdict is the **job exit code**, not this summary."

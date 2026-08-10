@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   q1-mcp-isolation:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: "Q1 — MCP Isolation"
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -35,6 +36,7 @@ jobs:
           echo "✅ Q1 PASS"
 
   q2-identity:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: "Q2 — Identity"
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -49,6 +51,7 @@ jobs:
           echo "✅ Q2 PASS"
 
   q3-build:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: "Q3 — Build"
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -70,10 +73,11 @@ jobs:
         run: test -f sites/arif-fazil.com/dist/index.html && echo "✅ Q3 PASS"
 
   sentinel-gate:
+    if: (always()) && (github.actor != 'dependabot[bot]' && github.actor != 
+      'app/dependabot')
     name: "✅ Sentinel Gate"
     needs: [q1-mcp-isolation, q2-identity, q3-build]
     runs-on: ubuntu-latest
-    if: always()
     steps:
       - name: Gate verdict
         run: |

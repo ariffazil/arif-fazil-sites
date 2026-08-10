@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   identity:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: 🗺️ Surface identity
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -40,6 +41,7 @@ jobs:
           echo "✅ identity OK — L4 public surface arif-fazil.com"
 
   build-flagship:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: 🏗️ Build flagship SPA
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -67,6 +69,7 @@ jobs:
           echo "✅ dist + discovery present"
 
   verify:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: 🔍 Source surface verify
     runs-on: ubuntu-latest
     timeout-minutes: 5
