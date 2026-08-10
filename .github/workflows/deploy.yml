@@ -18,6 +18,7 @@ concurrency:
 
 jobs:
   build-arif:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'app/dependabot'
     name: Build Ring 1 — ARIF
     runs-on: ubuntu-latest
     timeout-minutes: 15
