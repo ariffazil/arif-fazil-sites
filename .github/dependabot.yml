@@ -1,6 +1,83 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# arif-fazil.com — Dependabot configuration
+# Forged 2026-08-10 — F13 verdict, CI governance repair (static-site adapter)
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# arif-fazil.com is a multi-site monorepo:
+#   - sites/arif-fazil.com/  — main Vite/React site (npm)
+#   - sites/geox-landing-src/ — GEOX landing page (npm)
+# Resolver authority: package.json + package-lock.json (npm).
+#
+# Per F13 directive (2026-08-10):
+#   - Constitutional actions (actions/checkout, actions/setup-node) — KEPT
+#     UN-GROUPED. Auto-merge BLOCKED via auto-merge-dependabot.yml.
+#   - Cooldown default-days: 3 prevents back-to-back cascading bumps.
+#   - Open-pull-requests-limit: 5 keeps review surface manageable.
+# ═══════════════════════════════════════════════════════════════════════════
+
 version: 2
 
 updates:
+  # ── Main site (sites/arif-fazil.com) ─────────────────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/sites/arif-fazil.com"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Kuala_Lumpur"
+    cooldown:
+      default-days: 3
+    open-pull-requests-limit: 5
+    labels:
+      - "deps"
+      - "dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      dev-stack:
+        patterns:
+          - "eslint"
+          - "prettier"
+          - "typescript"
+          - "vite"
+          - "@vitejs/*"
+          - "@types/*"
+      react-stack:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "react-router*"
+          - "@tanstack/*"
+      # NOTE: constitutional npm packages stay un-grouped.
+
+  # ── GEOX landing source (sites/geox-landing-src) ─────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/sites/geox-landing-src"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Kuala_Lumpur"
+    cooldown:
+      default-days: 3
+    open-pull-requests-limit: 3
+    labels:
+      - "deps"
+      - "dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      dev-stack:
+        patterns:
+          - "eslint"
+          - "prettier"
+          - "vite"
+          - "tailwindcss"
+
+  # ── GitHub Actions versions ──────────────────────────────────────────────
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -8,11 +85,23 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "Asia/Kuala_Lumpur"
+    cooldown:
+      default-days: 3
     open-pull-requests-limit: 5
-    labels: ["deps", "ci"]
+    labels:
+      - "deps"
+      - "ci"
     commit-message:
       prefix: "chore(actions)"
       include: "scope"
     groups:
-      all-actions:
-        patterns: ["*"]
+      github-actions-official:
+        patterns:
+          - "actions/*"
+          - "github/*"
+      third-party-actions:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "actions/*"
+          - "github/*"
