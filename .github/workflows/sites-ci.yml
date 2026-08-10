@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate surface markers
         run: |
           set -euo pipefail
@@ -44,8 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -72,7 +72,7 @@ jobs:
     timeout-minutes: 5
     needs: [identity]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: No hard-coded secret shapes in src
         run: |
           set -euo pipefail
