@@ -38,24 +38,13 @@
   .uh-name { font-size: 1.5rem; font-weight: 700; color: var(--uh-text-bright); letter-spacing: 0.05em; line-height: 1.2; }
   .uh-role { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--uh-text-dim); }
 
-  .uh-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem; padding: 0.55rem 1.5rem; font-size: 0.75rem; letter-spacing: 0.05em; border-bottom: 2px solid var(--uh-border); }
-  .uh-nav > a, .uh-drop > summary {
-    padding: 0.35rem 0.75rem; border-radius: 3px; list-style: none; cursor: pointer; color: var(--uh-text);
+  .uh-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0; padding: 0.65rem 1.5rem; font-size: 0.8rem; letter-spacing: 0.05em; border-bottom: 1px solid var(--uh-border); }
+  .uh-nav > a {
+    padding: 0.35rem 1rem; border-radius: 3px; list-style: none; cursor: pointer; color: var(--uh-text); text-transform: uppercase; font-weight: 500;
   }
-  .uh-nav > a:hover, .uh-drop > summary:hover { background: rgba(255,255,255,0.05); color: var(--uh-text-bright); }
-  .uh-drop > summary::-webkit-details-marker { display: none; }
-  .uh-drop > summary::after { content: " ▾"; font-size: 0.65em; opacity: 0.7; }
-  .uh-drop { position: relative; }
-  .uh-drop[open] > summary { color: var(--uh-mind); background: rgba(0,212,170,0.08); }
-  .uh-submenu {
-    position: absolute; top: calc(100% + 0.25rem); left: 0; min-width: 12rem;
-    background: #111; border: 1px solid var(--uh-border); border-radius: 6px; padding: 0.35rem; z-index: 200;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-  }
-  .uh-submenu a { display: block; padding: 0.45rem 0.7rem; border-radius: 4px; font-size: 0.72rem; color: var(--uh-text); }
-  .uh-submenu a:hover { background: rgba(255,255,255,0.06); color: var(--uh-text-bright); }
-  .uh-submenu a.mind { color: var(--uh-mind); }
-  .uh-nav .sep { color: #333; margin: 0 0.2rem; user-select: none; }
+  .uh-nav > a:hover { color: var(--uh-text-bright); }
+  .uh-nav > a.here { color: var(--uh-body); }
+  .uh-nav .uh-nav-spacer { flex: 1; }
 
   @media (max-width: 768px) {
     .uh-status { gap: 0.6rem; font-size: 0.58rem; padding: 0.3rem 0.75rem; }
@@ -63,9 +52,8 @@
     .uh-identity { padding: 0.75rem; gap: 0.75rem; }
     .uh-logo { width: 36px; height: 36px; font-size: 0.85rem; }
     .uh-name { font-size: 1.1rem; }
-    .uh-nav { padding: 0.4rem 0.75rem; font-size: 0.68rem; }
-    .uh-nav > a, .uh-drop > summary { padding: 0.3rem 0.5rem; }
-    .uh-submenu { position: static; min-width: 100%; margin-top: 0.25rem; box-shadow: none; }
+    .uh-nav { padding: 0.4rem 0.75rem; font-size: 0.72rem; }
+    .uh-nav > a { padding: 0.3rem 0.65rem; }
   }
 </style>
 
@@ -96,30 +84,14 @@
     </div>
   </div>
 
-  <nav class="uh-nav" aria-label="Primary">
-    <a href="https://arif-fazil.com/">Arif</a>
-    <span class="sep">|</span>
-    <a href="https://geox.arif-fazil.com/">Earth</a>
-    <span class="sep">|</span>
-    <a href="https://wealth.arif-fazil.com/">Capital</a>
-    <span class="sep">|</span>
-    <a href="https://well.arif-fazil.com/">Human</a>
-    <span class="sep">|</span>
-    <details class="uh-drop">
-      <summary>arifOS</summary>
-      <div class="uh-submenu">
-        <a class="mind" href="https://arif-fazil.com/arifos/">Overview</a>
-        <a class="mind" href="https://mcp.arif-fazil.com/">Connect MCP</a>
-        <a href="https://arifos.arif-fazil.com/">Observatory</a>
-        <a href="https://arif-fazil.com/federation/">Federation</a>
-        <a href="https://arif-fazil.com/canon/">Canon</a>
-        <a href="https://arif-fazil.com/999/">Verification /999</a>
-        <a href="https://github.com/ariffazil/arifOS">Source</a>
-      </div>
-    </details>
-    <span class="sep">|</span>
-    <a href="https://arif-fazil.com/essays/">Writing</a>
-  </nav>
+  <nav class="uh-nav" aria-label="Primary" data-page-context="5-lanes">
+    <a href="https://arif-fazil.com/earth/" data-lane="earth">EARTH</a>
+    <a href="https://arif-fazil.com/words/" data-lane="words">WORDS</a>
+    <a href="https://arif-fazil.com/world/" data-lane="world">WORLD</a>
+    <a href="https://arif-fazil.com/work/" data-lane="work">WORK</a>
+    <span class="uh-nav-spacer"></span>
+    <a href="https://arif-fazil.com/" style="font-size:.7rem;color:var(--uh-text-dim)">DITEMPA BUKAN DIBERI ⚒</a>
+</nav>
 </header>
 
 <script>
@@ -163,10 +135,17 @@
     }
   }
   update(); setInterval(update,1000);
-  document.addEventListener('click', function(e){
-    document.querySelectorAll('.uh-drop[open]').forEach(function(d){
-      if (!d.contains(e.target)) d.removeAttribute('open');
-    });
+
+  // Active-state detection: highlight current lane in the 5-lanes nav
+  var path = location.pathname.toLowerCase();
+  var laneMap = { earth: '/earth', words: '/words', world: '/world', work: '/work' };
+  var navLinks = document.querySelectorAll('.uh-nav[data-page-context="5-lanes"] a[data-lane]');
+  navLinks.forEach(function(a){
+    var lane = a.getAttribute('data-lane');
+    var prefix = laneMap[lane];
+    if (prefix && (path === prefix + '/' || path === prefix || path.indexOf(prefix + '/') === 0)) {
+      a.classList.add('here');
+    }
   });
 })();
 </script>

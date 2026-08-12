@@ -4,7 +4,7 @@
 (function(){
   var base = document.querySelector('script[src*="unified-header-loader"]');
   if(!base) base = {src:'/_shared/'};
-  var src = base.src.replace(/[^\/]*$/, 'unified-header.html?v=20260718');
+  var src = base.src.replace(/[^\/]*$/, 'unified-header.html?v=20260812T152100Z');
   // Propagate product mode onto body once header is injected
   var product = document.documentElement.getAttribute('data-header') === 'product';
   fetch(src).then(function(r){return r.text()}).then(function(html){
