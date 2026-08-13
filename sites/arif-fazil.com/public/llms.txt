@@ -1,5 +1,11 @@
 # arif-fazil.com — Site Overview for AI Agents
 
+## Canonical Motto & Invariants
+**Ditempa Bukan Diberi** — Forged, Not Given.
+
+## Organs Spine
+The arifOS Federation operates 5 Organs: arifOS, AAA, GEOX, WEALTH, WELL.
+
 ## Who is Arif Fazil
 Muhammad Arif bin Fazil. Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
 Senior exploration geoscientist at PETRONAS Carigali, offshore Malaysia.
