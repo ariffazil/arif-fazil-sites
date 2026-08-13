@@ -1,5 +1,31 @@
 [
   {
+    "id": "m2-9",
+    "title": "Syaitan yang Ingat Dirinya Malaikat",
+    "date": "2026-08-09",
+    "lang": "bm",
+    "series": {
+      "id": "M2",
+      "n": 9
+    },
+    "tags": [
+      "petronas",
+      "amanah",
+      "ceo",
+      "kontrak",
+      "dividen",
+      "capex",
+      "rightsizing",
+      "makcikgpt",
+      "malaysia"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/syaitan-ingat-dirinya-malaikat"
+    },
+    "seal": "999"
+  },
+  {
     "id": "s1-1",
     "title": "Accidentally Built Something I Don't Fully Understand",
     "date": "2025-12-07",
