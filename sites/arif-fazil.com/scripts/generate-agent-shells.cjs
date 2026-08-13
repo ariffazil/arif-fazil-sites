@@ -275,11 +275,29 @@ try {
 
 const makcikList = makcikPieces
   .map(
-    (p) => `<article class="card">
-      <h2><a href="${esc(p.dest.path)}">${esc(p.title)}</a></h2>
-      <p class="meta">${esc(p.date || '')} ${p.seal ? `· seal ${esc(p.seal)}` : ''}</p>
-      <p>${esc(p.subtitle || p.excerpt || '')}</p>
-    </article>`
+    (p, idx) => {
+      const colors = [
+        { border: '#38BDF8', badge: 'rgba(56,189,248,0.15)', text: '#38BDF8' },
+        { border: '#EF4444', badge: 'rgba(239,68,68,0.15)', text: '#EF4444' },
+        { border: '#EAB308', badge: 'rgba(234,179,8,0.15)', text: '#EAB308' },
+      ];
+      const theme = colors[idx % 3];
+      return `<article class="card" style="border: 1px solid ${theme.border}66; border-left: 4px solid ${theme.border}; background: #0F172A; margin-bottom: 1.5rem; padding: 1.5rem; border-radius: 4px;">
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+          <span style="font-family: monospace; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; background: ${theme.badge}; color: ${theme.text}; padding: 2px 6px; border-radius: 2px;">
+            ${esc(p.domain || 'CIVIC')}
+          </span>
+          <span style="font-family: monospace; font-size: 0.7rem; color: #94A3B8;">
+            ${esc(p.date || '')} ${p.seal ? `· seal ${esc(p.seal)}` : ''}
+          </span>
+        </div>
+        <h2 style="margin: 0.25rem 0 0.5rem 0; font-size: 1.35rem; font-weight: 900; text-transform: uppercase;">
+          <a href="${esc(p.dest.path)}" style="color: #FFFFFF; text-decoration: none;">${esc(p.title)}</a>
+        </h2>
+        <p style="color: #94A3B8; font-size: 0.9rem; line-height: 1.5; margin: 0 0 1rem 0;">${esc(p.subtitle || p.excerpt || '')}</p>
+        <a href="${esc(p.dest.path)}" style="font-family: monospace; font-size: 0.8rem; font-weight: bold; color: ${theme.text}; text-decoration: none;">Read article →</a>
+      </article>`;
+    }
   )
   .join('\n');
 
@@ -292,9 +310,22 @@ writeRoute(
     canonical: 'https://arif-fazil.com/world/makcikgpt/',
     ring: 'BODY',
     body: `
-    <p class="meta">Civic Intelligence · Bahasa Makcik · ${makcikPieces.length} Articles</p>
-    <h1>MakcikGPT</h1>
-    <p>Investigative journalism for jiran-jiran. Published directly. No Medium gate.</p>
+    <div style="margin-bottom: 2rem; padding: 2rem; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-bottom: 3px solid #38BDF8; border-radius: 4px;">
+      <p style="font-family: monospace; font-size: 0.75rem; font-weight: bold; color: #38BDF8; letter-spacing: 0.1em; margin-bottom: 0.5rem;">
+        🔵 CIVIC INTELLIGENCE · 🔴 BAHASA MAKCIK · 🟡 ${makcikPieces.length} ARTICLES
+      </p>
+      <h1 style="font-size: 3.5rem; font-weight: 900; font-style: italic; text-transform: uppercase; margin: 0 0 1rem 0; color: #FFFFFF; line-height: 1;">
+        Makcik<span style="color: #38BDF8;">GPT</span>
+      </h1>
+      <p style="font-size: 1.1rem; color: #94A3B8; max-w: 600px; margin: 0 0 1.5rem 0; line-height: 1.6;">
+        Investigative journalism for jiran-jiran. When RM70 billion moves and nobody asks questions, MakcikGPT asks in Bahasa Makcik. Published directly. No Medium gate.
+      </p>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <span style="font-family: monospace; font-size: 0.7rem; padding: 4px 8px; background: rgba(56,189,248,0.1); border: 1px solid #38BDF8; color: #38BDF8; font-weight: bold;">🔵 BLUE · OBSERVE</span>
+        <span style="font-family: monospace; font-size: 0.7rem; padding: 4px 8px; background: rgba(239,68,68,0.1); border: 1px solid #EF4444; color: #EF4444; font-weight: bold;">🔴 RED · FALSIFY</span>
+        <span style="font-family: monospace; font-size: 0.7rem; padding: 4px 8px; background: rgba(234,179,8,0.1); border: 1px solid #EAB308; color: #EAB308; font-weight: bold;">🟡 YELLOW · SEAL</span>
+      </div>
+    </div>
     ${makcikList}
 `,
   }),
