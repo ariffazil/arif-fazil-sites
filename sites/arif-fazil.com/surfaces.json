@@ -66,12 +66,11 @@
       "path": "/economics/",
       "title": "Economics \u2014 WEALTH Capital Briefing",
       "mission": "interpret",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.9,
       "changefreq": "daily",
-      "description": "Bursa, Ringgit, oil macro intelligence, Malaysia economic briefing",
-      "target": "/economics"
+      "description": "Bursa, Ringgit, oil macro intelligence, Malaysia economic briefing"
     },
     {
       "path": "/economics/article/:slug",
@@ -117,45 +116,41 @@
       "path": "/world/oil/",
       "title": "Oil Dashboard \u2014 Brent Crude Cognitive View",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Brent crude oil cognitive dashboard with live data",
-      "target": "/world/oil"
+      "description": "Brent crude oil cognitive dashboard with live data"
     },
     {
       "path": "/world/gas/",
       "title": "Gas Dashboard \u2014 Natural Gas Intelligence",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Natural gas dashboard with live data",
-      "target": "/world/gas"
+      "description": "Natural gas dashboard with live data"
     },
     {
       "path": "/world/gold/",
       "title": "Gold Dashboard \u2014 XAUUSD Trading Synthesis",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Gold trading synthesis and technical analysis dashboard",
-      "target": "/world/gold"
+      "description": "Gold trading synthesis and technical analysis dashboard"
     },
     {
       "path": "/writing/",
       "title": "Writing \u2014 Essays & Analysis",
       "mission": "interpret",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.8,
       "changefreq": "weekly",
-      "description": "Narrative essays by Arif on AI governance, thermodynamics, geological reasoning",
-      "target": "/writing"
+      "description": "Narrative essays by Arif on AI governance, thermodynamics, geological reasoning"
     },
     {
       "path": "/writing/:slug",
@@ -171,12 +166,11 @@
       "path": "/doctrine/",
       "title": "Doctrine \u2014 Constitution, Federation Topology, Manifesto",
       "mission": "decide",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.9,
       "changefreq": "monthly",
-      "description": "Constitutional floors (F1-F13), authority chain, organ topology, federation manifesto",
-      "target": "/doctrine"
+      "description": "Constitutional floors (F1-F13), authority chain, organ topology, federation manifesto"
     },
     {
       "path": "/000/",
@@ -348,34 +342,31 @@
       "path": "/oil/",
       "title": "Oil Dashboard \u2014 Brent Crude Live",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Standalone Brent crude oil dashboard with live API data. Served from /var/www/html/oil/.",
-      "target": "/oil"
+      "description": "Standalone Brent crude oil dashboard with live API data. Served from /var/www/html/oil/."
     },
     {
       "path": "/gas/",
       "title": "Gas Dashboard \u2014 Natural Gas Live",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Standalone natural gas dashboard with live API data. Served from /var/www/html/gas/.",
-      "target": "/gas"
+      "description": "Standalone natural gas dashboard with live API data. Served from /var/www/html/gas/."
     },
     {
       "path": "/gold/",
       "title": "Gold Dashboard \u2014 XAUUSD Live",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Standalone gold trading dashboard with live API data. Served from /var/www/html/gold/.",
-      "target": "/gold"
+      "description": "Standalone gold trading dashboard with live API data. Served from /var/www/html/gold/."
     },
     {
       "path": "/makcikgpt/",
@@ -390,30 +381,28 @@
       "redirects_to": "/world/makcikgpt/:slug",
       "status": "redirect",
       "code": 301,
-      "type": "dynamic_page",
+      "type": "redirect",
       "description": "Bare MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug"
     },
     {
       "path": "/vitals/",
       "title": "PETRONAS \u00b7 VITALS \u2014 Financial capacity and resilience",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.9,
       "changefreq": "daily",
-      "description": "Public PETRONAS VITALS on apex (not system health cosplay). Canonical soft path /vitals/; /wealth/vitals/ 308s here. Distinct organ-style chrome is intentional for capital dashboard.",
-      "target": "/world/propa/"
+      "description": "Public PETRONAS VITALS on apex (not system health cosplay). Canonical soft path /vitals/; /wealth/vitals/ 308s here. Distinct organ-style chrome is intentional for capital dashboard."
     },
     {
       "path": "/malaysia/",
       "title": "Malaysia \u2014 Civic & Political Hub",
       "mission": "interpret",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
-      "description": "Civic and political intelligence hub for Malaysia",
-      "target": "/malaysia"
+      "description": "Civic and political intelligence hub for Malaysia"
     },
     {
       "path": "/pulse/",
@@ -441,12 +430,11 @@
       "path": "/politics/shadow/",
       "title": "PM Bayang \u2014 Shadow Prime Ministers of Malaysia",
       "mission": "interpret",
-      "status": "redirect",
+      "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "monthly",
-      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis.",
-      "target": "/politics/shadow"
+      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis."
     },
     {
       "path": "/politics/shadow/board/",

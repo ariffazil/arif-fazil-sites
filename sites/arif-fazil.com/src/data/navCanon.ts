@@ -1,7 +1,7 @@
 // AUTO-GENERATED from /root/web-canon/canon/navigation.json (generate-nav-canon.cjs)
 // DERIVED — never hand-edit. Edit canon, regenerate.
 // F2: this file must match canon exactly. Drift = entropy.
-// canon version: 4.0.0 · as_of: 2026-08-04 · trinity: DRAFT_FUTURE
+// canon version: 7.0.0 · as_of: 2026-08-06 · trinity: DRAFT_FUTURE
 
 export interface NavItem {
   label: string;
@@ -18,59 +18,41 @@ export const brand = {
 
 export const primaryNav: NavItem[] = [
   {
+    "label": "Home",
+    "href": "/",
+    "mode": "spa",
+    "external": false
+  },
+  {
     "label": "Earth",
     "href": "/earth",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "Economics",
-    "href": "/economics",
+    "label": "Words",
+    "href": "/writing",
     "mode": "spa",
     "external": false
   },
   {
     "label": "World",
     "href": "/world",
-    "mode": "spa",
+    "mode": "static",
     "external": false
   },
   {
-    "label": "Writing",
-    "href": "/writing",
-    "mode": "spa",
-    "external": false
-  },
-  {
-    "label": "Doctrine",
-    "href": "/doctrine",
-    "mode": "spa",
-    "external": false
-  },
-  {
-    "label": "Missions",
+    "label": "Work",
     "href": "/missions",
     "mode": "spa",
-    "external": false
-  },
-  {
-    "label": "999",
-    "href": "/999/",
-    "mode": "static",
     "external": false
   }
 ];
 
 export const secondaryNav: NavItem[] = [
   {
-    "label": "Politics · NS",
-    "href": "/politics/ns-election/",
-    "mode": "spa",
-    "external": false
-  },
-  {
-    "label": "VITALS · PETRONAS",
-    "href": "/vitals/",
+    "label": "Origin",
+    "href": "/000/",
     "mode": "static",
     "external": false
   },
@@ -81,28 +63,34 @@ export const secondaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "Machine",
-    "href": "/machine/",
+    "label": "PETRONAS",
+    "href": "/propa/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "000 Genesis",
-    "href": "/000/",
+    "label": "Malaysia",
+    "href": "/malaysia/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "For machines",
-    "href": "/machines/",
+    "label": "Politics",
+    "href": "/politics/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "Connect",
-    "href": "https://mcp.arif-fazil.com/",
-    "mode": "external",
-    "external": true
+    "label": "Signal",
+    "href": "/connect/",
+    "mode": "static",
+    "external": false
+  },
+  {
+    "label": "Organs",
+    "href": "/organs/",
+    "mode": "static",
+    "external": false
   }
 ];
 
@@ -144,8 +132,26 @@ export const machineNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "PyPI arifos",
-    "href": "https://pypi.org/project/arifos/",
+    "label": "arifOS",
+    "href": "/canon/",
+    "mode": "spa",
+    "external": false
+  },
+  {
+    "label": "GEOX",
+    "href": "https://geox.arif-fazil.com",
+    "mode": "external",
+    "external": true
+  },
+  {
+    "label": "WEALTH",
+    "href": "https://wealth.arif-fazil.com",
+    "mode": "external",
+    "external": true
+  },
+  {
+    "label": "WELL",
+    "href": "https://well.arif-fazil.com",
     "mode": "external",
     "external": true
   }
