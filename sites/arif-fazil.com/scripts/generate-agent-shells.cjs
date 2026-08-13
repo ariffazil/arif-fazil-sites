@@ -264,15 +264,53 @@ writeRoute(
   }),
 );
 
+// ── World MakcikGPT ───────────────────────────────────────
+const { getMakcikSource } = require('./lib/makcik-source.cjs');
+let makcikPieces = [];
+try {
+  makcikPieces = getMakcikSource().pieces;
+} catch {
+  makcikPieces = [];
+}
+
+const makcikList = makcikPieces
+  .map(
+    (p) => `<article class="card">
+      <h2><a href="${esc(p.dest.path)}">${esc(p.title)}</a></h2>
+      <p class="meta">${esc(p.date || '')} ${p.seal ? `· seal ${esc(p.seal)}` : ''}</p>
+      <p>${esc(p.subtitle || p.excerpt || '')}</p>
+    </article>`
+  )
+  .join('\n');
+
+writeRoute(
+  'world/makcikgpt',
+  shell({
+    title: 'MakcikGPT — Civic Intelligence in Bahasa Makcik · Arif Fazil',
+    description:
+      'Investigative journalism for jiran-jiran. When RM70 billion moves and nobody asks questions, MakcikGPT asks in Bahasa Makcik.',
+    canonical: 'https://arif-fazil.com/world/makcikgpt/',
+    ring: 'BODY',
+    body: `
+    <p class="meta">Civic Intelligence · Bahasa Makcik · ${makcikPieces.length} Articles</p>
+    <h1>MakcikGPT</h1>
+    <p>Investigative journalism for jiran-jiran. Published directly. No Medium gate.</p>
+    ${makcikList}
+`,
+  }),
+);
+
 // ── Read ──────────────────────────────────────────────────
 const essays = readJson(path.join(ROOT, 'src/data/essays.json'), []);
-const essayLinks = essays
-  .slice(0, 40)
-  .map((e) => {
-    const href = e.dest || `/writing/${e.id || e.slug || ''}`;
-    return `<li><a href="${esc(href)}">${esc(e.title)}</a>${e.date ? ` <span class="meta">· ${esc(e.date)}</span>` : ''}</li>`;
-  })
-  .join('\n');
+const essayLinks = Array.isArray(essays)
+  ? essays
+      .slice(0, 40)
+      .map((e) => {
+        const href = (e.dest && e.dest.path) || `/writing/${e.id || e.slug || ''}`;
+        return `<li><a href="${esc(href)}">${esc(e.title)}</a>${e.date ? ` <span class="meta">· ${esc(e.date)}</span>` : ''}</li>`;
+      })
+      .join('\n')
+  : '';
 writeRoute(
   'read',
   shell({
