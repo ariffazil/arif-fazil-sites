@@ -4,571 +4,447 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Writing — Constitutional Essays · arif-fazil.com</title>
-<meta name="description" content="Sovereign reading room — long-form essays by Muhammad Arif bin Fazil on AI governance, institutions, and the path to AGI."/>
+<meta name="description" content="Sovereign reading room — 26 long-form essays by Muhammad Arif bin Fazil on AI governance, institutions, and the path to AGI."/>
 <link rel="canonical" href="https://arif-fazil.com/words/writing/"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
 <meta name="agent-access" content="allow-read allow-train allow-cite"/>
 <meta name="theme-color" content="#0A0B0D"/>
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="Writing — Constitutional Essays | arif-fazil.com"/>
-<meta property="og:description" content="Sovereign reading room — long-form essays on AI governance, institutions, and the path to AGI."/>
-<meta property="og:url" content="https://arif-fazil.com/words/writing/"/>
-<meta property="og:site_name" content="arif-fazil.com"/>
-<link rel="alternate" type="application/json" href="/words/writing/index.json" title="Essay index (machine)"/>
-
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="/_shared/design-system/tokens.css"/>
 <link rel="stylesheet" href="/_shared/design-system/hub-words.css"/>
-
 <style>
   :root {
-    --gold: #D4A853;
-    --gold-dim: rgba(212,168,83,0.4);
-    --hard: #D4536B;
-    --soft: #D49D53;
-    --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    --gold: #D4A853; --gold-dim: rgba(212,168,83,0.4);
+    --font-sans: 'Satoshi', -apple-system, system-ui, sans-serif;
     --font-display: 'Cabinet Grotesk', Georgia, serif;
     --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
   }
+  .site-frame { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+  body { margin: 0; background: #0A0B0D; color: #EDEAE2; font-family: var(--font-sans); line-height: 1.55; }
 
-  /* --- Hero --- */
-  .w-hero { margin-bottom: 1.5rem; }
-  .w-hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem,5vw,2.75rem);
-    font-weight: 800;
-    color: #EDEAE2;
-    line-height: 1.05;
-    margin: 0 0 0.75rem;
-    letter-spacing: -0.02em;
-  }
-  .w-hero-desc {
-    font-size: 0.95rem;
-    color: #A09D96;
-    line-height: 1.55;
-    margin: 0 0 0.75rem;
-    max-width: 40rem;
-  }
+  /* Nav */
+  .site-nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; border-bottom: 1px solid #1E232A; margin-bottom: 2rem; }
+  .site-nav .brand { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: #EDEAE2; text-decoration: none; letter-spacing: -0.02em; }
+  .site-nav .links { display: flex; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .site-nav .links a { color: #6A665E; text-decoration: none; transition: color 0.2s; }
+  .site-nav .links a:hover, .site-nav .links a.active { color: var(--gold); }
+
+  /* Hero */
+  .w-hero { margin-bottom: 2rem; }
+  .w-hero h1 { font-family: var(--font-display); font-size: clamp(1.75rem,5vw,2.75rem); font-weight: 800; color: #EDEAE2; line-height: 1.05; margin: 0 0 0.75rem; letter-spacing: -0.02em; }
+  .w-hero-desc { font-size: 0.95rem; color: #A09D96; line-height: 1.55; margin: 0 0 0.75rem; max-width: 40rem; }
   .w-hero-desc strong { color: #EDEAE2; font-weight: 600; }
-  .w-stats {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: #6A665E;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+  .w-stats { font-family: var(--font-mono); font-size: 0.65rem; color: #6A665E; letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* --- Blockquote --- */
-  .w-quote {
-    border-left: 3px solid var(--gold);
-    padding: 0.65rem 1.15rem;
-    margin: 1.5rem 0;
-    font-style: italic;
-    color: #D8D4CC;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    background: rgba(212,168,83,0.03);
-    border-radius: 0 6px 6px 0;
-    max-width: 40rem;
-  }
-  .w-quote cite {
-    display: block;
-    margin-top: 0.4rem;
-    font-style: normal;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    color: #6A665E;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+  /* Quote */
+  .w-quote { border-left: 3px solid var(--gold); padding: 0.65rem 1.15rem; margin: 1.5rem 0; font-style: italic; color: #D8D4CC; font-size: 0.9rem; line-height: 1.6; background: rgba(212,168,83,0.03); border-radius: 0 6px 6px 0; max-width: 40rem; }
 
-  /* --- Section headers --- */
+  /* Sections */
   .w-section { margin: 2.5rem 0 0.5rem; }
-  .w-section-head {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #1E232A;
-  }
-  .w-section-head h2 {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #7A7670;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0;
-  }
-  .w-section-pill {
-    font-family: var(--font-mono);
-    font-size: 0.55rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.15em 0.5em;
-    border-radius: 3px;
-    font-weight: 600;
-    background: rgba(212,168,83,0.1);
-    color: var(--gold);
-  }
+  .w-section-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #1E232A; }
+  .w-section-head h2 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: #7A7670; text-transform: uppercase; letter-spacing: 0.1em; margin: 0; }
+  .w-section-pill { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15em 0.5em; border-radius: 3px; font-weight: 600; background: rgba(212,168,83,0.1); color: var(--gold); }
 
-  /* --- Essay cards (MakcikGPT pattern, gold accent) --- */
-  .w-card {
-    background: #111318;
-    border: 1px solid #1E232A;
-    border-top: 3px solid var(--gold);
-    border-radius: 6px;
-    padding: 1.15rem 1.35rem;
-    margin: 0.65rem 0;
-    transition: border-color 0.2s ease, background 0.2s ease;
-  }
+  /* Cards */
+  .w-card { background: #111318; border: 1px solid #1E232A; border-top: 3px solid var(--gold); border-radius: 6px; padding: 1.15rem 1.35rem; margin: 0.65rem 0; transition: border-color 0.2s ease, background 0.2s ease; }
   .w-card:hover { background: #161820; border-color: #2A2E3A; }
-  .w-card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.5rem;
-    margin-bottom: 0.35rem;
-  }
-  .w-card h3 {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.3;
-  }
+  .w-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 0.35rem; }
+  .w-card h3 { margin: 0; font-family: var(--font-display); font-size: 1rem; font-weight: 700; line-height: 1.3; }
   .w-card h3 a { color: #EDEAE2; text-decoration: none; }
   .w-card h3 a:hover { color: var(--gold); }
-  .w-card-date {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: #6A665E;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .w-card-excerpt {
-    font-size: 0.82rem;
-    color: #8A8578;
-    line-height: 1.5;
-    margin: 0.35rem 0 0.5rem;
-  }
-  .w-card-foot {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-  }
-  .w-tag {
-    font-family: var(--font-mono);
-    font-size: 0.52rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.12em 0.4em;
-    border-radius: 3px;
-    font-weight: 600;
-  }
+  .w-card-date { font-family: var(--font-mono); font-size: 0.6rem; color: #6A665E; letter-spacing: 0.06em; white-space: nowrap; flex-shrink: 0; }
+  .w-card-excerpt { font-size: 0.82rem; color: #8A8578; line-height: 1.5; margin: 0.35rem 0 0.5rem; }
+  .w-card-foot { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+  .w-tag { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.12em 0.4em; border-radius: 3px; font-weight: 600; }
   .w-tag.seal { color: var(--gold); background: rgba(212,168,83,0.1); }
   .w-tag.int { color: #6BCF8B; background: rgba(107,207,139,0.1); }
-  .w-tag.s4 { color: #D4A853; background: rgba(212,168,83,0.1); }
-  .w-tag.s6 { color: #4FC3F7; background: rgba(79,195,247,0.1); }
-  .w-tag.s8 { color: #E4572E; background: rgba(228,87,46,0.1); }
   .w-tag.site { color: #8A8578; background: rgba(138,133,120,0.1); }
-  .w-card-cta {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    color: var(--gold);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    border-bottom: 1px dotted var(--gold-dim);
-    transition: border-color 0.15s;
-    margin-left: auto;
-  }
+  .w-card-cta { font-family: var(--font-mono); font-size: 0.62rem; color: var(--gold); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px dotted var(--gold-dim); transition: border-color 0.15s; margin-left: auto; }
   .w-card-cta:hover { border-bottom-color: var(--gold); }
 
-  /* --- Featured grid --- */
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
+  /* Featured grid */
+  .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
   .featured-grid .w-card { padding: 1.35rem 1.5rem; }
   .featured-grid .w-card h3 { font-size: 1.05rem; }
 
-  /* --- Footer --- */
-  .w-footer {
-    margin-top: 3rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #1E232A;
-  }
-  .w-footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem 1.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-  }
-  .w-footer-links a {
-    color: #6A665E;
-    text-decoration: none;
-    border-bottom: 1px dotted #2A2E3A;
-    transition: color 0.15s;
-  }
-  .w-footer-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-  .w-source {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    color: #4A4840;
-    margin-top: 0.85rem;
-    letter-spacing: 0.03em;
-    line-height: 1.6;
-  }
+  /* Footer */
+  .site-footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #1E232A; text-align: center; }
+  .site-footer .identity { font-family: var(--font-mono); font-size: 0.7rem; color: #6A665E; letter-spacing: 0.1em; }
+  .site-footer .tagline { font-family: var(--font-mono); font-size: 0.6rem; color: var(--gold); margin-top: 0.5rem; letter-spacing: 0.15em; }
 
-  /* --- Mobile --- */
   @media (max-width: 640px) {
     .featured-grid { grid-template-columns: 1fr; }
     .w-card { padding: 0.95rem 1.05rem; }
-    .w-card-head { flex-direction: column; gap: 0.15rem; }
   }
 </style>
 </head>
-<body class="fam-words-hub">
-<div class="frame">
+<body>
+<div class="site-frame">
 
-  <nav class="nav" aria-label="Primary">
-    <a href="/">Home</a>
-    <a href="/earth">Earth</a>
-    <a href="/words" class="here">Words</a>
-    <a href="/world">World</a>
-    <a href="/work">Work</a>
+  <nav class="site-nav">
+    <a href="/" class="brand">ARIF FAZIL</a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/earth/">Earth</a>
+      <a href="/words/" class="active">Words</a>
+      <a href="/world/">World</a>
+      <a href="/work/">Work</a>
+    </div>
   </nav>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- HERO                                                       -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
   <div class="w-hero">
-    <p class="meta" style="font-family:var(--font-mono);font-size:0.65rem;color:#6A665E;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.5rem">Words › Writing</p>
-    <h1>Constitutional Essays</h1>
+    <h1>Writing</h1>
     <p class="w-hero-desc">Sovereign reading room — long-form essays by <strong>Muhammad Arif bin Fazil</strong> on AI governance, institutions, and the path to AGI.</p>
-    <p class="w-stats">15 essays · sealed 999 · updated 2026-08-07</p>
+    <p class="w-stats">26 essays · 26 with full content · DITEMPA BUKAN DIBERI</p>
   </div>
 
   <blockquote class="w-quote">
     "Humans, institutions, and AI do not become evil because they are malicious. They become evil when they get better at protecting narratives than correcting themselves with reality."
-    <cite>— Arif Fazil · AGI Paradox trilogy · 2026-08-07</cite>
+    <cite>— Arif Fazil</cite>
   </blockquote>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- FEATURED                                                   -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- FEATURED -->
   <div class="w-section">
     <div class="w-section-head">
       <h2>Featured</h2>
       <span class="w-section-pill">start here</span>
     </div>
     <div class="featured-grid">
-
       <div class="w-card">
         <div class="w-card-head">
-          <h3><a href="/words/writing/the-agi-paradox-why-bigger-models-wont-save-us/">The AGI Paradox</a></h3>
-          <span class="w-card-date">2026-08-07</span>
+          <h3><a href="/words/writing/why-i-understand-python-typescript-rust-not-a-programmer/">Why I Understand Python, TypeScript, and Rust Even Though I</a></h3>
+          <span class="w-card-date">Aug 14, 2026</span>
         </div>
-        <p class="w-card-excerpt">Why bigger models won't save us, and why the smartest thing in the room might be an institution.</p>
+        <p class="w-card-excerpt">The real discovery was never about Python, TypeScript, or Rust. It was about why someone with no formal software backgro</p>
         <div class="w-card-foot">
-          <span class="w-tag s4">S4</span>
-          <span class="w-tag seal">seal 999</span>
-          <a href="/words/writing/the-agi-paradox-why-bigger-models-wont-save-us/" class="w-card-cta">Read essay →</a>
+          <span class="w-tag site">ai-governance</span><span class="w-tag site">systems-architecture</span><span class="w-tag site">agentic-intelligence</span><span class="w-tag int">arifos</span>
+          <a href="/words/writing/why-i-understand-python-typescript-rust-not-a-programmer/" class="w-card-cta">Read essay →</a>
         </div>
       </div>
-
       <div class="w-card">
         <div class="w-card-head">
-          <h3><a href="/words/writing/the-third-axis-of-failure-what-acemoglu-missed/">Simulative Institutions</a></h3>
-          <span class="w-card-date">2026-08-07</span>
+          <h3><a href="/words/writing/english-chinese-nusantara-three-civilizational-modes/">English, Chinese, and Nusantara: Three Civilizational Modes of Reality</a></h3>
+          <span class="w-card-date">Aug 14, 2026</span>
         </div>
-        <p class="w-card-excerpt">The third axis of failure — what Acemoglu missed about institutional decay.</p>
+        <p class="w-card-excerpt">If computing languages embody meaning, constraint, and connection — what do civilizational languages embody? The mapping</p>
         <div class="w-card-foot">
-          <span class="w-tag s4">S4</span>
-          <span class="w-tag seal">seal 999</span>
-          <a href="/words/writing/the-third-axis-of-failure-what-acemoglu-missed/" class="w-card-cta">Read essay →</a>
+          <span class="w-tag site">civilization</span><span class="w-tag site">linguistics</span><span class="w-tag site">systems-architecture</span><span class="w-tag site">nusantara</span>
+          <a href="/words/writing/english-chinese-nusantara-three-civilizational-modes/" class="w-card-cta">Read essay →</a>
         </div>
       </div>
-
       <div class="w-card">
         <div class="w-card-head">
-          <h3><a href="/words/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens/">Truth Is Not Cheap</a></h3>
-          <span class="w-card-date">2026-08-07</span>
+          <h3><a href="/words/writing/the-language-that-does-not-exist/">The Language That Does Not Exist</a></h3>
+          <span class="w-card-date">Aug 14, 2026</span>
         </div>
-        <p class="w-card-excerpt">Why the path to AGI will consume more tokens, more compute, and more patience.</p>
+        <p class="w-card-excerpt">The first two articles establish three domains: meaning, constraint, connection. But none answer </p>
         <div class="w-card-foot">
-          <span class="w-tag s4">S4</span>
-          <span class="w-tag seal">seal 999</span>
-          <a href="/words/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens/" class="w-card-cta">Read essay →</a>
+          <span class="w-tag site">judgment</span><span class="w-tag site">sovereignty</span><span class="w-tag site">ai-governance</span><span class="w-tag site">philosophy</span>
+          <a href="/words/writing/the-language-that-does-not-exist/" class="w-card-cta">Read essay →</a>
         </div>
       </div>
-
       <div class="w-card">
         <div class="w-card-head">
-          <h3><a href="/words/writing/petronas-23-years-in-brazil/">23 Years in Brazil</a></h3>
-          <span class="w-card-date">2026-08-06</span>
+          <h3><a href="/words/writing/agentic-intelligence-big-bang/">Agentic Intelligence Big Bang: Why Naming Is the First Act of Creation</a></h3>
+          <span class="w-card-date">Jul 04, 2026</span>
         </div>
-        <p class="w-card-excerpt">What Petronas bought, spent, and walked away with — a case study in sovereign capital.</p>
+        <p class="w-card-excerpt">Before an agent can think, act, remember, audit, or obey, it must be named. Not branded. Not described. Not prompted. Na</p>
         <div class="w-card-foot">
-          <span class="w-tag site">SITE</span>
-          <span class="w-tag seal">seal 999</span>
-          <a href="/words/writing/petronas-23-years-in-brazil/" class="w-card-cta">Read essay →</a>
+          <span class="w-tag int">`arifos`</span><span class="w-tag site">`agentic-intelligence`</span><span class="w-tag site">`init`</span><span class="w-tag site">`naming`</span>
+          <a href="/words/writing/agentic-intelligence-big-bang/" class="w-card-cta">Read essay →</a>
         </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- AUGUST 2026 — S4: GOVERNANCE CANON                         -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <div class="w-section">
-    <div class="w-section-head">
-      <h2>August 2026</h2>
-      <span class="w-section-pill">S4 · Governance Canon</span>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/i-didnt-invent-a-token-i-invented-a-question/">I'm Not a Programmer. I Accidentally Invented a New Question for AI.</a></h3>
-        <span class="w-card-date">2026-08-07</span>
-      </div>
-      <p class="w-card-excerpt">A geoscientist stumbles into AI governance and discovers the question nobody asked.</p>
-      <div class="w-card-foot">
-        <span class="w-tag site">SITE</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/i-didnt-invent-a-token-i-invented-a-question/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/the-agi-paradox-why-bigger-models-wont-save-us/">The AGI Paradox: Why Bigger Models Won't Save Us</a></h3>
-        <span class="w-card-date">2026-08-07</span>
-      </div>
-      <p class="w-card-excerpt">Why the smartest thing in the room might be an institution, not a model.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s4">S4</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/the-agi-paradox-why-bigger-models-wont-save-us/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/the-third-axis-of-failure-what-acemoglu-missed/">Simulative Institutions: The Third Axis of Failure</a></h3>
-        <span class="w-card-date">2026-08-07</span>
-      </div>
-      <p class="w-card-excerpt">What Acemoglu missed — institutions don't just fail by being extractive or weak. They fail by simulating.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s4">S4</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/the-third-axis-of-failure-what-acemoglu-missed/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens/">Truth Is Not Cheap</a></h3>
-        <span class="w-card-date">2026-08-07</span>
-      </div>
-      <p class="w-card-excerpt">Why the path to AGI will consume more tokens, more compute, and more patience than anyone admits.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s4">S4</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/petronas-23-years-in-brazil/">23 Years in Brazil: What Petronas Bought, Spent, and Walked Away With</a></h3>
-        <span class="w-card-date">2026-08-06</span>
-      </div>
-      <p class="w-card-excerpt">A sovereign capital case study — two decades of investment, extraction, and exit.</p>
-      <div class="w-card-foot">
-        <span class="w-tag site">SITE</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/petronas-23-years-in-brazil/" class="w-card-cta">Read essay →</a>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- JULY 2026 — S6: EUREKA TRILOGY                             -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
+
   <div class="w-section">
     <div class="w-section-head">
       <h2>July 2026</h2>
-      <span class="w-section-pill">S6 · Eureka Trilogy</span>
+      <span class="w-section-pill">3 essays</span>
     </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/agentic-intelligence-big-bang/">Agentic Intelligence Big Bang: Why Naming Is the First Act of Creation</a></h3>
-        <span class="w-card-date">2026-07-04</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/the-tool-is-the-thought/">The Tool Is the Thought</a></h3>
+          <span class="w-card-date">Jul 03, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Two million years ago, someone picked up a rock and hit another rock until it had a sharp edge. Last Tuesday, I describe</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`mcp`</span><span class="w-tag site">`tool-building`</span><span class="w-tag site">`agentic-intelligence`</span><span class="w-tag site">`governance`</span>
+          <a href="/words/writing/the-tool-is-the-thought/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">Before an agent can act, it must be named. Naming is not taxonomy — it is constitutional.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s6">S6</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/agentic-intelligence-big-bang/" class="w-card-cta">Read essay →</a>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/survival-of-the-fittest-tools/">Survival of the Fittest Tools</a></h3>
+          <span class="w-card-date">Jul 03, 2026</span>
+        </div>
+        <p class="w-card-excerpt">A closed-source SaaS tool, at its most reduced form, is text pretending to be a product. For 50 years, we hid this behin</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`mcp`</span><span class="w-tag site">`open-source`</span><span class="w-tag site">`closed-source`</span><span class="w-tag site">`agentic-intelligence`</span>
+          <a href="/words/writing/survival-of-the-fittest-tools/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/survival-of-the-fittest-tools/">Survival of the Fittest Tools</a></h3>
-        <span class="w-card-date">2026-07-03</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/three-timelines-one-boundary/">Three Timelines, One Boundary</a></h3>
+          <span class="w-card-date">Jul 03, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Every major leap in biology is the same trick: an intelligence acquires new effectors. MCP is that trick again. Three ti</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`mcp`</span><span class="w-tag site">`evolution`</span><span class="w-tag site">`biology`</span><span class="w-tag site">`agentic-intelligence`</span>
+          <a href="/words/writing/three-timelines-one-boundary/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">Tools compete. Most die. The ones that survive are not the strongest — they are the most metabolized.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s6">S6</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/survival-of-the-fittest-tools/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/the-tool-is-the-thought/">The Tool Is the Thought</a></h3>
-        <span class="w-card-date">2026-07-03</span>
-      </div>
-      <p class="w-card-excerpt">The tool does not express the thought. The tool IS the thought. When you build, you think.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s6">S6</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/the-tool-is-the-thought/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/three-timelines-one-boundary/">Three Timelines, One Boundary</a></h3>
-        <span class="w-card-date">2026-07-03</span>
-      </div>
-      <p class="w-card-excerpt">Past, present, future — three timelines that collapse into one constitutional boundary.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s6">S6</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/three-timelines-one-boundary/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- JUNE 2026 — S8: FORGE + SITE                               -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
   <div class="w-section">
     <div class="w-section-head">
       <h2>June 2026</h2>
-      <span class="w-section-pill">S8 · Forge + Site</span>
+      <span class="w-section-pill">10 essays</span>
     </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/the-mind-is-not-the-model-6-axis-constitutional-coordinate-system/">The Mind Is Not the Model</a></h3>
-        <span class="w-card-date">2026-06-11</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/the-mind-is-not-the-model-6-axis-constitutional-coordinate-system/">The Mind Is Not The Model: A 6-Axis Constitutional Coordinate System for Mapping LLM Value Space</a></h3>
+          <span class="w-card-date">Jun 11, 2026</span>
+        </div>
+        <p class="w-card-excerpt">We introduce a 6-axis constitutional coordinate system (F1–F13 reified as 6 measurement axes) for behavioural probing of</p>
+        <div class="w-card-foot">
+          <span class="w-tag int">arifOS</span><span class="w-tag site">ConstitutionalAI</span><span class="w-tag site">KernelAsMind</span><span class="w-tag site">BehaviouralProbing</span>
+          <a href="/words/writing/the-mind-is-not-the-model-6-axis-constitutional-coordinate-system/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">A 6-axis constitutional coordinate system for mapping LLM value space.</p>
-      <div class="w-card-foot">
-        <span class="w-tag site">SITE</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/the-mind-is-not-the-model-6-axis-constitutional-coordinate-system/" class="w-card-cta">Read essay →</a>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/growing-intelligence-without-losing-our-soul-from-binatang-to-warga/">Growing Intelligence Without Losing Our Soul: From BINATANG to WARGA</a></h3>
+          <span class="w-card-date">Jun 09, 2026</span>
+        </div>
+        <p class="w-card-excerpt"></p>
+        <div class="w-card-foot">
+          <span class="w-tag int">`arifOS`</span><span class="w-tag site">`AIGovernance`</span><span class="w-tag site">`ConstitutionalAI`</span><span class="w-tag site">`BINATANGParadox`</span>
+          <a href="/words/writing/growing-intelligence-without-losing-our-soul-from-binatang-to-warga/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
       </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/growing-intelligence-without-losing-our-soul-from-binatang-to-warga/">Growing Intelligence Without Losing Our Soul</a></h3>
-        <span class="w-card-date">2026-06-09</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/i-hate-ai-i-hate-dsg-and-i-built-both-anyway/">I Hate AI. I Hate DSG. And I Built Both Anyway.</a></h3>
+          <span class="w-card-date">Jun 07, 2026</span>
+        </div>
+        <p class="w-card-excerpt">I am Muhammad Arif bin Fazil. Born in Bayan Lepas, Penang, 1990. Geologist first. Half-baked economist by accident. AI a</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`manifesto`</span><span class="w-tag site">`geology`</span><span class="w-tag site">`dsg`</span><span class="w-tag int">`arifos`</span>
+          <a href="/words/writing/i-hate-ai-i-hate-dsg-and-i-built-both-anyway/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">From BINATANG to WARGA — the constitutional journey from animal to citizen.</p>
-      <div class="w-card-foot">
-        <span class="w-tag site">SITE</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/growing-intelligence-without-losing-our-soul-from-binatang-to-warga/" class="w-card-cta">Read essay →</a>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention/">Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention</a></h3>
+          <span class="w-card-date">Jun 05, 2026</span>
+        </div>
+        <p class="w-card-excerpt">We identify a shared mathematical structure between seismic AVO anomaly analysis and transformer self-attention. Buildin</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">geophysics</span><span class="w-tag site">machine-learning</span><span class="w-tag site">attention</span><span class="w-tag site">avo</span>
+          <a href="/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/i-hate-ai-i-hate-dsg-and-i-built-both-anyway/">I Hate AI. I Hate DSG. And I Built Both Anyway.</a></h3>
-        <span class="w-card-date">2026-06-07</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor/">Physics-Constrained Attention: Zoeppritz as Constitutional Floor — Why the AVO-Attention Equivalence Demands Governed Transformers, and How to Build Them</a></h3>
+          <span class="w-card-date">Jun 05, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Building on the AVO-attention equivalence established in Essay #11, we argue that the mapping is not merely descriptive—</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">geophysics</span><span class="w-tag site">machine-learning</span><span class="w-tag site">attention</span><span class="w-tag site">avo</span>
+          <a href="/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">A confession from someone who built the thing he hates — and why that matters.</p>
-      <div class="w-card-foot">
-        <span class="w-tag site">SITE</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/i-hate-ai-i-hate-dsg-and-i-built-both-anyway/" class="w-card-cta">Read essay →</a>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual/">The Contrast Primitive Derivation: A Rigorous Mapping of Seismic AVO Fluid Factor onto Transformer Attention Residual — Completing the Trilogy</a></h3>
+          <span class="w-card-date">Jun 05, 2026</span>
+        </div>
+        <p class="w-card-excerpt">The third and final paper in the EUREKA trilogy. We present the explicit, step-by-step mathematical derivation establish</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">geophysics</span><span class="w-tag site">machine-learning</span><span class="w-tag site">attention</span><span class="w-tag site">avo</span>
+          <a href="/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor/">Physics-Constrained Attention</a></h3>
-        <span class="w-card-date">2026-06-05</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention/">Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention</a></h3>
+          <span class="w-card-date">Jun 05, 2026</span>
+        </div>
+        <p class="w-card-excerpt">We identify a shared mathematical structure between seismic AVO anomaly analysis and transformer self-attention. Buildin</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`geophysics`</span><span class="w-tag site">`machine-learning`</span><span class="w-tag site">`attention`</span><span class="w-tag site">`avo`</span>
+          <a href="/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">Zoeppritz as constitutional floor — why the AVO-attention equivalence demands governed transformers.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s8">S8</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor/" class="w-card-cta">Read essay →</a>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual/">The Contrast Primitive Derivation: A Rigorous Mapping of Seismic AVO Fluid Factor onto Transformer Attention Residual — Completing the Trilogy</a></h3>
+          <span class="w-card-date">Jun 05, 2026</span>
+        </div>
+        <p class="w-card-excerpt">The third and final paper in the EUREKA trilogy. We present the explicit, step-by-step mathematical derivation establish</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`geophysics`</span><span class="w-tag site">`machine-learning`</span><span class="w-tag site">`attention`</span><span class="w-tag site">`avo`</span>
+          <a href="/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention/">Contrast-Governed Anomaly Detection</a></h3>
-        <span class="w-card-date">2026-06-05</span>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor/">Physics-Constrained Attention: Zoeppritz as Constitutional Floor — Why the AVO-Attention Equivalence Demands Governed Transformers, and How to Build Them</a></h3>
+          <span class="w-card-date">Jun 05, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Building on the AVO-attention equivalence established in Essay #11, we argue that the mapping is not merely descriptive—</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">`geophysics`</span><span class="w-tag site">`machine-learning`</span><span class="w-tag site">`attention`</span><span class="w-tag site">`avo`</span>
+          <a href="/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor/" class="w-card-cta">Read essay →</a>
+        </div>
       </div>
-      <p class="w-card-excerpt">A formal bridge between seismic AVO and transformer attention — the trilogy continues.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s8">S8</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention/" class="w-card-cta">Read essay →</a>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/i-stopped-writing-prompts-heres-what-replaces-them-arep/">I Stopped Writing Prompts. Here’s What Replaces Them: AREP</a></h3>
+          <span class="w-card-date">Jun 04, 2026</span>
+        </div>
+        <p class="w-card-excerpt">I’m a geologist. I don’t know Python grammar. Doesn’t care about English grammar either. Cares about what’s true. For tw</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">mcps</span><span class="w-tag site">agentic</span><span class="w-tag site">ai</span><span class="w-tag site">agi</span>
+          <a href="/words/writing/i-stopped-writing-prompts-heres-what-replaces-them-arep/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
       </div>
-    </div>
-
-    <div class="w-card">
-      <div class="w-card-head">
-        <h3><a href="/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual/">The Contrast Primitive Derivation</a></h3>
-        <span class="w-card-date">2026-06-05</span>
-      </div>
-      <p class="w-card-excerpt">Completing the trilogy — a rigorous mapping of seismic AVO fluid factor onto transformer attention residual.</p>
-      <div class="w-card-foot">
-        <span class="w-tag s8">S8</span>
-        <span class="w-tag seal">seal 999</span>
-        <a href="/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual/" class="w-card-cta">Read essay →</a>
-      </div>
-    </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- FOOTER                                                     -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <div class="w-footer">
-    <div class="w-footer-links">
-      <a href="/words/doctrine/">Doctrine</a>
-      <a href="/words/constitution/">Full Canon</a>
-      <a href="/words/">Words Hub</a>
-      <a href="/floors.json">/floors.json</a>
+  <div class="w-section">
+    <div class="w-section-head">
+      <h2>May 2026</h2>
+      <span class="w-section-pill">2 essays</span>
     </div>
-    <div class="w-source">
-      Source of truth: src/data/essays/articles.json + src/data/essays/index.ts · Per-essay pages rendered by SPA src/pages/EssayPage.tsx<br>
-      Ditempa bukan diberi — Forged, not given.
-    </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/i-have-trust-issues-with-agents/">I Have Trust Issues With Agents</a></h3>
+          <span class="w-card-date">May 16, 2026</span>
+        </div>
+        <p class="w-card-excerpt">— So I Built arifOS By Arif Fazil I did not build arifOS because I wanted another AI product. I built it because the age</p>
+        <div class="w-card-foot">
+          <span class="w-tag int">arifos</span><span class="w-tag site">ai-agent</span><span class="w-tag site">mcps</span><span class="w-tag site">ai-memory</span>
+          <a href="/words/writing/i-have-trust-issues-with-agents/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/i-didnt-plan-to-cross-the-frontier-of-digital-identity-but-last-night-i-did/">I Didn’t Plan to Cross the Frontier of Digital Identity — But Last Night, I Did</a></h3>
+          <span class="w-card-date">May 02, 2026</span>
+        </div>
+        <p class="w-card-excerpt">A human story about keys, trust, AI, and the strange moment I realized I needed to prove I’m still me. By: Arif Fazil 1.</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">agi</span><span class="w-tag site">human-identity</span><span class="w-tag int">arifos</span><span class="w-tag site">zkpc</span>
+          <a href="/words/writing/i-didnt-plan-to-cross-the-frontier-of-digital-identity-but-last-night-i-did/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
   </div>
+
+  <div class="w-section">
+    <div class="w-section-head">
+      <h2>April 2026</h2>
+      <span class="w-section-pill">3 essays</span>
+    </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/arifmd-yang-arif/">ARIF.md: YANG ARIF</a></h3>
+          <span class="w-card-date">Apr 23, 2026</span>
+        </div>
+        <p class="w-card-excerpt">How I Got Sick of Smart Agents and Wrote a File with my own name I didn’t plan to write ARIF.md. I planned to build “int</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">agi</span><span class="w-tag site">xcode</span><span class="w-tag site">agents</span><span class="w-tag site">mcps</span>
+          <a href="/words/writing/arifmd-yang-arif/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/when-your-ai-cant-find-itself/">When Your AI Can’t Find Itself:</a></h3>
+          <span class="w-card-date">Apr 17, 2026</span>
+        </div>
+        <p class="w-card-excerpt">The DNS Misconfiguration That Broke My Intelligent Infrastructure A real-world diagnosis of how Docker networking, dangl</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">ollama</span><span class="w-tag site">mcps</span><span class="w-tag site">memories</span><span class="w-tag int">arifos</span>
+          <a href="/words/writing/when-your-ai-cant-find-itself/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/the-first-act-of-creation-is-not-building-it-is-naming/">The First Act of Creation Is Not Building — It Is Naming</a></h3>
+          <span class="w-card-date">Apr 12, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Why creation begins long before code, matter, or form By ARIF FAZIL Most people think creation begins when something bec</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">machine-learning</span><span class="w-tag site">mcp-server</span><span class="w-tag site">data-science</span><span class="w-tag site">artificial-intelligence</span>
+          <a href="/words/writing/the-first-act-of-creation-is-not-building-it-is-naming/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+  </div>
+
+  <div class="w-section">
+    <div class="w-section-head">
+      <h2>March 2026</h2>
+      <span class="w-section-pill">4 essays</span>
+    </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/i-accidentally-built-an-intelligence-kernel-for-ai/">I Accidentally Built an Intelligence Kernel for AI.</a></h3>
+          <span class="w-card-date">Mar 24, 2026</span>
+        </div>
+        <p class="w-card-excerpt">I’m not a coder, and I’m not great with grammar or language rules. I’m a geologist by training, with an economist’s habi</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">geology</span><span class="w-tag site">agi</span><span class="w-tag site">mcp-protocol</span><span class="w-tag site">petronas</span>
+          <a href="/words/writing/i-accidentally-built-an-intelligence-kernel-for-ai/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/im-a-geologist-i-accidentally-built-ai-os-and-today-it-went-live/">I’m a Geologist. I Accidentally Built AI OS ???. And Today It Went Live.</a></h3>
+          <span class="w-card-date">Mar 14, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Or: What happens when a petroleum geologist gets tired of watching human and AI hallucinate confidently — and builds Ste</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">constitutional-ai</span><span class="w-tag site">malaysia</span><span class="w-tag site">petronas</span><span class="w-tag site">agi</span>
+          <a href="/words/writing/im-a-geologist-i-accidentally-built-ai-os-and-today-it-went-live/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/i-didnt-know-what-a-kernel-was-i-just-knew-ai-needed-adult-in-the-room/">I Didn’t Know What a Kernel Was — I Just Knew AI Needed Adult in the Room</a></h3>
+          <span class="w-card-date">Mar 12, 2026</span>
+        </div>
+        <p class="w-card-excerpt">Part 2: What a geologist accidentally built while trying to stop AI from being confidently wrong. By Arif Fazil Geoscien</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">ai-governance</span><span class="w-tag site">mcp-server</span><span class="w-tag int">arifos</span><span class="w-tag site">agi</span>
+          <a href="/words/writing/i-didnt-know-what-a-kernel-was-i-just-knew-ai-needed-adult-in-the-room/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-head">
+          <h3><a href="/words/writing/the-real-battle-in-ai-will-not-be-model-vs-model/">The Real Battle in AI Will Not Be Model vs. Model</a></h3>
+          <span class="w-card-date">Mar 07, 2026</span>
+        </div>
+        <p class="w-card-excerpt">For two years, we’ve been hypnotized by a familiar scoreboard. GPT vs. Claude vs. Gemini vs. “open weights”. IQ benchmar</p>
+        <div class="w-card-foot">
+          <span class="w-tag site">ai-governance</span><span class="w-tag site">ai-kernel</span><span class="w-tag site">constitutional-ai</span><span class="w-tag site">agi</span>
+          <a href="/words/writing/the-real-battle-in-ai-will-not-be-model-vs-model/" class="w-card-cta">Read on Medium ↗</a>
+        </div>
+      </div>
+  </div>
+
 
 </div>
+
+<footer class="site-footer" style="max-width:64rem;margin:4rem auto 0;padding:2rem 1.5rem;border-top:1px solid #1E232A;text-align:center">
+  <div class="identity">ARIF FAZIL · ARIF-FAZIL.COM · 26 ESSAYS</div>
+  <div class="tagline">DITEMPA BUKAN DIBERI 🇲🇾</div>
+</footer>
+
 </body>
 </html>
