@@ -38,10 +38,12 @@ function parseHubArticles() {
   const m = html.match(/const ARTICLES=\[([\s\S]*?)\];/);
   if (!m) throw new Error('hub ARTICLES array not found');
   const entries = [];
-  const re = /\{s:"([^"]+)",d:"([^"]+)",u:"([^"]+)",t:"([^"]+)"\}/g;
+  // field values may contain escaped quotes (\"Kekal Milik Penuh...\") — allow \" inside
+  const re = /\{s:"((?:[^"\\]|\\.)*)",d:"((?:[^"\\]|\\.)*)",u:"((?:[^"\\]|\\.)*)",t:"((?:[^"\\]|\\.)*)"\}/g;
+  const un = (s) => s.replace(/\\"/g, '"').replace(/\\\\/g, '\\');
   let x;
   while ((x = re.exec(m[1])) !== null) {
-    entries.push({ s: x[1], d: x[2], u: x[3], t: x[4] });
+    entries.push({ s: un(x[1]), d: un(x[2]), u: un(x[3]), t: un(x[4]) });
   }
   return entries;
 }
@@ -130,7 +132,13 @@ function main() {
       if (!fs.existsSync(file)) { missing++; continue; }
       let html = fs.readFileSync(file, 'utf8');
       const prior = new RegExp(`\\n?${OPEN}[\\s\\S]*?${CLOSE}\\n?`);
+      const hadNav = prior.test(html);
       html = html.replace(prior, '\n');
+      // redirect pages (stubs resolved elsewhere) carry no nav — clean + skip
+      if (html.includes('REDIRECT-STUB v1')) {
+        if (hadNav && !DRY) fs.writeFileSync(file, html, 'utf8');
+        continue;
+      }
       const footerIdx = html.indexOf('<footer');
       if (footerIdx !== -1) {
         const closeIdx = html.lastIndexOf('</div>', footerIdx);
