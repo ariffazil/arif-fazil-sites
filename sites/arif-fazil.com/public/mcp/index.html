@@ -298,10 +298,10 @@
                             <button class="tab active" onclick="showTab(this, 'claude')">Claude Desktop</button>
                             <button class="tab" onclick="showTab(this, 'http')">Direct HTTP</button>
                         </div>
-                        <pre id="sdk-example"><code>npx @anthropic/mcp install arifos \\
-  --url https://mcp.arif-fazil.com/mcp
+                        <pre id="sdk-example"><code># Claude Code CLI:
+claude mcp add --transport http arifos https://mcp.arif-fazil.com/mcp
 
-# Or add to claude_desktop_config.json:
+# Or add to claude_desktop_config.json (Claude Desktop):
 {
   "mcpServers": {
     "arifOS": {
@@ -325,12 +325,14 @@
                         <h3 style="color: var(--gold);">🔧 Tools</h3>
                         <p style="font-size: 14px;">Structured actions returning JSON. Tools are model-controlled and discovered by MCP clients.</p>
                         <div style="margin-top: 16px;">
-                            <code class="tag">arifos_init</code>
-                            <code class="tag">arifos_sense</code>
-                            <code class="tag">arifos_mind</code>
-                            <code class="tag">arifos_judge</code>
-                            <code class="tag">arifos_vault</code>
-                            <code class="tag">arifos_forge</code>
+                            <code class="tag">arif_init</code>
+                            <code class="tag">arif_observe</code>
+                            <code class="tag">arif_think</code>
+                            <code class="tag">arif_route</code>
+                            <code class="tag">arif_memory</code>
+                            <code class="tag">arif_judge</code>
+                            <code class="tag">arif_forge</code>
+                            <code class="tag">arif_seal</code>
                         </div>
                         <a href="#tools-list" style="display: inline-block; margin-top: 16px; font-size: 14px;">View all tools →</a>
                     </div>
@@ -515,11 +517,12 @@
   <span class="key">"jsonrpc"</span>: <span class="string">"2.0"</span>,
   <span class="key">"method"</span>: <span class="string">"tools/call"</span>,
   <span class="key">"params"</span>: {
-    <span class="key">"name"</span>: <span class="string">"constitutional_judge"</span>,
+    <span class="key">"name"</span>: <span class="string">"arif_judge"</span>,
     <span class="key">"arguments"</span>: {
-      <span class="key">"claim"</span>: <span class="string">"Deploy autonomous action"</span>,
-      <span class="key">"risk_class"</span>: <span class="string">"high"</span>,
-      <span class="key">"reversible"</span>: <span class="number">false</span>
+      <span class="key">"mode"</span>: <span class="string">"judge"</span>,
+      <span class="key">"candidate"</span>: <span class="string">"Deploy autonomous action"</span>,
+      <span class="key">"action_tier"</span>: <span class="string">"standard"</span>,
+      <span class="key">"reversibility_level"</span>: <span class="string">"irreversible"</span>
     }
   },
   <span class="key">"id"</span>: <span class="number">1</span>
@@ -683,8 +686,8 @@
                 <!-- Gap Table -->
                 <div>
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                        <h3 style="margin-bottom: 0;">Tracked Gaps <span id="gap-count" style="color: var(--text-muted); font-weight: 400; font-size: 14px;">(6 active)</span></h3>
-                        <span class="badge" style="background: rgba(239,68,68,0.1); color: var(--red); font-size: 9px;" id="gap-severity-summary">2 HIGH · 3 MEDIUM · 1 LOW</span>
+                        <h3 style="margin-bottom: 0;">Tracked Gaps <span id="gap-count" style="color: var(--text-muted); font-weight: 400; font-size: 14px;">(6 tracked · 0 open)</span></h3>
+                        <span class="badge" style="background: rgba(239,68,68,0.1); color: var(--red); font-size: 9px;" id="gap-severity-summary">0 OPEN · 6 RESOLVED (verified 2026-08-15)</span>
                     </div>
                     <div style="overflow-x: auto;">
                         <table style="font-size: 12px;">
@@ -704,16 +707,16 @@
                                     <td>GEOX tool count unverified — live probe returns no tool count</td>
                                     <td><span class="badge" style="background:rgba(251,191,36,0.1);color:#fbbf24;font-size:9px;">MEDIUM</span></td>
                                     <td><span style="font-size:11px;color:var(--cyan);">GOVERNANCE</span></td>
-                                    <td><span style="font-size:11px;color:var(--gold);">OPEN</span></td>
-                                    <td style="color:var(--text-muted);font-size:11px;">Add tool_count to GEOX /health or create MCP probe</td>
+                                    <td><span style="font-size:11px;color:var(--green);">RESOLVED</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">2026-08-15: verified live — GEOX MCP tools/list = 18 public tools; mcp.json corrected</td>
                                 </tr>
                                 <tr id="gap-g02">
                                     <td><code style="color: var(--gold);">G02</code></td>
                                     <td>well_assess_metabolism failing per federation_audit</td>
                                     <td><span class="badge" style="background:rgba(251,191,36,0.1);color:#fbbf24;font-size:9px;">MEDIUM</span></td>
                                     <td><span style="font-size:11px;color:var(--cyan);">GOVERNANCE</span></td>
-                                    <td><span style="font-size:11px;color:var(--gold);">OPEN</span></td>
-                                    <td style="color:var(--text-muted);font-size:11px;">Investigate WELL metabolism tool; add to gap table</td>
+                                    <td><span style="font-size:11px;color:var(--green);">RESOLVED</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">2026-08-15: verified — tool absent from public registry (WELL exposes 10 tools); metabolism routed to arifFlow FQ</td>
                                 </tr>
                                 <tr id="gap-g03">
                                     <td><code style="color: var(--gold);">G03</code></td>
@@ -919,10 +922,10 @@
                     <div style="margin-top: 20px; padding: 12px; background: var(--bg-primary); border-radius: 8px; border: 1px solid var(--border);">
                         <div style="font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 8px;">Orthogonal Composition Protocol (for agents)</div>
                         <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
-                            <code style="color: var(--cyan);">arifos_sense</code> (Φ GEOX domain) → 
-                            <code style="color: var(--cyan);">arifos_mind</code> (inductive synthesis) → 
-                            <code style="color: var(--gold);">arifos_judge</code> (SEAL/VOID verdict) → 
-                            <code style="color: var(--gold);">arifos_vault</code> (VAULT999 seal)
+                            <code style="color: var(--cyan);">arif_observe</code> (Φ GEOX domain) → 
+                            <code style="color: var(--cyan);">arif_think</code> (inductive synthesis) → 
+                            <code style="color: var(--gold);">arif_judge</code> (SEAL/VOID verdict) → 
+                            <code style="color: var(--gold);">arif_seal</code> (VAULT999 seal)
                         </div>
                     </div>
 
@@ -1059,10 +1062,10 @@
             btn.classList.add('active');
 
             const examples = {
-                claude: `<code>npx @anthropic/mcp install arifos \\
-  --url https://mcp.arif-fazil.com/mcp
+                claude: `<code># Claude Code CLI:
+claude mcp add --transport http arifos https://mcp.arif-fazil.com/mcp
 
-# Or add to claude_desktop_config.json:
+# Or add to claude_desktop_config.json (Claude Desktop):
 {
   "mcpServers": {
     "arifOS": {
@@ -1076,8 +1079,8 @@
     "jsonrpc": "2.0",
     "method": "tools/call",
     "params": {
-      "name": "mcp_health_check",
-      "arguments": {}
+      "name": "arif_observe",
+      "arguments": { "mode": "vitals" }
     },
     "id": 1
   }'`
