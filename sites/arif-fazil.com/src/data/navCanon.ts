@@ -1,7 +1,7 @@
 // AUTO-GENERATED from /root/web-canon/canon/navigation.json (generate-nav-canon.cjs)
 // DERIVED — never hand-edit. Edit canon, regenerate.
 // F2: this file must match canon exactly. Drift = entropy.
-// canon version: 7.0.0 · as_of: 2026-08-06 · trinity: DRAFT_FUTURE
+// canon version: 7.0.0 · as_of: 2026-08-14 · trinity: DRAFT_FUTURE
 
 export interface NavItem {
   label: string;
@@ -31,7 +31,7 @@ export const primaryNav: NavItem[] = [
   },
   {
     "label": "Words",
-    "href": "/writing",
+    "href": "/words",
     "mode": "spa",
     "external": false
   },
@@ -43,7 +43,7 @@ export const primaryNav: NavItem[] = [
   },
   {
     "label": "Work",
-    "href": "/missions",
+    "href": "/work",
     "mode": "spa",
     "external": false
   }
