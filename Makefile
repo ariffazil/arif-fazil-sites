@@ -10,7 +10,7 @@
 .PHONY: deploy verify build reload status clean help sync-aaa verify-pages
 
 # ── DEFAULT: full deploy ──────────────────────────────────────────────
-deploy: verify sync-aaa build verify-pages reload
+deploy: sync-md-mirrors verify sync-aaa build verify-pages reload
 	@echo ""
 	@echo "═══════════════════════════════════════════"
 	@echo "  DEPLOY COMPLETE — arif-fazil.com live"
@@ -51,6 +51,11 @@ sync-aaa:
 	@mkdir -p sites/arif-fazil.com/dist/aaa/
 	rsync -av --delete /root/AAA/dist/ sites/arif-fazil.com/dist/aaa/
 	@echo "✓ AAA dist synced."
+
+# ── Sync .md mirrors to public web root (llms.txt v2) ─────────────────
+sync-md-mirrors:
+	@echo "[md-mirrors] Syncing canonical .md docs to public web root..."
+	@bash scripts/sync-md-mirrors.sh
 
 # ── Build the React SPA ───────────────────────────────────────────────
 build:

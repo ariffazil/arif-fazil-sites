@@ -64,3 +64,16 @@ color: #E4572E;        /* legacy ember */
 
 ---
 *DITEMPA BUKAN DIBERI*
+
+## Trinity vs Komda Scope Decision (2026-08-15, F13 approved)
+
+**Decision:** Two systems, two scopes — no conflict.
+
+| System | Scope | Where used |
+|---|---|---|
+| **Trinity tokens.css** | Cross-organ UI — cockpit, observatory, shared surfaces | `aaa.arif-fazil.com`, `arifos.arif-fazil.com`, `mcp.arif-fazil.com` |
+| **Komda family-colors.yaml** | Organ-territory branded pages — organ-specific landings | `geox.arif-fazil.com`, `wealth.arif-fazil.com`, `well.arif-fazil.com` |
+
+**Rule:** If a page is branded as a specific organ's territory (logo, identity), Komda colors apply. If a page is a cross-organ utility surface (cockpit, observatory, gateway), Trinity colors apply.
+
+This resolves the arifOS gold (`#E8B84B` Trinity) vs crimson (`#A82733` Komda) divergence: the AAA cockpit uses Trinity gold; if arifOS ever gets a branded territory page, it uses Komda crimson.
