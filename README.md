@@ -111,6 +111,10 @@ arif-fazil.com/
 └── verify-pages.sh           # ⛔ Deploy gate — must pass before seal
 ```
 
+### Path Alias
+
+`/root/arif-sites` is a **symlink** to this repo (`/root/arif-fazil.com`). One git checkout, one remote, one HEAD. The alias exists for agent harness compatibility (some FI agents were configured with the name "arif-sites"). Always use `/root/arif-fazil.com` as the canonical path.
+
 ---
 
 ## 🏛️ Federation Navigation

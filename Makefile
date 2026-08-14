@@ -41,6 +41,8 @@ verify: sync-aaa
 		else \
 		echo "[verify] No dev-only entry points — safe to deploy."; \
 	fi
+	@echo "[verify] Running Landing≡Manifest Parity Gate..."
+	bash scripts/verify-landing-manifest.sh
 	@echo "✓ All gates passed."
 
 # ── Sync AAA dist into arif-fazil.com dist ────────────────────────────
