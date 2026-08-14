@@ -67,7 +67,7 @@
   },
   {
     "id": "s1-3",
-    "title": "Origin Part 1 — I'm a Geologist. I Accidentally Built AI OS. And Today It Went Live.",
+    "title": "Origin Part 1 \u2014 I'm a Geologist. I Accidentally Built AI OS. And Today It Went Live.",
     "date": "2026-03-14",
     "lang": "en",
     "series": {
@@ -87,7 +87,7 @@
   },
   {
     "id": "s1-4",
-    "title": "Origin Part 2 — I Didn't Know What a Kernel Was. I Just Knew AI Needed an Adult in the Room.",
+    "title": "Origin Part 2 \u2014 I Didn't Know What a Kernel Was. I Just Knew AI Needed an Adult in the Room.",
     "date": "2026-03-12",
     "lang": "en",
     "series": {
@@ -99,7 +99,7 @@
       "kernel",
       "governance"
     ],
-    "note": "Origin diptych: Part 1 (S1#3) → Part 2 (S1#4). S1#4 published 2 days before S1#3 but describes events after it — read S1#1 → S1#2 → S1#3 → S1#4 → S1#5 in narrative order.",
+    "note": "Origin diptych: Part 1 (S1#3) \u2192 Part 2 (S1#4). S1#4 published 2 days before S1#3 but describes events after it \u2014 read S1#1 \u2192 S1#2 \u2192 S1#3 \u2192 S1#4 \u2192 S1#5 in narrative order.",
     "dest": {
       "type": "medium",
       "url": "https://medium.com/@arifbfazil/i-didnt-know-what-a-kernel-was"
@@ -129,7 +129,7 @@
   },
   {
     "id": "s2-1",
-    "title": "The First Act of Creation Is Not Building — It Is Naming",
+    "title": "The First Act of Creation Is Not Building \u2014 It Is Naming",
     "date": "2026-04-12",
     "lang": "en",
     "series": {
@@ -251,7 +251,7 @@
   },
   {
     "id": "s4-1",
-    "title": "Why We Need AI Governance — Before AI Governs Us",
+    "title": "Why We Need AI Governance \u2014 Before AI Governs Us",
     "date": "2025-12-05",
     "lang": "en",
     "series": {
@@ -544,7 +544,7 @@
   },
   {
     "id": "s6-13",
-    "title": "The Contrast Primitive Derivation — Completing the Trilogy (EUREKA III)",
+    "title": "The Contrast Primitive Derivation \u2014 Completing the Trilogy (EUREKA III)",
     "date": "2026-06-05",
     "lang": "en",
     "series": {
@@ -565,7 +565,7 @@
   },
   {
     "id": "s7-1",
-    "title": "🎶 Malaysia Will Miss AGI Because We Treat Siti Nurhaliza Song Like Karaoke",
+    "title": "\ud83c\udfb6 Malaysia Will Miss AGI Because We Treat Siti Nurhaliza Song Like Karaoke",
     "date": "2025-08-23",
     "lang": "en",
     "series": {
@@ -586,7 +586,7 @@
   },
   {
     "id": "s7-2",
-    "title": "Rukun AGI — The Five Pillars of Artificial General Intelligence",
+    "title": "Rukun AGI \u2014 The Five Pillars of Artificial General Intelligence",
     "date": "2025-09-15",
     "lang": "en",
     "series": {
@@ -607,7 +607,7 @@
   },
   {
     "id": "s7-3",
-    "title": "Bahasa dan Minda Melayu — Asas Keseimbangan Dunia Moden",
+    "title": "Bahasa dan Minda Melayu \u2014 Asas Keseimbangan Dunia Moden",
     "date": "2025-12-17",
     "lang": "bm",
     "series": {
@@ -692,7 +692,7 @@
   },
   {
     "id": "s8-2",
-    "title": "I Have Trust Issues With Agents — So I Built arifOS",
+    "title": "I Have Trust Issues With Agents \u2014 So I Built arifOS",
     "date": "2026-05-16",
     "lang": "en",
     "series": {
@@ -734,7 +734,7 @@
   },
   {
     "id": "s9-1",
-    "title": "🧠 A Second Brain Forged From Scars",
+    "title": "\ud83e\udde0 A Second Brain Forged From Scars",
     "date": "2025-08-29",
     "lang": "en",
     "series": {
@@ -754,7 +754,7 @@
   },
   {
     "id": "s9-2",
-    "title": "✊ Paradox of Language",
+    "title": "\u270a Paradox of Language",
     "date": "2025-10-04",
     "lang": "en",
     "series": {
@@ -796,7 +796,7 @@
   },
   {
     "id": "m1-2",
-    "title": "PETRONAS DNA — Dulu Bulldog, Sekarang Anjing",
+    "title": "PETRONAS DNA \u2014 Dulu Bulldog, Sekarang Anjing",
     "date": "2026-07-01",
     "lang": "bm",
     "series": {
@@ -954,7 +954,7 @@
   },
   {
     "id": "m2-3",
-    "title": "SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah",
+    "title": "SEARAH Dah Beroperasi \u2014 Tapi Bocor Pun Dah Sampai Mahkamah",
     "date": "2026-07-01",
     "lang": "bm",
     "series": {
@@ -977,7 +977,7 @@
   },
   {
     "id": "m2-4",
-    "title": "\"Kekal Milik Penuh Malaysia\" — Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy",
+    "title": "\"Kekal Milik Penuh Malaysia\" \u2014 Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy",
     "date": "2026-07-22",
     "lang": "bm",
     "series": {
@@ -1048,7 +1048,7 @@
   },
   {
     "id": "m3-1",
-    "title": "ILMU 'Sovereign AI' Konon — Tapi Bila DiAudit, Menangis",
+    "title": "ILMU 'Sovereign AI' Konon \u2014 Tapi Bila DiAudit, Menangis",
     "date": "2026-07-01",
     "lang": "bm",
     "series": {
@@ -1071,7 +1071,7 @@
   },
   {
     "id": "m3-2",
-    "title": "Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI",
+    "title": "Satu Tangan Kuasa Semua \u2014 Air, Api, Rangkaian, AI",
     "date": "2026-07-01",
     "lang": "bm",
     "series": {
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "m4-1",
-    "title": "Duit Raya dan Tekanan Harga — Dua Cerita, Satu Hari",
+    "title": "Duit Raya dan Tekanan Harga \u2014 Dua Cerita, Satu Hari",
     "date": "2026-07-01",
     "lang": "bm",
     "series": {
@@ -1137,7 +1137,7 @@
   },
   {
     "id": "m5-1",
-    "title": "Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?",
+    "title": "Sam Altman, Elon Musk, Anwar Ibrahim \u2014 Depa Ada Akal Ka?",
     "date": "2026-07-01",
     "lang": "bm",
     "series": {
@@ -1181,7 +1181,7 @@
   },
   {
     "id": "m5-4",
-    "title": "8 BANGANG Anthony Loke — Chennah Version",
+    "title": "8 BANGANG Anthony Loke \u2014 Chennah Version",
     "date": "2026-07-29",
     "lang": "bm",
     "series": {
@@ -1276,5 +1276,83 @@
       "path": "/world/makcikgpt/suara-terlalu-siap"
     },
     "seal": "999"
+  },
+  {
+    "title": "Why I Understand Python, TypeScript, and Rust Even Though I'm Not a Programmer",
+    "date": "2026-08-14",
+    "dest": {
+      "path": "/words/writing/why-i-understand-python-typescript-rust-not-a-programmer"
+    },
+    "categories": [
+      "AI-Governance",
+      "Systems-Architecture"
+    ],
+    "mediumUrl": "",
+    "isDirectPublication": true,
+    "tags": [
+      "ai-governance",
+      "systems-architecture",
+      "agentic-intelligence"
+    ]
+  },
+  {
+    "title": "English, Chinese, and Nusantara: Three Civilizational Modes of Reality",
+    "date": "2026-08-14",
+    "dest": {
+      "path": "/words/writing/english-chinese-nusantara-three-civilizational-modes"
+    },
+    "categories": [
+      "Civilization",
+      "Linguistics"
+    ],
+    "mediumUrl": "",
+    "isDirectPublication": true,
+    "tags": [
+      "civilization",
+      "linguistics",
+      "nusantara"
+    ]
+  },
+  {
+    "title": "The Language That Does Not Exist",
+    "date": "2026-08-14",
+    "dest": {
+      "path": "/words/writing/the-language-that-does-not-exist"
+    },
+    "categories": [
+      "Judgment",
+      "Sovereignty"
+    ],
+    "mediumUrl": "",
+    "isDirectPublication": true,
+    "tags": [
+      "judgment",
+      "sovereignty",
+      "philosophy"
+    ]
+  },
+  {
+    "title": "Why I Understand Python, TypeScript, and Rust Even Though I'm Not a Programmer",
+    "slug": "why-i-understand-python-typescript-rust-not-a-programmer",
+    "date": "2026-08-14",
+    "dest": {
+      "path": "/words/writing/why-i-understand-python-typescript-rust-not-a-programmer/"
+    }
+  },
+  {
+    "title": "English, Chinese, and Nusantara: Three Civilizational Modes of Reality",
+    "slug": "english-chinese-nusantara-three-civilizational-modes",
+    "date": "2026-08-14",
+    "dest": {
+      "path": "/words/writing/english-chinese-nusantara-three-civilizational-modes/"
+    }
+  },
+  {
+    "title": "The Language That Does Not Exist",
+    "slug": "the-language-that-does-not-exist",
+    "date": "2026-08-14",
+    "dest": {
+      "path": "/words/writing/the-language-that-does-not-exist/"
+    }
   }
 ]
