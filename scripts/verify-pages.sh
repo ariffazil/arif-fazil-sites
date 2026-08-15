@@ -86,10 +86,11 @@ while IFS= read -r -d '' html_file; do
         continue
     fi
     
-    # Probe the URL
-    http_code=$(curl -s -o /dev/null -w '%{http_code}' \
+    # Probe the URL with local resolve to avoid WAN latency/rate limits
+    http_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
         --max-time "$TIMEOUT" \
-        "$full_url" 2>/dev/null || echo "000")
+        --connect-timeout 5 \
+        "$full_url" 2>/dev/null) || http_code="000"
     
     if [ "$http_code" = "200" ] || [ "$http_code" = "301" ] || [ "$http_code" = "308" ]; then
         # 200 = direct serve, 301/308 = redirect (acceptable for clean URLs)
@@ -97,10 +98,11 @@ while IFS= read -r -d '' html_file; do
             echo -e "  ${GREEN}✓${NC} $http_code  $url_path"
         else
             # Follow redirect to see final code
-            final_code=$(curl -s -o /dev/null -w '%{http_code}' \
+            final_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
                 --max-time "$TIMEOUT" \
+                --connect-timeout 5 \
                 -L \
-                "$full_url" 2>/dev/null || echo "000")
+                "$full_url" 2>/dev/null) || final_code="000"
             if [ "$final_code" = "200" ]; then
                 echo -e "  ${GREEN}✓${NC} $http_code→200  $url_path"
             else
@@ -134,9 +136,10 @@ echo "Checking critical paths (no dist/index.html expected)..."
 echo ""
 
 for cpath in "${CRITICAL_PATHS[@]}"; do
-    http_code=$(curl -s -o /dev/null -w '%{http_code}' \
+    http_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
         --max-time "$TIMEOUT" \
-        "${BASE_URL}${cpath}" 2>/dev/null || echo "000")
+        --connect-timeout 5 \
+        "${BASE_URL}${cpath}" 2>/dev/null) || http_code="000"
     
     if [ "$http_code" = "200" ]; then
         echo -e "  ${GREEN}✓${NC} $http_code  $cpath"
