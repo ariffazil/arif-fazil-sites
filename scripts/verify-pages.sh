@@ -87,7 +87,7 @@ while IFS= read -r -d '' html_file; do
     fi
     
     # Probe the URL with local resolve to avoid WAN latency/rate limits
-    http_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
+    http_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 --resolve forge.arif-fazil.com:443:127.0.0.1 --resolve wiki.arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
         --max-time "$TIMEOUT" \
         --connect-timeout 5 \
         "$full_url" 2>/dev/null) || http_code="000"
@@ -98,7 +98,7 @@ while IFS= read -r -d '' html_file; do
             echo -e "  ${GREEN}✓${NC} $http_code  $url_path"
         else
             # Follow redirect to see final code
-            final_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
+            final_code=$(curl -s -k --resolve arif-fazil.com:443:127.0.0.1 --resolve forge.arif-fazil.com:443:127.0.0.1 --resolve wiki.arif-fazil.com:443:127.0.0.1 -o /dev/null -w '%{http_code}' \
                 --max-time "$TIMEOUT" \
                 --connect-timeout 5 \
                 -L \
