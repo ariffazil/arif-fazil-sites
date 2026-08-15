@@ -54,10 +54,41 @@ export function App() {
             <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
             <Route path="/world/oil" element={<CommodityPage slug="oil" />} />
+            <Route path="/world/oil/" element={<CommodityPage slug="oil" />} />
             <Route path="/world/gas" element={<CommodityPage slug="gas" />} />
+            <Route path="/world/gas/" element={<CommodityPage slug="gas" />} />
             <Route path="/world/gold" element={<CommodityPage slug="gold" />} />
+            <Route path="/world/gold/" element={<CommodityPage slug="gold" />} />
             <Route path="/world/klci" element={<CommodityPage slug="klci" />} />
+            <Route path="/world/klci/" element={<CommodityPage slug="klci" />} />
             <Route path="/world/usdmyr" element={<CommodityPage slug="usdmyr" />} />
+            <Route path="/world/usdmyr/" element={<CommodityPage slug="usdmyr" />} />
+            
+            {/* /world/economics/* routes */}
+            <Route path="/world/economics/oil" element={<CommodityPage slug="oil" />} />
+            <Route path="/world/economics/oil/" element={<CommodityPage slug="oil" />} />
+            <Route path="/world/economics/gas" element={<CommodityPage slug="gas" />} />
+            <Route path="/world/economics/gas/" element={<CommodityPage slug="gas" />} />
+            <Route path="/world/economics/gold" element={<CommodityPage slug="gold" />} />
+            <Route path="/world/economics/gold/" element={<CommodityPage slug="gold" />} />
+            <Route path="/world/economics/klci" element={<CommodityPage slug="klci" />} />
+            <Route path="/world/economics/klci/" element={<CommodityPage slug="klci" />} />
+            <Route path="/world/economics/usdmyr" element={<CommodityPage slug="usdmyr" />} />
+            <Route path="/world/economics/usdmyr/" element={<CommodityPage slug="usdmyr" />} />
+
+            {/* /economics/* routes */}
+            <Route path="/economics/oil" element={<CommodityPage slug="oil" />} />
+            <Route path="/economics/oil/" element={<CommodityPage slug="oil" />} />
+            <Route path="/economics/gas" element={<CommodityPage slug="gas" />} />
+            <Route path="/economics/gas/" element={<CommodityPage slug="gas" />} />
+            <Route path="/economics/gold" element={<CommodityPage slug="gold" />} />
+            <Route path="/economics/gold/" element={<CommodityPage slug="gold" />} />
+            <Route path="/economics/klci" element={<CommodityPage slug="klci" />} />
+            <Route path="/economics/klci/" element={<CommodityPage slug="klci" />} />
+            <Route path="/economics/usdmyr" element={<CommodityPage slug="usdmyr" />} />
+            <Route path="/economics/usdmyr/" element={<CommodityPage slug="usdmyr" />} />
+
+            {/* Root alias routes */}
             <Route path="/oil" element={<CommodityPage slug="oil" />} />
             <Route path="/oil/" element={<CommodityPage slug="oil" />} />
             <Route path="/gas" element={<CommodityPage slug="gas" />} />
