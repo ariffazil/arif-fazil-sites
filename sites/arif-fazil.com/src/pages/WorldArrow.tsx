@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { RealWorldAtlasMap, REAL_HOTSPOTS, type HotspotLocation } from '@/components/RealWorldAtlasMap';
 
 // --- Data Types & Static Signals ---
 interface MacroSignal {
@@ -79,87 +80,6 @@ const MACRO_SIGNALS: MacroSignal[] = [
   },
 ];
 
-interface AtlasHotspot {
-  id: string;
-  name: string;
-  region: string;
-  category: 'Energy' | 'Maritime' | 'Civic' | 'Capital';
-  coords: { x: number; y: number }; // Percentage 0-100 on SVG
-  metric: string;
-  headline: string;
-  analysis: string;
-  route?: string;
-}
-
-const ATLAS_HOTSPOTS: AtlasHotspot[] = [
-  {
-    id: 'malacca',
-    name: 'Strait of Malacca',
-    region: 'Southeast Asia / Malaysia',
-    category: 'Maritime',
-    coords: { x: 74, y: 56 },
-    metric: '90,000+ vessels/yr',
-    headline: 'The World’s Most Critical Maritime Chokepoint',
-    analysis: 'Over 25% of global traded oil passes through this 2.8km-wide channel. Sovereign positioning here dictates global supply chain resilience.',
-    route: '/earth',
-  },
-  {
-    id: 'sarawak',
-    name: 'Central Luconia & Bintulu',
-    region: 'Sarawak Offshore, South China Sea',
-    category: 'Energy',
-    coords: { x: 78, y: 55 },
-    metric: '1.2B SCF/day gas',
-    headline: 'Sarawak Sovereign Gas & SEARAH Aggregation',
-    analysis: 'High CO2 gas carbonate build-ups combined with LNG export trains. The constitutional battleground for federal-state resource sovereignty.',
-    route: '/world/makcikgpt',
-  },
-  {
-    id: 'malay-basin',
-    name: 'Malay Basin (PM-304/PM-3)',
-    region: 'Offshore Terengganu',
-    category: 'Energy',
-    coords: { x: 75, y: 53 },
-    metric: '13-Year Lineage',
-    headline: 'Bekantan & Mature Field Oil Rejuvenation',
-    analysis: 'Low-resistivity low-contrast pay discoveries. Proving commercial hydrocarbon flow where traditional petrophysical models said reservoir was wet.',
-    route: '/work',
-  },
-  {
-    id: 'hormuz',
-    name: 'Strait of Hormuz',
-    region: 'Persian Gulf / Middle East',
-    category: 'Maritime',
-    coords: { x: 61, y: 44 },
-    metric: '21M bbl/day crude',
-    headline: 'Global Energy Arterial Pressure Gauge',
-    analysis: 'Vulnerability point for global crude benchmark. Any geopolitical friction triggers immediate risk premia across Brent and freight rates.',
-    route: '/oil',
-  },
-  {
-    id: 'sabah-deep',
-    name: 'Sabah Deepwater (Gumusut)',
-    region: 'Offshore Sabah / Borneo',
-    category: 'Energy',
-    coords: { x: 80, y: 53 },
-    metric: '3,000m+ depth',
-    headline: 'Turbidite Channel Reservoir Engineering',
-    analysis: 'Complex slope-channel turbidite systems requiring high-pressure seismic inversion and automated drilling safety envelopes.',
-    route: '/earth',
-  },
-  {
-    id: 'london-vault',
-    name: 'London / Zurich Gold Hub',
-    region: 'Western Europe',
-    category: 'Capital',
-    coords: { x: 47, y: 31 },
-    metric: '8,500 tonnes gold',
-    headline: 'Physical Settlement vs Paper Derivatives',
-    analysis: 'Physical sovereign bar withdrawals outstripping COMEX paper claims. Sovereign nations repatriating hard bullion.',
-    route: '/gold',
-  },
-];
-
 const MAKCIK_PICKS = [
   {
     id: 'm1',
@@ -189,7 +109,7 @@ const MAKCIK_PICKS = [
 
 export function World() {
   const [activeTab, setActiveTab] = useState<'atlas' | 'commodities' | 'makcikgpt' | 'institutions'>('atlas');
-  const [selectedHotspot, setSelectedHotspot] = useState<AtlasHotspot>(ATLAS_HOTSPOTS[0]);
+  const [selectedHotspot, setSelectedHotspot] = useState<HotspotLocation>(REAL_HOTSPOTS[0]);
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState('');
 
@@ -247,21 +167,21 @@ export function World() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-[#2B3242] bg-[#141820] px-3 py-1 font-mono text-xs uppercase tracking-widest text-[#E27D60]">
-                <span>🌐</span> The World View & Macro Atlas
+                <span>🌐</span> Real GIS Cartography & Macro Atlas
               </div>
               <h1 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white">
                 ATLAS OF THE WORLD
               </h1>
               <p className="mt-3 max-w-2xl text-base sm:text-lg text-[#A0A7B8] font-light leading-relaxed">
-                Dynamic geopolitical signals, macroeconomic reality, energy chokepoints, and civic accountability. 
-                Reading the physical flow of oil, gas, money, and power without corporate sanitization.
+                Real OpenStreetMap, CartoDB Dark Matter, and Esri Satellite GIS engine. 
+                Tracking global maritime chokepoints, offshore hydrocarbon basins, physical gold reserves, and civic accountability under real uncertainty.
               </p>
             </div>
 
             {/* Navigation Tabs */}
             <div className="flex flex-wrap gap-1 rounded-lg border border-[#222733] bg-[#11141A] p-1.5 font-mono text-xs">
               {[
-                { key: 'atlas', label: '🗺️ Interactive Atlas' },
+                { key: 'atlas', label: '🗺️ Real GIS Atlas' },
                 { key: 'commodities', label: '📊 5 Core Signals' },
                 { key: 'makcikgpt', label: '📰 MakcikGPT Civic' },
                 { key: 'institutions', label: '🏛️ Institutions' },
@@ -281,109 +201,26 @@ export function World() {
             </div>
           </div>
 
-          {/* ── TAB 1: INTERACTIVE ATLAS DISPLAY ── */}
+          {/* ── TAB 1: REAL GIS INTERACTIVE ATLAS DISPLAY ── */}
           {activeTab === 'atlas' && (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
-              {/* Left Column: Interactive Vector Map (8 Cols) */}
-              <div className="lg:col-span-8 rounded-2xl border border-[#222733] bg-[#0E1117] p-6 relative overflow-hidden shadow-2xl">
-                <div className="flex items-center justify-between border-b border-[#1F2533] pb-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-3 w-3 rounded-full bg-[#E27D60] animate-pulse"></div>
-                    <span className="font-mono text-xs uppercase tracking-widest text-[#8E95A5]">
-                      SOVEREIGN MARITIME & ENERGY RADAR
-                    </span>
-                  </div>
-                  <span className="font-mono text-[11px] text-[#4ECCA3]">PROBE: LIVE · FIDELITY: HIGH</span>
-                </div>
-
-                {/* SVG Vector Globe / World Background Representation */}
-                <div className="relative w-full aspect-[16/9] bg-[#08090C] rounded-xl border border-[#181D26] overflow-hidden flex items-center justify-center">
-                  
-                  {/* Subtle Grid and Lat/Long lines */}
-                  <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none stroke-[#2B3347]" strokeWidth="0.5">
-                    <line x1="0%" y1="25%" x2="100%" y2="25%" />
-                    <line x1="0%" y1="50%" x2="100%" y2="50%" strokeDasharray="4 4" stroke="#4ECCA3" strokeOpacity="0.4" />
-                    <line x1="0%" y1="75%" x2="100%" y2="75%" />
-                    <line x1="25%" y1="0%" x2="25%" y2="100%" />
-                    <line x1="50%" y1="0%" x2="50%" y2="100%" />
-                    <line x1="75%" y1="0%" x2="75%" y2="100%" />
-                  </svg>
-
-                  {/* World Continents Outlines (Stylized Vector) */}
-                  <svg viewBox="0 0 1000 500" className="w-full h-full object-cover select-none">
-                    {/* Eurasia & Africa outline */}
-                    <path
-                      d="M420,120 Q500,100 620,110 T780,140 Q850,200 820,280 T720,340 Q650,380 600,420 T480,430 Q440,320 460,260 T420,120 Z"
-                      fill="#121722"
-                      stroke="#222C3D"
-                      strokeWidth="1.5"
-                    />
-                    {/* Americas outline */}
-                    <path
-                      d="M180,100 Q260,110 240,200 T210,280 Q250,340 230,420 T170,460 Q140,380 160,260 T140,140 Z"
-                      fill="#121722"
-                      stroke="#222C3D"
-                      strokeWidth="1.5"
-                    />
-                    {/* Maritime Energy Flow Route lines */}
-                    <path
-                      d="M610,220 Q680,260 740,280 T780,275"
-                      fill="none"
-                      stroke="#E27D60"
-                      strokeWidth="1.5"
-                      strokeDasharray="4 4"
-                      className="animate-pulse"
-                    />
-                  </svg>
-
-                  {/* Hotspots clickable nodes */}
-                  {ATLAS_HOTSPOTS.map((spot) => {
-                    const isSelected = selectedHotspot.id === spot.id;
-                    return (
-                      <button
-                        key={spot.id}
-                        onClick={() => setSelectedHotspot(spot)}
-                        style={{ left: `${spot.coords.x}%`, top: `${spot.coords.y}%` }}
-                        className="absolute -translate-x-1/2 -translate-y-1/2 group focus:outline-none z-10"
-                      >
-                        <span className="relative flex h-6 w-6 items-center justify-center">
-                          {isSelected && (
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#E27D60] opacity-75"></span>
-                          )}
-                          <span
-                            className={`relative inline-flex h-3.5 w-3.5 rounded-full transition-transform duration-200 group-hover:scale-125 border-2 ${
-                              isSelected
-                                ? 'bg-[#E27D60] border-white shadow-[0_0_12px_#E27D60]'
-                                : 'bg-[#1F2636] border-[#4ECCA3] group-hover:border-white'
-                            }`}
-                          ></span>
-                        </span>
-                        
-                        {/* Tooltip on Map */}
-                        <span
-                          className={`absolute left-1/2 top-7 -translate-x-1/2 whitespace-nowrap rounded border px-2 py-0.5 font-mono text-[10px] tracking-wide transition-all ${
-                            isSelected
-                              ? 'border-[#E27D60] bg-[#141820] text-white font-bold'
-                              : 'border-[#2B3242] bg-[#0E1015]/90 text-[#8E95A5] group-hover:text-white'
-                          }`}
-                        >
-                          {spot.name}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+              {/* Left Column: Real Leaflet Map Component (8 Cols) */}
+              <div className="lg:col-span-8">
+                <RealWorldAtlasMap
+                  selectedHotspot={selectedHotspot}
+                  onSelectHotspot={setSelectedHotspot}
+                />
 
                 {/* Hotspot Quick Selector Pill Bar */}
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {ATLAS_HOTSPOTS.map((spot) => (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {REAL_HOTSPOTS.map((spot) => (
                     <button
                       key={spot.id}
                       onClick={() => setSelectedHotspot(spot)}
                       className={`rounded-md border px-3 py-1.5 font-mono text-xs transition-colors ${
                         selectedHotspot.id === spot.id
-                          ? 'border-[#E27D60] bg-[#221815] text-[#E27D60] font-semibold'
+                          ? 'border-[#E27D60] bg-[#221815] text-[#E27D60] font-semibold shadow-sm'
                           : 'border-[#1F2533] bg-[#12151D] text-[#8E95A5] hover:border-[#3A455E] hover:text-white'
                       }`}
                     >
@@ -394,11 +231,11 @@ export function World() {
               </div>
 
               {/* Right Column: Intelligence & Node Dossier (4 Cols) */}
-              <div className="lg:col-span-4 rounded-2xl border border-[#222733] bg-[#0E1117] p-6 shadow-xl flex flex-col justify-between h-full min-h-[480px]">
+              <div className="lg:col-span-4 rounded-2xl border border-[#222733] bg-[#0E1117] p-6 shadow-xl flex flex-col justify-between h-full min-h-[580px]">
                 <div>
                   <div className="flex items-center justify-between border-b border-[#1F2533] pb-3 mb-4">
                     <span className="font-mono text-[11px] uppercase tracking-widest text-[#E27D60]">
-                      HOTSPOT INTELLIGENCE DOSSIER
+                      SPATIAL INTELLIGENCE DOSSIER
                     </span>
                     <span className="rounded bg-[#1A202C] px-2 py-0.5 font-mono text-[10px] text-[#4ECCA3] border border-[#2B364A]">
                       {selectedHotspot.category}
@@ -419,8 +256,19 @@ export function World() {
                       </h3>
 
                       <div className="mt-4 rounded-lg bg-[#141822] border border-[#202738] p-3 font-mono">
-                        <div className="text-[10px] text-[#8E95A5] uppercase tracking-wider">STRATEGIC VOLUME / METRIC</div>
-                        <div className="text-lg font-bold text-[#E27D60]">{selectedHotspot.metric}</div>
+                        <div className="text-[10px] text-[#8E95A5] uppercase tracking-wider">STRATEGIC VOLUME / CAPACITY</div>
+                        <div className="text-base font-bold text-[#E27D60] mt-0.5">{selectedHotspot.metric}</div>
+                      </div>
+
+                      <div className="mt-4 flex items-center gap-2 font-mono text-[11px] text-[#8E95A5]">
+                        <span>COORDINATES:</span>
+                        <span className="text-white">
+                          {selectedHotspot.lat.toFixed(2)}°N, {selectedHotspot.lng.toFixed(2)}°E
+                        </span>
+                        <span>·</span>
+                        <span className="text-[#D4AF37] border border-[#2B3242] bg-[#16140D] px-1.5 py-0.5 rounded">
+                          {selectedHotspot.status}
+                        </span>
                       </div>
 
                       <h4 className="mt-5 font-serif text-base text-white/90 italic">
