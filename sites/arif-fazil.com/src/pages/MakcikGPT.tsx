@@ -1,162 +1,154 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { makcikArticlesMeta } from '@/data/makcikgpt/index';
+import { useEffect, useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
+import { makcikArticlesMeta } from '@/data/makcikgpt/index'
+
+const SERIES_TABS = [
+  { id: 'ALL', label: 'Semua Siri' },
+  { id: 'M1', label: 'M1 · PETRONAS DNA' },
+  { id: 'M2', label: 'M2 · SEARAH & Gas Sarawak' },
+  { id: 'M3', label: 'M3 · YTL & Ilmu' },
+  { id: 'M4', label: 'M4 · Rakyat & Sara Hidup' },
+  { id: 'M5', label: 'M5 · Akal & Kedaulatan' },
+]
 
 export function MakcikGPT() {
+  const [selectedSeries, setSelectedSeries] = useState('ALL')
+  const [search, setSearch] = useState('')
+
   useEffect(() => {
-    document.title = 'MakcikGPT — Civilization Intelligence | arifOS';
-  }, []);
+    document.title = 'MakcikGPT — Civic Intelligence in Bahasa Makcik | arif-fazil.com'
+  }, [])
+
+  const filteredArticles = useMemo(() => {
+    return makcikArticlesMeta.filter((a) => {
+      const domainUpper = a.domain ? a.domain.toUpperCase() : ''
+      const seriesMatch =
+        selectedSeries === 'ALL' ||
+        domainUpper.includes(selectedSeries) ||
+        (a.tags && a.tags.some(t => t.toUpperCase() === selectedSeries))
+      const searchMatch =
+        !search ||
+        a.title.toLowerCase().includes(search.toLowerCase()) ||
+        (a.subtitle && a.subtitle.toLowerCase().includes(search.toLowerCase())) ||
+        (a.excerpt && a.excerpt.toLowerCase().includes(search.toLowerCase()))
+      return seriesMatch && searchMatch
+    })
+  }, [selectedSeries, search])
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="bg-forge-black min-h-screen"
-    >
-      {/* Hero */}
-      <section className="py-24 border-b-2 border-[#1E293B] bg-[#0F172A] relative overflow-hidden">
-        {/* Tri-color background glow accents */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#38BDF8]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#EF4444]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="site-frame relative z-10">
-          <div className="section-label text-[#38BDF8] flex items-center gap-2 font-mono text-xs font-bold tracking-widest">
-            <span className="w-2 h-2 rounded-full bg-[#EF4444] animate-pulse"></span>
-            CIVIC INTELLIGENCE · Ξ WEALTH · MAKCIKGPT
+    <div className="min-h-screen bg-[#0A0B0D] text-[#EDEAE2] py-16 md:py-24">
+      <div className="mx-auto max-w-[1280px] px-6">
+        {/* ── HEADER & KICKER ─────────────────────────────── */}
+        <div className="mb-12 border-b border-[#1F2733] pb-8">
+          <div className="flex items-center gap-2 font-mono text-xs text-[#D9A62E] uppercase tracking-widest mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#D9A62E]" />
+            <span>CIVIC INTELLIGENCE · BAHASA MAKCIK · WORLDVIEW</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.85] tracking-tighter mb-6 text-white">
-            Makcik<br />
-            <span className="bg-gradient-to-r from-[#38BDF8] via-[#EAB308] to-[#EF4444] bg-clip-text text-transparent">
-              GPT
-            </span>
+
+          <h1 className="font-display text-4xl md:text-6xl font-black uppercase tracking-tight text-[#EDEAE2] mb-4">
+            MakcikGPT
           </h1>
-          <p className="font-body text-xl text-[#94A3B8] max-w-2xl leading-relaxed">
-            Investigative journalism for jiran-jiran. When RM70 billion moves
-            and nobody asks questions, MakcikGPT asks in Bahasa Makcik.
-            Published directly. No Medium gate.
+
+          <p className="font-sans text-lg md:text-xl text-[#9AA0A8] max-w-3xl leading-relaxed">
+            Kewartawanan penyiasatan sivik untuk jiran-jiran. Bila RM70 bilion beralih tangan dan tiada siapa berani tanya,
+            MakcikGPT tanya dalam Bahasa Makcik. Diterbitkan terus. Sifar pintu tengah.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <span className="px-3 py-1 bg-[#38BDF8]/10 border border-[#38BDF8] text-[#38BDF8] font-mono text-xs font-semibold rounded-sm">
-              🔵 BLUE · OBSERVE
-            </span>
-            <span className="px-3 py-1 bg-[#EF4444]/10 border border-[#EF4444] text-[#EF4444] font-mono text-xs font-semibold rounded-sm">
-              🔴 RED · FALSIFY
-            </span>
-            <span className="px-3 py-1 bg-[#EAB308]/10 border border-[#EAB308] text-[#EAB308] font-mono text-xs font-semibold rounded-sm">
-              🟡 YELLOW · SEAL ({makcikArticlesMeta.length} ARTICLES)
-            </span>
+
+          {/* Featured Quote Box */}
+          <div className="mt-8 rounded-lg border border-[#1F2733] bg-[#11151C] p-6 border-l-4 border-l-[#D9A62E]">
+            <p className="font-serif text-lg md:text-xl text-[#EDEAE2] italic mb-2">
+              "Bila senyum CEO lebih manis dari biasa dekat majlis tandatangan kontrak, itu bukan petanda untung. Itu petanda kita kena semak siapa yang dapat apa."
+            </p>
+            <div className="font-mono text-xs text-[#9AA0A8]">
+              — MakcikGPT · Siri M2 (Gas Sarawak & SEARAH) · Cop Mohor 999
+            </div>
+          </div>
+
+          {/* Series Filter Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mt-8">
+            <div className="flex flex-wrap gap-2">
+              {SERIES_TABS.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setSelectedSeries(t.id)}
+                  className={`font-mono text-xs uppercase px-3.5 py-1.5 rounded transition-colors ${
+                    selectedSeries === t.id
+                      ? 'bg-[#D9A62E] text-[#0A0B0D] font-bold'
+                      : 'bg-[#11151C] text-[#9AA0A8] border border-[#1F2733] hover:text-[#EDEAE2]'
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Cari artikel makcik..."
+              className="font-mono text-xs px-3.5 py-1.5 rounded bg-[#11151C] border border-[#1F2733] text-[#EDEAE2] placeholder-[#9AA0A8]/50 focus:outline-none focus:border-[#D9A62E]"
+            />
           </div>
         </div>
-      </section>
 
-      {/* Articles */}
-      <section className="py-16 bg-[#090D16]">
-        <div className="site-frame space-y-8">
-          {makcikArticlesMeta.map((article, idx) => {
-            // Tri-color accent rotation: Blue (#38BDF8), Red (#EF4444), Yellow (#EAB308)
-            const colors = [
-              { border: 'border-[#38BDF8]/40 hover:border-[#38BDF8]', badge: 'bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/30', link: 'text-[#38BDF8]' },
-              { border: 'border-[#EF4444]/40 hover:border-[#EF4444]', badge: 'bg-[#EF4444]/10 text-[#EF4444] border-[#EF4444]/30', link: 'text-[#EF4444]' },
-              { border: 'border-[#EAB308]/40 hover:border-[#EAB308]', badge: 'bg-[#EAB308]/10 text-[#EAB308] border-[#EAB308]/30', link: 'text-[#EAB308]' },
-            ];
-            const theme = colors[idx % 3];
-
-            return (
-              <Link
-                key={article.slug}
-                to={`/world/makcikgpt/${article.slug}`}
-                className={`brutalist-card border ${theme.border} bg-[#0F172A]/80 p-8 block transition-all hover:translate-x-1`}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`font-mono text-[0.65rem] px-2 py-0.5 border font-bold uppercase tracking-wider ${theme.badge}`}>
-                        {article.domain}
-                      </span>
-                      <span className="font-mono text-[0.65rem] text-[#94A3B8] uppercase tracking-wider">
-                        {article.language === 'ms' ? 'Bahasa Makcik' : 'English'} · Sealed {article.seal}
-                      </span>
-                    </div>
-                    <h2 className="text-2xl font-black uppercase tracking-tight text-white leading-tight hover:text-[#38BDF8] transition-colors">
-                      {article.title}
-                    </h2>
-                  </div>
-                  <time
-                    dateTime={article.date}
-                    className="font-mono text-xs text-[#94A3B8] whitespace-nowrap"
-                  >
-                    {new Date(article.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </time>
-                </div>
-
-                <p className="font-technical text-sm text-[#E2E8F0] font-medium mb-3">
-                  {article.subtitle}
-                </p>
-
-                <p className="font-body text-[#94A3B8] text-sm leading-relaxed mb-6">
-                  {article.excerpt}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-2">
-                  {article.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 border border-[#334155] text-[#94A3B8] bg-[#1E293B]/50"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  <span className={`font-mono text-xs font-bold ${theme.link} ml-auto flex items-center gap-1`}>
-                    Read article →
+        {/* ── ARTICLE CARDS (BROADSHEET EDITORIAL) ────────── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredArticles.map((article, idx) => (
+            <article
+              key={article.slug || idx}
+              className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 hover:border-[#9AA0A8]/40 transition-colors flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span className="font-mono text-xs font-bold text-[#D9A62E]">
+                    {article.domain ? `${article.domain} · ` : ''}{article.date}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase text-[#E4572E] px-2 py-0.5 rounded border border-[#E4572E]/30 bg-[#E4572E]/10">
+                    SEAL 999
                   </span>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
 
-      {/* Context */}
-      <section className="py-16 border-t-2 border-forge-iron">
-        <div className="site-frame max-w-2xl">
-          <div className="section-label mb-6">Constitutional Floor</div>
-          <div className="space-y-4 text-forge-dim text-sm leading-relaxed">
-            <p>
-              Every MakcikGPT article is sealed under <strong className="text-forge-white">999_SEAL</strong>.
-              Evidence chains trace to primary sources. No claims without receipts.
-            </p>
-            <p>
-              <strong className="text-forge-white">F1 AMANAH:</strong> Reversible-first. All sources documented.
-              <br />
-              <strong className="text-forge-white">F2 TRUTH:</strong> Evidence-labeled OBS/DER/INT/SPEC.
-              <br />
-              <strong className="text-forge-white">F6 MARUAH:</strong> Names named only with public-record evidence.
-              <br />
-              <strong className="text-forge-white">F11 AUDIT:</strong> Full provenance chain in SEARAH-TRUTH-DB.md.
-            </p>
-          </div>
+                <h2 className="font-serif text-xl md:text-2xl font-bold text-[#EDEAE2] mb-3 group-hover:text-[#D9A62E] transition-colors leading-snug">
+                  <Link to={`/world/makcikgpt/${article.slug}`}>
+                    {article.title}
+                  </Link>
+                </h2>
 
-          <div className="mt-12 flex gap-4">
-            <Link to="/economics" className="button-forge text-xs py-2">
-              ← Back to WEALTH
-            </Link>
-            <a
-              href="https://medium.com/@arifbfazil"
-              target="_blank"
-              rel="noreferrer"
-              className="button-forge button-forge--accent text-xs py-2"
-            >
-              Medium ↗
-            </a>
-          </div>
+                {article.subtitle && (
+                  <p className="font-sans text-sm text-[#9AA0A8] mb-3 leading-relaxed">
+                    {article.subtitle}
+                  </p>
+                )}
+
+                {article.excerpt && (
+                  <p className="font-sans text-xs text-[#9AA0A8]/70 line-clamp-3 leading-relaxed mb-4">
+                    {article.excerpt}
+                  </p>
+                )}
+              </div>
+
+              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
+                <div className="flex flex-wrap gap-1.5">
+                  {(article.tags || []).slice(0, 3).map((t) => (
+                    <span key={t} className="font-mono text-[10px] text-[#9AA0A8]/60 bg-[#0A0B0D] px-2 py-0.5 rounded">
+                      #{t}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  to={`/world/makcikgpt/${article.slug}`}
+                  className="font-mono text-xs font-semibold text-[#EDEAE2] group-hover:text-[#D9A62E] transition-colors flex items-center gap-1"
+                >
+                  <span>Baca</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
-      </section>
-    </motion.div>
-  );
+      </div>
+    </div>
+  )
 }
-
-export default MakcikGPT;
+export default MakcikGPT
