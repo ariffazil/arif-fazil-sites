@@ -100,17 +100,35 @@ export function App() {
             <Route path="/usdmyr" element={<CommodityPage slug="usdmyr" />} />
             <Route path="/usdmyr/" element={<CommodityPage slug="usdmyr" />} />
 
+            {/* 3.1 Sub-routes for world */}
+            <Route path="/world/vitals" element={<Navigate to="/wealth/vitals/" replace />} />
+            <Route path="/world/vitals/" element={<Navigate to="/wealth/vitals/" replace />} />
+            <Route path="/world/malaysia" element={<Navigate to="/wealth/malaysia/" replace />} />
+            <Route path="/world/malaysia/" element={<Navigate to="/wealth/malaysia/" replace />} />
+            <Route path="/world/propa" element={<Navigate to="/world" replace />} />
+            <Route path="/world/propa/" element={<Navigate to="/world" replace />} />
+            <Route path="/propa" element={<Navigate to="/world" replace />} />
+            <Route path="/propa/" element={<Navigate to="/world" replace />} />
+            <Route path="/malaysia" element={<Navigate to="/wealth/malaysia/" replace />} />
+            <Route path="/malaysia/" element={<Navigate to="/wealth/malaysia/" replace />} />
+
             {/* 4. /words — Essays (S1-S9), Wiki, Knowledge Base */}
             <Route path="/words" element={<Words />} />
             <Route path="/words/" element={<Words />} />
+            <Route path="/words/writing" element={<Navigate to="/words" replace />} />
+            <Route path="/words/writing/" element={<Navigate to="/words" replace />} />
+            <Route path="/words/writing/:slug" element={<EssayPage />} />
+            <Route path="/words/writing/:slug/" element={<EssayPage />} />
             <Route path="/writing" element={<Navigate to="/words" replace />} />
             <Route path="/writing/" element={<Navigate to="/words" replace />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
+            <Route path="/writing/:slug/" element={<EssayPage />} />
             <Route path="/read" element={<Navigate to="/words" replace />} />
             <Route path="/read/" element={<Navigate to="/words" replace />} />
             <Route path="/essays" element={<Navigate to="/words" replace />} />
             <Route path="/essays/" element={<Navigate to="/words" replace />} />
-            <Route path="/essays/:slug" element={<EssayRedirect />} />
+            <Route path="/essays/:slug" element={<EssayPage />} />
+            <Route path="/essays/:slug/" element={<EssayPage />} />
             <Route path="/wiki" element={<Navigate to="/words" replace />} />
             <Route path="/wiki/" element={<Navigate to="/words" replace />} />
             <Route path="/wiki/*" element={<Navigate to="/words" replace />} />
@@ -217,11 +235,6 @@ function EarthGlobeRedirect() {
 function MakcikGptRedirect() {
   const { slug } = useParams();
   return <Navigate to={`/world/makcikgpt/${slug ?? ''}`} replace />;
-}
-
-function EssayRedirect() {
-  const { slug } = useParams();
-  return <Navigate to={`/writing/${slug ?? ''}`} replace />;
 }
 
 export default App;
