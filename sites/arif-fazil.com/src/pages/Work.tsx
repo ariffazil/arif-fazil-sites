@@ -1,12 +1,6 @@
 import { Link } from 'react-router-dom'
 import { agenticMirrors } from '@/components/ArrowNavbar'
-
-const WELLS_DATA = [
-  { name: 'BEKANTAN-1', year: '2019', basin: 'Malay Basin', depth: '1,420m', status: 'Oil Discovery', note: 'Shallowest flowing oil discovery in the Malay Basin. Proved low-resistivity pay model.' },
-  { name: 'BINTANG-EAST-1', year: '2021', basin: 'Malay Basin', depth: '2,850m', status: 'Gas Discovery', note: 'Pre-salt commercial gas flow under extreme pressure constraints.' },
-  { name: 'GELAMA-MERAH-1', year: '2023', basin: 'Sabah Deepwater', depth: '3,100m', status: 'Hydrocarbon Flow', note: 'Deepwater turbidite channel calibration with zero safety incidents.' },
-  { name: 'LAYANG-DEEP-2', year: '2024', basin: 'Sarawak Basin', depth: '3,400m', status: 'Gas Discovery', note: 'Carbonate build-up exploration with AVO seismic inversion.' },
-]
+import { discoveries } from '@/data/discoveries'
 
 export function Work() {
   return (
@@ -15,7 +9,7 @@ export function Work() {
         {/* Header */}
         <div className="mb-12 border-b border-[#1F2733] pb-8">
           <div className="flex items-center gap-2 font-mono text-xs text-[#31C48D] uppercase tracking-widest mb-3">
-            <span>⚙️ WORK · SYSTEMS · THE WELLS</span>
+            <span>WORK · SYSTEMS · THE WELLS</span>
             <span>·</span>
             <span>OPERATIONAL LEDGER</span>
           </div>
@@ -24,7 +18,7 @@ export function Work() {
           </h1>
           <p className="font-sans text-lg text-[#9AA0A8] max-w-3xl leading-relaxed">
             Thirteen years of offshore petroleum drilling decisions and the computational architecture built to govern autonomous intelligence.
-            Every well flowed. Every system is sealed.
+            Every well flowed. Systems are built to leave an audit trail.
           </p>
         </div>
 
@@ -40,25 +34,41 @@ export function Work() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {WELLS_DATA.map((w) => (
-              <div key={w.name} className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6">
+            {discoveries.map((d) => (
+              <div key={d.id} className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-base font-bold text-[#EDEAE2]">{w.name}</span>
+                  <span className="font-mono text-base font-bold text-[#EDEAE2]">{d.title}</span>
                   <span className="font-mono text-xs text-[#31C48D] px-2 py-0.5 rounded border border-[#31C48D]/30 bg-[#31C48D]/10">
-                    {w.status}
+                    {d.year}
                   </span>
                 </div>
-                <div className="grid grid-cols-3 gap-2 font-mono text-xs text-[#9AA0A8] mb-3 pb-3 border-b border-[#1F2733]">
-                  <div>Year: <span className="text-[#EDEAE2]">{w.year}</span></div>
-                  <div>Basin: <span className="text-[#EDEAE2]">{w.basin}</span></div>
-                  <div>Depth: <span className="text-[#EDEAE2]">{w.depth}</span></div>
+                <div className="grid grid-cols-1 gap-1 font-mono text-xs text-[#9AA0A8] mb-3 pb-3 border-b border-[#1F2733]">
+                  <div>Location: <span className="text-[#EDEAE2]">{d.location}</span></div>
                 </div>
-                <p className="font-sans text-xs text-[#9AA0A8] leading-relaxed">
-                  {w.note}
+                <p className="font-sans text-xs text-[#9AA0A8] leading-relaxed mb-3">
+                  {d.summary}
                 </p>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[#9AA0A8]/70">
+                    {d.evidence.length} evidence item{d.evidence.length === 1 ? '' : 's'}
+                  </span>
+                  <a
+                    href={d.link ?? 'https://geox.arif-fazil.com'}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider"
+                  >
+                    {d.linkLabel ?? 'Explore GEOX'} ↗
+                  </a>
+                </div>
               </div>
             ))}
           </div>
+
+          <p className="mt-6 font-mono text-[11px] leading-relaxed text-[#9AA0A8]/60 max-w-3xl">
+            Results reflect publicly reported outcomes and personal professional contribution — not institutional
+            claims on behalf of PETRONAS. Internal technical detail is withheld. Last verified 2026-08-17.
+          </p>
         </section>
 
         {/* Section 2: Federation Systems Architecture */}

@@ -1,21 +1,109 @@
 import { Link } from 'react-router-dom'
-import { QuoteCard } from '@/components/QuoteCard'
 import { LiveClock } from '@/components/LiveClock'
+import { discoveries } from '@/data/discoveries'
 import { agenticMirrors } from '@/components/ArrowNavbar'
 
-const WELLS_RECORD = [
-  { name: 'BEKANTAN-1', year: '2019', basin: 'Malay Basin', depth: '1,420m', status: 'Oil Discovery (Shallowest Flowing)', role: 'Lead Geoscientist' },
-  { name: 'BINTANG-EAST-1', year: '2021', basin: 'Malay Basin', depth: '2,850m', status: 'Gas Discovery (Commercial Flow)', role: 'Lead Explorationist' },
-  { name: 'GELAMA-MERAH-1', year: '2023', basin: 'Sabah Deepwater', depth: '3,100m', status: 'Hydrocarbon Flow Confirmed', role: 'Subsurface Specialist' },
-  { name: 'LAYANG-DEEP-2', year: '2024', basin: 'Sarawak Basin', depth: '3,400m', status: 'Pre-salt Gas Discovery', role: 'Peer Review / Lead' },
+/**
+ * Home — ARIF FAZIL sovereign surface.
+ *
+ * Sequence (SITE_CONSTITUTION RULE 1 · 30-second comprehension):
+ *   Hero (who/what/why) → Decisions under noise (governing idea)
+ *   → Wells record (real-world grounding FIRST) → Systems (forged from that work)
+ *   → Proof (bounded, not absolute) → Disclaimer.
+ *
+ * Sacred preserved (SITE_IDENTITY): the human, the motto, the system line,
+ * the dark geological visual identity, the organs, /000 and /999.
+ * Review fix 2026-08-17 (Copilot external audit): hero-first, canonical
+ * discoveries data, bounded claims, original voice (no external quote),
+ * personal-site disclaimer, provenance note on wells.
+ */
+
+interface SystemCard {
+  name: string
+  sigil: string
+  accent: string
+  badge: string
+  blurb: string
+  to: string
+  toLabel: string
+  mirror: string
+  mirrorLabel: string
+}
+
+const SYSTEMS: SystemCard[] = [
+  {
+    name: 'arifOS',
+    sigil: 'Ψ',
+    accent: '#E4572E',
+    badge: 'PORT 8088 · KERNEL',
+    blurb: 'The constitutional law layer for AI systems. Thirteen hard floors (F1–F13) that every consequential tool call must pass.',
+    to: '/AAA',
+    toLabel: 'Read Doctrine',
+    mirror: 'https://arifos.arif-fazil.com',
+    mirrorLabel: 'Mirror :8088',
+  },
+  {
+    name: 'GEOX',
+    sigil: 'G',
+    accent: '#E4572E',
+    badge: 'PORT 7072 · EARTH',
+    blurb: 'Earth intelligence grounded in rocks, wells and seismic data. Zoeppritz physics, interpretation, deep-time basin models.',
+    to: '/earth',
+    toLabel: 'View Earth',
+    mirror: 'https://geox.arif-fazil.com',
+    mirrorLabel: 'Mirror GEOX',
+  },
+  {
+    name: 'WEALTH',
+    sigil: 'W',
+    accent: '#C9A227',
+    badge: 'PORT 7074 · CAPITAL',
+    blurb: 'Capital signals — commodity physics (oil, gas, gold), claims registry, and macroeconomic reality. It computes; it never allocates.',
+    to: '/world',
+    toLabel: 'View World',
+    mirror: 'https://wealth.arif-fazil.com',
+    mirrorLabel: 'Mirror WEALTH',
+  },
+  {
+    name: 'WELL',
+    sigil: '◉',
+    accent: '#31C48D',
+    badge: 'PORT 7075 · VITALITY',
+    blurb: 'Substrate telemetry and homeostasis — wear-and-tear monitoring, readiness, and self-repair signals.',
+    to: '/work',
+    toLabel: 'View Substrate',
+    mirror: 'https://well.arif-fazil.com',
+    mirrorLabel: 'Mirror WELL',
+  },
+  {
+    name: 'A-FORGE',
+    sigil: 'F',
+    accent: '#E4572E',
+    badge: 'PORT 7071 · EXECUTION',
+    blurb: 'The hands. Controlled mutation, canary deployments, and rollback — execution only after governance clears it.',
+    to: '/work',
+    toLabel: 'View Executions',
+    mirror: 'https://forge.arif-fazil.com',
+    mirrorLabel: 'Mirror FORGE',
+  },
+  {
+    name: 'AAA',
+    sigil: 'A',
+    accent: '#91B0F2',
+    badge: 'AGENCY & SKILLS',
+    blurb: 'Sovereign agency — agent cards (333-AGI, 555-ASI, 777-FORGE, 888-APEX) and the skill-catalog mesh.',
+    to: '/AAA',
+    toLabel: 'View Canon',
+    mirror: 'https://aaa.arif-fazil.com',
+    mirrorLabel: 'Mirror AAA',
+  },
 ]
 
 export function Home() {
   return (
     <div className="min-h-screen bg-[#0A0B0D] text-[#EDEAE2]">
-      {/* ── HERO SECTION ─────────────────────────────────── */}
+      {/* ── HERO — who, what, why (30s, zero jargon) ─────────────────── */}
       <section className="relative overflow-hidden border-b border-[#1F2733] bg-[#0A0B0D] py-16 md:py-24">
-        {/* Subtle grid background */}
         <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
@@ -25,7 +113,7 @@ export function Home() {
         />
 
         <div className="mx-auto max-w-[1360px] px-6 relative z-10">
-          {/* Top Status Bar: Section label + Live Clock */}
+          {/* Status bar: identity + live clock (live clock is always-current, never stale) */}
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#1F2733]">
             <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#9AA0A8]">
               <span className="w-2 h-2 rounded-full bg-[#E4572E]" />
@@ -34,283 +122,95 @@ export function Home() {
             <LiveClock withDate className="text-[#9AA0A8]" />
           </div>
 
-          {/* Main Hero Split */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Column: Identity & Purpose */}
+            {/* Left: identity & purpose */}
             <div className="lg:col-span-7">
               <h1 className="font-display font-black text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.92] uppercase tracking-tight text-[#EDEAE2] mb-6">
                 Arif<br />
                 <span className="text-[#9AA0A8]">Fazil</span>
               </h1>
               <p className="font-mono text-xs text-[#E4572E] uppercase tracking-widest mb-4">
-                Petronas Carigali · Basin Analysis · Offshore Malaysia
+                Exploration Geoscientist · PETRONAS Carigali · Basin Analysis · Offshore Malaysia
               </p>
-              <p className="font-sans text-lg md:text-xl text-[#9AA0A8] leading-relaxed max-w-2xl mb-8">
-                I find oil and gas in places people said were finished.
-                I also build the systems that keep AI honest.
-                Both are the same kind of work: reading what the ground actually says, not what the model wants it to say.
+              <p className="font-sans text-lg md:text-xl text-[#9AA0A8] leading-relaxed max-w-2xl mb-4">
+                I find signals in difficult subsurface data.
+                I build systems that refuse to pretend certainty.
+              </p>
+              <p className="font-sans text-base text-[#9AA0A8]/70 leading-relaxed max-w-2xl mb-8">
+                Both are the same work: reading what the ground actually says — not what the model wants it to say.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/earth"
+                  to="/work"
                   className="px-5 py-2.5 rounded bg-[#E4572E] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#E4572E]/90 transition-colors"
                 >
-                  See the Wells →
+                  Explore the Work →
                 </Link>
                 <Link
-                  to="/work"
-                  className="px-5 py-2.5 rounded border border-[#1F2733] bg-[#11151C] text-[#EDEAE2] font-mono text-xs uppercase tracking-wider font-semibold hover:border-[#9AA0A8]/50 transition-colors"
-                >
-                  What I Built
-                </Link>
-                <Link
-                  to="/words"
+                  to="/earth"
                   className="px-5 py-2.5 rounded border border-[#1F2733] bg-transparent text-[#9AA0A8] font-mono text-xs uppercase tracking-wider hover:text-[#EDEAE2] hover:border-[#EDEAE2]/30 transition-colors"
                 >
-                  Read Words & Essays
+                  See the Wells
                 </Link>
               </div>
             </div>
 
-            {/* Right Column: Philosophy & Core Beliefs */}
+            {/* Right: original voice + creed (replaces external quotation) */}
             <div className="lg:col-span-5 lg:border-l lg:border-[#1F2733] lg:pl-10 space-y-6">
-              <QuoteCard
-                topic="Personal Philosophy"
-                quote="Accept everything about yourself – I mean everything. You are you and that is the beginning and the end – no apologies, no regrets."
-                author="Henry Kissinger"
-                source="attributed"
-              />
+              <blockquote className="border-l-2 border-[#C9A227]/50 pl-4">
+                <p className="font-serif text-lg md:text-xl text-[#EDEAE2]/85 italic leading-relaxed">
+                  “The first responsibility is to see what is there — including what contradicts you.”
+                </p>
+              </blockquote>
 
               <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-5 space-y-3">
                 <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8]">
-                  Three Non-Negotiable Invariants
+                  Operating Law
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-[#31C48D]" />
                   <span className="font-mono text-xs uppercase text-[#EDEAE2]">Evidence before narrative</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#E4572E]" />
-                  <span className="font-mono text-xs uppercase text-[#EDEAE2]">F1–F13 Constitutional law</span>
+                  <span className="w-2 h-2 rounded-full bg-[#C9A227]" />
+                  <span className="font-mono text-xs uppercase text-[#EDEAE2]">Humans decide</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#C9A227]" />
+                  <span className="w-2 h-2 rounded-full bg-[#E4572E]" />
                   <span className="font-mono text-xs uppercase text-[#EDEAE2]">Ditempa bukan diberi</span>
                 </div>
               </div>
-
-              {/* Direct Mirror Link Bar */}
-              <div className="rounded-lg border border-[#1F2733] bg-[#0E1116] p-4">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] mb-2.5 flex items-center justify-between">
-                  <span>🪞 Agentic Web Mirror</span>
-                  <span className="text-[#31C48D]">7 Organs Live</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {agenticMirrors.map((m) => (
-                    <a
-                      key={m.label}
-                      href={m.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="px-2 py-1 rounded bg-[#161B22] border border-[#1F2733] text-[11px] font-mono uppercase text-[#9AA0A8] hover:text-[#EDEAE2] hover:border-[#E4572E]/50 transition-colors"
-                      title={m.desc}
-                    >
-                      {m.label} ↗
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── THE SYSTEMS (FEDERATION ORGANS) ───────────────── */}
-      <section className="py-16 md:py-20 border-b border-[#1F2733] bg-[#0E1116]" id="systems">
+      {/* ── DECISIONS UNDER NOISE — the governing idea ──────────────── */}
+      <section className="py-16 md:py-20 border-b border-[#1F2733] bg-[#0E1116]" id="idea">
         <div className="mx-auto max-w-[1360px] px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-            <div>
-              <div className="font-mono text-xs uppercase tracking-widest text-[#E4572E] mb-2">
-                Governed Architecture
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#EDEAE2]">
-                The Systems
-              </h2>
-            </div>
-            <p className="font-sans text-sm text-[#9AA0A8] max-w-md">
-              Six autonomous organs operating under one sovereign rule: AI executes, humans decide.
-              No black boxes. Every consequential action is sealed and verifiable.
-            </p>
+          <div className="font-mono text-xs uppercase tracking-widest text-[#E4572E] mb-3">
+            The Governing Idea
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* arifOS */}
-            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl">⚖️</span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
-                    PORT 8088 · KERNEL
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
-                  arifOS
-                </h3>
-                <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
-                  The constitutional law layer for AI systems. 13 hard floors (F1–F13) that every tool call must pass.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
-                <Link to="/AAA" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
-                  Read Doctrine →
-                </Link>
-                <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
-                  Mirror :8088 ↗
-                </a>
-              </div>
-            </div>
-
-            {/* GEOX */}
-            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl">🌍</span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
-                    PORT 7072 · EARTH
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
-                  GEOX
-                </h3>
-                <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
-                  Autonomous earth intelligence. Zoeppritz physics constraints, seismic interpretation, deep-time basin models.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
-                <Link to="/earth" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
-                  View Earth Surface →
-                </Link>
-                <a href="https://geox.arif-fazil.com" target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
-                  Mirror GEOX ↗
-                </a>
-              </div>
-            </div>
-
-            {/* WEALTH */}
-            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl">💰</span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
-                    PORT 7074 · CAPITAL
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
-                  WEALTH
-                </h3>
-                <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
-                  Capital claims registry, commodity physics tracking (Oil, Gas, Gold), macroeconomic reality and SEARAH auditing.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
-                <Link to="/world" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
-                  View World & Claims →
-                </Link>
-                <a href="https://wealth.arif-fazil.com" target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
-                  Mirror WEALTH ↗
-                </a>
-              </div>
-            </div>
-
-            {/* WELL */}
-            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl">🫀</span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
-                    PORT 7075 · VITALITY
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
-                  WELL
-                </h3>
-                <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
-                  Substrate telemetry, metabolic homeostasis, wear-and-tear monitoring, and physiological self-repair.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
-                <Link to="/work" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
-                  View Substrate →
-                </Link>
-                <a href="https://well.arif-fazil.com" target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
-                  Mirror WELL ↗
-                </a>
-              </div>
-            </div>
-
-            {/* A-FORGE */}
-            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl">👐</span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
-                    PORT 7071 · EXECUTION
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
-                  A-FORGE
-                </h3>
-                <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
-                  The hands of the federation. Controlled mutations, test harnesses, zero-downtime canary deployments, and rollback engines.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
-                <Link to="/work" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
-                  View Executions →
-                </Link>
-                <a href="https://forge.arif-fazil.com" target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
-                  Mirror FORGE ↗
-                </a>
-              </div>
-            </div>
-
-            {/* AAA */}
-            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl">🏛️</span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
-                    AGENCY & SKILLS
-                  </span>
-                </div>
-                <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
-                  AAA
-                </h3>
-                <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
-                  Sovereign agency, agent cards (333-AGI, 555-ASI, 777-FORGE, 888-APEX), and skill catalog mesh.
-                </p>
-              </div>
-              <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
-                <Link to="/AAA" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
-                  View AAA Canon →
-                </Link>
-                <a href="https://aaa.arif-fazil.com" target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
-                  Mirror AAA ↗
-                </a>
-              </div>
-            </div>
-          </div>
+          <h2 className="font-display text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#EDEAE2] mb-6">
+            Decisions under noise
+          </h2>
+          <p className="font-sans text-lg md:text-xl text-[#9AA0A8] leading-relaxed max-w-3xl">
+            The subsurface is incomplete. Markets are noisy. Institutions simplify. AI fills gaps too confidently.
+          </p>
+          <p className="font-sans text-base text-[#EDEAE2]/85 leading-relaxed max-w-3xl mt-4">
+            My work is to preserve the evidence, name the uncertainty, and improve the decision.
+          </p>
         </div>
       </section>
 
-      {/* ── THE RECORD OF WELLS ───────────────────────────── */}
+      {/* ── THE WELLS RECORD — real-world grounding FIRST ────────────── */}
       <section className="py-16 md:py-20 border-b border-[#1F2733] bg-[#0A0B0D]" id="wells">
         <div className="mx-auto max-w-[1360px] px-6">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
             <div>
               <div className="font-mono text-xs uppercase tracking-widest text-[#E4572E] mb-2">
-                13 Years Subsurface Ledger
+                Subsurface Ledger
               </div>
               <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#EDEAE2]">
                 The Wells Record
@@ -321,31 +221,166 @@ export function Home() {
             </Link>
           </div>
 
-          <div className="overflow-x-auto rounded-lg border border-[#1F2733] bg-[#11151C]">
-            <table className="w-full text-left font-mono text-xs">
-              <thead className="border-b border-[#1F2733] bg-[#0E1116] text-[#9AA0A8] uppercase tracking-wider">
-                <tr>
-                  <th className="py-3.5 px-4">Well Name</th>
-                  <th className="py-3.5 px-4">Year</th>
-                  <th className="py-3.5 px-4">Basin</th>
-                  <th className="py-3.5 px-4">Target Depth</th>
-                  <th className="py-3.5 px-4">Flow Status</th>
-                  <th className="py-3.5 px-4">Role</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#1F2733]">
-                {WELLS_RECORD.map((w) => (
-                  <tr key={w.name} className="hover:bg-[#161B22] transition-colors">
-                    <td className="py-3.5 px-4 font-bold text-[#EDEAE2]">{w.name}</td>
-                    <td className="py-3.5 px-4 text-[#9AA0A8]">{w.year}</td>
-                    <td className="py-3.5 px-4 text-[#9AA0A8]">{w.basin}</td>
-                    <td className="py-3.5 px-4 text-[#9AA0A8]">{w.depth}</td>
-                    <td className="py-3.5 px-4 text-[#31C48D]">{w.status}</td>
-                    <td className="py-3.5 px-4 text-[#9AA0A8]">{w.role}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {discoveries.map((d) => (
+              <article
+                key={d.id}
+                className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors"
+              >
+                <div>
+                  <div className="flex items-baseline justify-between gap-3 mb-2">
+                    <h3 className="font-display text-lg font-bold uppercase tracking-tight text-[#EDEAE2]">
+                      {d.title}
+                    </h3>
+                    <span className="font-mono text-xs text-[#9AA0A8] whitespace-nowrap">{d.year}</span>
+                  </div>
+                  <p className="font-mono text-[11px] uppercase tracking-widest text-[#9AA0A8]/70 mb-3">
+                    {d.location}
+                  </p>
+                  <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed line-clamp-3">
+                    {d.summary}
+                  </p>
+                </div>
+                <div className="pt-4 mt-4 border-t border-[#1F2733] flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-[#9AA0A8]/70">
+                    {d.evidence.length} evidence item{d.evidence.length === 1 ? '' : 's'}
+                  </span>
+                  <a
+                    href={d.link ?? 'https://geox.arif-fazil.com'}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider"
+                  >
+                    {d.linkLabel ?? 'Explore GEOX'} ↗
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-6 font-mono text-[11px] leading-relaxed text-[#9AA0A8]/60 max-w-3xl">
+            Results reflect publicly reported outcomes and personal professional contribution — not institutional
+            claims on behalf of PETRONAS. Internal technical detail is withheld. Last verified 2026-08-17.
+          </p>
+        </div>
+      </section>
+
+      {/* ── SYSTEMS — forged from that work ─────────────────────────── */}
+      <section className="py-16 md:py-20 border-b border-[#1F2733] bg-[#0E1116]" id="systems">
+        <div className="mx-auto max-w-[1360px] px-6">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+            <div>
+              <div className="font-mono text-xs uppercase tracking-widest text-[#E4572E] mb-2">
+                Governed Architecture
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#EDEAE2]">
+                Systems forged from real work
+              </h2>
+            </div>
+            <p className="font-sans text-sm text-[#9AA0A8] max-w-md">
+              Every system began as a practical problem met in the field. AI computes. Evidence constrains. Humans decide.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SYSTEMS.map((s) => (
+              <div
+                key={s.name}
+                className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 flex flex-col justify-between hover:border-[#9AA0A8]/40 transition-colors group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span
+                      className="flex items-center justify-center w-9 h-9 rounded border font-mono text-sm font-bold"
+                      style={{ color: s.accent, borderColor: `${s.accent}40`, background: `${s.accent}0d` }}
+                    >
+                      {s.sigil}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] px-2 py-0.5 rounded border border-[#1F2733] bg-[#0A0B0D]">
+                      {s.badge}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-bold uppercase text-[#EDEAE2] mb-2 group-hover:text-[#E4572E] transition-colors">
+                    {s.name}
+                  </h3>
+                  <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">
+                    {s.blurb}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-[#1F2733] flex items-center justify-between">
+                  <Link to={s.to} className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">
+                    {s.toLabel} →
+                  </Link>
+                  <a href={s.mirror} target="_blank" rel="noreferrer" className="font-mono text-xs text-[#E4572E] hover:underline uppercase tracking-wider">
+                    {s.mirrorLabel} ↗
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROOF — bounded, not absolute ───────────────────────────── */}
+      <section className="py-16 md:py-20 border-b border-[#1F2733] bg-[#0A0B0D]" id="proof">
+        <div className="mx-auto max-w-[1360px] px-6">
+          <div className="font-mono text-xs uppercase tracking-widest text-[#E4572E] mb-3">
+            Proof, not performance
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#EDEAE2] mb-6">
+            Evidence over assertion
+          </h2>
+          <p className="font-sans text-base text-[#9AA0A8] leading-relaxed max-w-3xl mb-8">
+            Material claims link to evidence, or are marked as interpretation. Where evidence is incomplete,
+            the system returns UNKNOWN or HOLD — it does not invent an answer.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] mb-2">For humans</div>
+              <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">Read the work and its meaning.</p>
+              <Link to="/words" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">Read Words →</Link>
+            </div>
+            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] mb-2">For agents</div>
+              <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">Ingest structured context and identity.</p>
+              <Link to="/000" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">/000 Context →</Link>
+            </div>
+            <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] mb-2">For verification</div>
+              <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed mb-4">Inspect provenance and sealed evidence.</p>
+              <Link to="/999" className="font-mono text-xs text-[#EDEAE2] hover:underline uppercase tracking-wider">/999 Proof →</Link>
+            </div>
+          </div>
+
+          {/* Agentic mirror (organs) */}
+          <div className="rounded-lg border border-[#1F2733] bg-[#0E1116] p-5 mb-10">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] mb-3">
+              Agentic Web — Federation Organs
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {agenticMirrors.map((m) => (
+                <a
+                  key={m.label}
+                  href={m.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2.5 py-1.5 rounded bg-[#161B22] border border-[#1F2733] text-[11px] font-mono uppercase text-[#9AA0A8] hover:text-[#EDEAE2] hover:border-[#E4572E]/50 transition-colors"
+                  title={m.desc}
+                >
+                  {m.label} ↗
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Disclaimer */}
+          <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-5">
+            <p className="font-mono text-[11px] leading-relaxed text-[#9AA0A8]/70 max-w-3xl">
+              Personal site of Muhammad Arif bin Fazil. Views and interpretations are personal unless explicitly
+              identified as published institutional material. No confidential subsurface or commercial information
+              is presented. Ditempa bukan diberi — forged, not given.
+            </p>
           </div>
         </div>
       </section>
