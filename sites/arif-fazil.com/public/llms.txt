@@ -14,22 +14,18 @@ and models operate inside constitutional law (F1-F13 floors), not vibes.
 arifOS exposes 8 canonical MCP tools as API endpoints (Canonical 8: arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal). It is not an LLM itself.
 The Observatory surface is live at https://arifos.arif-fazil.com
 
-## The arifOS Federation — 6 Public Organs
-
-Runtime organ register (must match `GET /api/public-state` → `organs` and `soul.json.organs`):
+## The arifOS Federation — 5 Organs Under One Sovereign
+The federation runs five constitutional organs:
 - **arifOS** — Constitutional governance kernel, 888 JUDGE (MIND)
-- **A-FORGE** — Governed execution shell (HANDS). Never self-authorizes.
-- **AAA** — Control plane, A2A gateway, agent identity (COCKPIT)
+- **AAA** — Control plane, A2A gateway, agent identity (BODY)
 - **GEOX** — Earth intelligence, physics-gated geoscience (ORGAN)
 - **WEALTH** — Capital intelligence, NPV/EMV/capital thermodynamics (ORGAN)
 - **WELL** — Human and machine vitality reflection (ORGAN)
 
-The **8** in “Canonical 8” is the MCP tool count on arifOS (`arif_init` … `arif_seal`), not the organ count.
-
-Public-facing surfaces:
-- **arif-fazil.com** — Human portfolio (this site)
-- **mcp.arif-fazil.com** — MCP gateway (`forge.arif-fazil.com` 301s here)
-- **arifos.arif-fazil.com** — Observatory (301 → `/arifos/` on the apex)
+Public-facing surfaces accessible via:
+- **arif-fazil.com** — Human portfolio (SOUL — this site)
+- **mcp.arif-fazil.com** — MCP gateway for agent connection
+- **forge.arif-fazil.com** — A-FORGE governed execution shell
 
 ## Constitutional Floors (F1-F13)
 - F01 AMANAH — Reversibility, no irreversible deletion without sovereign consent
