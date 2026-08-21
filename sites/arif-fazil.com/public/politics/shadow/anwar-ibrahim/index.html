@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html data-ring="SOUL" data-plane="narrative" lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>33 Bayang Anwar Ibrahim — Psikologi Bayang Perdana Menteri ke-10</title>
+<meta name="description" content="Analisis 33 bayang (shadow) Anwar Ibrahim: 11 politik, 11 ekonomi, 11 peribadi. Psikologi Jungian terhadap Perdana Menteri Malaysia ke-10.">
+<link rel="canonical" href="https://arif-fazil.com/politics/shadow/anwar-ibrahim">
+
+:root {
+  --bg:#07070d; --surface:#0d0d1a; --surface2:#111120; --border:#1e1e32;
+  --gold:#c9a84c; --gold-dim:#7a6028; --text:#e2d8c8; --text-dim:#6a6050;
+  --red:#ef4444; --amber:#f59e0b; --emerald:#22c55e; --cyan:#00d4aa;
+  --font-mono:'IBM Plex Mono',monospace; --font-sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.6}
+.site-frame{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.section-label{font-family:var(--font-mono);font-size:.55rem;color:var(--gold);text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem}
+h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;font-style:italic;text-transform:uppercase;line-height:.85;letter-spacing:-.02em;color:#f5f0e8}
+.hero-sub{font-size:1.1rem;color:var(--text-dim);max-width:650px;line-height:1.7;margin-top:.75rem}
+.mono-dim{font-family:var(--font-mono);font-size:.55rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
+
+/* Nav */
+nav{background:#0a0a0a;border-bottom:1px solid var(--border);padding:8px 16px;font-family:var(--font-mono);font-size:12px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+nav a{color:#94a3b8;text-decoration:none} nav a.active,nav a:hover{color:var(--gold)}
+
+/* Hero */
+.hero{padding:4rem 0 3rem;border-bottom:2px solid var(--border);background:var(--surface)}
+
+/* Legend */
+.legend-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap}
+.legend-badge{display:flex;align-items:center;gap:.4rem;padding:.3rem .8rem;border-radius:4px;font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.08em}
+.legend-badge.tersedar{background:rgba(34,197,94,.1);color:var(--emerald)}
+.legend-badge.samar{background:rgba(245,158,11,.1);color:var(--amber)}
+.legend-badge.tenggelam{background:rgba(239,68,68,.1);color:var(--red)}
+.legend-dot{width:6px;height:6px;border-radius:50%}
+
+/* Grid */
+.pm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;padding:2.5rem 0 4rem}
+
+/* Card */
+.pm-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.pm-card:hover{border-color:var(--gold-dim)}
+.pm-portrait{position:relative;width:100%;aspect-ratio:3/4;background:var(--surface2);overflow:hidden;border-bottom:1px solid var(--border)}
+.pm-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .5s}
+.pm-card:hover .pm-portrait img{filter:grayscale(0)}
+.pm-portrait .placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.1em}
+.pm-portrait .placeholder span{font-size:3rem;opacity:.15;margin-bottom:.5rem}
+.order-badge{position:absolute;top:.6rem;left:.6rem;width:1.8rem;height:1.8rem;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.7rem;font-weight:700;color:var(--gold)}
+.verdict-badge{position:absolute;top:.6rem;right:.6rem;padding:.15rem .5rem;border-radius:3px;font-family:var(--font-mono);font-size:.45rem;text-transform:uppercase;letter-spacing:.08em}
+.verdict-badge.tersedar{background:rgba(34,197,94,.15);color:var(--emerald)}
+.verdict-badge.samar{background:rgba(245,158,11,.15);color:var(--amber)}
+.verdict-badge.tenggelam{background:rgba(239,68,68,.15);color:var(--red)}
+
+.pm-body{padding:1.25rem}
+.pm-title{font-family:var(--font-mono);font-size:.5rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em}
+.pm-name{font-size:1.3rem;font-weight:900;font-style:italic;text-transform:uppercase;margin:.15rem 0 0;color:#f5f0e8;line-height:1.15}
+.pm-tenure{font-family:var(--font-mono);font-size:.55rem;color:var(--text-dim);margin-bottom:1rem}
+.pm-section{border-top:1px solid var(--border);padding-top:.75rem;margin-top:.75rem}
+.pm-section-label{font-family:var(--font-mono);font-size:.45rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.3rem}
+.pm-section-label.persona{color:var(--cyan)}
+.pm-section-label.bayang{color:var(--red)}
+.pm-section-label.tragedi{color:var(--amber)}
+.pm-section p{font-size:.82rem;color:var(--text-dim);line-height:1.65}
+.pm-section.tragedi p{font-style:italic;color:rgba(154,144,128,.6);font-size:.75rem}
+
+.legacy-box{padding:.75rem;border-radius:4px;margin-top:.75rem;font-size:.75rem;color:var(--text-dim);line-height:1.6}
+.legacy-box.tersedar{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15)}
+.legacy-box.samar{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15)}
+.legacy-box.tenggelam{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15)}
+.legacy-box .legacy-label{font-family:var(--font-mono);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem}
+.legacy-box.tersedar .legacy-label{color:var(--emerald)}
+.legacy-box.samar .legacy-label{color:var(--amber)}
+.legacy-box.tenggelam .legacy-label{color:var(--red)}
+
+/* Footer */
+footer{padding:3rem 0 2rem;border-top:2px solid var(--border);text-align:center}
+footer p{color:var(--text-dim);font-size:.82rem;max-width:650px;margin:0 auto;line-height:1.7}
+footer .foot-mono{font-family:var(--font-mono);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-top:.75rem}
+
+@media(max-width:768px){.pm-grid{grid-template-columns:1fr}}
+
+<style>
+.axis-label { font-family:var(--font-mono); font-size:.6rem; text-transform:uppercase; letter-spacing:.12em; color:var(--gold-dim); border-bottom:1px solid var(--border); padding-bottom:.5rem; margin:3rem 0 1rem; }
+.axis-label:first-of-type { margin-top:1rem; }
+.axis-count { font-size:2rem; font-weight:900; color:var(--gold); font-family:var(--font-mono); }
+.shadow-card { background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:1.4rem 1.5rem; margin-bottom:1rem; }
+.shadow-card:hover { border-color:var(--gold-dim); }
+.shadow-num { font-family:var(--font-mono); font-size:.55rem; color:var(--text-dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.3rem; }
+.shadow-title { font-family:var(--font-sans); font-size:1.15rem; font-weight:700; color:#f5f0e8; margin-bottom:.4rem; line-height:1.3; }
+.shadow-quote { font-style:italic; color:var(--gold); font-size:.9rem; margin-bottom:.6rem; padding-left:1rem; border-left:2px solid var(--gold-dim); }
+.shadow-body { font-size:.92rem; color:var(--text); line-height:1.65; }
+.shadow-evidence { font-family:var(--font-mono); font-size:.5rem; color:var(--text-dim); margin-top:.6rem; letter-spacing:.05em; }
+.hero h1 { font-size:clamp(2.2rem,5.5vw,4rem); }
+.summary-box { background:var(--surface2); border:1px solid var(--gold-dim); border-radius:6px; padding:1.4rem 1.5rem; margin:2rem 0; }
+.summary-box h2 { font-size:1rem; color:var(--gold); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.8rem; }
+.summary-box p { font-size:.92rem; line-height:1.7; color:var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/">🏠 HOME</a>
+  <a href="/earth">EARTH</a>
+  <a href="/economics">ECONOMICS</a>
+  <a href="/world">WORLD</a>
+  <a href="/politics/shadow/" style="color:var(--gold)">SHADOW</a>
+  <a href="/writing">WRITING</a>
+</nav>
+
+<div class="site-frame">
+
+<div class="hero">
+  <div class="section-label">Psikologi Bayang — PM ke-10</div>
+  <h1>33 Bayang<br>Anwar Ibrahim</h1>
+  <p class="hero-sub">Bayang bukan tuduhan. Ia cermin — ruang antara identiti yang dipamerkan dengan realiti yang dijalani. Tiga puluh tiga bayang: sebelas politik, sebelas ekonomi, sebelas peribadi. Setiap satu berdasar bukti awam. Setiap satu menanya soalan yang Anwar Ibrahim tak pernah jawab dengan suaranya sendiri.</p>
+  <div class="mono-dim" style="margin-top:1rem">21 Ogos 2026 · 322 baris sumber terverifikasi · Psikologi Jungian editorial</div>
+</div>
+
+<!-- OPENING: KENAPA 33? -->
+<div class="summary-box" style="margin-top:2.5rem">
+  <h2>Sebab 33 bukan 9</h2>
+  <p>Bayang Anwar Ibrahim tak muat dalam 9 kad. Ia dipelihara sejak 1974 — tiap identiti diperagakan untuk tiap bilik, tiap audience, tiap era. Persona yang terlalu cantik menghasilkan bayang yang terlalu gelap, kata Jung. Tiga puluh tiga bayang ini bukan senarai kesalahan. Ia peta kesinambungan — bagaimana identiti berubah mengikut waktu tetapi jurang keaslian kekal sama. Ia dirancang untuk dibaca satu persatu — bukan untuk diserlahkan dalam satu pandangan.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAKSI 1: SOSIO-POLITIK -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="axis-label"><span class="axis-count">I</span> · Paksi Sosio-Politik — Siapa Yang Dia Rancang Untuk Diserlahkan</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">01 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Tempat Lahir Fleksibel</div>
+  <div class="shadow-quote">"Saya lahir di Cherok Tok Kun. Eh, Sungai Bakap."</div>
+  <div class="shadow-body">Rekod rasmi: Cherok Tok Kun, Bukit Mertajam. Semasa kempen 2023 di Sungai Bakap: "Saya lahir di Sungai Bakap." Perbezaan ini nampak kecil. Ia bukan. Tempat lahir adalah fakta yang dipratetapkan — tak boleh ditukar dengan sebab-sebab politik. Bila seorang pemimpin menukar tempat lahir berdasarkan lokasi ceramahnya, ia memberitahu satu perkara tentang bagaimana identiti asas dilayan: sebagai instrumen, bukan sebagai sumber. Bayang ini bukan kecil. Ia adalah menara jam dengan skala yang boleh dialihkan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (references MalayMail 8 Aug 2023; FMT 8 Aug 2023). Birthplace discrepancy documented by two news outlets.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">02 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Anak Porter Atau Anak Parlimen</div>
+  <div class="shadow-quote">"Ayah saya mula kerja sebagai kuli hospital."</div>
+  <div class="shadow-body">Benar — Ibrahim Abdul Rahman bermula sebagai kuli hospital. Tetapi menjelang Anwar berusia 12 tahun, bapanya adalah Ahli Parlimen Seberang Tengah untuk dua penggal (1959–1969), Parliamentary Secretary Kementerian Kesihatan, pemegang jawatan UMNO, dan pemegang Darjah Setia Pangkuan Negeri (1989). Di akhir hayat, bapanya tinggal di Country Heights, Kajang — kawasan perumahan elit. Naratif "anak kuli hospital" menyimpan bulatan perjalanan yang sebenar — bapanya bukan mangsa sistem, beliau adalah pemegang kuasa yang mencapai jawatan teratas. Dengan bapa dua penggal, MCKK tidak pernah menjadi pilihan; ia adalah laluan semula jadi untuk anak ahli parlimen.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN ("started his career as a hospital porter"); Wikipedia MS Ibrahim Abdul Rahman (Dato', DSPN 1989, kediaman: Country Heights Kajang); Britannica ("son of politicians").</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">03 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Budak Kampung Yang Bersekolah Di "Eton"</div>
+  <div class="shadow-quote">"Saya anak kampung biasa."</div>
+  <div class="shadow-body">MCKK — Malay College Kuala Kangsar — dipanggil "Eton of the East" kerana ia sekolah asrama penuh yang didirikan untuk membentuk golongan aristokrasi Melayu. Sebahagian pelajar datang daripada raja-raja Melayu dan keluarga menteri. Anwar dipilih — salah satu dari tiga pelajar Pulau Pinang — melalui peperiksaan khas. Kat sana dia belajar berdebat, berpidato, bersaing dengan bakal pemimpin negara. Sebagai pembandingan: pelajar sekolah rendah biasa tidak pernah bersama dengan Sanusi Junid dan Kamaruddin Jaafar dalam asrama yang sama. Identiti kampung yang dijamu pada ceramah, dan identiti MCKK yang sebenar, dua dunia yang berbeza sepenuhnya.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim ("one of only three students from Penang to be chosen"); Wikipedia EN MCKK ("Eton College of the East"; elite boarding school for Malay aristocracy).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">04 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Mangsanya Sendiri Pinjaman</div>
+  <div class="shadow-quote">"Kami berjuang untuk rakyat Baling yang lapar."</div>
+  <div class="shadow-body">1974: protes Baling. Mula-mula — laporan keluarga yang mati lapar. Kemudian terbukti palsu. Tetapi penoreh getah memang sengsara; harga getah jatuh. Anwar mengetuai protes pelajar — kemudian ditahan ISA selama 20 bulan tanpa bicara. Yang dipakai: sakit orang lain. Yang dibayar: kebebasan diri sendiri. Yang didapati selepas itu: jenama "suara rakyat miskin." Bayang ini bukan palsu. Ia betul — tetapi diwarisi, bukan dialami secara langsung. 20 bulan penjara itu harga sebenar yang dibayar. Tetapi penderitaan itu adalah pinjaman, bukan pemilikan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (1974 arrest, ISA detention 20 months); Wikipedia MS "Kebangkitan mahasiswa Malaysia 1971-1975" (starvation report later proven false); Britannica (IMF/Voter activist).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">05 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Penentang Sistem Yang Masuk Sistem</div>
+  <div class="shadow-quote">"Saya bawa agenda reformasi ke dalam."</div>
+  <div class="shadow-body">1982: reformis ABIM yang lantang menentang Barisan Nasional, menerima jemputan Mahathir untuk menyertai UMNO. Nasihat datang dari Ismail al-Faruqi, sarjana Palestinian-Amerika yang nampak komitmen kerajaan pada agenda Islamisasi. Basis reformis melihat ini sebagai pengkhianatan. Rekod pertumbuhan: bermula sebagai Timbalan Menteri, naik menjadi Timbalan Perdana Menteri dalam 11 tahun (1982–1993). Ia bukan "juara dari bawah" — ia bermula dari pintu atas yang dibuka khas. Persona "anak singa" — yang dia sendiri panggil Mahathir sebagai "bapa" — menyembunyikan kebenaran: kerusi ayah, laluan Mahathir, dan mesin UMNO sebagai struktur sokongan. Identiti radikal 1970-an bertukar menjadi identiti elit 1980-an tanpa sebarang pengumuman awam.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (1982 UMNO entry; al-Faruqi influence); Britannica ("despite his criticism of BN... Anwar in 1982 accepted an invitation from Mahathir").</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">06 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Islamis Yang Menjadi Pluralis</div>
+  <div class="shadow-quote">"Kerajaan Madani ini untuk semua rakyat."</div>
+  <div class="shadow-body">Sebagai Menteri Pelajaran, Anwar meng-Islamasikan kurikulum sekolah kebangsaan — menukar nama Bahasa Malaysia kepada Bahasa Melayu, memperkenalkan perubahan yang menaikkan konservatisme sosial Melayu. Bekas menteri undang-undang Zaid Ibrahim memanggilnya "Islamist." Sebagai PM, Anwar bersuara sebagai pelibat kepelbagaian agama. Perubahan ini sah dan mungkin berterusan dari pengalaman. Tetapi identiti ideologi yang berbeza sepenuhnya dalam dua era tanpa sebarang penafian awam — atau sebarang penjelasan bagaimana seseorang yang meng-Islamisasikan sistem sekolah boleh menjadi pelibat pelbagai agama — menunjukkan bahawa ideologi diperlakukan sebagai pakaian, bukan sebagai struktur teras.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (education minister reforms); Zaid Ibrahim quote ("Islamist"); Britannica.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">07 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Anak Singa Yang Membunuh Bapa</div>
+  <div class="shadow-quote">"Dia ayah saya dalam politik."</div>
+  <div class="shadow-body">Anwar memanggil Mahathir "bapa" — simbol penghormatan, kesetiaan, dan juruselamat politik. Kemudian, pada tahun 1998, dia berlawan. Reformasi menjadi warisan. Mahathir jatuh. Tetapi 2018: Anwar memaafkan Mahathir. 2022: Anwar memerlukan sokongan Mahathir untuk jadi PM. Hubungan bapa-anak ini adalah siri transaksi yang disampaikan dalam bahasa keluarga. Tiap satu berlaku semasa ia memberi manfaat — dan tiap satu ditutup sebaik sahaja tujuan tercapai. Kasih sayang itu kekal sebagai instrumen, bukan sebagai hubungan manusia yang jelas. Dalam istilah Jung: hubungan yang bayangnya bapa — yang tidak pernah dihadapi, hanya dilayan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (Mahathir "father" references; Reformasi 1998; reconciliation 2018).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">08 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Banduan Conscience Yang Dikelilingi Kleptokrat</div>
+  <div class="shadow-quote">"Saya banduan politik. Saya faham penindasan."</div>
+  <div class="shadow-body">Amnesty International memanggil Anwar sebagai "prisoner of conscience" selepas 1998. Bebas daripada penjara. Kemudian menjadi PM — dan menempatkan Ahmad Zahid Hamidi, yang masih dalam kes mahkamah untuk pengubahan wang haram, rasuah, dan pecah amanah, sebagai Timbalan Perdana Menteri. "Kleptokrat cabinet" — bukan label Anwar, tetapi deskripsi antarabangsa terhadap kabinet beliau. Sistem anti-rasuah yang beliau perjuangkan sebagai penentang kini dijalankan di bawah identiti yang berbeza sepenuhnya. Banduan conscience tidak menghapuskan identiti kleptokratik — ia hanya memastikan kedua-dua identiti kekal aktif serentak.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN (Amnesty International designation); Zahid Hamidi ongoing trials (Wikipedia EN, media reports); "kleptocrat cabinet" label (multiple news outlets 2022).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">09 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Reformasi Jadi Backdoor</div>
+  <div class="shadow-quote">"Kerajaan ini berdasarkan mandat rakyat."</div>
+  <div class="shadow-body">PRU 2022: Pakatan Harapan memenangi kerusi paling banyak, tetapi tidak mencapai majoriti. Anwar dilantik sebagai PM oleh Yang di-Pertuan Agong — pilihan antara PH, PN, atau parlimen tergantung. Proses ini sah dari segi perlembagaan. Tetapi "mandat rakyat" yang sering dilaungkan Anwar tidak merujuk kepada majoriti 112+ kerusi; ia merujuk kepada hak istimewa istana yang memberikan jawatan itu kepadanya. Identiti reformasi bermakna perubahan melalui undi rakyat; realiti Anwar 2022 bermakna mandat melalui istana. Jurang antara dua pengertian itu — dan tiada sebarang penafian awam tentang hakikat parlimen tergantung — menunjukkan bagaimana "mandat rakyat" digunakan sebagai bingkai naratif bukan sebagai fakta parlimen.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (2022 election, hung parliament, royal appointment); Britannica.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">10 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Anti-Nepotisme Yang Meletakkan Anak</div>
+  <div class="shadow-quote">"Ini parti reformasi, bukan parti keluarga."</div>
+  <div class="shadow-body">Isteri Anwar — Wan Azizah — menjadi presiden PKR. Anak tertua Nurul Izzah dilantik sebagai penasihat ekonomi dan kewangan perdana menteri pada Januari 2023. Lepas bantahan terhadap nepotisme, Nurul Izzah meletak jawatan pada Februari 2023. Wan Azizah kekal sebagai presiden parti. Keluarga Anwar memegang jawatan tertinggi parti reformasi. Penafian terhadap nepotisme, dan pelantikan keluarga ke jawatan tersebut — kedua-duanya berlaku dalam pentadbiran yang sama. Identiti reformasi, dan realiti politik keluarga — dua dunia yang beroperasi secara serentak tanpa sebarang pengakuan awam tentang ketegangan di antara keduanya.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (Nurul Izzah chief economic advisor Jan 2023, stepped down Feb 2023); Wan Azizah presidency (Wikipedia EN Wan Azizah Wan Ismail).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">11 / 33 · Sosio-Politik</div>
+  <div class="shadow-title">Mangkuk Ayun Yang Sihat</div>
+  <div class="shadow-quote">"Saya mendengar semua pihak."</div>
+  <div class="shadow-body">Kritikan berterusan terhadap Anwar sebagai pemimpin yang tak boleh buat keputusan — "mangkuk ayun" — adalah falsafah politik yang menjadi identiti kedua. Dalam masa yang sama, dia memegang PM + Menteri Kewangan — dua kuasa yang sepatutnya dipisahkan. Identiti "pendengar" membayangkan bahawa kuasa tidak digunakan; realitinya ialah kuasa terkumpul. Keraguan yang diperlihatkan — berpihak ke Melayu di pentas Melayu, berpihak ke pelabur di pentas pelabur, berpihak ke China di Beijing — bukan kelemahan fikiran. Ia strategi ketahanan identiti: dengan tidak memilih, seseorang tidak boleh disalahkan. Bayang ini paling berbahaya kerana ia dilihat sebagai kelemahan, tetapi berfungsi sebagai kekuatan tersembunyi.</div>
+  <div class="shadow-evidence">Sources: Widespread international media analysis of Anwar's "fence-sitting" since 2022; Taiwan remarks Aug 2026.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAKSI 2: EKONOMI -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="axis-label"><span class="axis-count">II</span> · Paksi Ekonomi — Duit Siapa Sebenarnya Dijaga</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">12 / 33 · Ekonomi</div>
+  <div class="shadow-title">Anak Murid IMF Yang Memerlukan Pelindungan</div>
+  <div class="shadow-quote">"Tiada lagi bail-out. Bank akan melindungi diri sendiri."</div>
+  <div class="shadow-body">1997: Anwar menyokong IMF, memotong perbelanjaan kerajaan 18%, memotong gaji menteri, menolak mega-projek kroni Mahathir. Ini satu-satunya momen dalam kerjayanya yang beliau benar-benar berani secara fikir. Tetapi kredibiliti dari 1997 itu — dua dekad lalu — telah menjadi portfolio yang terus dipanen. Setiap kali seseorang mempersoalkan kepimpinan ekonominya pada 2026, Anwar membawa luka 1998 ke hadapan. Bayang ini bukan kepalautan — ia modal simbolik yang dilaburkan berulang kali.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (1997 Asian financial crisis); Euromoney top-4 finance minister; IMF Development Committee chair 1998.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">13 / 33 · Ekonomi</div>
+  <div class="shadow-title">Gaji Kosong Di Atas Kekuatan</div>
+  <div class="shadow-quote">"Saya tidak mengambil sebarang gaji kerajaan."</div>
+  <div class="shadow-body">Anwar mengumumkan beliau tidak akan mengambil gaji sebagai PM dan Menteri Kewangan. Dalam politik Malaysia, ini adalah teater asketisme yang sangat berkuasa — ia menghasilkan gambaran rendah diri. Tetapi kuasa kewangan negara sebenarnya ada dalam satu tangan: beliau sendiri. Gaji tidak diambil; kuasa dipegang. Identiti "tanpa gaji" berfungsi sebagai tabir, bukan sebagai bukti kerendahan hati. Bayang ini: lelaki yang memegang semua kunci tetapi tidak mahu dilihat memegang apa-apa.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (no salary pledge as PM + Finance Minister).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">14 / 33 · Ekonomi</div>
+  <div class="shadow-title">Kritik Yang Mewarisi Kuasa Yang Dikritiknya</div>
+  <div class="shadow-quote">"Dua topi ini berasingan. Saya berpegang pada integriti."</div>
+  <div class="shadow-body">Anwar mengkritik Mahathir kerana memegang PM dan Menteri Kewangan serentak — mengatakan kuasa gabungan itu berbahaya. Kemudian dia menjadi PM — dan memegang kedua-duanya sendiri. Identiti 1997: memisahkan kuasa untuk integriti. Identiti 2022: menggabungkan kuasa untuk kecekapan. Jurang antara dua pengertian itu — dan tiada sebarang pengumuman awam tentang perubahan hati — menunjukkan bahawa integriti adalah identiti yang ditukar apabila tidak lagi diperlukan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (PM + Finance Minister dual hat); criticism of Mahathir's dual-hat (multiple sources).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">15 / 33 · Ekonomi</div>
+  <div class="shadow-title">Bahasa Puisi Di Atas Asas Kos Hidup</div>
+  <div class="shadow-quote">"Ekonomi Madani — berperikemanusiaan."</div>
+  <div class="shadow-body">Brand Madani dibina atas dasar kemuliaan: kemasyarakatan, keadilan, keberanian. Realitinya: subsidi dipotong, SST dinaikkan, harga runcit naik. Puisi berada di dasar; bil berada di pintu. Bayang ini bukan tentang sama ada keputusan itu betul dari segi ekonomi — mungkin ia memang betul. Tetapi identiti kemuliaan di atas realiti penyesuaian yang menyakitkan menunjukkan jurang antara bagaimana keputusan itu dibentangkan dan siapa yang menanggung kosnya.</div>
+  <div class="shadow-evidence">Sources: Subsidy rationalisation; SST rate increases since 2022; cost of living data (Department of Statistics Malaysia).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">16 / 33 · Ekonomi</div>
+  <div class="shadow-title">Beli Skandal Duit Rakyat</div>
+  <div class="shadow-quote">"Ini pelaburan untuk sistem identiti nasional."</div>
+  <div class="shadow-body">Kementerian Kewangan Anwar meminta harga RM7.5 bilion untuk NexG (Datasonic) — secara lisan, tanpa dokumen bertulis. Syarikat itu mempunyai laporan polis, akaun yang dibekukan, dan tuduhan ex-COO. Strategi: beli syarikat yang sarat masalah dengan duit rakyat, tukarkan ia kepada GLC, tutup fail. Bayang ini: membeli kotoran menggunakan wang pencuci, dan menyatakannya sebagai pembangunan negara.</div>
+  <div class="shadow-evidence">Sources: NexG Berhad Bursa filing Jul 2026 (The Edge Malaysia); police reports (RM303.7m transactions); account freeze (anti-terrorism financing act).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">17 / 33 · Ekonomi</div>
+  <div class="shadow-title">Kabinet Kleptokrat Yang Diawasi Oleh Conscience</div>
+  <div class="shadow-quote">"Zahid adalah kawan yang pernah saya berjuang bersama."</div>
+  <div class="shadow-body">Zahid Hamidi — tertuduh untuk pengubahan wang haram, rasuah, dan pecah amanah — dilantik sebagai Timbalan Perdana Menteri. Anwar sendiri adalah "prisoner of conscience." Kabinet ini menyatukan dua identiti: mangsa penindasan, dan pentadbir yang bekerjasama dengan tertuduh. Jurang antara "saya tahu apa rasanya diperlakukan tidak adil" dan "saya meletakkan tertuduh sebagai timbalan saya" adalah bayang yang tidak pernah dibentangkan secara terbuka.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (Zahid as DPM); Zahid ongoing trials.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">18 / 33 · Ekonomi</div>
+  <div class="shadow-title">Mesin ATM Minyak Yang Terus Berpusing</div>
+  <div class="shadow-quote">"Dividen ini adalah untuk rakyat Malaysia."</div>
+  <div class="shadow-body">PETRONAS menjadi ATM terbesar kerajaan. Dividen RM32 bilion setahun mengalir keluar untuk menampung belanjawan. Anwar — yang pada 1997 menolak bail-out kroni — kini adalah penerima terbesar duit minyak negara. Identiti 1997: menolak penggunaan wang negara untuk membiayai sektor peribadi. Identiti 2026: menerima dividen terbesar sejarah PETRONAS untuk menampung defisit. Bayang ini bukan hipokriti — ia keadaan ekonomi yang berbeza. Tetapi penafian terhadap perubahan menunjukkan bahawa integriti 1997 diperlakukan sebagai pasak, bukan sebagai cermin.</div>
+  <div class="shadow-evidence">Sources: PETRONAS dividend announcements; Anwar's 1997 IMF-era anti-bailout stance (Wikipedia EN).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">19 / 33 · Ekonomi</div>
+  <div class="shadow-title">Konsert, Penajaan, dan Prestasi Kosong</div>
+  <div class="shadow-quote">"Malaysia kembali ke pentas dunia."</div>
+  <div class="shadow-body">Kerajaan Anwar membelanjakan jutaan untuk penajaan prestij antarabangsa — branding, acara, percubaan untuk menarik pelabur. Sementara itu, pengeluaran minyak menurun, CAPEX turun, dividen 70.5%. Identiti luar: negara yang kembali berkuasa. Identiti dalam: pengeluaran yang berkurang, aset yang dijual. Bayang ini: estetika sebagai strategi kewangan — kelihatan hebat, prestasi biasa.</div>
+  <div class="shadow-evidence">Sources: PETRONAS FY2025 results (revenue -16.8%); sponsorship expenditure data.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">20 / 33 · Ekonomi</div>
+  <div class="shadow-title">Dana Global Yang Tidak Pernah Dilaporkan</div>
+  <div class="shadow-quote">"Saya berjuang untuk rakyat biasa."</div>
+  <div class="shadow-body">Kerjaya Anwar disokong oleh institusi kewangan global sejak 1975: WAMY (Arab Saudi), IIIT (Amerika Syarikat), Foundation For the Future (Washington), St Antony's Oxford, Georgetown, Johns Hopkins. Identiti: pejuang rakyat marhaen. Sistem sokongan: institusi global bermodal tinggi. Jurang antara "orang biasa" dengan kedudukan dalam institusi dunia ini tidak pernah dibentangkan sebagai ketegangan — hanya sebagai pencapaian. Bayang ini: seseorang yang dibesarkan oleh sistem elit, menjual identiti rakyat.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (WAMY, IIIT, Foundation For the Future, Oxford, Georgetown, Johns Hopkins positions).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">21 / 33 · Ekonomi</div>
+  <div class="shadow-title">Tiga Generasi Menuju Country Heights</div>
+  <div class="shadow-quote">"Saya tidak mempunyai harta sendiri."</div>
+  <div class="shadow-body">Generasi 1: Ibrahim Abdul Rahman — hospital porter → MP → Country Heights, Kajang (kawasan elit). Generasi 2: Anwar — MCKK → UMNO → PM/MOF. Generasi 3: Nurul Izzah — Johns Hopkins → MP → penasihat ekonomi. Tiga generasi peralihan dari kelas pekerja ke kelas politik atas. Identiti yang dipamerkan di ceramah: "anak kampung." Realiti struktur: institusi elit dalam setiap lapisan. Bayang ini bukan tentang harta peribadi — ia tentang bagaimana pendidikan, jaringan, dan jawatan membentuk kelas yang tidak pernah kelihatan seperti kelas.</div>
+  <div class="shadow-evidence">Sources: Wikipedia MS Ibrahim Abdul Rahman (Country Heights); MCKK attendance; Nurul Izzah Johns Hopkins (Wikipedia EN).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">22 / 33 · Ekonomi</div>
+  <div class="shadow-title">Proyek Menara Yang Tak Pernah Sampai</div>
+  <div class="shadow-quote">"Malaysia akan menjadi negara maju."</div>
+  <div class="shadow-body">Identiti Anwar sebagai arkitek ekonomi — projek mega, pencapaian global — adalah mimpi yang ditaja oleh realiti yang berbeza. Produksi minyak menurun. Dividen dipotong. Harta PETRONAS dijual untuk menampung belanjawan. Projek mega yang diperkenalkan oleh era Anwar tidak pernah mencapai skala asalnya. Bayang ini: mimpi negara maju yang dibayar oleh rakyat, dan diserahkan kepada pewaris yang belum pasti. Ia bukan kegagalan — ia fantasi yang ditangguhkan tanpa tarikh akhir.</div>
+  <div class="shadow-evidence">Sources: PETRONAS production decline data; Malaysia development plan trajectory vs reality.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PAKSI 3: PERIBADI -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="axis-label"><span class="axis-count">III</span> · Paksi Peribadi — Zon Yang Tak Pernah Dibentangkan</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">23 / 33 · Peribadi</div>
+  <div class="shadow-title">Zon Kelabu — 26 Tahun Ketidakpastian</div>
+  <div class="shadow-quote">"Semua ini adalah konspirasi."</div>
+  <div class="shadow-body">Dua perbicaraan liwat. Dua sabitan. Dua kali dibatalkan atau diputuskan salah. DNA 1998: 10 daripada 13 kesan disepadankan, diterima mahkamah rendah, dibatalkan oleh Mahkamah Persekutuan 2004. DNA 2008: diperintahkan tidak boleh dipercayai oleh hakim bicara; Court of Appeal membalikkan; Mahkamah Persekutuan mengekalkan. Amnesty International: "prisoner of conscience." Human Rights Watch: "politically motivated." Tetapi jawapan Anwar terhadap setiap pertanyaan adalah sama — "konspirasi" — tanpa sebarang jawapan secara manusia, tanpa sebarang pendedahan secara peribadi. Bayang ini bukan tentang orientasi; ia tentang identiti seseorang yang membina diri atas kesucian yang mutlak, dan tidak membenarkan zon kelabu itu wujud dalam naratifnya. 26 tahun tanpa sebarang pengakuan manusia — dan bayang itu membesar sehingga ia mengisi lebih ruang dari mana-mana jawapan yang mungkin diberikan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim sodomy trials (1998: DNA mattress; 2008: Saiful Bukhari Azlan); Amnesty International designation; HRW statement; Federal Court rulings.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">24 / 33 · Peribadi</div>
+  <div class="shadow-title">Tilam Dan Mata Hitam — Penderitaan Sebagai Mata Wang</div>
+  <div class="shadow-quote">"Tengok apa mereka buat kepada saya."</div>
+  <div class="shadow-body">29 September 1998: Anwar masuk mahkamah dengan mata hitam — dipukul oleh Ketua Polis Negara, Rahim Noor. Rahim dipenjara dua bulan dan memohon maaf. Pembedahan tulang belakang di Jerman diperlukan akibat kecederaan. Penderitaan ini betul. Tetapi selepas itu, identiti "tahanan yang disiksa" menjadi portfolio politik yang digunakan berulang kali — sehingga penderitaan 1998 dipanggil untuk setiap soalan tentang 2026. Parut itu bukan simbol; ia portfolio. Dan portfolio yang tidak pernah dikurangkan akan terus berkembang melebihi konteks asalnya.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (black eye incident; IGP conviction; back surgery Germany); Wikipedia EN Reformasi.</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">25 / 33 · Peribadi</div>
+  <div class="shadow-title">Shakespeare Dalam Penjara, Dukun Di Pentas</div>
+  <div class="shadow-quote">"Saya membaca Shakespeare empat setengah kali."</div>
+  <div class="shadow-body">Dalam penjara, Anwar membaca karya lengkap Shakespeare empat setengah kali. Beliau membentangkan kertas kerja di World Shakespeare Congress 2007. Beliau menerima gelaran penyelidik kanan di Oxford, Georgetown, dan Johns Hopkins. Tetapi apabila berbicara dengan rakyat, identiti berubah: dari intelek antarabangsa kepada pendengar kampung yang sederhana. Shakespeare tidak pernah disebut dalam ceramah politik. Sisi intelek ini disembunyikan — bukan kerana ia tidak penting, tetapi kerana ia tidak menjual. Bayang ini: seseorang yang benar-benar bijak, tetapi sengaja mengecilkan kecerdasan untuk kebolehdijualan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (Shakespeare reading; World Shakespeare Congress 2007; Oxford/Georgetown/Hopkins positions).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">26 / 33 · Peribadi</div>
+  <div class="shadow-title">Wan Azizah — Institusi Sebagai Senjata</div>
+  <div class="shadow-quote">"Isteri saya adalah tempat saya berteduh."</div>
+  <div class="shadow-body">Wan Azizah — doktor oftalmologi, dilatih di Ireland, memegang jawatan presiden PKR selama 20 tahun. Selepas Anwar dipenjarakan, Wan Azizah memegang pergerakan Reformasi sebagai kepala. Diberi jawatan sebagai penasihat ekonomi semasa diperlukan. Dipinggirkan ketika panas melampau. Identiti: keluarga yang menyokong sesama sendiri. Realiti: institusi keluarga yang diuruskan secara strategi — diberi jawatan semasa ia berfaedah, ditinggalkan apabila ia merosakkan. Hubungan ini bukan pernikahan dalam erti kata konvensional; ia adalah lejar pentadbiran yang dipersembahkan sebagai kemesraan keluarga.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Wan Azizah Wan Ismail (career timeline; DPM 2018-2020).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">27 / 33 · Peribadi</div>
+  <div class="shadow-title">Anak-Anak Sebagai Senjata Strategik</div>
+  <div class="shadow-quote">"Nurul Izzah akan memimpin generasi seterusnya."</div>
+  <div class="shadow-body">Nurul Izzah — anak tertua — dibesarkan dalam pergerakan Reformasi. Diberi kerusi Parlimen. Dilantik sebagai penasihat ekonomi. Disingkirkan apabila kritikan nepotisme melampau. Nurul Nuha, Muhammad Ihsan, Nurul Iman — semua berada dalam orbit politik. Identiti: keluarga yang mendidik anak-anak untuk berkhidmat. Realiti: anak-anak yang berfungsi sebagai aset dalam ekosistem politik bapa. Kasih sayang itu nyata; penggunaannya juga nyata. Kedua-duanya beroperasi secara serentak, dan tiada sebarang pengakuan awam tentang ketegangan di antara keduanya.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Nurul Izzah Anwar (Lembah Pantai 2008-2018, Permatang Pauh 2018-2022; PKR co-founder 1999).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">28 / 33 · Peribadi</div>
+  <div class="shadow-title">Tak Pernah Silap — Identiti Yang Tak Boleh Retak</div>
+  <div class="shadow-quote">"Setiap tuduhan adalah sebahagian daripada konspirasi."</div>
+  <div class="shadow-body">Dari 1998 hingga 2026 — 26 tahun — tiada satu kata-kata "saya silap" secara terbuka daripada Anwar Ibrahim. Setiap tuduhan, setiap kritikan, setiap kegagalan: konspirasi. Persona yang tidak boleh retak memerlukan bahawa tiada kegagalan wujud. Bayang yang berada di belakangnya: manusia yang telah hilang keupayaan untuk membezakan antara kritikan yang membina dan serangan yang merosakkan. Dalam istilah Jung: bayang menjadi tuan apabila identiti itu sendiri tidak boleh diperbaiki tanpa menghancurkan struktur naratif yang memegangnya bersama.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (consistent "conspiracy" defense across both trials; no public apology).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">29 / 33 · Peribadi</div>
+  <div class="shadow-title">Maaf Yang Dikira</div>
+  <div class="shadow-quote">"Saya telah memaafkannya."</div>
+  <div class="shadow-body">Anwar memaafkan Mahathir pada 2018 — kerana beliau memerlukannya. Anwar bekerjasama dengan UMNO-Zahid pada 2022 — kerana beliau memerlukannya. Pengampunan diberikan bila berfaedah, ditarik balik bila tidak. Identiti: sifat belas kasihan. Realiti: strategi pengurusan hubungan. Pengampunan Anwar bukan bukti kemuliaan; ia adalah alat pengurusan risiko. Bayang ini paling tajam kerana ia mengambil bentuk kebaikan — tetapi berfungsi sebagai urus niaga.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (Mahathir reconciliation 2018; Zahid partnership 2022).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">30 / 33 · Peribadi</div>
+  <div class="shadow-title">Penantian 30 Tahun — Identiti Yang Melebur Dengan Takhta</div>
+  <div class="shadow-quote">"Saya dilahirkan untuk memimpin negara ini."</div>
+  <div class="shadow-body">Dari Timbalan Perdana Menteri (1993) hingga Perdana Menteri (2022) — 29 tahun penantian. Identiti Anwar telah berubah seiring dengan penantian itu: bermula sebagai reformis, kemudian sebagai mangsa, kemudian sebagai pejuang, kemudian sebagai PM. Soalan yang jarang ditanya: siapa Anwar Ibrahim tanpa jawatan? Bukan reformis — reformasi tanpa kuasa tidak menjual. Bukan mangsa — mangsa tanpa pentas tidak kedengaran. Identiti yang melebur dengan jawatan ini menunjukkan bahawa bayang terbesarnya bukan tentang kegagalan — ia tentang kekosongan yang mungkin wujud apabila takhta itu akhirnya dilepaskan.</div>
+  <div class="shadow-evidence">Sources: Wikipedia EN Anwar Ibrahim (1993 DPM → 2022 PM timeline).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">31 / 33 · Peribadi</div>
+  <div class="shadow-title">Kemarahan Suci Yang Tidak Boleh Dicabar</div>
+  <div class="shadow-quote">"Kamu tidak tahu apa yang saya telah lalui."</div>
+  <div class="shadow-body">Setiap kritik terhadap Anwar dibentangkan sebagai serangan terhadap perjuangan. Kemarahan — yang mungkin asalnya sah dari sejarah penindasan — telah bertukar menjadi identiti tetap. Rumah mahkamah dalam kepalanya: Anwar adalah pendakwa, hakim, dan mangsa dalam satu badan. Kritikan dari rakyat biasa, media, atau pengkritik politik, semuanya ditapis melalui penapis yang sama: "mereka tidak faham apa yang saya telah lalui." Bayang ini paling berbahaya kerana ia menggunakan pengalaman sebenar untuk menutup ruang untuk pertumbuhan sebenar.</div>
+  <div class="shadow-evidence">Sources: Pattern observed across 26 years of public defense (Wikipedia EN; Britannica; news analysis).</div>
+</div>
+
+<div class="shadow-card">
+  <div class="shadow-num">32 / 33 · Peribadi</div>
+  <div class="shadow-title">Cermin Yang Dipatahkan — Sebab Dia Tak Nampak Cermin</div>
+  <div class="shadow-quote">"Semua orang ada bayang. Tetapi saya telah menghadapi saya."</div>
+  <div class="shadow-body">Anwar sering bercakap tentang bayang — tentang kelemahan manusia, tentang perlunya rendah hati. Tetapi cermin yang beliau pernah pegang pada 1997 — yang menunjukkan mangsa yang berani menolak sistem — telah lama dipatahkan. Cermin sekarang menunjukkan orang lain: penjenayah, konspirator, musuh. Bayang bukan tentang apa yang dilihat; ia tentang ketiadaan keupayaan untuk melihat cermin itu sendiri. Dalam istilah Jung: sebaik sahaja bayang menguasai, seseorang melihat semua refleksi sebagai serangan. Anwar tidak melihat bayangnya kerana cermin itu sendiri telah ditukar dengan cermin yang menunjukkan orang lain.</div>
+  <div class="shadow-evidence">Sources: Jungian analysis framework; pattern of externalizing blame across 26 years of public statements.</div>
+</div>
+
+<div class="shadow-card" style="border-color:var(--gold);background:var(--surface)">
+  <div class="shadow-num" style="color:var(--gold)">33 / 33 · Peribadi · YANG PALING DALAM</div>
+  <div class="shadow-title">Acah — Identiti Yang Telah Menjadi Diri</div>
+  <div class="shadow-quote">"Saya anak kampung yang berjuang untuk rakyat."</div>
+  <div class="shadow-body">Tiga puluh dua bayang di atas — dengan semua bukti awam dan sumber yang dikutip — membawa kepada satu kesimpulan yang lebih tajam dari mana-mana yang di atas: Anwar Ibrahim bukan penipu yang sedar menipu. Beliau adalah pelakon yang telah lupa bahawa beliau pernah membuka kostum. Setiap persona yang pernah dipamerkan — budak kampung, penentang kerajaan, anak singa, tahanan politik, sarjana Oxford, tawaf — ada sebahagian yang benar. Tiada satu yang palsu sepenuhnya. Dan kerana semua persona itu ada sebahagian yang benar, tidak ada ruang untuk identiti asal yang tidak dijual kepada sesiapa. Acah telah menjadi jiwa kerana jiwa asal tidak pernah dipamerkan. Lelaki sebenar — di luar semua persona — tidak diketahui sesiapa, termasuk mungkin dirinya sendiri.</div>
+  <div class="shadow-evidence">Sources: 32 bayang di atas + 322 baris sumber terverifikasi dari Wikipedia, Britannica, rekod mahkamah, dan arkib pergerakan. Framework: Carl Gustav Jung, Man and His Symbols (1964).</div>
+</div>
+
+<!-- SUMMARY BOX -->
+<div class="summary-box" style="margin-top:2.5rem;border-color:var(--gold)">
+  <h2>Rumusan Psikologi</h2>
+  <p>33 bayang ini menunjukkan satu pola: Anwar Ibrahim tidak memiliki identiti yang tetap kerana identiti itu sendiri diperlakukan sebagai instrumen. Setiap era, setiap audience, setiap bilik menerima versi yang berbeza — dan tiap versi itu sebahagiannya betul. Tetapi kerana tidak ada satu identiti yang menanggung sepenuhnya kebenaran tentang siapa beliau, bayang-bayang itu terus berkembang. Ia bukan tentang Anwar Ibrahim jahat — ia tentang seseorang yang sangat bijak sehingga beliau keupayaan untuk mengalihkan identiti, sehingga bayang itu bukan lagi luaran, tetapi telah menjadi lapisan dalam diri yang tidak pernah dipamerkan. Jika Jung betul — bahawa bayang yang tidak ditemui akan memerintah — maka 33 bayang ini bukan senarai kesalahan. Ia adalah peta kosong di tengah-tengah seorang pemimpin yang penuh dengan sisi yang berbeza, tetapi tidak mempunyai teras yang kelihatan.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="site-frame">
+    <p>Psikologi bayang bukan tuduhan. Ia cermin. Setiap PM adalah produk sistem yang lebih besar dari mereka. Tapi yang tak pernah jumpa bayang sendiri — akan diulangi oleh bayang itu berkali-kali.</p>
+    <div class="foot-mono">Sumber: Wikipedia EN/MS · Britannica · Rekod Mahkamah Malaysia · Amnesty International · Human Rights Watch · The Edge Malaysia · Hansard Parlimen</div>
+    <div class="foot-mono">DITEMPA BUKAN DIBERI — Yang benar dikarang, bukan diberi</div>
+    <div class="foot-mono" style="margin-top:1rem"><a href="/politics/shadow/" style="color:var(--gold);text-decoration:none;">← Kembali ke PM Bayang Hub</a></div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
