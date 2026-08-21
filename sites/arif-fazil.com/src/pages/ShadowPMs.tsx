@@ -123,6 +123,12 @@ function PMCard({ pm, index }: { pm: ShadowPM; index: number }) {
           <h2 className="text-xl font-black italic uppercase mt-0.5 text-forge-white leading-tight">{pm.name}</h2>
           <span className="font-mono text-[0.6rem] text-forge-dim">{pm.tenure}</span>
         </div>
+        {pm.id === 'dato-seri-anwar' && (
+          <Link to="/politics/shadow/anwar-ibrahim"
+            className="block mt-2 mb-1 font-mono text-[0.65rem] uppercase tracking-wider text-purple-400 border border-purple-500/40 hover:bg-purple-500/20 px-3 py-1.5 rounded transition-colors text-center">
+            🗝️ 33 Bayang Penuh →
+          </Link>
+        )}
 
         {/* Persona */}
         <div className="mt-4 pt-3 border-t border-forge-iron">

@@ -21,6 +21,7 @@ import { NotFound } from '@/pages/NotFound';
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
 import { ShadowPMs } from '@/pages/ShadowPMs';
+import { AnwarIbrahim33 } from '@/pages/AnwarIbrahim33';
 import { ShadowBoard } from '@/pages/ShadowBoard';
 import { DeritaMap } from '@/pages/DeritaMap';
 import { PoliticsHub } from '@/pages/PoliticsHub';
@@ -188,6 +189,7 @@ export function App() {
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
+            <Route path="/politics/shadow/anwar-ibrahim" element={<AnwarIbrahim33 />} />
             <Route path="/politics/shadow" element={<ShadowPMs />} />
             <Route path="/politics/shadow/" element={<ShadowPMs />} />
             <Route path="/politics/shadow/board" element={<ShadowBoard />} />
