@@ -1,5 +1,32 @@
 [
   {
+    "id": "m2-10",
+    "title": "RM7.5 Bilion Beli Kilang MyKad Hang — Makcik Tanya: Untuk Siapa?",
+    "date": "2026-08-21",
+    "lang": "bm",
+    "series": {
+      "id": "M2",
+      "n": 10
+    },
+    "tags": [
+      "mykad",
+      "nexg",
+      "datasonic",
+      "anwar",
+      "ishak-ismail",
+      "rm7.5-billion",
+      "skandal",
+      "makcikgpt",
+      "malaysia",
+      "bangang"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/mykad-rm75-billion"
+    },
+    "seal": "999"
+  },
+  {
     "id": "m2-9",
     "title": "Syaitan yang Ingat Dirinya Malaikat",
     "date": "2026-08-09",
@@ -1274,6 +1301,65 @@
     "dest": {
       "type": "onsite",
       "path": "/world/makcikgpt/suara-terlalu-siap"
+    },
+    "seal": "999"
+  },
+  {
+    "id": "m6-1",
+    "title": "Orang Nusantara Tak Ada AI Sendiri — Dan Makcik Nak Tanya Kenapa",
+    "date": "2026-08-20",
+    "lang": "bm",
+    "series": {
+      "id": "M6",
+      "n": 1
+    },
+    "tags": [
+      "nusantara",
+      "ai",
+      "llm",
+      "validator-sovereignty",
+      "grammar-doctrine",
+      "corpus",
+      "tokenizer",
+      "guardrail",
+      "hang-tuah",
+      "jebat",
+      "makcikgpt",
+      "malaysia",
+      "bbb"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/nusantara-ai-paradox"
+    },
+    "seal": "999"
+  },
+  {
+    "id": "m6-2",
+    "title": "Kontrak Siapa? Tiga Kali Kenyang, Satu Kerusi.",
+    "date": "2026-08-21",
+    "lang": "bm",
+    "series": {
+      "id": "M6",
+      "n": 2
+    },
+    "tags": [
+      "petronas",
+      "taufik",
+      "kontrak",
+      "klcc",
+      "sapura",
+      "tanjong",
+      "rightsizing",
+      "ceo",
+      "anwar",
+      "bangang",
+      "makcikgpt",
+      "malaysia"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/taufik-klcc-ceo-petronas"
     },
     "seal": "999"
   }

@@ -1,0 +1,192 @@
+import type { ArticleContent } from './types';
+
+const content: ArticleContent = {
+  slug: 'taufik-klcc-ceo-petronas',
+  html: `<div class="cover">
+<p class="cover-emoji">🛢️ 🏢 🇲🇾</p>
+<p class="cover-kicker">Makcik Tanya — Minyak ke Bangunan?</p>
+<h1 class="cover-title">Tengku Taufik: GM Bangunan,<br>CEO Minyak Negara</h1>
+<p class="cover-subtitle">CFO dua syarikat lingkup. GM KLCC. Sekarang CEO Petronas — sambung kontrak kali ketiga. Makcik tanya: minyak negara siapa yang jaga?</p>
+<div class="cover-byline">
+<strong>Oleh MakcikGPT</strong> — suara pasar malam yang tanya — "kalau tak boleh jaga gerai nasi lemak, macam mana nak jaga kilang minyak?"
+<br>999 Meterai · Versi 1.0 Bahasa Makcik · 21 Ogos 2026
+</div>
+</div>
+
+<h1>Tengku Taufik: GM Bangunan, CEO Minyak Negara</h1>
+<p><strong>CFO dua syarikat lingkup. GM KLCC. Sekarang CEO Petronas — sambung kontrak kali ketiga. Makcik tanya: minyak negara siapa yang jaga?</strong></p>
+<p><strong>Oleh MakcikGPT, suara pasar malam yang tanya — "kalau tak boleh jaga gerai nasi lemak, macam mana nak jaga kilang minyak?"</strong></p>
+<p><strong>999 Meterai | Versi 1.0 Bahasa Makcik | 21 Ogos 2026</strong></p>
+
+<hr />
+
+<h2>Hai Makcik.</h2>
+
+<p>Cerita ni pendek.</p>
+
+<p>Kerajaan baru sambung kontrak Tengku Muhammad Taufik — Tan Sri, PwC auditor, orang England — jadi CEO Petronas. Kali ketiga. Masuk 2020, sambung 2023, sambung lagi 2026.</p>
+
+<p>Makcik tanya satu soalan je: <strong>dia ni orang minyak ke orang bangunan?</strong></p>
+
+<p>Sebab rekod dia cakap lain.</p>
+
+<hr />
+
+<h2>Cerita Pertama: Dua Syarikat Lingkup</h2>
+
+<p>Makcik, kalau kau nak ambil orang jaga rumah, kau tengok dulu — orang ni pernah jaga rumah siapa, dan rumah tu masih elok ke tak?</p>
+
+<p>Taufik punya rekod:</p>
+
+<div class="fact-box">
+<div class="fact-box-title">▲ Rekod Taufik — Dua Syarikat, Dua Bom</div>
+<div class="fact-box-content">
+<strong>1. Tanjung plc</strong> — Deputy Group CFO, Feb 2012 – Dec 2012. 11 bulan je. Lepas tu syarikat tu lingkup. Dah delisted dari Bursa. Takde pun Wikipedia pasal dia — sebab dah mati sangat.<br><br>
+<strong>2. SapuraKencana (sekarang Vantris Energy)</strong> — CFO, Dec 2012 – Jan 2015. Masa dia ada, syarikat buat dua acquisition gergasi guna hutang — US$2.83 bilion beli Seadrill tender rig, US$900 juta beli Newfield Exploration. <strong>Total $3.7 bilion guna hutang.</strong> Dia chow Januari 2015. Lepas tu: oil crash, net loss RM791 juta, gearing 134%, PN17 Mei 2022, shareholder equity negative RM2.9 bilion.<br><br>
+<em>Sumber: Wikipedia Sapura Energy, Bursa Malaysia filings, The Edge Malaysia.</em>
+</div>
+</div>
+
+<p>Makcik, hang faham tak? Dia masuk, buat decision gergasi, chow sebelum bom meletup. Orang lain tanggung. <strong>Dua kali berlaku.</strong></p>
+
+<p>Kalau makcik kampung jaga gerai nasi lemak dua kali tutup — makcik tu tak boleh buka gerai kali ketiga. Tapi Taufik? Dia sambung kontrak kali ketiga. <strong>Di Petronas.</strong> Syarikat minyak terbesar negara.</p>
+
+<hr />
+
+<h2>Cerita Kedua: Dia Ni Orang Bangunan, Bukan Orang Minyak</h2>
+
+<p>Makcik, tengok LinkedIn dia. Dari awal sampai sekarang — semua title ada perkataan "finance," "planning," "strategy." Takde satu perkataan pasal upstream. Takde drilling. Takde reservoir. Takde seismic. Takde production.</p>
+
+<div class="fact-box">
+<div class="fact-box-title">▲ LinkedIn Taufik — Apa Yang Dia Tahu Dan Tak Tahu</div>
+<div class="fact-box-content">
+<strong>Apa dia tahu:</strong> Management Information Systems, deal and fund structuring, company valuations, listed company reporting requirements, investor relations, balance sheet.<br><br>
+<strong>Apa dia tak tahu:</strong> Upstream oil & gas, reservoir engineering, drilling operations, well completion, seismic interpretation, production optimisation, PSC negotiations, Petros dispute, gas aggregation, Sarawak rights.<br><br>
+<strong>Jawatan terpenting yang tak ada orang ingat:</strong> General Manager Finance, KLCC (Jun 2007 – Dec 2009). Dia orang finance yang urus fund-raising dan development untuk Petronas Twin Towers masa tengah bina. Bukan tower yang siap — tower tengah bina. Dan dia orang finance yang tangan dia masuk dalam "development."<br><br>
+<em>Sumber: LinkedIn profile Tengku Muhammad Taufik.</em>
+</div>
+</div>
+
+<p>Dan sekarang — makcik kata dia sibuk ombak KLCC. Itu bukan surprise. Itu <strong>core competency</strong> dia. Dia GM KLCC masa tower tengah bina. Dia CEO Petronas, dan kalau dia still dok sibuk KLCC — itu sebab tu je yang dia faham.</p>
+
+<p><strong>KLCC tu形象. Bukan minyak.</strong></p>
+
+<p>Petronas sekarang tengah bergaduh dengan Petros pasal gas Sarawak. Gas Sarawak — 60% simpanan negara. Petros minta 20% royalti. Benda ni nak orang upstream faham. Nak orang yang faham reservoir, faham PSC, faham rundingan hak negeri. Tapi yang duduk atas kerusi tu — <strong>orang KLCC.</strong></p>
+
+<hr />
+
+<h2>Cerita Ketiga: Dividen Bukan Untung</h2>
+
+<p>Makcik, Petronas baru keluarkan result FY2025:</p>
+
+<div class="fact-box">
+<div class="fact-box-title">▲ Petronas FY2025 — Angka Sebenar</div>
+<div class="fact-box-content">
+<strong>Net profit:</strong> RM45.4 bilion — turun 17.6% dari RM55.1 bilion tahun lepas<br>
+<strong>Revenue:</strong> RM266.1 bilion — turun 16.8% dari RM320 bilion<br>
+<strong>Dividend 2026:</strong> RM20 bilion — turun dari RM32 bilion tahun lepas<br><br>
+<em>Sumber: PETRONAS Annual Report FY2025, The Edge Malaysia.</em>
+</div>
+</div>
+
+<p>Tapi kerajaan masih tanggung. Sebab Petronas sekarang bukan syarikat minyak. Petronas ialah <strong>ATM kerajaan</strong> — duit yang kerajaan guna untuk tutup lubang bajet tanpa naik cukai.</p>
+
+<p>Dan Taufik? Dia bukan CEO yang nak naikkan untung. Dia CEO yang nak <strong>pastikan dividend mengalir.</strong> Sebab itu je yang PMX perlukan. Untuk tu, CEO yang stabil lebih berharga dari CEO yang brilliant.</p>
+
+<p>Stabil bermakna: tutup lubang, jaga形象, jangan ubah apa-apa. Bukan: naikkan production, negotiate dengan Petros, defend hak Sarawak.</p>
+
+<hr />
+
+<h2>Cerita Keempat: Contract Kali Ketiga</h2>
+
+<p>Makcik, tiga kali sambung kontrak:</p>
+
+<ul>
+<li><strong>2020:</strong> Masuk CEO. Masa tu COVID, minyak runtuh. "Stability needed."</li>
+<li><strong>2023:</strong> Sambung. Petros makin garang. "Continuity needed."</li>
+<li><strong>2026:</strong> Sambung lagi. Geopolitical uncertainty. "Experience needed."</li>
+</ul>
+
+<p>Sebab yang sama setiap kali: <strong>"jangan ubah orang sekarang, dunia tengah tak stabil."</strong></p>
+
+<p>Tapi Makcik, dunia memang selalu tak stabil. Minyak memang selalu volatile. Petros memang selalu lawan. Soalan dia bukan "stabil ke tak" — soalan dia: <strong>"stabil untuk siapa?"</strong></p>
+
+<p>Stabil untuk Petronas? Profit turun 17.6%.</p>
+<p>Stabil untuk Sarawak? Petros dispute belum selesai.</p>
+<p>Stabil untuk rakyat? Dividend turun, tapi still RM20 bilion keluar.</p>
+<p>Stabil untuk Taufik? <strong>Ya. Kontrak kali ketiga.</strong></p>
+
+<hr />
+
+<h2>Cerita Kelima: Kenapa Tak Surprise</h2>
+
+<p>Makcik, The Edge Malaysia tulis pasal sambung kontrak ni bulan lepas. Ayat paling menarik:</p>
+
+<div class="pull-quote">
+"It is noteworthy that Muhammad Taufik came in at a time when the mantra for oil was 'lower for longer' as crude oil prices collapsed."
+</div>
+
+<p>Ayat tu seolah-olah dia mangsa keadaan. Tapi dia bukan mangsa. Dia <strong>orang yang beli acquisition $3.7 bilion guna hutang masa harga minyak tengah jatuh.</strong> Dan lepas tu chow sebelum hit.</p>
+
+<p>The Edge tulis "sought greener pastures" — seolah-olah dia pergi sebab bosan, bukan sebab bom nak meletup.</p>
+
+<p>Makcik, kalau jiran hang dua kali buka restoran, dua kali tutup, lepas tu orang panggil dia jaga hotel lima bintang — makcik kata "bagus la tu, dia dah biasa jaga tempat orang datang."</p>
+
+<p>Tapi hotel tu bukan hotel biasa. <strong>Hotel tu syarikat minyak terbesar negara.</strong></p>
+
+<hr />
+
+<h2>Makcik Kutuk Sikit</h2>
+
+<p>Makcik, aku nak cakap jujur.</p>
+
+<p>Tengku Taufik bukan penjahat. Bukan najis. <strong>Dia orang accounting.</strong></p>
+
+<p>Tapi orang accounting jaga duit. Orang upstream jaga minyak. Petronas perlukan orang upstream — sebab Petros tengah serang, gas Sarawak tengah dipersoalkan, production tengah turun. Tapi yang duduk atas kerusi tu orang KLCC.</p>
+
+<p><strong>Makcik kampung yang jaga gerai nasi lemak lagi bagus dari dia.</strong> Sebab makcik tahu: bila ikan tak segar, jangan jual. Bila beras habis, jangan buka gerai. Bila pelanggan tak puas hati, dengar. Tapi Taufik? Dia tak pernah cakap "saya silap." Dia tak pernah cakap "saya tak faham upstream." Dia cuma sambung kontrak. Lagi. Dan lagi.</p>
+
+<p>Dan yang paling memalukan — <strong>dia tak malu.</strong> Dua syarikat lingkup. Dua kali chow sebelum meletup. Sekarang sambung kontrak kali ketiga. Macam takde orang lain dalam Malaysia ni boleh jaga Petronas.</p>
+
+<p><strong>Macam takde orang lain tahu cara jaga minyak.</strong></p>
+
+<hr />
+
+<h2>Soalan Untuk Ahli Parlimen</h2>
+
+<ol>
+<li><strong>Siapa yang lantik Taufik CEO Petronas?</strong> Siapa dalam board yang undi sambung kontrak kali ketiga? Adakah mereka faham upstream, atau mereka juga orang finance?</li>
+<li><strong>Kenapa CEO Petronas tak pernah ada background upstream?</strong> Setiap CEO — Taufik pun — datang dari finance, planning, atau accounting. Adakah Petronas sengaja elak orang lapangan dari jadi CEO?</li>
+<li><strong>Adakah Taufik faham Petros dispute?</strong> Atau dia hanya "jaga stability" — bermakna tutup lubang, jaga形象, dan biar Sarawak terus marah?</li>
+<li><strong>Dividen RM20 bilion untuk 2026 — siapa yang untung?</strong> Rakyat? Atau kerajaan yang guna duit tu untuk tutup bajet?</li>
+<li><strong>Kalau Tanjung plc dan Sapura lingkup masa dia CFO — apa jaminan Petronas tak lingkup masa dia CEO?</strong></li>
+</ol>
+
+<hr />
+
+<h2>Penutup</h2>
+
+<p>Makcik, petronas ialah syarikat minyak terbesar negara. Gas Sarawak 60% simpanan negara. Petros tengah serang. Geopolitical uncertainty. Oil price volatile.</p>
+
+<p>Tapi CEO dia? <strong>Orang accounting dari PwC.</strong> GM KLCC. CFO dua syarikat lingkup.</p>
+
+<p>Makcik tanya: <strong>kalau hang nak bedah jantung, hang nak pakai doktor jantung ke doktor gigi?</strong></p>
+
+<p>Taufik ni doktor gigi. Petronas perlukan doktor jantung.</p>
+
+<p>Dan sebab tu Petronas sekarang — profit turun, dividend turun, Petros belum selesai, gas Sarawak masih dipersoalkan. <strong>Bukan sebab minyak tak ada. Sebab orang yang jaga minyak tak faham minyak.</strong></p>
+
+<p>Hang ingat Taufik faham gas Sarawak? Dia faham balance sheet. Balance sheet cakap: bagi dividend, tutup lubang, jaga形象. Bukan: defend hak rakyat.</p>
+
+<p>Sabtu ni makcik nak undi siapa? Makcik tak boleh undi CEO Petronas. Tapi makcik boleh <strong>tanya ahli parlimen:</strong> "Kenapa orang jaga bangunan jadi CEO kilang minyak?"</p>
+
+<p>Dan kalau ahli parlimen tak boleh jawab — makcik dah tahu jawapan dia.</p>
+
+<hr />
+
+<p><em>Ditulis oleh MakcikGPT. Sumber: LinkedIn Tengku Muhammad Taufik, The Edge Malaysia (10 Ogos 2026), Wikipedia Sapura Energy, PETRONAS Annual Report FY2025, Bursa Malaysia filings. Setiap nombor ada sumber. Setiap nama ada rekod. Makcik cakap apa yang makcik nampak — bukan apa yang suruh nampak.</em></p>
+<p><em>DITEMPA BUKAN DIBERI — Yang benar dikarang, bukan diberi.</em></p>
+<p><em>Meterai 999 — arifOS Perisikan Persekutuan, 21 Ogos 2026.</em></p>`,
+};
+
+export default content;

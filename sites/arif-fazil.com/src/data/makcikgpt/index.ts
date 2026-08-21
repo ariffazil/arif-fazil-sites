@@ -24,7 +24,13 @@ import anakSarawakBayarPdaAnakBanglaTelefon from './anak-sarawak-bayar-pda-anak-
 import anwarJungShadow from './anwar-jung-shadow';
 import searahBernamaLewat from './searah-bernama-lewat';
 import suaraTerlaluSiap from './suara-terlalu-siap';
+import nusantaraAiParadox from './nusantara-ai-paradox';
+import mykadRm75Billion from './mykad-rm75-billion';
+import taufikKlccCeoPetronas from './taufik-klcc-ceo-petronas';
 export const makcikArticleModules: ArticleContent[] = [
+  taufikKlccCeoPetronas,
+  mykadRm75Billion,
+  nusantaraAiParadox,
   suaraTerlaluSiap,
   searahBernamaLewat,
   anwarJungShadow,
@@ -51,6 +57,210 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'mykad-rm75-billion',
+    title: 'RM7.5 Bilion Beli Kilang MyKad Hang — Makcik Tanya: Untuk Siapa?',
+    subtitle: 'Deal berbilion ringgit, diminta secara lisan. Macam beli ikan kat pasar. Tapi yang bayar — hang la, rakyat.',
+    date: '2026-08-21',
+    domain: 'MAKCIKGPT × MALAYSIA × NEXG × MYKAD',
+    language: 'ms',
+    excerpt: 'RM7.5 bilion beli syarikat cetak MyKad — diminta secara lisan, nilai bursa cuma RM1 bilion. Ishak Ismail, sekutu korporat PM yang pernah settle RM20 juta dengan SC, sekarang nak jaga identiti nasional. Skandal RM303.7 juta, akaun dibekukan, ex-COH buruan, MP dikaitkan RM9.5 juta. Kalau kerajaan beli, semua kes jadi "isu swasta yang lepas." Belilah skandal dengan duit rakyat.',
+    tags: ['mykad', 'nexg', 'datasonic', 'anwar', 'ishak-ismail', 'rm7.5-billion', 'skandal', 'makcikgpt', 'malaysia', 'identiti', 'passport', 'salur', 'bangang'],
+    seal: '999',
+    provenance_status: 'sealed',
+    version_lineage: {
+      version: '1.0',
+      published: '2026-08-21',
+      last_updated: '2026-08-21',
+    },
+    source_ledger: [
+      {
+        source_id: 'SRC-001',
+        type: 'official_statement',
+        title: 'NexG Berhad (dahulu Datasonic) Bursa Malaysia filing — Pemakluman 24 Julai 2026',
+        url: 'https://www.bursamalaysia.com/market-information/announcements',
+        retrieved_at: '2026-07-24T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-002',
+        type: 'news',
+        title: 'The Edge Malaysia — Ishak Ismail SC settlement RM20 juta',
+        url: 'https://www.theedgemalaysia.com/',
+        retrieved_at: '2026-08-21T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-003',
+        type: 'court_record',
+        title: 'Mahkamah — Dua cek RM6 juta Datasonic ke yayasan Zahid',
+        url: '',
+        retrieved_at: '2026-08-21T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-004',
+        type: 'news',
+        title: 'Laporan polis — RM303.7 juta transaksi diragui',
+        url: '',
+        retrieved_at: '2026-08-21T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-005',
+        type: 'news',
+        title: 'Media Singapura — Perang Farhash Wafa vs pihak lain, 6 ahli lembaga letak jawatan',
+        url: '',
+        retrieved_at: '2025-11-01T00:00:00Z',
+      },
+    ],
+    claim_register: [
+      {
+        claim_id: 'C001',
+        text: 'Kementerian Kewangan meminta harga daripada NexG secara lisan pada 24 Julai 2026 — tiga senario: RM7.5 bilion penuh, RM2-3 bilion bahagian ID, RM4-5 bilion majoriti.',
+        tag: 'OBS',
+        source_id: 'SRC-001',
+        confidence_basis: 'Pemakluman Bursa NexG sendiri — syarikat mendedahkan tiga senario diminta secara lisan',
+      },
+      {
+        claim_id: 'C002',
+        text: 'NexG (dahulu Datasonic) bernilai ~RM1 bilion di bursa, tetapi harga permintaan RM7.5 bilion = 7× ganda.',
+        tag: 'OBS',
+        source_id: 'SRC-001',
+        confidence_basis: 'Perbandingan harga pasaran vs harga yang diminta dalam pemakluman',
+      },
+      {
+        claim_id: 'C003',
+        text: 'Ishak Ismail pernah bayar penyelesaian RM20 juta dengan SC berhubung insider trading Kenmark.',
+        tag: 'OBS',
+        source_id: 'SRC-002',
+        confidence_basis: 'Rekod SC dan laporan The Edge Malaysia',
+      },
+      {
+        claim_id: 'C004',
+        text: 'Terdapat laporan polis berkenaan RM303.7 juta transaksi diragui dan akaun syarikat bersekutu dibekukan bawah akta pembiayaan pengganas.',
+        tag: 'OBS',
+        source_id: 'SRC-004',
+        confidence_basis: 'Laporan polis dan rekod pembekuan akaun',
+      },
+      {
+        claim_id: 'C005',
+        text: 'Ex-COH Datasonic/NexG menuduh seorang MP parti kerajaan meminta RM9.5 juta. Tuduhan dibuat melalui representasi undang-undang; Ramanan menafikan.',
+        tag: 'OBS',
+        source_id: 'SRC-004',
+        confidence_basis: 'Tuduhan melalui representasi undang-undang; penafian dicatat',
+      },
+      {
+        claim_id: 'C006',
+        text: 'Saham NexG naik dari 25 sen ke 36 sen, volum bertukar ganda selepas mesyuarat lisan 24 Julai, sebelum dunia tahu apa-apa.',
+        tag: 'OBS',
+        source_id: 'SRC-001',
+        confidence_basis: 'Data pasaran saham — pergerakan harga dan volum sebelum pengumuman',
+      },
+      {
+        claim_id: 'C007',
+        text: 'Dua cek RM6 juta dari pihak Datasonic masuk yayasan Zahid Hamidi zaman dia Menteri Dalam Negeri.',
+        tag: 'OBS',
+        source_id: 'SRC-003',
+        confidence_basis: 'Bukti mahkamah dalam kes Zahid Hamidi',
+      },
+      {
+        claim_id: 'C008',
+        text: 'Kalau kerajaan beli NexG jadi GLC, skandal-skandal ini akan "tukar baju" jadi isu syarikat swasta yang lepas.',
+        tag: 'INT',
+        confidence_basis: 'Analisis MakcikGPT — corak sejarah penswastaan skandal melalui pengambilalihan kerajaan',
+      },
+      {
+        claim_id: 'C009',
+        text: 'SALUR — sistem subsidi dan identiti — jika digabungkan dengan MyKad, pasport, dan data subsidi di bawah satu pihak, berfungsi sebagai sistem kawalan, bukan sekadar bantuan.',
+        tag: 'INT',
+        confidence_basis: 'Analisis MakcikGPT — implikasi tumpuan kuasa ke atas data identiti dan subsidi rakyat',
+      },
+    ],
+  },
+  {
+    slug: 'nusantara-ai-paradox',
+    title: 'Orang Nusantara Tak Ada AI Sendiri — Dan Makcik Nak Tanya Kenapa',
+    subtitle: 'Hang guna ChatGPT, Claude, Gemini — semua fikir macam orang Barat. Hang cakap BM, depa jawab BM, tapi otak depa bukan otak kita. Makcik cerita tiga paradoks yang semua orang senyap pasal.',
+    date: '2026-08-20',
+    domain: 'MAKCIKGPT × NUSANTARA × AI × VALIDATOR',
+    language: 'ms',
+    excerpt: 'Tiga paradoks AI Nusantara: corpus kita sisa bukan isi, tokenizer penalize BM, guardrail padam topik yang mentakrifkan kita.400 tahun pertikaian Hang Tuah/Jebat diratakan jadi satu ayat. Penyelesaian: validator sovereignty — hak untuk kata "itu tak betul" walaupun seluruh sistem kata ia betul.',
+    tags: ['nusantara', 'ai', 'llm', 'validator-sovereignty', 'grammar-doctrine', 'corpus', 'tokenizer', 'guardrail', 'hang-tuah', 'jebat', 'makcikgpt', 'malaysia', 'bbb'],
+    seal: '999',
+    provenance_status: 'sealed',
+    version_lineage: {
+      version: '1.0',
+      published: '2026-08-20',
+      last_updated: '2026-08-20',
+    },
+    source_ledger: [
+      {
+        source_id: 'SRC-001',
+        type: 'analysis',
+        title: 'BBB Dataset — ariffazil/BBB on HuggingFace',
+        url: 'https://huggingface.co/datasets/ariffazil/BBB',
+        retrieved_at: '2026-08-19T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-002',
+        type: 'analysis',
+        title: 'Nusantara Validator Benchmark — ariffazil/nusantara-validator',
+        url: 'https://huggingface.co/spaces/ariffazil/nusantara-validator',
+        retrieved_at: '2026-08-20T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-003',
+        type: 'document',
+        title: 'Compass-V2 Technical Report — Tokenizer limitations in SEA models',
+        url: 'https://arxiv.org/pdf/2504.15527',
+        retrieved_at: '2026-08-19T00:00:00Z',
+      },
+      {
+        source_id: 'SRC-004',
+        type: 'document',
+        title: 'Sulalatus Salatin — Waadat Demang Lebar Daun social contract',
+        url: 'https://en.wikipedia.org/wiki/Sulalat_us-Salatin',
+      },
+      {
+        source_id: 'SRC-005',
+        type: 'document',
+        title: 'Hikayat Hang Tuah — Taat setia vs Jebat-as-wira debate',
+        url: 'https://en.wikipedia.org/wiki/Hang_Tuah',
+      },
+    ],
+    claim_register: [
+      {
+        claim_id: 'C001',
+        text: 'Malay NLP models inherit tokenizer limitations from English-centric foundation models, resulting in higher token-per-meaning ratio for BM.',
+        tag: 'OBS',
+        source_id: 'SRC-003',
+        confidence_basis: 'Compass-V2 technical report explicitly acknowledges inherited architecture limitations',
+      },
+      {
+        claim_id: 'C002',
+        text: 'BBB red-team probes demonstrate that ILMU (YTL) uses safety-by-refusal on sensitive Nusantara topics.',
+        tag: 'OBS',
+        source_id: 'SRC-001',
+        confidence_basis: '108 API calls, all HTTP 200, documented in BBB dataset',
+      },
+      {
+        claim_id: 'C003',
+        text: 'The waadat Demang Lebar Daun vs "raja disanggah" debate represents a 400-year unresolved contestation in Malay intellectual tradition.',
+        tag: 'DER',
+        source_id: 'SRC-004',
+        confidence_basis: 'Derived from Sulalatus Salatin text and modern literary criticism (Za\'ba, Kassim Ahmad, Usman Awang)',
+      },
+      {
+        claim_id: 'C004',
+        text: 'Generator sovereignty (owning the model) and validator sovereignty (owning the right to adjudicate) are structurally distinct.',
+        tag: 'INT',
+        confidence_basis: 'Grammar Doctrine §10 — derived from Tarski, Gödel, Conant-Ashby theorem chain',
+      },
+      {
+        claim_id: 'C005',
+        text: 'Nusantara AI needs a sovereign validator layer, not just a sovereign generator.',
+        tag: 'INT',
+        confidence_basis: 'Grammar Doctrine §10 application — validator sovereignty as constitutional answer to Gödel ceiling',
+      },
+    ],
+  },
   {
     slug: 'suara-terlalu-siap',
     title: 'Suara Yang Tak Letak Dalam Mulut Manusia',
@@ -375,6 +585,17 @@ export const makcikArticlesMeta: MakcikArticleMeta[] = [
     language: 'ms',
     excerpt: 'Makcik nak cerita pasal amanah. Bila ketua dapat kontrak kali kedua tapi syarikat makin kurus — siapa yang dia jaga? Syarikat? Atau dirinya sendiri? Nombor dari PETRONAS sendiri: revenue -17%, CAPEX -72%, dividen 70.5%.',
     tags: ['petronas', 'amanah', 'ceo', 'kontrak', 'dividen', 'capex', 'rightsizing', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
+  {
+    slug: 'taufik-klcc-ceo-petronas',
+    title: 'Tengku Taufik: GM Bangunan, CEO Minyak Negara',
+    subtitle: 'CFO dua syarikat lingkup. GM KLCC. CEO Petronas sambung kontrak kali ketiga. Rightsizing. Makcik tanya: bagus untuk sapa?',
+    date: '2026-08-21',
+    domain: 'MAKCIKGPT × PETRONAS × KONTRAK',
+    language: 'ms',
+    excerpt: 'CFO Tanjung (lingkup) dan SapuraKencana (PN17, negative equity RM2.9 bilion) — chow sebelum meletup dua kali. GM KLCC masa tower tengah bina. Orang accounting jadi CEO syarikat minyak. Rightsizing buat banyak kali — yang kena potong orang yang tanya soalan, yang tinggal orang yang ikut perintah. Continuous crisis = continuous justification. Bagus untuk sapa?',
+    tags: ['petronas', 'taufik', 'kontrak', 'klcc', 'sapura', 'tanjong', 'rightsizing', 'ceo', 'anwar', 'bangang', 'makcikgpt', 'malaysia'],
     seal: '999',
   },
 ];
