@@ -10,6 +10,9 @@
     "/999/": "trust and proof chamber — verification artifacts",
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
     "/world/makcikgpt/": "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
+    "/world/makcikgpt/taufik-klcc-ceo-petronas": "MakcikGPT article — Kontrak Siapa? Tiga Kali Kenyang, Satu Kerusi.",
+    "/world/makcikgpt/mykad-rm75-billion": "MakcikGPT article — RM7.5 Bilion Beli Kilang MyKad Hang — Makcik Tanya: Untuk Siapa?",
+    "/world/makcikgpt/nusantara-ai-paradox": "MakcikGPT article — Orang Nusantara Tak Ada AI Sendiri — Dan Makcik Nak Tanya Kenapa",
     "/world/makcikgpt/syaitan-ingat-dirinya-malaikat": "MakcikGPT article — Syaitan yang Ingat Dirinya Malaikat",
     "/world/makcikgpt/suara-terlalu-siap": "MakcikGPT article — Suara Yang Tak Letak Dalam Mulut Manusia",
     "/world/makcikgpt/chennah-bangang": "MakcikGPT article — 8 BANGANG Anthony Loke — Chennah Version",
@@ -73,5 +76,5 @@
     "llms_txt": true,
     "sitemap": true
   },
-  "last_updated": "2026-08-18"
+  "last_updated": "2026-08-21"
 }
