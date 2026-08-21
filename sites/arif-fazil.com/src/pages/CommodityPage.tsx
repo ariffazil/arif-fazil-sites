@@ -145,8 +145,21 @@ export function CommodityPage({ slug }: { slug: string }) {
   const commodity = COMMODITIES[slug] || COMMODITIES['oil'];
   const [ticker, setTicker] = useState<{ price: string; change: string; changePct: string } | null>(null);
 
+  // Ticker endpoint URL map — finance Capital-routed paths.
+  // gold/oil/gas live under /wealth/{slug}/api/* (Caddy routes 1013-1087).
+  // usdmyr/klci live under /{slug}/api/* (Caddy routes 1423-1447).
+  // Server endpoints are bare /api/ticker (no .json extension).
+  const TICKER_URL: Record<string, string> = {
+    gold: '/wealth/gold/api/ticker',
+    oil: '/wealth/oil/api/ticker',
+    gas: '/wealth/gas/api/ticker',
+    usdmyr: '/usdmyr/api/ticker',
+    klci: '/klci/api/ticker',
+  };
+
   useEffect(() => {
-    fetch(`/${commodity.slug}/api/ticker.json`)
+    const url = TICKER_URL[commodity.slug] || `/wealth/${commodity.slug}/api/ticker`;
+    fetch(url)
       .then((r) => r.json())
       .then((d) => {
         if (d?.price) {

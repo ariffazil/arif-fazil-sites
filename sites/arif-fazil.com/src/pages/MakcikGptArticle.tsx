@@ -1,11 +1,31 @@
 import { useParams, Link } from 'react-router-dom'
-import { useEffect } from 'react'
-import { getMakcikArticle, getMakcikMeta } from '@/data/makcikgpt/index'
+import { useEffect, useMemo } from 'react'
+import { getMakcikArticle, getMakcikMeta, makcikArticlesMeta } from '@/data/makcikgpt/index'
+
+function estimateReadingTime(html: string): number {
+  const text = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+  const words = text.split(' ').length
+  return Math.max(1, Math.round(words / 200))
+}
 
 export function MakcikGptArticle() {
   const { slug } = useParams<{ slug: string }>()
   const article = getMakcikArticle(slug || '')
   const meta = getMakcikMeta(slug || '')
+
+  const readingTime = useMemo(() => {
+    if (!article?.html) return 0
+    return estimateReadingTime(article.html)
+  }, [article])
+
+  const { prev, next } = useMemo(() => {
+    if (!meta) return { prev: null, next: null }
+    const idx = makcikArticlesMeta.findIndex(a => a.slug === meta.slug)
+    return {
+      prev: idx < makcikArticlesMeta.length - 1 ? makcikArticlesMeta[idx + 1] : null,
+      next: idx > 0 ? makcikArticlesMeta[idx - 1] : null,
+    }
+  }, [meta])
 
   useEffect(() => {
     if (meta) {
@@ -35,7 +55,7 @@ export function MakcikGptArticle() {
 
   return (
     <div className="min-h-screen bg-[#0A0B0D] text-[#EDEAE2] py-16 md:py-24">
-      <div className="mx-auto max-w-[800px] px-6">
+      <div className="mx-auto max-w-[800px] px-6 makcik-article">
         {/* Navigation Breadcrumb */}
         <div className="mb-8 flex items-center justify-between border-b border-[#1F2733] pb-4">
           <Link
@@ -64,10 +84,16 @@ export function MakcikGptArticle() {
             </p>
           )}
 
-          <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-[#1F2733] text-xs font-mono text-[#9AA0A8]">
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[#1F2733] text-xs font-mono text-[#9AA0A8]">
             <span>Ditulis oleh: <strong className="text-[#EDEAE2]">MakcikGPT</strong></span>
             <span>·</span>
             <span>Bahasa: <strong className="text-[#EDEAE2]">{meta.language === 'ms' ? 'Bahasa Malaysia' : 'English'}</strong></span>
+            {readingTime > 0 && (
+              <>
+                <span>·</span>
+                <span className="reading-time">{readingTime} minit baca</span>
+              </>
+            )}
           </div>
         </header>
 
@@ -79,8 +105,24 @@ export function MakcikGptArticle() {
           />
         </article>
 
+        {/* Next/Prev Article Navigation */}
+        <div className="article-nav">
+          {prev ? (
+            <Link to={`/world/makcikgpt/${prev.slug}`}>
+              <span className="nav-label">← Artikel sebelumnya</span>
+              <span className="nav-title">{prev.title}</span>
+            </Link>
+          ) : <div />}
+          {next ? (
+            <Link to={`/world/makcikgpt/${next.slug}`} className="nav-next">
+              <span className="nav-label">Artikel seterusnya →</span>
+              <span className="nav-title">{next.title}</span>
+            </Link>
+          ) : <div />}
+        </div>
+
         {/* Footer & Related links */}
-        <div className="mt-16 pt-8 border-t border-[#1F2733] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+        <div className="mt-8 pt-6 border-t border-[#1F2733] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
           <Link
             to="/world/makcikgpt/"
             className="text-[#D9A62E] hover:underline uppercase font-bold"

@@ -1,6 +1,14 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { makcikArticlesMeta } from '@/data/makcikgpt/index'
+import { makcikArticlesMeta, getMakcikArticle } from '@/data/makcikgpt/index'
+
+function estimateReadingTime(slug: string): number {
+  const article = getMakcikArticle(slug)
+  if (!article?.html) return 0
+  const text = article.html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+  const words = text.split(' ').length
+  return Math.max(1, Math.round(words / 200))
+}
 
 const SERIES_TABS = [
   { id: 'ALL', label: 'Semua Siri' },
@@ -93,8 +101,17 @@ export function MakcikGPT() {
         </div>
 
         {/* ── ARTICLE CARDS (BROADSHEET EDITORIAL) ────────── */}
+        {filteredArticles.length === 0 ? (
+          <div className="no-results">
+            <div className="no-results-emoji">🔍</div>
+            <h3>Tak jumpa</h3>
+            <p>Cuba cari dengan kata kunci lain, atau tapis mengikut siri.</p>
+          </div>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredArticles.map((article, idx) => (
+          {filteredArticles.map((article, idx) => {
+            const rt = estimateReadingTime(article.slug)
+            return (
             <article
               key={article.slug || idx}
               className="rounded-lg border border-[#1F2733] bg-[#11151C] p-6 hover:border-[#9AA0A8]/40 transition-colors flex flex-col justify-between group"
@@ -104,9 +121,14 @@ export function MakcikGPT() {
                   <span className="font-mono text-xs font-bold text-[#D9A62E]">
                     {article.domain ? `${article.domain} · ` : ''}{article.date}
                   </span>
-                  <span className="font-mono text-[10px] uppercase text-[#E4572E] px-2 py-0.5 rounded border border-[#E4572E]/30 bg-[#E4572E]/10">
-                    SEAL 999
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {rt > 0 && (
+                      <span className="reading-time">{rt} min</span>
+                    )}
+                    <span className="font-mono text-[10px] uppercase text-[#E4572E] px-2 py-0.5 rounded border border-[#E4572E]/30 bg-[#E4572E]/10">
+                      SEAL 999
+                    </span>
+                  </div>
                 </div>
 
                 <h2 className="font-serif text-xl md:text-2xl font-bold text-[#EDEAE2] mb-3 group-hover:text-[#D9A62E] transition-colors leading-snug">
@@ -145,8 +167,10 @@ export function MakcikGPT() {
                 </Link>
               </div>
             </article>
-          ))}
+            )
+          })}
         </div>
+        )}
       </div>
     </div>
   )
