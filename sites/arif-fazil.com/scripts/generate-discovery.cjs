@@ -53,7 +53,8 @@ function buildSitemap(pieces) {
     { loc: `${SITE_BASE}/politics/ns-election/`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/politics/ns-election/compare/`, priority: 0.75, changefreq: "weekly" },
     { loc: `${SITE_BASE}/politics/ns-election/playbook/`, priority: 0.75, changefreq: "weekly" },
-    { loc: `${SITE_BASE}/politics/shadow/`, priority: 0.8, changefreq: "weekly" },
+    { loc: `${SITE_BASE}/world/politics/shadow/`, priority: 0.7, changefreq: "monthly" },
+    { loc: `${SITE_BASE}/world/politics/shadow/anwar-ibrahim/`, priority: 0.7, changefreq: "monthly" },
     { loc: `${SITE_BASE}/writing`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/doctrine`, priority: 0.9, changefreq: "monthly" },
     { loc: `${SITE_BASE}/map/`, priority: 0.8, changefreq: "weekly" },
@@ -165,6 +166,8 @@ ${linkLines}
 - \`/oil/\` — Brent crude cognitive dashboard
 - \`/gas/\` — Natural gas dashboard
 - \`/gold/\` — Gold trading synthesis
+- \`/world/politics/shadow/\` — PM Bayang: Jungian shadow analysis of all 9 Malaysian Prime Ministers (Persona / Bayang / Tragedi / Legasi)
+- \`/world/politics/shadow/anwar-ibrahim/\` — 33 Bayang Anwar Ibrahim: three-axis deep-dive (Sosiopolitik / Ekonomi / Peribadi), 322 sources
 
 ## arifOS MCP Endpoint
 - **Public MCP**: \`https://mcp.arif-fazil.com/mcp\` (streamable HTTP)
@@ -241,6 +244,8 @@ function buildLlmsJson(pieces) {
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
     "/world/makcikgpt/":
       "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
+    "/world/politics/shadow/": "PM Bayang — Jungian shadow analysis of all 9 Malaysian Prime Ministers (Persona / Bayang / Tragedi / Legasi)",
+    "/world/politics/shadow/anwar-ibrahim/": "33 Bayang Anwar Ibrahim — three-axis deep-dive (Sosiopolitik / Ekonomi / Peribadi), 322 public sources, editorial psychology analysis",
   };
   for (const p of pieces) {
     routeRoles[p.dest.path] = `MakcikGPT article — ${p.title}`;

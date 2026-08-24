@@ -92,6 +92,8 @@ Canonical landing: https://arif-fazil.com/world/makcikgpt/
 - `/oil/` — Brent crude cognitive dashboard
 - `/gas/` — Natural gas dashboard
 - `/gold/` — Gold trading synthesis
+- `/world/politics/shadow/` — PM Bayang: Jungian shadow analysis of all 9 Malaysian Prime Ministers (Persona / Bayang / Tragedi / Legasi)
+- `/world/politics/shadow/anwar-ibrahim/` — 33 Bayang Anwar Ibrahim: three-axis deep-dive (Sosiopolitik / Ekonomi / Peribadi), 322 sources
 
 ## arifOS MCP Endpoint
 - **Public MCP**: `https://mcp.arif-fazil.com/mcp` (streamable HTTP)

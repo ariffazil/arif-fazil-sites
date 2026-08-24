@@ -42,10 +42,21 @@ const SKIP_FILES = new Set([
   "soul.json",
 ]);
 
+// Static index.html files that MUST be copied verbatim from public/ → dist/
+// instead of being treated as SPA fallback targets. These are non-React pages
+// (e.g. /world/politics/shadow/ PM Bayang hub + 33 Bayang Anwar Ibrahim).
+const STATIC_INDEX_ALLOWLIST = new Set([
+  "world/politics/shadow/index.html",
+  "world/politics/shadow/anwar-ibrahim/index.html",
+]);
+
 function shouldSkip(relativePath, isDir) {
   const parts = relativePath.split(path.sep);
   if (isDir && parts.some(p => SKIP_DIRS.has(p))) return true;
-  if (!isDir && relativePath === "index.html") return true;
+  // index.html: skip UNLESS on the static allowlist (those are non-React pages)
+  if (!isDir && relativePath === "index.html") {
+    return !STATIC_INDEX_ALLOWLIST.has(relativePath);
+  }
   if (!isDir && SKIP_FILES.has(parts[parts.length - 1])) return true;
   return false;
 }

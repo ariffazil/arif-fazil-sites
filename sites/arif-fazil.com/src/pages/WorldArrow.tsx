@@ -108,7 +108,7 @@ const MAKCIK_PICKS = [
 ];
 
 export function World() {
-  const [activeTab, setActiveTab] = useState<'atlas' | 'commodities' | 'makcikgpt' | 'institutions'>('atlas');
+  const [activeTab, setActiveTab] = useState<'atlas' | 'commodities' | 'makcikgpt' | 'institutions' | 'shadow'>('atlas');
   const [selectedHotspot, setSelectedHotspot] = useState<HotspotLocation>(REAL_HOTSPOTS[0]);
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState('');
@@ -185,6 +185,7 @@ export function World() {
                 { key: 'commodities', label: '📊 5 Core Signals' },
                 { key: 'makcikgpt', label: '📰 MakcikGPT Civic' },
                 { key: 'institutions', label: '🏛️ Institutions' },
+                { key: 'shadow', label: '🗝️ PM Bayang' },
               ].map((tab) => (
                 <button
                   key={tab.key}
@@ -453,6 +454,84 @@ export function World() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── TAB 5: PM BAYANG — SHADOW POLITICS ── */}
+          {activeTab === 'shadow' && (
+            <div className="rounded-2xl border border-[#c9a84c]/30 bg-[#0E1015] p-6 md:p-10">
+              <div className="max-w-3xl">
+                <span className="font-mono text-xs uppercase tracking-widest text-[#c9a84c]">
+                  PSIKOLOGI BAYANG · 9 PERDANA MENTERI · DARI TUNKU KE ANWAR
+                </span>
+                <h2 className="mt-2 font-serif text-3xl md:text-4xl text-white">
+                  PM Bayang
+                </h2>
+                <p className="mt-4 text-base text-[#A0A7B8] font-light leading-relaxed">
+                  Setiap Perdana Menteri ada persona — topeng yang ditunjukkan pada dunia.
+                  Carl Jung kata: makin cantik topeng kau, makin gelap bayang kau. Di sini
+                  9 Perdana Menteri dianalisa melalui Jungian shadow:{' '}
+                  <span style={{ color: 'var(--cyan, #00d4aa)' }}>Persona</span>,{' '}
+                  <span style={{ color: 'var(--red, #ef4444)' }}>Bayang</span>,{' '}
+                  <span style={{ color: 'var(--amber, #f59e0b)' }}>Tragedi</span>,{' '}
+                  Legasi. Atau masuk terus ke 33 bayang Anwar Ibrahim — politik, ekonomi, peribadi.
+                </p>
+                <p className="mt-3 font-mono text-[0.6rem] text-[#8E95A5] uppercase tracking-widest">
+                  Δ-ONLY · Bayang = Nyata · Dari Rekod Umum · 322 Sumber
+                </p>
+              </div>
+
+              {/* 9 PM portrait strip — grayscale, hover reveals color (mirrors hub) */}
+              <div className="mt-8 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2">
+                {[
+                  { name: 'Tunku',        url: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg' },
+                  { name: 'Razak',        url: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Tun_Abdul_Razak_1968.jpg' },
+                  { name: 'Hussein',      url: 'https://upload.wikimedia.org/wikipedia/en/1/12/Tun_Hussein_Onn.jpg' },
+                  { name: 'Mahathir',     url: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Mahathir_Mohamad_13112018_%28cropped%29.jpg' },
+                  { name: 'Badawi',       url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Abdullah_Ahmad_Badawi_at_the_XIVth_Non-Aligned_Movement_Summit_at_Havana%2C_Cuba_on_September_16%2C_2006.jpg' },
+                  { name: 'Najib',        url: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Najib_Razak_2008-08-21.jpg' },
+                  { name: 'Muhyiddin',    url: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Muhyiddin_Yassin_%2851087589446%29_%28cropped%29.jpg' },
+                  { name: 'Ismail Sabri', url: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Ismail_Sabri_Yaakob_01042022_%28cropped%29.jpg' },
+                  { name: 'Anwar',        url: 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Anwar_Ibrahim_in_June_2026.jpg' },
+                ].map((pm) => (
+                  <div key={pm.name} className="aspect-[3/4] overflow-hidden rounded border border-[#222733] bg-[#111120] grayscale hover:grayscale-0 transition-all duration-500" title={pm.name}>
+                    <img src={pm.url} alt={pm.name} loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Two CTAs */}
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Link
+                  to="/world/politics/shadow/"
+                  className="block rounded-lg border border-[#c9a84c]/50 bg-[#16140D] hover:bg-[#1d1a0f] transition-colors p-5"
+                >
+                  <div className="font-mono text-[0.6rem] uppercase tracking-widest text-[#c9a84c] mb-1">
+                    Hub · 9 PM
+                  </div>
+                  <div className="font-serif text-xl text-white leading-tight">
+                    → Semua PM Bayang
+                  </div>
+                  <div className="mt-2 font-body text-sm text-[#8E95A5]">
+                    Dari Tunku (1957) ke Anwar (2022). Persona, Bayang, Tragedi, Legasi untuk setiap satu.
+                  </div>
+                </Link>
+
+                <Link
+                  to="/world/politics/shadow/anwar-ibrahim/"
+                  className="block rounded-lg border border-purple-500/50 bg-[#12100E] hover:bg-[#1a1418] transition-colors p-5"
+                >
+                  <div className="font-mono text-[0.6rem] uppercase tracking-widest text-purple-400 mb-1">
+                    Deep-dive · PM ke-10
+                  </div>
+                  <div className="font-serif text-xl text-white leading-tight">
+                    🗝️ 33 Bayang Anwar Ibrahim
+                  </div>
+                  <div className="mt-2 font-body text-sm text-[#8E95A5]">
+                    11 politik · 11 ekonomi · 11 peribadi. Editorial psychology, bukan tuduhan.
+                  </div>
+                </Link>
               </div>
             </div>
           )}
