@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-31",
+  "version": "2026-08-24",
   "domain": "arif-fazil.com",
   "doctrine": {
     "title": "Single canonical surface catalog. All machine catalogs are generated views of this file.",
@@ -427,34 +427,24 @@
       "redirects_to": "https://forge.arif-fazil.com/"
     },
     {
-      "path": "/politics/shadow/",
+      "path": "/world/politics/shadow/",
       "title": "PM Bayang \u2014 Shadow Prime Ministers of Malaysia",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "monthly",
-      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis."
+      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis. Static HTML at /var/www/html/world/politics/shadow/index.html."
     },
     {
-      "path": "/politics/shadow/board/",
-      "title": "Shadow Board \u2014 Org-Chart Instrument (PRIMER-1)",
-      "mission": "decide",
-      "status": "live",
-      "type": "page",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Org-chart instrument: 11 seats (9 PM dossiers + DERITA trauma map + Doctrine floors). Setiap kerusi = dossier link. PRIMER-1 instrument registry. Hidden from top nav \u2014 instrument surface."
-    },
-    {
-      "path": "/politics/shadow/derita/",
-      "title": "RASA DERITA \u2014 6-Cohort Generational Trauma Map",
+      "path": "/world/politics/shadow/anwar-ibrahim/",
+      "title": "33 Bayang Anwar Ibrahim \u2014 Three-Axis Shadow Analysis",
       "mission": "interpret",
       "status": "live",
       "type": "page",
-      "priority": 0.5,
+      "priority": 0.7,
       "changefreq": "monthly",
-      "description": "Framework analysis: 6 Malaysian generational trauma cohorts (13 Mei 1969 \u2192 1MDB \u2192 Sheraton \u2192 2022 Paradox). Constitutional floors as scars. HYPOTHESIS \u2014 confidence 0.20 [SPEC]. BUKAN FAKTA. HOLD pending VAULT999 seal."
+      "description": "33 shadow cards across 3 axes (Sosiopolitik / Ekonomi / Peribadi) for PM-10 Anwar Ibrahim. Editorial psychology analysis grounded in 322 public sources. Static HTML at /var/www/html/world/politics/shadow/anwar-ibrahim/index.html. Three-pillar DNA: Persona, Bayang, Tragedi, Legasi."
     },
     {
       "path": "/surfaces.json",
@@ -644,5 +634,5 @@
     "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
     "did": "did:web:arif-fazil.com"
   },
-  "as_of": "2026-08-04T21:15:00Z"
+  "as_of": "2026-08-24T22:00:00Z"
 }
