@@ -2,13 +2,13 @@
 article_id: m5-1
 canonical_url: https://arif-fazil.com/world/makcikgpt/sam-altman-elon-musk-anwar-akal
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: c78be88dd9bfe5a47bc4c1a1be7763c2aac2de0b4896951a7ef1721449a2a9b9
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 373cc422d2cbe3af8d2a10f29f070bc6843fea3b1c74ab7053156c3bfc7a6e3e
 epistemic_summary:
-  obs_count: 0
+  obs_count: 3
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,23 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/sam-altman-elon-musk-anwar-akal
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| AKL-C1 | OBS | OpenAI: ditubuh dengan misi 'beneficial AGI untuk humanity'; valuasi dilaporkan USD80B (2024) dengan sasaran sehingga USD150B; produk komersial berkembang sementara akses percuma pesaing dikawal. | src1 | approved |
+| AKL-C2 | OBS | X/Twitter: dibeli USD44B (Okt 2022); nilai dianggarkan ~USD19B (Fidelity, Okt 2024); pendapatan iklan jatuh ~45% dalam setahun. | src2 | approved |
+| AKL-C3 | OBS | Rekod ekonomi PMX: PM sejak Nov 2022 dan pegang Kewangan; SST naik 6%→8% (2024); USD/MYR ~4.68 (Nov 2022) vs ~4.60–4.80 (Jul 2026); sasaran defisit 3.5% GDP (2026). | src3 | approved |
+| AKL-C4 | INT | Tiga retorik kuasa ('humanity', 'truth', 'MADANI') diuji pada satu standard: bila kuasa dah dalam tangan, adakah struktur berubah memihak rakyat — soalan akal institusi, bukan serangan peribadi. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Laporan valuasi OpenAI 2024 (pelbagai agensi) + kenyataan misi rasmi | public-report://openai-valuation-2024 |
+| src2 | document | Anggaran Fidelity Okt 2024 nilai X + laporan pendapatan iklan | fidelity://2024-10/x-valuation-estimate |
+| src3 | document | Data awam ekonomi Malaysia 2022–2026 — SST, USD/MYR, sasaran defisit | malaysia-treasury://2022-2026/sst-fx-deficit |
 
 ---
 

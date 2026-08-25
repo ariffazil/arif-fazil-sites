@@ -2,13 +2,13 @@
 article_id: m3-2
 canonical_url: https://arif-fazil.com/world/makcikgpt/ytl-monopoli
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 26cc34fc9c3bae7171cdbd3f46bf21a5f442af44307cf7e57096396fb216b450
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 5aecf2c33e3b93ef50bd552043cae776ecedbf51e40ae0b4b4b4b456a4991dd5
 epistemic_summary:
-  obs_count: 0
-  der_count: 0
-  int_count: 0
+  obs_count: 4
+  der_count: 1
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,26 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/ytl-monopoli
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| YTL-C1 | OBS | 2024: YTL Power beli 53% Ranhill Utilities yang pegang 80% Ranhill SAJ — satu-satunya pengendali air Johor (monopoli negeri). | src1 | approved |
+| YTL-C2 | OBS | Ogos 2025: kerajaan Johor lulus kenaikan tarif air kali pertama dalam 9 tahun; kategori baharu 'data center' dikenakan RM5.33 semeter padu. | src2 | approved |
+| YTL-C3 | OBS | Bajet 2026: RM2 bilion sovereign AI cloud + RM5.9 bilion untuk sektor AI; DESAC beri 100% investment tax allowance sehingga 10 tahun untuk data center; YTL pegang tanah 1,640 ekar Kulai. | src3 | approved |
+| YTL-C4 | OBS | Rekod siasatan MACC: 2024 siasatan YTL Comms atas 1BestariNet (RM2.7 bilion, tanpa tender terbuka); Julai 2025 empat ditahan atas kes rasuah bina data center Johor RM180 juta (termasuk cubaan membakar wang RM1 juta). | src4 | approved |
+| YTL-C5 | DER | Calon pesaing (Gamuda, MRCB) tidak dilaporkan menerima peluang setara untuk sovereign cloud — proses pemilihan tertutup membuka risiko harga tidak optimum. | src3 | approved |
+| YTL-C6 | INT | Rantaian penuh elektrik–air–rangkaian–tanah–AI di tangan satu kumpulan yang dua kali disiasat MACC ialah soalan kedaulatan data rakyat — soalan tadbir, bukan vonis bersalah. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | The Edge Okt 2024 — 'Hamdan's surprise exit from Ranhill paves way for YTL Power in Johor water' | the-edge-malaysia://2024-10/ranhill-ytl-johor-water |
+| src2 | news | The Star Ogos 2025 — tarif air Johor, kategori data center RM5.33/m3 | the-star://2025-08/johor-water-tariff-data-centre |
+| src3 | document | Bajet 2026 + DESAC + laporan tanah Kulai 1,640 ekar | malaysia-budget://2026/sovereign-ai-cloud-desac |
+| src4 | news | The Edge Jun 2024 (MACC 1BestariNet RM2.7b) + FMT & Rakyat Post Jul 2025 (RM180j data centre graft, RM1j dibakar) | macc://2024-2025/1bestariNet+data-centre-graft-reports |
 
 ---
 

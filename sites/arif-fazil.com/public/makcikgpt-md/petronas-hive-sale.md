@@ -2,13 +2,13 @@
 article_id: m1-4
 canonical_url: https://arif-fazil.com/world/makcikgpt/petronas-hive-sale
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 1bfc1221e8e2eb08540ba440395dce47a314ea2e3867289e3280f4b02cd5e927
+provenance_status: sealed
+version: 1.1
+merkle_leaf: e86cdb1dd6cae5499074bd387c7ca7367a4ba76b8eabc45b1f271854974e7425
 epistemic_summary:
-  obs_count: 0
-  der_count: 0
-  int_count: 0
+  obs_count: 3
+  der_count: 1
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,23 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/petronas-hive-sale
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| HVS-C1 | OBS | Jun 2026: EnQuest beli 30% non-operated interest dalam PM6/12, sebahagian deal US$833 juta untuk empat PSC (termasuk Balingian, SK8, D35); PETRONAS terima ~US$554 juta upfront. | src1 | approved |
+| HVS-C2 | OBS | PM6/12 mengandungi Lebah Emas-1 — wildcat 2025, 11 reservoir, play baharu — kini diklasifikasi 'mature asset' dalam naratif jualan. | src1 | approved |
+| HVS-C3 | OBS | FY2025: PAT turun 18%, revenue turun 17%; pelaporan bertukar daripada quarterly kepada half-yearly; rightsizing berterusan. | src2 | approved |
+| HVS-C4 | DER | Rasional rasmi (portfolio optimisation, brownfield expertise, state participation) berdiri, tetapi kesan struktur jualan mature asset = kehilangan memori teknikal dan optionality jangka panjang. | src1 | approved |
+| HVS-C5 | INT | Rangka Calhoun Universe 25 (behavioral sink) dan Acemoglu (institusi ekstraktif) digunakan sebagai kanta tafsiran — alat analisis, bukan bukti kes rasuah. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | filing | Pengumuman EnQuest/PETRONAS Jun 2026 — US$833j empat PSC, US$554j upfront, PM6/12 Lebah Emas | enquest://2026-06/pm6-12-4-psc-usd833m |
+| src2 | document | PETRONAS FY2025 results — PAT -18%, revenue -17%, perubahan kitaran pelaporan | petronas://integrated-report/fy2025-results |
 
 ---
 

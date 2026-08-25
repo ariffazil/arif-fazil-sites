@@ -2,13 +2,13 @@
 article_id: m2-7
 canonical_url: https://arif-fazil.com/world/makcikgpt/searah-bernama-lewat
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: a341fe945a01415b44e0e5e35620a52233aab07166e15ace54320b015b8294b0
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 4e262c7b4cd53927af01ebf4994c3d7a0d5748e6bf31bc7c44fbc27012ec7834
 epistemic_summary:
-  obs_count: 0
+  obs_count: 2
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,20 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/searah-bernama-lewat
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| BNL-C1 | OBS | MakcikGPT terbit artikel SEARAH pertama pada 7 Jun 2026; Bernama menyiar berita SEARAH pada 17 Julai 2026 — jurang 40 hari boleh disemak daripada arkib awam kedua-dua penerbit. | src1 | approved |
+| BNL-C2 | OBS | Kandungan siaran Bernama 17 Julai (SEARAH mula operasi 1 Julai; 50:50 PETRONAS–Eni) sejajar dengan bahan pemutusan khabar (press release) — tiada soalan siasatan dalam siaran tersebut. | src1 | approved |
+| BNL-C3 | INT | Bila agensi berita nasional membiarkan 40 hari berlalu dan kemudian menyalin pengumuman, fungsi kewartawanan penyiasatan beralih kepada bukan saluran rasmi — bacaan institusi. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Arkib: makcikgpt 7 Jun 2026 (cerita-makcik/siasatan-harakah) + Bernama 17 Jul 2026 — perbandingan tarikh dan kandungan | bernama://2026-07-17/searah-coverage+own-archive-2026-06-07 |
 
 ---
 

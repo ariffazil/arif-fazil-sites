@@ -2,13 +2,13 @@
 article_id: m2-6
 canonical_url: https://arif-fazil.com/world/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: ead4786182bc2b8671015d310150ad1ab03b0a0d88e51c00a0df54b18b16cfe1
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 77681e8c2c67e49ab192cf0635bf22d1a68e316c91a1d182adc4d7d84e9d9c4c
 epistemic_summary:
-  obs_count: 0
+  obs_count: 5
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,24 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| ASB-C1 | OBS | 29 Jul 2026: PM Bangladesh Tarique Rahman telefon Anwar Ibrahim memohon bekalan LNG; Anwar bersetuju bincang 'kerjasama strategik' — kenyataan keluar dalam beberapa jam. | src1 | approved |
+| ASB-C2 | OBS | Sarawak menghasilkan ~90% eksport LNG Malaysia (CNA Feb 2025, terbitan ISEAS-Yusof Ishak). | src2 | approved |
+| ASB-C3 | OBS | Kronologi berkaitan: 2016 DGO → 2019 SGSA → Feb 2024 penguatkuasaan DGO → Jan 2025 Anwar–Abang Johari setuju PETROS jadi pengagregat TAPI LNG DIKECUALIKAN → Feb 2025 Azalina sahkan di Parlimen → Feb 2026 keputusan Mahkamah Persekutuan → Jun 2026 kes berjalan. | src2 | approved |
+| ASB-C4 | OBS | Anwar (Jan 2025, Abu Dhabi): 'All existing agreements are intact, as disturbing them would complicate relationships with major international companies.' | src1 | approved |
+| ASB-C5 | OBS | ISEAS: kehilangan kawalan alokasi LNG Sarawak boleh kurangkan keuntungan PETRONAS di Sarawak sehingga RM20 bilion setahun; Sarawak terima 5% royalti di bawah PDA. | src2 | approved |
+| ASB-C6 | INT | Satu panggilan telefon asing dibalas 'boleh' manakala tuntutan negeri sendiri mengambil 10 tahun mahkamah — dua piawai dalam satu negara; soalan kewarganegaraan sumber, bukan sokongan pemisahan. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Malay Mail & Bernama 29 Jul 2026 — panggilan Tarique Rahman–Anwar, permintaan LNG | malay-mail://2026-07-29/bangladesh-lng-request |
+| src2 | news | CNA 4 Feb 2025 + ISEAS + DayakDaily 5 Feb 2025 + The Edge/CreditSights 7 Feb 2025 + NST Jun 2025 — LNG exclusion, angka 90%, RM20B, SGSA | cna://2025-02-04/petros-lng-exclusion+iseas+creditsights |
 
 ---
 

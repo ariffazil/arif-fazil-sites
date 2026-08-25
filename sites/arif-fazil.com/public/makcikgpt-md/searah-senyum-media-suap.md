@@ -2,13 +2,13 @@
 article_id: m2-5
 canonical_url: https://arif-fazil.com/world/makcikgpt/searah-senyum-media-suap
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 578d2c4410401c61bf61208b4b5a3f3231e95cb02ab6991a78bfa779af043de3
+provenance_status: sealed
+version: 1.1
+merkle_leaf: e3b15244401f082a0a8469a244a11824c5f7d0ab6092e095efe678234511b242
 epistemic_summary:
-  obs_count: 0
+  obs_count: 4
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,23 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/searah-senyum-media-suap
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| SNS-C1 | OBS | Kemaskini: versi awal artikel nyatakan board SEARAH '2 Italy 2 KL' berdasarkan maklumat awal; semakan UK Companies House menunjukkan restrukturasi besar 31 Mei 2026 kepada 6:6 dengan secretary UK (Ian Kenneth Bellamy) dan verifikasi Cheeswrights LLP. | src1 | approved |
+| SNS-C2 | OBS | ATMA Studio (@thisisatmastudio) terbit karusel 15 slaid Threads 21 Julai 2026 membawa mesej 'PETRONAS kekal milik penuh Malaysia' (slaid 2/15); bio akaun menyatakan 'Collaboration/Sponsorship' — akaun komersial, bukan orang awam. | src2 | approved |
+| SNS-C3 | OBS | Gambar bersalam Taufik–Descalzi yang digunakan ialah gambar PR rasmi PETRONAS/Eni, bukan tangkapan bebas. | src2 | approved |
+| SNS-C4 | OBS | 6 Julai 2026 (lima hari selepas operasi bermula) SEARAH fail SH20, SH19 dan CAP-SS — dokumen pengurangan modal — dengan Solvency Statement bertarikh 3 Julai 2026. | src1 | approved |
+| SNS-C5 | INT | Forensik bacaan badan (senyum Duchenne, genggaman folder) dan soalan 'siapa bayar ATMA' ialah tafsiran dan soalan wajar — bukan tuduhan; beban jawab pada syarikat untuk jelaskan saluran komunikasi. | src2 | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | filing | UK Companies House No. 17027115 — officers, filing history (SH20/SH19/CAP-SS, 6 Jul 2026) | https://find-and-update.company-information.service.gov.uk/company/17027115 |
+| src2 | news | Arkib Threads @thisisatmastudio 21 Julai 2026 — karusel 15 slaid + bio sponsorship | threads://thisisatmastudio/2026-07-21-carousel |
 
 ---
 

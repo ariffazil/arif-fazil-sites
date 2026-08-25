@@ -2,13 +2,13 @@
 article_id: m5-4
 canonical_url: https://arif-fazil.com/world/makcikgpt/chennah-bangang
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: d28083b17aff137ad0417968688d2b5683ce9736ed1bd920f2727908fccabb47
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 8711a551169bd15157e5e5dc3937d852c476f2aa0bea7ec1c5f46563ea3316e9
 epistemic_summary:
-  obs_count: 0
+  obs_count: 4
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,23 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/chennah-bangang
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| CHN-C1 | OBS | Anthony Loke ialah ADUN Chennah selama 13 tahun (3 penggal) sambil memegang jawatan Menteri Pengangkutan dan Setiausaha Agung DAP; PRN Negeri Sembilan pada 1 Ogos 2026. | src1 | approved |
+| CHN-C2 | OBS | Chennah: 14,422 pengundi — 55.4% Bumiputera, 42.6% Cina, 2% India; kawasan luar bandar ~700 km persegi; tinjauan menunjukkan pengundi Melayu kampung kekal dengan BN. | src1 | approved |
+| CHN-C3 | OBS | Tuduhan istana (Chegubard/Badrul Hisham di FB: dakwa saluran duit kepada puak tertentu berhubung Undang Sungai Ujong) dijawab dengan laporan polis oleh setiausaha politik Loke — pertikaian awam yang direkodkan; kebenarannya di mahkamah/pra-mahkamah. | src2 | approved |
+| CHN-C4 | OBS | Suara peniaga kampung (Linda Baharuddin, Kampung Sungai Rotan): wakil rakyat 'tak pernah sampai' rumah orang selama 13 tahun — testimoni kempen yang direkodkan, sampel bertemu secara rawak. | src1 | approved |
+| CHN-C5 | INT | Menteri persekutuan bertanding kerusi DUN luar bandar serentak dibaca sebagai himpunan kuasa dua tingkat — soalan kepadanan perwakilan, bukan tuduhan kesalahan. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Laporan Malaysiakini + MalaysiaGazette kempen Chennah PRN 2026 — demografi, ceramah, tinjauan bendera | malaysiakini://2026-07/chennah-prn-campaign |
+| src2 | news | Rekod awam — kenyataan Chegubard FB + laporan polis setiausaha politik Loke | public-record://2026-07/loke-istana-allegation-police-report |
 
 ---
 

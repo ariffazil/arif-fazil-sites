@@ -2,13 +2,13 @@
 article_id: m2-3
 canonical_url: https://arif-fazil.com/world/makcikgpt/searah-followup
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 68560c8a9ace87384f53fdb0f6fdd4832d7f806287482065fa2f3eae802263d2
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 6562c898c2051aae27749338b923165931b3d66c5280ecc8adc5b9b910391781
 epistemic_summary:
-  obs_count: 0
+  obs_count: 5
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,26 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/searah-followup
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| SFU-C1 | OBS | 8 Jun 2024, 3:19 petang: bekas manager PETRONAS Khairul Akmal hantar e-mel sulit 'Q1 2024 Upstream Business Performance' kepada CEO PETROS (Datuk Janin Girie) dan CFO PETROS — butiran daripada keterangan mahkamah. | src1 | approved |
+| SFU-C2 | OBS | Khairul Akmal didakwa bawah Seksyen 203A(1) Kanun Keseksaan (didenda maksimum RM1 juta / penjara setahun); saksi PETRONAS (Syakirah Mustapa) beri keterangan bocoran boleh jemaskan rundingan PETRONAS–PETROS; kes sambung 7 Julai 2026. | src1 | approved |
+| SFU-C3 | OBS | PETROS menafikan tahu akan kebocoran walaupun e-mel sampai ke peti masuk CEO dan CFO — kenyataan rasmi 29 Jun. | src2 | approved |
+| SFU-C4 | OBS | SEARAH mula operasi 1 Julai 2026: 19 ladang, ~300,000 boe/d, pelaburan USD20 bilion/5 tahun, kemudahan kredit USD6 bilion. | src3 | approved |
+| SFU-C5 | OBS | Kes mahkamah selari: 23 Feb 2026 Sarawak fail petisi cabar tiga akta petroleum persekutuan; 16 Mac 2026 Mahkamah Persekutuan benarkan PETRONAS cabar balik — kes berjalan ketika aset berpindah. | src4 | approved |
+| SFU-C6 | INT | CEO PETROS ialah bekas PETRONAS dan penerima e-mel bocoran — konflik kepentingan menyoal integriti pengagregatan gas negeri; soalan wajar, bukan vonis. | src1 | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | court_record | Perbicaraan Mahkamah Sesyen KL — keterangan Jun 2026 (The Edge 19/26 Jun, Malay Mail 26 Jun 2026) | the-edge-malaysia://2026-06/khairul-akmal-203a-trial |
+| src2 | news | DayakDaily 29 Jun 2026 — PETROS menafi pengetahuan kebocoran + 30 stesen minyak PETROS | dayakdaily://2026-06-29/petros-denial |
+| src3 | news | Rigzone 10 Jun 2026 + Reuters 27 Mei 2026 — pelancaran SEARAH, unjuran pendapatan USD2.7B (2030) | rigzone://2026-06-10/searah-launch |
+| src4 | court_record | Reuters 23 Feb & 16 Mac 2026 — petisi Sarawak dan kebenaran cabar balik Mahkamah Persekutuan | reuters://2026-02-23+2026-03-16/federal-court-gas-dispute |
 
 ---
 

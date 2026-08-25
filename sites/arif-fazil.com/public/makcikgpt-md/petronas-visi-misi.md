@@ -2,13 +2,13 @@
 article_id: m1-6
 canonical_url: https://arif-fazil.com/world/makcikgpt/petronas-visi-misi
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 28d46930f0f08721a14a7d891804963467a3e33c5bd2051a7d08187a06172200
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 5e21d45a52d5815e4bfb0d81c28a89a83ea32c33e2365d54a306aa94e95521a5
 epistemic_summary:
-  obs_count: 0
-  der_count: 0
-  int_count: 0
+  obs_count: 3
+  der_count: 1
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/petronas-visi-misi
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| VIS-C1 | OBS | Evolusi visi PETRONAS: 1974 tiada visi (PDA 1974) → 1988 empat nilai (era Azizan) → 1990-an 'multinational' (Twin Towers 1997, ~USD1.6B) → 2000-an 'integrated energy' → 2019 'progressive partner' → 5 Nov 2020 Net Zero 2050 → 2025-26 'energy hub/superstore' 2035. | src1 | approved |
+| VIS-C2 | OBS | PETRONAS 100% milik kerajaan: tiada AGM, tiada analyst coverage, tiada earnings call — tiada forum awam untuk menyoal perubahan visi. | src1 | approved |
+| VIS-C3 | OBS | Gentari ditelan dalam segmen pukal 'Corporate & Others' — kerugian bersihnya tidak dibentang sebagai baris tersendiri yang rakyat boleh semak. | src1 | approved |
+| VIS-C4 | DER | Setiap perubahan visi bersempena pertukaran CEO, bukan desakan Parlimen/rakyat — kompleksiti ayat meningkat seiring jarak akauntabiliti. | src1 | approved |
+| VIS-C5 | INT | Yang kekal dari 1974: PDA 1974 dan hak PETRONAS atas semua petroleum — visi berubah enam kali, undang-undang tidak; janji 'enriching lives' bertembung dengan 5,000 pekerja hilang mata pencarian 2025. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | document | Dokumen korporat PETRONAS 1974–2026 — misi, CoBE, Net Zero, visi 2035 + rekod Twin Towers | petronas://corporate-documents/vision-lineage-1974-2026 |
 
 ---
 

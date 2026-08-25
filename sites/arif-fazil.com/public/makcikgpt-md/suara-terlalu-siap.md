@@ -2,13 +2,13 @@
 article_id: m2-8
 canonical_url: https://arif-fazil.com/world/makcikgpt/suara-terlalu-siap
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 81764dd6d7741f7bb10a09de6ac4804be0ec9dd426ce0ca9130135f8f0fb3572
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 7d72630f7cc91eb723d613e2f21902356229b2e0453345ac15fffd9293b1b419
 epistemic_summary:
-  obs_count: 0
+  obs_count: 3
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/suara-terlalu-siap
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| SVT-C1 | OBS | Rantai kuasa PETRONAS: Mohd Bakke Salleh (pengerusi), Tengku Muhammad Taufik (CEO, penandatangan surat rightsizing), Anwar Ibrahim (PM & Menteri Kewangan, penerima dividen). | src1 | approved |
+| SVT-C2 | OBS | Bakke Salleh meletak jawatan pengerusi 1MDB pada 2009 selepas membantah transaksi mencurigakan — tabik atas integriti bersejarah itu; kini mengetuai board yang menyokong rightsizing. | src1 | approved |
+| SVT-C3 | OBS | Avatar AI PMX dilancarkan Julai 2026 di atas ucapan Anwar sendiri — kempen berpersona mesin sedang berjalan di peringkat tertinggi kerajaan. | src2 | approved |
+| SVT-C4 | INT | Bahasa korporat yang terlalu siap ('polycrisis', 'rightsizing', 'AI-enabled') berfungsi sebagai penyembuny rasa — bila kata terlalu licin, maklumat yang menyakitkan sedang disembunyikan; bacaan bahasa, bukan tuduhan niat. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | document | Rekod awam korporat — lembaga PETRONAS, 1MDB 2009, surat rightsizing | public-record://petronas-board+1mdb-2009 |
+| src2 | news | Laporan pelancaran PMX AI Julai 2026 | bernama://2026-07/pmx-ai-avatar-launch |
 
 ---
 

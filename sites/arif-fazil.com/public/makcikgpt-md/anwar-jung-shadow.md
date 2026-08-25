@@ -2,13 +2,13 @@
 article_id: m5-2
 canonical_url: https://arif-fazil.com/world/makcikgpt/anwar-jung-shadow
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 41670c005309faf48949c2e769ada765c4ee18240720c531df4933cf4a2ea22c
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 36325c33276e3ce6aa38f3c96c2117cc48752e2df0a907581d308b853bbbeea5
 epistemic_summary:
-  obs_count: 0
+  obs_count: 2
   der_count: 0
-  int_count: 0
+  int_count: 2
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/anwar-jung-shadow
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| JUN-C1 | OBS | Kronologi awam Anwar: 1998 ditangkap/dipukul dalam tahanan (kes 'siapa pukul Anwar' berlarutan); penjara 1998–2004 dan 2015–2018 (jumlah 9+ tahun); PM ke-10 sejak 2022. | src1 | approved |
+| JUN-C2 | OBS | Sepanjang 1998–2026, siri tuduhan peribadi berulang dan setiap satu ditolak sebagai konspirasi oleh pihak beliau — corak respons konsisten merentas 28 tahun. | src1 | approved |
+| JUN-C3 | INT | Kerangka psikologi bayang Jung ('persona besar → bayang besar'; 'topeng makin cantik, bayang makin gelap') digunakan sebagai kanta tafsiran tingkah laku politik — alat falsafah, bukan diagnosis klinikal. | src2 | not_applicable |
+| JUN-C4 | INT | Pemimpin yang tidak berdamai dengan bayangnya cenderung menggunakan kuasa untuk menyembunyi bayang itu, bukan untuk menjaga yang dipimpin — cadangan hipotesis untuk diuji pada rekod tadbir, bukan hukuman karakter. | src2 | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Rekod awam 1998–2026 — kronologi perbicaraan, penahanan, kenyataan media | public-record://anwar-ibrahim-1998-2026 |
+| src2 | document | C.G. Jung — konsep shadow/persona ('Psychology and Religion', arketype shadow) | book://jung-shadow-persona-concept |
 
 ---
 

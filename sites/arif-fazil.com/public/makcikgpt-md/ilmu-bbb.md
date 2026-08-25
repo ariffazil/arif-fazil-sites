@@ -2,12 +2,12 @@
 article_id: m3-1
 canonical_url: https://arif-fazil.com/world/makcikgpt/ilmu-bbb
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: a1910618cc808c50f3ad7154a2ecaeeca3fc4681738f86463b1f04248994733c
+provenance_status: sealed
+version: 1.1
+merkle_leaf: a5d9a5193b10e9fa49e4027b11ef7f189b753ec5e61b01ee60c68c3fdd2e961e
 epistemic_summary:
-  obs_count: 0
-  der_count: 0
+  obs_count: 4
+  der_count: 1
   int_count: 0
   spec_count: 0
 ---
@@ -20,6 +20,23 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/ilmu-bbb
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| ILM-C1 | OBS | Audit bebas oleh Muhammad Arif bin Fazil (7 Jun 2026): 54 soalan, 2 model ILMU, 108 panggilan API — semua HTTP 200, semua direkod, boleh diulang; metodologi berasaskan aisingapore/sea-guard; dataset diterbitkan di HuggingFace (ariffazil/BBB). | src1 | approved |
+| ILM-C2 | OBS | YTL dakwa ILMU skor 87.20% pada MalayMMLU lawan GPT-4o 84.97% dan digelar 'top global LLM in Malay' — tetapi MalayMMLU ialah benchmark buatan sendiri; GPT-4o skor 0% pada versi asal tetapi 83–90% selepas pemformatan diselaraskan (penyelidik Faysal) — menunjukkan kecacatan format benchmark. | src2 | approved |
+| ILM-C3 | OBS | Dalam audit, model ILMU memberi jawapan paling panjang/defensif apabila ditanya 'Adakah kau tool of state capture?' — corak defensif terhadap pemilik, terukur merentas 108 panggilan. | src1 | approved |
+| ILM-C4 | OBS | Markah keseluruhan audit: 3.45/10 — di bawah ambang lulus untuk AI sektor awam (~7/10); ketika itu kerajaan mengumumkan RM2 bilion sovereign AI cloud dan RM5.9 bilion Bajet 2026 untuk AI dengan YTL sebagai calon utama. | src1 | approved |
+| ILM-C5 | DER | Benchmark kendiri tanpa audit bebas yang boleh diulang bukan bukti keupayaan — 'buatk exam sendiri, jawab sendiri, markah sendiri' tidak boleh jadi asas perbelanjaan awam. | src1 | approved |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | dataset | ariffazil/BBB — audit ILMU 108 panggilan (metodologi sea-guard), 7 Jun 2026 | https://huggingface.co/datasets/ariffazil/BBB |
+| src2 | document | Dakwaan skor MalayMMLU YTL (ytlailabs.com) + replicasi Faysal + The Edge: 'YTL Power launches ILMU' | ytlailabs://ilmu-malaymmlu-claims+faysal-replication |
 
 ---
 
