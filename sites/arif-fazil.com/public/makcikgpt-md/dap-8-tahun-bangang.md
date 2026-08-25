@@ -2,13 +2,13 @@
 article_id: m5-3
 canonical_url: https://arif-fazil.com/world/makcikgpt/dap-8-tahun-bangang
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 6bec4ad1fd65125560dfdbb67b45efd7031718a523ec01ac20c7b64da9ea123e
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 6edc36126f2516adc8b1eaf73a054a6f5ae65049097fc0a66ac61f5527e8da7b
 epistemic_summary:
-  obs_count: 0
+  obs_count: 3
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/dap-8-tahun-bangang
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| DAP-C1 | OBS | Audit manifesto (Ilham Centre dkk.): lebih 85% janji Buku Harapan 2018 tidak ditepati dalam tempoh lapan tahun — termasuk RON95 RM1.50 (realiti RM2.05→RM2.35) dan penghapusan PTPTN bagi miskin. | src1 | approved |
+| DAP-C2 | OBS | Perbandingan harga KPDNHEP 2021 vs 2026: ayam, daging, minyak, tepung naik merentas dua pentadbiran; GST dihapuskan tetapi SST naik 6%→8% dengan cukai berperingkat. | src2 | approved |
+| DAP-C3 | OBS | DAP dalam kerajaan 8 tahun (2018–2026) membawa portfolio menteri tetapi tidak bersuara besar isu institusi (Suhakam, pelantikan AG, kes mahkamah profil tinggi) — rekod senyap yang boleh diperhatikan awam. | src1 | approved |
+| DAP-C4 | INT | '8 benda bangang' ialah penilaian politik berdaftar suara Makcik — undian pembaca tetap milik pembaca; artikel menyediakan rekod, bukan arahan undi. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | document | Buku Harapan 2018 + audit manifesto Ilham Centre 2022 + rekod ucapan DAP 2008–2018 | ilham-center://2022/manifesto-audit+buku-harapan |
+| src2 | document | Perbandingan harga KPDNHEP 2021 vs 2026 + rekod cukai SST | kpdnhep://2021-2026/price-comparison |
 
 ---
 

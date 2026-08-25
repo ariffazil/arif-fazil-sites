@@ -2,13 +2,13 @@
 article_id: m2-2
 canonical_url: https://arif-fazil.com/world/makcikgpt/cerita-makcik
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 45deda34016806513b3ac7046791ce5de397b3c20ab288928f33c215a820ff97
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 1cb2cd76f8cce9d8116e8141f81b58f1ee8fe5ac376b04295f7feaeb5fb6b285
 epistemic_summary:
-  obs_count: 0
+  obs_count: 6
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,28 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/cerita-makcik
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| CMK-C1 | OBS | MA63 (1963) menjanjikan kuasa sumber Sarawak/Sabah; PDA 1974 memusatkan semua petroleum pada PETRONAS — ketegangan dua dokumen ini berusia 62 tahun. | src1 | approved |
+| CMK-C2 | OBS | 2016: Sarawak tubuhkan PETROS; perjanjian pengagregatan gas penuh gagal siap menjelang tarikh akhir Disember 2025. | src2 | approved |
+| CMK-C3 | OBS | Kronologi SEARAH: didaftar 11 Feb 2026 sebagai SEARA; 16 Mac 2026 Mahkamah Persekutuan benarkan cabaran perlembagaan PETRONAS–Sarawak; 30 Mac (14 hari selepas keputusan) nama ditukar kepada SEARAH; 3 Apr Taufik di TV1 sebut 'horizon perancangan 45 hari'; 20–21 Mei kedua kerajaan luluskan pemindahan; 1 Julai operasi bermula. | src3 | approved |
+| CMK-C4 | OBS | 5 PSC Malaysia dalam SEARAH termasuk SK316 (Kasawari) dan PSC ExxonMobil 2008 (diambil alih 2024); penilaian penganalisis (MarketScreener, 9fin) mengesahkan USD15 bilion dan 300–500k boe/d. | src3 | approved |
+| CMK-C5 | OBS | Tiada BIT Malaysia–Itali dan tiada BIT Malaysia–UK (semakan UNCTAD) — dakwaan 'perlindungan BIT' dalam kertas April 2026 adalah tidak tepat; laluan undang-undang sebenar ialah kontrak English law + Akta Syarikat 2006 UK + arbitrasi London. | src4 | approved |
+| CMK-C6 | OBS | Mohd Bakke Salleh, pengerusi PETRONAS, pernah menjadi pengerusi 1MDB dan meletak jawatan 2009 selepas membantah transaksi mencurigakan — rekod awam. | src5 | approved |
+| CMK-C7 | INT | Tukar nama SEARA→SEARAH 14 hari selepas keputusan mahkamah, dan 'perisai diraja' (political insulation) CEO, dibaca sebagai pengurusan persepsi dalam pertikaian yang masih hidup. | src3 | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | document | MA63 1963 + PDA 1974 — teks perjanjian/akta | malaysia-law://ma63+pda1974 |
+| src2 | news | Rekod awam PETROS 2016–2025 — penubuhan, rundingan, tarikh akhir Dec 2025 | dayakdaily://2016-2025/petros-aggregation-deadline |
+| src3 | filing | UK Companies House No. 17027115 + keputusan Mahkamah Persekutuan 16 Mac 2026 + siaran TV1 3 Apr 2026 | https://find-and-update.company-information.service.gov.uk/company/17027115 |
+| src4 | document | UNCTAD BIT database — tiada BIT Malaysia–Itali / Malaysia–UK | unctad://bit-database/my-sg-my-it-check |
+| src5 | document | Rekod awam 1MDB — peletakan jawatan Bakke Salleh 2009 | public-record://1mdb/bakke-resignation-2009 |
 
 ---
 
@@ -155,7 +177,7 @@ Kalau ada mesyuarat kecemasan, 2 orang Italy boleh jalan kaki ke ENI House. 2 or
 
 Tiada mekanisme undian seri yang didedahkan. Kalau satu hal yang 2 lawan 2, tak tahu siapa menang.
 
-Ketua lembaga PETRONAS sekarang — Mohd Bakke Salleh — dia dulu jadi ketua 1MDB sebelum letak jawatan 2016. Lepastu dilantik jadi ketua PETRONAS. Fikir la sendiri.
+Ketua lembaga PETRONAS sekarang — Mohd Bakke Salleh — dia dulu jadi ketua 1MDB sebelum letak jawatan 2009. Lepastu dilantik jadi ketua PETRONAS. Fikir la sendiri.
 
 ### Masalah 3: PETROS langsung tak dilibatkan
 

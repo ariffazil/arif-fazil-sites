@@ -2,12 +2,12 @@
 article_id: m4-2
 canonical_url: https://arif-fazil.com/world/makcikgpt/ai-johor-rakyat-2026
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 9be9fd1dd3cab9d4a73111657398f1045225dbda2c295db3232ada4a09d83d33
+provenance_status: sealed
+version: 1.1
+merkle_leaf: d81cdaa7338f8bee4ee7ffffb7d1694bf0c7f574f1d6f365b93005b25af340ce
 epistemic_summary:
-  obs_count: 0
-  der_count: 0
+  obs_count: 3
+  der_count: 1
   int_count: 0
   spec_count: 0
 ---
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/ai-johor-rakyat-2026
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| AIJ-C1 | OBS | Jawapan parlimen (Menteri Sumber Manusia, Ramanan): 697,000 pekerjaan Malaysia terancam jika kemahiran tidak dinaik taraf; 42,807 pekerja hilang kerja Januari–Jun 2026. | src1 | approved |
+| AIJ-C2 | OBS | PRN Johor pada 11 Julai 2026 berlangsung dalam suasana kos sara hidup meningkat selepas konflik Iran; RON95 kekal RM1.99 tetapi harga barang lain naik. | src2 | approved |
+| AIJ-C3 | OBS | Harga pasar direkod sendiri Makcik (Julai 2026): ikan kembung RM18/kg (dulu RM12), minyak masak RM7 (dulu RM5), kangkung RM4 sekampit (dulu RM2.50); gaji pekerja muda ~RM1,800 meninggalkan ~RM800 selepas potongan wajib. | - | approved |
+| AIJ-C4 | DER | RM2 bilion dilabur ke infrastruktur AI sementara tiada program pensijilan besar-besaran untuk 697,000 pekerja terancam — kesilapan keutamaan selari berjalan. | src1 | approved |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | official_statement | Jawapan Dewan Rakyat Menteri Sumber Manusia 2026 — 697,000 pekerjaan terancam, 42,807 hilang kerja | parliament-my://2026/answers/hr-minister-697k |
+| src2 | news | Laporan PRN Johor 11 Julai 2026 + indeks harga KPDNHEP | kpdnhep://2026/price-index+johor-prn |
 
 ---
 

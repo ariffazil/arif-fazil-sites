@@ -2,13 +2,13 @@
 article_id: m1-1
 canonical_url: https://arif-fazil.com/world/makcikgpt/iran-hormuz
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 222814b3262bbb1bffec9d973a6e9570f8926f9aa4ed42b8bfffb79c98ff7046
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 083a0c0eace454dd7e2da9606ae8caf87e087bcf200ef06e59a048b0c78fdbc3
 epistemic_summary:
-  obs_count: 0
+  obs_count: 3
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/iran-hormuz
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| HRM-C1 | OBS | Konflik Iran–AS/Israel berterusan sejak 28 Feb 2026; Selat Hormuz — lorong ~20% minyak dunia pada waktu aman — ditutup penuh pada 11 Jun 2026 mengikut laporan Al Jazeera; kapal yang cuba lalu ditembak. | src1 | approved |
+| HRM-C2 | OBS | Rundingan Doha tidak jelas: AS kata hantar orang, Iran sangkal rundingan langsung, Qatar jelaskan hanya jumpa mediator. | src1 | approved |
+| HRM-C3 | OBS | PETRONAS menjalankan rightsizing berulang (termasuk ~5,000 tenaga kerja) sambil negara masih bergantung pada minyak dan gas; Lembaga Pengarah tidak bersuara secara terbuka. | src2 | approved |
+| HRM-C4 | INT | Bila dunia tidak menentu, negara patut menguatkan tulang belakang NOC, bukan melemahkannya — tiga teguran Makcik: jangan senyap, jangan buang orang sesuka hati, jangan alih aset strategik tanpa cerita. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Al Jazeera + laporan agensi (Jun 2026) — penutupan Hormuz, serangan kapal, status Doha | aljazeera://2026-06/hormuz-closure-doha-status |
+| src2 | news | Laporan media Malaysia 2024–2026 — pusingan rightsizing PETRONAS | nst://2024-2026/petronas-rightsizing-rounds |
 
 ---
 

@@ -2,13 +2,13 @@
 article_id: m1-5
 canonical_url: https://arif-fazil.com/world/makcikgpt/petronas-atm-kerajaan
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 69702ce74e433c92475bb51ff83dcf1fc2b376f9c0eafbce15aca2403407e5a5
+provenance_status: sealed
+version: 1.1
+merkle_leaf: 7bb648e21ac48667605f9b7a4db6ee28b53a44c85d1ec0d18c282685b56a588f
 epistemic_summary:
-  obs_count: 0
-  der_count: 0
-  int_count: 0
+  obs_count: 3
+  der_count: 1
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/petronas-atm-kerajaan
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| ATM-C1 | OBS | Siri dividen PETRONAS kepada kerajaan: 2022 RM50B (tahun untung rekod RM101.6B) → 2023 RM32B → 2024 RM32B → 2025 RM32B (walaupun untung turun 18%) → 2026 dipotong ke RM20B, terendah dalam ~9 tahun. | src1 | approved |
+| ATM-C2 | OBS | Gentari (dilancarkan 2022, solar/hidrogen/EV) belum pernah untung; segmen berkenaan rugi ~RM460 juta sedangkan tanpa Gentari dijangka untung ~RM790 juta; anggaran pembakaran tunai RM1–1.5B setahun selama empat tahun. | src1 | approved |
+| ATM-C3 | OBS | Kas kumpulan naik daripada ~RM188B ke ~RM204B tahun berjalan — PETRONAS ada duit; isunya keutusan, bukan kekeringan. | src1 | approved |
+| ATM-C4 | DER | ROACE jatuh tiga tahun berturut-turut — pulangan modal merosot sambil dividen dikekalkan tinggi. | src1 | approved |
+| ATM-C5 | INT | Struktur tadbir: Lembaga dilantik kerajaan, CEO dilantik kerajaan, auditor dalaman dilantik pengurusan — bulatan tertutup tanpa AGM; pintu depan dividen, pintu belakang Gentari. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | document | PETRONAS Integrated Report / Audited Financials FY2022–FY2025 — siri dividen, kas, segmen Gentari | petronas://integrated-report/fy2022-fy2025-dividend-gentari-series |
 
 ---
 

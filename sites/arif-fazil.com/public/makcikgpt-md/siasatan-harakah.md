@@ -2,13 +2,13 @@
 article_id: m2-1
 canonical_url: https://arif-fazil.com/world/makcikgpt/siasatan-harakah
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: 5ef48558132a0dfe3b6777a4de4d2020267377215fe607187c12f59a6945665e
+provenance_status: sealed
+version: 1.1
+merkle_leaf: fb07737760450d654761447b672dbf3176581ad76cc1d28e05988845787d09b3
 epistemic_summary:
-  obs_count: 0
+  obs_count: 3
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/siasatan-harakah
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| HRK-C1 | OBS | SEARAH Limited: syarikat baharu berdaftar London, modal USD2, memegang 19 medan gas (14 Indonesia, 5 Malaysia); nilai perjanjian USD15 bilion (~RM70 bilion); 50% PETRONAS + 50% Eni. | src1 | approved |
+| HRK-C2 | OBS | Kronologi: Jun 2025 perjanjian rangka → Nov 2025 mengikat di ADIPEC Abu Dhabi → Mac 2026 pendaftaran London di ENI House, 10 Ebury Bridge Road → Mei 2026 kelulusan kedua kerajaan → Julai 2026 operasi. | src1 | approved |
+| HRK-C3 | OBS | Pertikaian kuasa gas Sarawak–Persekutuan berakar sejak 1963 (MA63) — 62 tahun belum selesai sepenuhnya. | src2 | approved |
+| HRK-C4 | INT | Jarak antara modal USD2 dan perjanjian USD15 bilion adalah soalan tadbir sah yang wajar dijawab — siapa menanggung risiko, siapa mendapat kelebihan. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | official_statement | Kenyataan akhbar Eni (Jun 2026) + Reuters + The Edge — penubuhan SEARAH, struktur 50:50, kronologi | eni://press/2026-searah+reuters+the-edge |
+| src2 | document | MA63 1963 + PDA 1974 + rekod pertikaian — konteks perlembagaan | malaysia-law://ma63-1963+pda-1974 |
 
 ---
 

@@ -2,13 +2,13 @@
 article_id: m1-3
 canonical_url: https://arif-fazil.com/world/makcikgpt/suriname-exxon-cabut
 seal: 999
-provenance_status: legacy
-version: 1.0
-merkle_leaf: ec4874a74212eaf4518a81afdb8e24927b7bbd50796d394c2514cf58efa7c805
+provenance_status: sealed
+version: 1.1
+merkle_leaf: a1962b8baca2ce991b74a0baae4488e61e25d793f65561b697bf81ded959d320
 epistemic_summary:
-  obs_count: 0
+  obs_count: 3
   der_count: 0
-  int_count: 0
+  int_count: 1
   spec_count: 0
 ---
 
@@ -20,6 +20,22 @@ epistemic_summary:
 >
 > Bahasa: BM (Bahasa Makcik) · Suara: makcik pasar, bukan institusi · Semua nombor bawa sumber.
 > Baca versi HTML: https://arif-fazil.com/world/makcikgpt/suriname-exxon-cabut
+
+## Claim Register
+
+| claim_id | tag | text | source_id | maruah |
+|---|---|---|---|---|
+| SRM-C1 | OBS | November 2024: ExxonMobil keluar dari Block 52 Suriname, menyerahkan 50% stake kepada PETRONAS — PETRONAS jadi operator 100%; alasan rasmi 'penilaian portfolio global'. | src1 | approved |
+| SRM-C2 | OBS | Jun 2026: PETRONAS umum dua penemuan lagi di blok sama — lapan telaga berjaya, lebih 1 bilion boe, 'success rate 100%' dalam pengumuman syarikat. | src1 | approved |
+| SRM-C3 | OBS | Pada tempoh sama EnQuest ambil 30% blok domestik (Lebah Emas/PM6/12) dan lebih lima ribu pekerja hilang kerja melalui rightsizing/MSS. | src2 | approved |
+| SRM-C4 | INT | Timing pengumuman penemuan luar negara beriringan dengan jualan blok domestik dan pemecatan pekerja dibaca sebagai narrative management, bukan kebetulan — bacaan Makcik, bukan fakta dalaman. | - | not_applicable |
+
+## Source Ledger
+
+| source_id | type | title | url |
+|---|---|---|---|
+| src1 | news | Pengumuman korporat + laporan minyak antarabangsa (Nov 2024–Jun 2026) — Exxon exit Block 52, penemuan susulan | petronas://announcements/2024-11-exxon-block52+2026-06-suriname-discoveries |
+| src2 | news | EnQuest–PETRONAS PM6/12 farm-out + laporan rightsizing 2024–2026 | enquest://2026/pm6-12-farmout+nst-rightsizing |
 
 ---
 
