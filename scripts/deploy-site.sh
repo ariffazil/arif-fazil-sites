@@ -640,6 +640,20 @@ if [[ "$GARBAGE_CODE" == "200" ]]; then
 fi
 log "  ✅ Gate 1f₂ passed (garbage path returned HTTP $GARBAGE_CODE, not 200)"
 
+# Gate 1e₃ (2026-08-25): split-root serving sync. Caddy serves /earth* and
+# @root_static (surfaces.json, llms.json, page.json…) from /var/www/html
+# top-level, NOT from this webroot. Without this hook every deploy silently
+# strands those files at pre-deploy versions (proven 2026-08-25). Fatal on
+# live-marker mismatch — a deploy that leaves serving roots stale is a
+# failed deploy, not a warned one.
+if [[ "$WEBROOT_NAME" == "arif" ]]; then
+  if bash "$REPO_ROOT/scripts/sync-serving-roots.sh" "$WEBROOT"; then
+    log "post-deploy: split-root serving roots synced + verified"
+  else
+    rollback_after_failure "split-roots live verification failed" "rolled_back" "$BUILD_HASH" "$SOURCE_COMMIT" true false || exit 1
+  fi
+fi
+
 # Post-deploy hook (2026-07-27, 888 auth): re-render the WEALTH briefing.
 # /wealth is served from $WEBROOT/static/wealth.html, cron-rendered daily at
 # 06:00 UTC from data/wealth/latest.json. Both are preserve-live overlays, so
