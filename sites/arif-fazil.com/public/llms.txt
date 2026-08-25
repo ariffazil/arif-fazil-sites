@@ -17,7 +17,7 @@ The Observatory surface is live at https://arifos.arif-fazil.com
 ## The arifOS Federation — 5 Organs Under One Sovereign
 The federation runs five constitutional organs:
 - **arifOS** — Constitutional governance kernel, 888 JUDGE (MIND)
-- **AAA** — Control plane, A2A gateway, agent identity (BODY)
+- **AAA** — Control plane, A2A gateway, agent identity (BODY) · Ceiling DISPLAY_ONLY: AAA shows state, queues A2A, and stops. Never judges. Never executes.
 - **GEOX** — Earth intelligence, physics-gated geoscience (ORGAN)
 - **WEALTH** — Capital intelligence, NPV/EMV/capital thermodynamics (ORGAN)
 - **WELL** — Human and machine vitality reflection (ORGAN)
