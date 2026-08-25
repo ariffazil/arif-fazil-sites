@@ -28,7 +28,9 @@ FAILURES=0
 CHECKS=0
 
 fetch() {
-    curl -sf --max-time "$TIMEOUT" -H "Cache-Control: no-cache" "$BASE_URL$1"
+    # -L follows redirects so check on /oil/ (which 308s to /world/economics/oil/)
+    # actually inspects the canonical page content.
+    curl -sfL --max-time "$TIMEOUT" -H "Cache-Control: no-cache" "$BASE_URL$1"
 }
 
 assert_present() {

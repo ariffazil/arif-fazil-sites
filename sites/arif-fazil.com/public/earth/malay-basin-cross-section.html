@@ -69,6 +69,98 @@ body{background:var(--bg-deep);color:var(--text-primary);font-family:'Inter',-ap
   .hdr .src{text-align:left}
 }
 </style>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="/_shared/leaflet/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+/* ─── GIS LOCATOR MAP & INTERACTIVE CONTROLS ─── */
+.gis-locator-card {
+  margin-bottom: 1.25rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.gis-locator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 1.2rem;
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid var(--border-dim);
+}
+.gis-locator-header h3 {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 1.5px;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+}
+.gis-ctrl-group {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.gis-btn {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 5px;
+  background: #0a0e17;
+  border: 1px solid var(--border-dim);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.gis-btn:hover { color: #fff; border-color: var(--accent-gold); }
+.gis-btn.active { background: var(--accent-gold); color: #0a0e17; font-weight: 700; border-color: var(--accent-gold); }
+.gis-btn.cyan.active { background: var(--accent-cyan); color: #0a0e17; border-color: var(--accent-cyan); }
+
+#transectMap {
+  width: 100%;
+  height: 280px;
+  background: #070a10;
+}
+.gis-telemetry {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(0,0,0,0.4);
+  border-top: 1px solid var(--border-dim);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+}
+.gis-telemetry b { color: var(--accent-cyan); }
+
+/* Cross section filter toolbar */
+.svg-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(15,23,42,0.9);
+  border-bottom: 1px solid var(--border-dim);
+  font-size: 0.7rem;
+}
+.svg-filter-bar .lbl {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-right: 0.3rem;
+}
+.highlight-box {
+  transition: opacity 0.3s, stroke 0.3s;
+}
+</style>
+
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -96,6 +188,27 @@ body{background:var(--bg-deep);color:var(--text-primary);font-family:'Inter',-ap
   <span class="zp gold"><b>WHAT</b> NW–SE transect, ~500 km</span>
   <span class="zp"><b>SCALE</b> vertical ~32× exaggerated</span>
   <span class="zp"><b>LAYERS</b> 8 groups · 4 founder wells</span>
+</div>
+
+<!-- ═══ GIS TRANSECT LOCATOR MAP ═══ -->
+<div class="gis-locator-card">
+  <div class="gis-locator-header">
+    <h3>◈ Spatial Locator · NW–SE Transect A–A' (~500 km)</h3>
+    <div class="gis-ctrl-group">
+      <button class="gis-btn active" id="btnTMapMacro" onclick="setTransectBase('macro')">Macrostrat Geology</button>
+      <button class="gis-btn" id="btnTMapSat" onclick="setTransectBase('sat')">Satellite</button>
+      <button class="gis-btn" id="btnTMapDark" onclick="setTransectBase('dark')">Dark</button>
+      <button class="gis-btn cyan active" id="btnTMapWells" onclick="toggleTransectWells()">Founder Wells (4)</button>
+      <button class="gis-btn" onclick="fitTransect()">Fit Transect</button>
+    </div>
+  </div>
+  <div id="transectMap"></div>
+  <div class="gis-telemetry">
+    <span>TRANSECT: <b>A (Terengganu Granite) → A' (Central Malay Basin Flank)</b></span>
+    <span>ORIENTATION: <b>NW–SE (140° Strike)</b></span>
+    <span>REAL-TIME COORDS: <b id="tHudCoords">5.5000° N, 104.5000° E</b></span>
+    <span>PIPE: <b>Macrostrat Tile API (Live)</b></span>
+  </div>
 </div>
 
 <div class="frame">
@@ -599,7 +712,129 @@ body{background:var(--bg-deep);color:var(--text-primary);font-family:'Inter',-ap
 </div>
 
 </div>
+<!-- ═══ GEOX CONTRAST BRIDGE ═══ -->
+<div style="padding:2.8rem 2rem;background:linear-gradient(135deg,#0A0B0D 0%,#1A1E24 100%);border-top:2px solid #E8733B;border-bottom:1px solid #2A2F37">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#5C636C;margin-bottom:.5rem">GEOX INTELLIGENCE LAYER · geox.arif-fazil.com</div>
+      <h3 style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:#EDEAE2;margin-bottom:.5rem">This page is the reading layer. GEOX is the intelligence layer.</h3>
+      <p style="font-size:.87rem;color:#9AA0A8;line-height:1.65;max-width:640px">arif-fazil.com/earth is where you <em>read</em> the basin. <strong style="color:#EDEAE2">geox.arif-fazil.com</strong> is where you <em>compute</em> it — Kill Matrix K001–K007, evidence ledger (OBS/DER/INT/SPEC), abductive hypothesis, capital bridge. Evidence-first, never adjudicates.</p>
+      <div style="margin-top:.9rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5C636C;letter-spacing:1px"><span style="color:#5FD68A">●</span> GEOX MCP LIVE · :8081 &nbsp;|&nbsp; <span style="color:#D9A441">◆</span> 888_HOLD ACTIVE &nbsp;|&nbsp; <span style="color:#E8733B">▸</span> Kill Matrix ARMED</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.7rem;min-width:180px">
+      <a href="https://geox.arif-fazil.com/basins/kinabalu/" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;background:#E8733B;color:#0A0B0D;padding:.65rem 1.2rem;text-align:center;font-weight:700;text-decoration:none;display:block">ENTER GEOX ↗</a>
+      <a href="https://geox.arif-fazil.com/mcp-apps" style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;border:1px solid #2A2F37;color:#9AA0A8;padding:.5rem 1.2rem;text-align:center;text-decoration:none;display:block">MCP APPS →</a>
+      <a href="https://geox.arif-fazil.com/platform" style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;border:1px solid #2A2F37;color:#9AA0A8;padding:.5rem 1.2rem;text-align:center;text-decoration:none;display:block">PLATFORM →</a>
+    </div>
+  </div>
+</div>
+
 </main>
 <!-- /#main-content -->
+<!-- Leaflet JS & Transect Script -->
+<script src="/_shared/leaflet/leaflet.js"></script>
+<script>
+if (typeof L === 'undefined') {
+  document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');
+}
+</script>
+<script>
+let tMap, tBaseLayer, tWellGroup;
+const T_TILES = {
+  macro: 'https://tiles.macrostrat.org/carto/{z}/{x}/{y}.png',
+  sat: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+};
+
+const T_POINTS = [
+  [4.75, 103.10], // A: Onshore Terengganu Granite
+  [5.25, 103.85], // Western Hinge
+  [5.80, 104.80], // Central Depocentre
+  [6.35, 105.75]  // A': Eastern Flank
+];
+
+const T_WELLS = [
+  { name: 'BEKANTAN-1', lat: 5.42, lng: 104.78, year: 2018, note: 'Shallow clastic oil in Group E/H15' },
+  { name: 'PUTERI BASEMENT-1', lat: 4.88, lng: 104.62, year: 2020, note: 'K-5 sand oil discovery + fractured granite test' },
+  { name: 'LEBAH EMAS-1', lat: 5.92, lng: 103.85, year: 2025, note: 'Western hinge discovery, 11 HC intervals' },
+  { name: 'BUNGA TASBIH-1', lat: 6.18, lng: 105.15, year: 2024, note: 'Post-rift I/J sand discovery' }
+];
+
+function initTransectMap() {
+  tMap = L.map('transectMap', {
+    center: [5.55, 104.45],
+    zoom: 7,
+    attributionControl: false
+  });
+
+  tBaseLayer = L.tileLayer(T_TILES.macro, { maxZoom: 15 }).addTo(tMap);
+
+  // Draw Transect Line
+  const line = L.polyline(T_POINTS, {
+    color: '#00d4aa',
+    weight: 3.5,
+    opacity: 0.95
+  }).addTo(tMap);
+
+  // Station markers at A and A'
+  L.circleMarker(T_POINTS[0], { radius: 6, color: '#fbbf24', fillColor: '#fbbf24', fillOpacity: 1 })
+    .bindTooltip('<b>Station A</b> (Onshore Granite)', { permanent: true, direction: 'left', className: 'leaflet-tooltip-dark' })
+    .addTo(tMap);
+
+  L.circleMarker(T_POINTS[3], { radius: 6, color: '#fbbf24', fillColor: '#fbbf24', fillOpacity: 1 })
+    .bindTooltip("<b>Station A'</b> (Eastern Flank)", { permanent: true, direction: 'right', className: 'leaflet-tooltip-dark' })
+    .addTo(tMap);
+
+  // Wells
+  tWellGroup = L.layerGroup().addTo(tMap);
+  T_WELLS.forEach(w => {
+    const icon = L.divIcon({
+      className: 'custom-well-icon',
+      html: `<div style="background:#fbbf24;width:10px;height:10px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 8px #fbbf24;"></div>`,
+      iconSize: [10, 10]
+    });
+    L.marker([w.lat, w.lng], { icon: icon }).bindPopup(`
+      <div style="font-family:var(--sans);font-size:0.75rem;">
+        <b style="color:#fbbf24">${w.name}</b> (${w.year})<br>
+        <span style="color:#94a3b8">${w.note}</span>
+      </div>
+    `).addTo(tWellGroup);
+  });
+
+  tMap.on('mousemove', function(e) {
+    document.getElementById('tHudCoords').textContent = `${e.latlng.lat.toFixed(4)}° N, ${e.latlng.lng.toFixed(4)}° E`;
+  });
+}
+
+function setTransectBase(type) {
+  if (tBaseLayer) tMap.removeLayer(tBaseLayer);
+  document.getElementById('btnTMapMacro').classList.remove('active');
+  document.getElementById('btnTMapSat').classList.remove('active');
+  document.getElementById('btnTMapDark').classList.remove('active');
+
+  tBaseLayer = L.tileLayer(T_TILES[type], { maxZoom: 15 }).addTo(tMap);
+  if (type === 'macro') document.getElementById('btnTMapMacro').classList.add('active');
+  if (type === 'sat') document.getElementById('btnTMapSat').classList.add('active');
+  if (type === 'dark') document.getElementById('btnTMapDark').classList.add('active');
+}
+
+function toggleTransectWells() {
+  const btn = document.getElementById('btnTMapWells');
+  if (tMap.hasLayer(tWellGroup)) {
+    tMap.removeLayer(tWellGroup);
+    btn.classList.remove('active');
+  } else {
+    tMap.addLayer(tWellGroup);
+    btn.classList.add('active');
+  }
+}
+
+function fitTransect() {
+  tMap.fitBounds(L.latLngBounds(T_POINTS).pad(0.2));
+}
+
+window.addEventListener('DOMContentLoaded', initTransectMap);
+</script>
+
 </body>
 </html>

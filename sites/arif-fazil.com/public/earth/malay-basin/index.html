@@ -1,29 +1,36 @@
 <!DOCTYPE html>
-<!-- page: earth/malay-basin v1 · Φ GEOX · arif-fazil.com/earth/malay-basin · content-marker: malay-dossier-Φ -->
+<!-- page: earth/malay-basin v2 · Φ GEOX · arif-fazil.com/earth/malay-basin · content-marker: malay-dossier-Φ -->
 <html lang="en" data-ring="ORGAN" data-organ="geox" data-content-marker="malay-dossier-Φ">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malay Basin — Geological Dossier · Φ GEOX | Arif Fazil</title>
-<meta name="description" content="Malay Basin — the founder's home waters. 13+ years reading rocks offshore Peninsular Malaysia. Cenozoic failed rift / pull-apart basin, ~500 km long, ~200 km wide, NW-SE trend. Group A→M stratigraphy. Mature gas province with significant oil in Groups H and I. Founder wells: BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1.">
+<title>Malay Basin — Geological Dossier & Interactive GIS Map · Φ GEOX | Arif Fazil</title>
+<meta name="description" content="Malay Basin — the founder's home waters. 13+ years reading rocks offshore Peninsular Malaysia. Real map tools with Macrostrat geological tiles, live API unit query, structural fairways, Group A→M stratigraphy, 4 founder wells (BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1), and NW-SE regional cross-section.">
 <meta name="author" content="GEOX · arifOS Federation">
 <link rel="canonical" href="https://arif-fazil.com/earth/malay-basin/">
-<meta property="og:title" content="Malay Basin — Geological Dossier">
-<meta property="og:description" content="The founder's home waters. 13+ years. Cenozoic failed rift, Group A→M stratigraphy, mature gas province.">
+<meta property="og:title" content="Malay Basin — Geological Dossier & Real Map Tools">
+<meta property="og:description" content="The founder's home waters. 13+ years. Real GIS map, live Macrostrat query, Cenozoic failed rift, Group A→M stratigraphy, mature gas province.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="/_shared/leaflet/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{
   --bg-dark:#0a0a0f;
   --bg-panel:#101018;
+  --bg-panel-2:#161624;
   --border-dim:#1a1a25;
+  --border-bright:#2a2a3d;
   --accent-gold:#d4af37;
   --accent-cyan:#00d4aa;
+  --accent-rust:#f43f5e;
   --text-primary:#e8e8ef;
   --text-secondary:#9a9aa8;
-  --mono:'Fira Code',monospace;
+  --text-dim:#666675;
+  --mono:'JetBrains Mono','Fira Code',monospace;
   --sans:'Inter',-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -36,8 +43,8 @@ a:hover{color:var(--accent-gold)}
 .skip-link:focus{position:fixed;top:.5rem;left:.5rem;width:auto;height:auto;padding:.5rem 1rem;background:var(--accent-gold);color:var(--bg-dark);border-radius:4px;z-index:9999;font-family:var(--mono);font-size:.8rem;font-weight:600}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-  padding:.9rem 2rem;background:rgba(10,10,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dim)}
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 2rem;background:rgba(10,10,15,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dim)}
 .brand{font-family:var(--mono);font-size:.8rem;letter-spacing:2px;color:var(--text-secondary)}
 .brand b{color:var(--accent-gold);font-weight:600}
 .nav-links{display:flex;gap:1.6rem;align-items:center}
@@ -53,12 +60,12 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-conte
 .zen-pulse .zp.gold b{color:var(--accent-gold)}
 @media(max-width:720px){.zen-pulse{gap:.35rem;padding:.6rem .8rem;margin-top:48px}.zen-pulse .zp{font-size:.68rem;padding:.2rem .55rem}}
 
-.hero{padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border-dim);background:radial-gradient(ellipse at 80% 0%,rgba(212,175,55,.07),transparent 50%)}
-.hero .container{max-width:1100px;margin:0 auto}
+.hero{padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border-dim);background:radial-gradient(ellipse at 80% 0%,rgba(212,175,55,.08),transparent 50%)}
+.hero .container{max-width:1160px;margin:0 auto}
 .kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:3px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.8rem}
 h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.05;margin-bottom:1.2rem;
   background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero p.lede{color:var(--text-secondary);max-width:760px;font-size:1.05rem;margin-bottom:1.4rem}
+.hero p.lede{color:var(--text-secondary);max-width:820px;font-size:1.05rem;margin-bottom:1.4rem}
 .hero p.lede b{color:var(--text-primary)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
 .hero-meta .chip{font-family:var(--mono);font-size:.62rem;letter-spacing:1.2px;padding:.32rem .7rem;border:1px solid var(--border-dim);border-radius:99px;color:var(--text-secondary);background:rgba(16,16,24,.5)}
@@ -66,14 +73,46 @@ h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.05;margin-bo
 .hero-meta .chip.cyan{color:var(--accent-cyan);border-color:rgba(0,212,170,.5)}
 
 section{padding:4.5rem 2rem;border-top:1px solid var(--border-dim)}
-.container{max-width:1100px;margin:0 auto}
+.container{max-width:1160px;margin:0 auto}
 h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem;
   background:linear-gradient(135deg,#fff 40%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 h2 .num{font-family:var(--mono);font-size:.6em;color:var(--accent-cyan);margin-right:.4rem;vertical-align:middle}
-.lede{color:var(--text-secondary);max-width:760px;font-size:1.02rem;margin-bottom:1.6rem}
+.lede{color:var(--text-secondary);max-width:820px;font-size:1.02rem;margin-bottom:1.6rem}
 .lede b{color:var(--text-primary)}
 
-.prose{max-width:760px;font-size:.96rem;color:var(--text-primary);line-height:1.75;margin-bottom:1.4rem}
+/* ══ MAP SECTION & REAL GIS TOOLS ══ */
+.map-workspace{margin:1.8rem 0;background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.map-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;padding:.9rem 1.2rem;background:rgba(16,16,24,.95);border-bottom:1px solid var(--border-dim)}
+.map-toolbar .title-group{display:flex;align-items:center;gap:.75rem}
+.map-toolbar h3{font-family:var(--mono);font-size:.82rem;letter-spacing:1.5px;color:var(--accent-gold);text-transform:uppercase}
+.map-toolbar .pipe-badge{font-family:var(--mono);font-size:.6rem;padding:.2rem .55rem;border-radius:99px;background:rgba(0,212,170,.1);color:var(--accent-cyan);border:1px solid rgba(0,212,170,.3)}
+.map-controls{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
+.map-btn{font-family:var(--mono);font-size:.64rem;letter-spacing:.8px;padding:.36rem .75rem;border-radius:6px;cursor:pointer;background:var(--bg-dark);border:1px solid var(--border-dim);color:var(--text-secondary);transition:all .2s}
+.map-btn:hover{color:var(--text-primary);border-color:var(--accent-gold)}
+.map-btn.active{color:var(--bg-dark);background:var(--accent-gold);border-color:var(--accent-gold);font-weight:700}
+.map-btn.cyan.active{background:var(--accent-cyan);border-color:var(--accent-cyan)}
+
+#malayMap{width:100%;height:580px;background:#080b12;position:relative}
+.map-hud{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;padding:1rem 1.2rem;background:rgba(10,10,15,.95);border-top:1px solid var(--border-dim);font-size:.76rem}
+.hud-item{display:flex;flex-direction:column;gap:.2rem}
+.hud-item .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:1.2px;color:var(--text-dim);text-transform:uppercase}
+.hud-item .val{font-family:var(--mono);font-size:.78rem;color:var(--text-primary);font-weight:600}
+.hud-item .val.cyan{color:var(--accent-cyan)}
+.hud-item .val.gold{color:var(--accent-gold)}
+
+/* Live Macrostrat Inspector popup card inside map */
+.macro-inspect-panel{position:absolute;top:1rem;right:1rem;z-index:1000;width:340px;max-width:calc(100% - 2rem);background:rgba(16,16,24,.95);border:1px solid var(--border-bright);border-radius:10px;padding:1rem;backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,.6);display:none}
+.macro-inspect-panel.show{display:block;animation:fadeDown .25s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.macro-inspect-panel .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;border-bottom:1px solid var(--border-dim);padding-bottom:.4rem}
+.macro-inspect-panel .panel-head span{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;color:var(--accent-cyan);text-transform:uppercase}
+.macro-inspect-panel .close-btn{background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:.9rem}
+.macro-inspect-panel .unit-name{font-size:.95rem;font-weight:700;color:var(--accent-gold);margin-bottom:.25rem}
+.macro-inspect-panel .unit-age{font-family:var(--mono);font-size:.68rem;color:var(--text-primary);margin-bottom:.4rem}
+.macro-inspect-panel .unit-lith{font-size:.78rem;color:var(--text-secondary);line-height:1.45;margin-bottom:.5rem}
+.macro-inspect-panel .unit-ref{font-size:.62rem;color:var(--text-dim);font-style:italic}
+
+.prose{max-width:820px;font-size:.96rem;color:var(--text-primary);line-height:1.75;margin-bottom:1.4rem}
 .prose b{color:var(--accent-gold)}
 .prose code{font-family:var(--mono);font-size:.85em;background:rgba(0,212,170,.08);color:var(--accent-cyan);padding:.1rem .35rem;border-radius:4px}
 .prose ul{margin:.8rem 0 .8rem 1.2rem;color:var(--text-secondary)}
@@ -90,14 +129,6 @@ h2 .num{font-family:var(--mono);font-size:.6em;color:var(--accent-cyan);margin-r
 .event p{font-size:.88rem;color:var(--text-secondary)}
 .event p b{color:var(--text-primary)}
 
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.8rem 0}
-.stat{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.1rem 1.2rem;transition:border-color .25s}
-.stat:hover{border-color:var(--accent-gold)}
-.stat .num{font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-cyan)}
-.stat .num.gold{color:var(--accent-gold)}
-.stat .lbl{font-size:.72rem;color:var(--text-secondary);letter-spacing:.5px;text-transform:uppercase;margin-top:.25rem}
-.stat .src{font-family:var(--mono);font-size:.55rem;color:#55555f;margin-top:.5rem}
-
 .strat-tbl{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.84rem}
 .strat-tbl th{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-secondary);text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border-dim);font-weight:600}
 .strat-tbl td{padding:.7rem .8rem;border-bottom:1px solid var(--border-dim);color:var(--text-secondary);vertical-align:top;line-height:1.5}
@@ -105,7 +136,7 @@ h2 .num{font-family:var(--mono);font-size:.6em;color:var(--accent-cyan);margin-r
 .strat-tbl tr:hover td{background:rgba(0,212,170,.03)}
 .lith-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.5rem;vertical-align:middle}
 
-.psys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.8rem 0}
+.psys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.8rem 0}
 .psys{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.2rem 1.3rem;border-top:3px solid var(--accent-cyan)}
 .psys.src{border-top-color:#a78bfa}
 .psys.res{border-top-color:var(--accent-gold)}
@@ -161,15 +192,6 @@ h2 .num{font-family:var(--mono);font-size:.6em;color:var(--accent-cyan);margin-r
 .crumbs .crumb.next{color:var(--accent-cyan);border-color:rgba(0,212,170,.4);background:rgba(0,212,170,.06)}
 .crumbs .sep{color:#55555f;font-size:.7rem}
 
-.collapsible{margin-top:1rem}
-.collapsible > summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-cyan);text-transform:uppercase;padding:.6rem 0;display:flex;align-items:center;gap:.5rem;user-select:none}
-.collapsible > summary::-webkit-details-marker{display:none}
-.collapsible > summary::before{content:"▸";transition:transform .2s;display:inline-block;color:var(--accent-cyan)}
-.collapsible[open] > summary::before{transform:rotate(90deg)}
-.collapsible > summary:hover{color:var(--accent-gold)}
-.collapsible[open] > summary::before{color:var(--accent-gold)}
-.collapsible .body{margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--border-dim)}
-
 .callout{border-left:3px solid var(--accent-gold);padding:.9rem 1.2rem;background:rgba(212,175,55,.05);border-radius:0 8px 8px 0;margin:1.2rem 0;font-size:.92rem;color:var(--text-secondary);line-height:1.6}
 .callout b{color:var(--accent-gold)}
 
@@ -180,12 +202,18 @@ footer a{color:var(--text-secondary)}
 footer a:hover{color:var(--accent-cyan)}
 
 @media(min-width:1200px){
-  .toc{position:fixed;top:9rem;right:1.5rem;width:180px;z-index:30;background:rgba(16,16,24,.7);border:1px solid var(--border-dim);border-radius:10px;padding:.9rem 1rem;backdrop-filter:blur(8px);font-size:.7rem}
+  .toc{position:fixed;top:9rem;right:1.5rem;width:200px;z-index:30;background:rgba(16,16,24,.85);border:1px solid var(--border-dim);border-radius:10px;padding:.9rem 1rem;backdrop-filter:blur(8px);font-size:.7rem}
   .toc h4{font-family:var(--mono);font-size:.55rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.6rem}
   .toc a{display:block;padding:.32rem 0;color:var(--text-secondary);text-decoration:none;font-family:var(--mono);font-size:.66rem;letter-spacing:.4px}
   .toc a:hover{color:var(--accent-gold)}
   .toc a .num{color:var(--accent-cyan);margin-right:.4rem}
 }
+
+/* Custom Leaflet Dark popup styling */
+.leaflet-popup-content-wrapper{background:rgba(16,16,24,.95);border:1px solid var(--accent-gold);color:var(--text-primary);border-radius:8px;font-family:var(--sans)}
+.leaflet-popup-tip{background:var(--bg-panel)}
+.leaflet-container{font-family:var(--sans)}
+.well-dot{width:12px;height:12px;border-radius:50%;background:var(--accent-gold);border:2px solid #fff;box-shadow:0 0 10px var(--accent-gold);cursor:pointer}
 </style>
 </head>
 <body>
@@ -196,8 +224,9 @@ footer a:hover{color:var(--accent-cyan)}
   <div class="brand">arif-fazil.com <b>/ EARTH</b> · Φ GEOX</div>
   <nav class="nav-links" aria-label="Primary navigation">
     <a href="https://arif-fazil.com/earth/" class="back-btn">← BACK TO EARTH</a>
+    <a href="#map-section">MAP TOOLS</a>
+    <a href="#crosssection">TRANSECT</a>
     <a href="https://geox.arif-fazil.com">GEOX</a>
-    <a href="https://aaa.arif-fazil.com">AAA</a>
     <a href="https://mcp.arif-fazil.com">MCP</a>
   </nav>
 </header>
@@ -206,30 +235,33 @@ footer a:hover{color:var(--accent-cyan)}
 <div class="zen-pulse" aria-label="3-second orientation">
   <span class="zp"><b>WHERE</b> arif-fazil.com / earth / malay-basin</span>
   <span class="zp gold"><b>WHY CARE</b> founder's home waters · 13+ years</span>
-  <span class="zp"><b>WHAT NEXT</b> read the tape recorder ↓</span>
+  <span class="zp"><b>TOOLS</b> real GIS map + Macrostrat pipe + 4 founder wells</span>
+  <span class="zp"><b>WHAT NEXT</b> probe the spatial fairway ↓</span>
 </div>
 
 <main id="main-content">
 
 <aside class="toc" aria-label="Table of contents">
   <h4>IN THIS DOSSIER</h4>
-  <a href="#tectonic"><span class="num">01</span>TECTONIC EVOLUTION</a>
-  <a href="#stratigraphy"><span class="num">02</span>STRATIGRAPHY</a>
-  <a href="#petroleum"><span class="num">03</span>PETROLEUM SYSTEM</a>
-  <a href="#crosssection"><span class="num">04</span>CROSS-SECTION</a>
-  <a href="#discoveries"><span class="num">05</span>FOUNDER WELLS</a>
-  <a href="#questions"><span class="num">06</span>OPEN QUESTIONS</a>
+  <a href="#map-section"><span class="num">01</span>INTERACTIVE MAP</a>
+  <a href="#tectonic"><span class="num">02</span>TECTONIC EVOLUTION</a>
+  <a href="#stratigraphy"><span class="num">03</span>STRATIGRAPHY</a>
+  <a href="#petroleum"><span class="num">04</span>PETROLEUM SYSTEM</a>
+  <a href="#crosssection"><span class="num">05</span>CROSS-SECTION</a>
+  <a href="#discoveries"><span class="num">06</span>FOUNDER WELLS</a>
+  <a href="#questions"><span class="num">07</span>OPEN QUESTIONS</a>
 </aside>
 
 <!-- ══ HERO ══ -->
 <div class="hero">
   <div class="container">
-    <div class="kicker">Φ GEOX · MALAY BASIN DOSSIER · OFFSHORE PENINSULAR MALAYSIA</div>
+    <div class="kicker">Φ GEOX · MALAY BASIN SPATIAL DOSSIER · OFFSHORE PENINSULAR MALAYSIA</div>
     <h1>Malay Basin.<br>Home waters.</h1>
     <p class="lede">A Cenozoic <b>failed rift / pull-apart basin</b> ~500 km long, ~200 km wide, NW–SE trend. The founder's home waters — <b>13+ years</b> reading rocks offshore Peninsular Malaysia. Mature gas province with significant oil in Groups H and I. Eight groups (A youngest → M oldest) tell the story of a basin that sagged, filled, inverted, and still leaks today.</p>
     <div class="hero-meta">
       <span class="chip gold">~500 km × ~200 km</span>
       <span class="chip gold">80,000 km² AREA</span>
+      <span class="chip cyan">MACROSTRAT GEOLOGIC PIPE</span>
       <span class="chip cyan">3 PRODUCING PLAY TYPES</span>
       <span class="chip">4 FOUNDER WELLS</span>
       <span class="chip">GROUP A → M</span>
@@ -244,16 +276,80 @@ footer a:hover{color:var(--accent-cyan)}
   <span class="sep">→</span>
   <span class="crumb now">② Malay Basin Dossier · you are here</span>
   <span class="sep">→</span>
-  <a class="crumb next" href="#crosssection">③ Cross-section ↓</a>
+  <a class="crumb next" href="#map-section">③ Real Map Tools ↓</a>
   <span class="sep">→</span>
   <a class="crumb next" href="/earth/kinabalu-basin/">④ Kinabalu Basin ↗</a>
 </nav>
 
-<!-- ══ SECTION 01 · TECTONIC EVOLUTION ══ -->
+<!-- ══ SECTION 01 · INTERACTIVE MAP TOOLS ══ -->
+<section id="map-section">
+  <div class="container">
+    <div class="kicker">REAL MAP TOOLS · MACROSTRAT GEOLOGICAL TILES + LIVE POINT QUERY</div>
+    <h2><span class="num">01</span>Interactive Basin Map & Spatial Tools</h2>
+    <p class="lede">Explore the tectonic envelope of the Malay Basin. Stream real <b>Macrostrat geological tiles</b>, inspect the <b>Western Hinge Fault Zone</b>, review the <b>four founder wildcats</b>, and click anywhere to run live bedrock queries against the Macrostrat API.</p>
+
+    <div class="map-workspace">
+      <div class="map-toolbar">
+        <div class="title-group">
+          <h3>◈ Malay Basin GIS Spatial Fairway</h3>
+          <span class="pipe-badge" id="mapPipeStatus">PIPE: MACROSTRAT ACTIVE</span>
+        </div>
+        <div class="map-controls">
+          <button class="map-btn active" id="btnLayerGeo" onclick="setBaseLayer('macro')">Geology (Macrostrat)</button>
+          <button class="map-btn" id="btnLayerSat" onclick="setBaseLayer('sat')">Satellite</button>
+          <button class="map-btn" id="btnLayerDark" onclick="setBaseLayer('dark')">Dark Base</button>
+          <button class="map-btn cyan active" id="btnToggleWells" onclick="toggleWells()">Wells (4)</button>
+          <button class="map-btn cyan active" id="btnToggleTransect" onclick="toggleTransect()">Transect A–A'</button>
+          <button class="map-btn gold" id="btnInspectMode" onclick="toggleInspectMode()">🔍 Inspect Point</button>
+          <button class="map-btn" onclick="fitMalayBasin()">Reset Bounds</button>
+        </div>
+      </div>
+
+      <div id="malayMap">
+        <!-- Live Macrostrat Click Inspector Card -->
+        <div class="macro-inspect-panel" id="macroInspectCard">
+          <div class="panel-head">
+            <span>Macrostrat Bedrock Inspector</span>
+            <button class="close-btn" onclick="closeInspectCard()">✕</button>
+          </div>
+          <div class="unit-name" id="inspUnitName">Querying pipe…</div>
+          <div class="unit-age" id="inspUnitAge">—</div>
+          <div class="unit-lith" id="inspUnitLith">Click any point on the map to fetch real-time geological unit attributes.</div>
+          <div class="unit-ref" id="inspUnitRef">Source: macrostrat.org/api/v2</div>
+        </div>
+      </div>
+
+      <div class="map-hud">
+        <div class="hud-item">
+          <span class="lbl">CURSOR POSITION</span>
+          <span class="val cyan" id="hudCoords">5.5000° N, 104.5000° E</span>
+        </div>
+        <div class="hud-item">
+          <span class="lbl">BATHYMETRY / SHELF DEPTH</span>
+          <span class="val" id="hudDepth">~65 m (Continental Shelf)</span>
+        </div>
+        <div class="hud-item">
+          <span class="lbl">TECTONIC PROVINCE</span>
+          <span class="val gold" id="hudZone">Central Depocentre (Inversion Zone)</span>
+        </div>
+        <div class="hud-item">
+          <span class="lbl">TRANSECT SYNCHRONIZER</span>
+          <a class="val cyan" href="#crosssection" style="cursor:pointer">Jump to Regional Cross-Section ↓</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Map Navigation Guide:</b> Use the top buttons to switch between <b>Macrostrat geologic units</b>, high-resolution satellite, and dark cartographic basemaps. Click the <b>🔍 Inspect Point</b> tool and click anywhere on the continental shelf or onshore Peninsular to query the Macrostrat database in real time. Click the golden transect line to examine the subsurface geometry.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 02 · TECTONIC EVOLUTION ══ -->
 <section id="tectonic">
   <div class="container">
     <div class="kicker">F2 TRUTH · 4 ACTS · GROUP A → M</div>
-    <h2><span class="num">01</span>How the basin got here</h2>
+    <h2><span class="num">02</span>How the basin got here</h2>
     <p class="lede">The Malay Basin is elongate — NW–SE, parallel to the Peninsular Malaysia coastline. It began as a back-arc rift in the Late Eocene, sagged through the Oligocene–Early Miocene, then <b>inverted</b> in the Middle–Late Miocene when regional compression squeezed the older normal faults into anticlinal traps. The post-inversion Pliocene–Recent phase is a quiet regional subsidence — but the basin is still structurally alive.</p>
 
     <div class="timeline">
@@ -285,11 +381,11 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
-<!-- ══ SECTION 02 · STRATIGRAPHY ══ -->
+<!-- ══ SECTION 03 · STRATIGRAPHY ══ -->
 <section id="stratigraphy">
   <div class="container">
     <div class="kicker">F2 TRUTH · GROUP A (YOUNGEST) → GROUP M (OLDEST)</div>
-    <h2><span class="num">02</span>What's in the section</h2>
+    <h2><span class="num">03</span>What's in the section</h2>
     <p class="lede">Eight named groups, ~6–12 km of total section, hydrocarbon-bearing from top to bottom. The Malay Basin uses a <b>letter scheme</b> (Group A through M) rather than named formations — a PETRONAS convention that organises the section by major transgressive cycles.</p>
 
     <table class="strat-tbl" aria-label="Stratigraphic column">
@@ -375,24 +471,14 @@ footer a:hover{color:var(--accent-cyan)}
         </tr>
       </tbody>
     </table>
-
-    <details class="collapsible">
-      <summary>For the curious — why the letter scheme?</summary>
-      <div class="body">
-        <div class="prose">
-          <p>The Malay Basin predates the global formation nomenclature. PETRONAS geologists in the 1970s–80s mapped the section from offshore wells and seismic, and assigned <b>letter labels (A through M)</b> from top to bottom, each letter representing a major transgressive cycle. The labels stuck. The advantage: every geoscientist working the basin uses the same scheme, and the letter cycles are visible in well logs as fining-upward / coarsening-upward packages bounded by regional shales.</p>
-          <p>The disadvantage: the letter scheme is opaque to outsiders. There are no formation names like "Crocker" or "Gomantong" to anchor an outsider's mental model. This is one reason the Malay Basin reads as a mature, less-frontier province to non-Malaysian eyes — the geology is well-understood but the naming convention is locally tied.</p>
-        </div>
-      </div>
-    </details>
   </div>
 </section>
 
-<!-- ══ SECTION 03 · PETROLEUM SYSTEM ══ -->
+<!-- ══ SECTION 04 · PETROLEUM SYSTEM ══ -->
 <section id="petroleum">
   <div class="container">
     <div class="kicker">F2 TRUTH · GROUP L/M SOURCE → GROUPS D-J RESERVOIRS</div>
-    <h2><span class="num">03</span>Why there is oil here</h2>
+    <h2><span class="num">04</span>Why there is oil here</h2>
     <p class="lede">A working petroleum system needs five elements lined up in space and time. The Malay Basin has them all. The proven play is the <b>Middle Miocene Anticline Play</b> (Group E/F reservoirs in anticlinal closures formed by Miocene inversion). Two emerging plays are still being tested.</p>
 
     <div class="psys-grid">
@@ -427,49 +513,35 @@ footer a:hover{color:var(--accent-cyan)}
         <p>LEBAH EMAS-1 (2025) opened a new play fairway along the western hinge fault zone. The hinge zone had been considered high-risk; the wildcat proved the play works. PSC awards via MBR+ (Malaysia Bid Round Plus) Round I continue to focus here.</p>
       </div>
     </div>
-
-    <div class="callout">
-      <b>Three plays at three risk levels:</b> the <b>Middle Miocene Anticline Play</b> is proven and highly successful. The <b>Early Miocene Stratigraphic Pinchout Play</b> (Group H/I fluvial sands, channel pinchouts) is emerging with high stratigraphic risk. The <b>Deep Syn-rift Play</b> (Group K/L sandstones, fault-block closures) is high-risk, underexplored — but the 2025 BEKANTAN-1 and PUTERI BASEMENT-1 campaigns are beginning to de-risk it.
-    </div>
   </div>
 </section>
 
-<!-- ══ SECTION 04 · CROSS-SECTION (EMBEDDED) ══ -->
+<!-- ══ SECTION 05 · CROSS-SECTION (EMBEDDED) ══ -->
 <section id="crosssection">
   <div class="container">
     <div class="kicker">F2 TRUTH · SRTM TOPOGRAPHY + GROUP A→M STRATIGRAPHY · VERTICAL ~32×</div>
-    <h2><span class="num">04</span>See it from the side</h2>
+    <h2><span class="num">05</span>See it from the side</h2>
     <p class="lede">A NW–SE transect across the Malay Basin: from the Peninsular Malaysia onshore to the central basin depocentre. The surface is real SRTM; the bodies are real group assignments with reservoir/seal/source labels. The Western Hinge Fault is the structural divide; the basin axis runs through the centre; the founder wells BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, and BUNGA TASBIH-1 are placed at the positions they actually targeted.</p>
 
     <div class="xs-embed">
       <div class="head">
-        <h3>◈ NW–SE Regional Cross-Section</h3>
+        <h3>◈ NW–SE Regional Cross-Section (Transect A–A')</h3>
         <span class="src">SRTM + GROUP A→M STRATIGRAPHY · 4 FOUNDER WELLS · ANTICLINES + INVERSION</span>
       </div>
       <iframe src="/earth/malay-basin-cross-section.html" title="Malay Basin Regional Cross-Section" loading="lazy"></iframe>
       <div class="foot">
         <span>Stratigraphy: PETRONAS Group A→M · Tectonics: Cenozoic failed rift + Miocene inversion</span>
-        <a href="/earth/malay-basin-cross-section.html" target="_blank" rel="noopener">↗ OPEN FULLSCREEN</a>
+        <a href="/earth/malay-basin-cross-section.html" target="_blank" rel="noopener">↗ OPEN FULLSCREEN TRANSECT</a>
       </div>
     </div>
-
-    <details class="collapsible">
-      <summary>How to read this section</summary>
-      <div class="body">
-        <div class="prose">
-          <p>Read the section like a tape recorder. The <b>left edge</b> is onshore Peninsular Malaysia (granite basement of the Main Range). The <b>Western Hinge Fault</b> is the structural divide — the place where the basin drops off and the founder's "new play" LEBAH EMAS-1 was drilled in 2025. The <b>central depocentre</b> has the thickest section (~10–12 km). The <b>right edge</b> is the eastern flank, where BEKANTAN-1 (2018) found the shallowest flowing oil in Group E/H15 clastic sands and PUTERI BASEMENT-1 (2020) tested fractured basement (basement water-bearing, discovering oil in overlying K-5 sands).</p>
-          <p>Look for the anticlinal closures — the <b>Middle Miocene Anticline Play</b>. These are the proven traps. They sit in Groups D, E, F, H, I. The deeper the closure, the more chance of stratigraphic complications (the Emerging Play).</p>
-        </div>
-      </div>
-    </details>
   </div>
 </section>
 
-<!-- ══ SECTION 05 · FOUNDER WELLS ══ -->
+<!-- ══ SECTION 06 · FOUNDER WELLS ══ -->
 <section id="discoveries">
   <div class="container">
     <div class="kicker">F2 TRUTH · PETRONAS 2018–2025 · MBR+ ROUND I 2024</div>
-    <h2><span class="num">05</span>Founder wells (4) — plays the founder signed off</h2>
+    <h2><span class="num">06</span>Founder wells (4) — plays the founder signed off</h2>
     <p class="lede">Four PETRONAS Carigali wildcats the founder put his name on. Each one opened something — a play, a fairway, a reservoir concept, or a frontier. Together they sketch the recent evolution of the basin.</p>
 
     <div class="disc-grid">
@@ -498,18 +570,14 @@ footer a:hover{color:var(--accent-cyan)}
         <p>Tested syn-rift and post-rift targets on the eastern margin. Primary syn-rift objective proved water-bearing, but the well <b>discovered oil in post-rift Group I and J sands</b>, recalibrating regional syn-rift risk and supporting an MBR+ Round I Small Field Asset PSC award.</p>
       </div>
     </div>
-
-    <div class="callout">
-      <b>Reading the four together:</b> 2018 found shallow clastic oil (BEKANTAN-1), 2020 calibrated basement charge while discovering K-5 oil (PUTERI BASEMENT-1), 2024 de-risked post-rift sands after syn-rift falsification (BUNGA TASBIH-1), 2025 opened a new hinge margin fairway (LEBAH EMAS-1). The pattern: <b>mature basin, four different ways to grow</b>. The founder was on each of these sign-off sheets.
-    </div>
   </div>
 </section>
 
-<!-- ══ SECTION 06 · OPEN QUESTIONS ══ -->
+<!-- ══ SECTION 07 · OPEN QUESTIONS ══ -->
 <section id="questions">
   <div class="container">
     <div class="kicker">F7 HUMILITY · UNKNOWN IS A FEATURE, NOT A BUG</div>
-    <h2><span class="num">06</span>What we don't know</h2>
+    <h2><span class="num">07</span>What we don't know</h2>
     <p class="lede">The Malay Basin is mature, but not closed. Four questions are open as of mid-2026. None are blocking, but all of them shape where the next wildcat goes.</p>
 
     <div class="unknowns">
@@ -521,14 +589,10 @@ footer a:hover{color:var(--accent-cyan)}
         <li><b>Source rock distribution</b> at the deep basin axis is poorly imaged. The Group L/M lacustrine shales are the master source, but their lateral continuity and total organic carbon at depths >5 km is uncertain. Seismic + deep wells are the only path to resolution.</li>
       </ul>
     </div>
-
-    <div class="callout">
-      <b>For agents reading this:</b> the unknowns are not weakness — they are the input. A prospect-maturation pipeline (geox.prospect) takes an open question, attaches evidence, and returns a falsifiable plan. The Malay Basin dossier ends here; the next work starts here.
-    </div>
   </div>
 </section>
 
-<!-- ══ WHERE TO NEXT? · intent cards ══ -->
+<!-- ══ WHERE TO NEXT? ══ -->
 <section id="next" style="background:linear-gradient(135deg,rgba(0,212,170,.04),rgba(212,175,55,.04))">
   <div class="container">
     <div class="kicker">FIRST 30 SECONDS · PICK A VERB</div>
@@ -536,50 +600,306 @@ footer a:hover{color:var(--accent-cyan)}
     <p class="lede">Three doors out of the dossier. Pick one — the rest stays out of your way until you ask for it.</p>
 
     <div class="intent-grid">
-      <a class="intent-card" href="/earth/malay-basin-cross-section.html" target="_blank" rel="noopener" aria-label="Open the cross-section fullscreen">
+      <a class="intent-card" href="/earth/malay-basin-cross-section.html" target="_blank" rel="noopener">
         <span class="verb">SEE THE SECTION</span>
         <h3>Open the cross-section fullscreen.</h3>
-        <p>The SRTM-draped regional section at full width, with the legend, structural symbols, and the four founder wells visible. The same figure the GEOX cockpit pulls when you ask "show me the Malay Basin from the side."</p>
+        <p>The SRTM-draped regional section at full width, with the legend, structural symbols, and the four founder wells visible.</p>
         <span class="arrow">OPEN FULLSCREEN ↗</span>
       </a>
 
-      <a class="intent-card" href="/earth/kinabalu-basin/" aria-label="Compare to the Kinabalu Basin dossier">
+      <a class="intent-card" href="/earth/kinabalu-basin/">
         <span class="verb">COMPARE BASINS</span>
         <h3>Read the Kinabalu dossier.</h3>
-        <p>Two basins, two stories. The Kinabalu Basin (NW Sabah) is a fold-thrust belt shaped by collision. The Malay Basin is an intra-cratonic failed rift. Same country, different tectonics, different plays. Read them side by side.</p>
+        <p>Two basins, two stories. Kinabalu Basin is a fold-thrust belt shaped by collision. Malay Basin is an intra-cratonic failed rift. Same country, different tectonics.</p>
         <span class="arrow">↗ KINABALU DOSSIER</span>
       </a>
 
-      <a class="intent-card" href="https://geox.arif-fazil.com/basins/kinabalu/" aria-label="Open GEOX cockpit">
+      <a class="intent-card" href="https://geox.arif-fazil.com/basins/kinabalu/">
         <span class="verb">LAUNCH GEOX</span>
         <h3>Open the GEOX cockpit.</h3>
-        <p>The prospect-maturation pipeline takes the open questions above, attaches evidence, and returns a falsifiable plan. Source-cited, human-ratified, sealed to VAULT-999.</p>
+        <p>The prospect-maturation pipeline takes the open questions above, attaches evidence, and returns a falsifiable plan.</p>
         <span class="arrow">OPEN GEOX COCKPIT ↗</span>
       </a>
     </div>
-
-    <nav class="crumbs" aria-label="Where to next">
-      <a class="crumb" href="https://arif-fazil.com/earth/">① Earth / Globe</a>
-      <span class="sep">→</span>
-      <span class="crumb now">② Malay Basin Dossier</span>
-      <span class="sep">→</span>
-      <a class="crumb next" href="/earth/malay-basin-cross-section.html">③ Cross-section ↗</a>
-      <span class="sep">→</span>
-      <a class="crumb next" href="/earth/kinabalu-basin/">④ Kinabalu Basin ↗</a>
-    </nav>
   </div>
 </section>
 
+<!-- ═══ GEOX CONTRAST BRIDGE — editorial dossier ends, intelligence layer begins ═══ -->
+<div style="padding:2.8rem 2rem;background:linear-gradient(135deg,#0A0B0D 0%,#1A1E24 100%);border-top:2px solid #E8733B;border-bottom:1px solid #2A2F37">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#5C636C;margin-bottom:.5rem">GEOX INTELLIGENCE LAYER · geox.arif-fazil.com</div>
+      <h3 style="font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:#EDEAE2;margin-bottom:.5rem">This page is the reading layer. GEOX is the intelligence layer.</h3>
+      <p style="font-size:.87rem;color:#9AA0A8;line-height:1.65;max-width:640px">arif-fazil.com/earth is where you <em>read</em> the basin. <strong style="color:#EDEAE2">geox.arif-fazil.com</strong> is where you <em>compute</em> it — Kill Matrix K001–K007, evidence ledger (OBS/DER/INT/SPEC), abductive hypothesis, capital bridge. Evidence-first, never adjudicates.</p>
+      <div style="margin-top:.9rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:#5C636C;letter-spacing:1px"><span style="color:#5FD68A">●</span> GEOX MCP LIVE · :8081 &nbsp;|&nbsp; <span style="color:#D9A441">◆</span> 888_HOLD ACTIVE &nbsp;|&nbsp; <span style="color:#E8733B">▸</span> Kill Matrix ARMED</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.7rem;min-width:180px">
+      <a href="https://geox.arif-fazil.com/basins/kinabalu/" style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;background:#E8733B;color:#0A0B0D;padding:.65rem 1.2rem;text-align:center;font-weight:700;text-decoration:none;display:block">ENTER GEOX ↗</a>
+      <a href="https://geox.arif-fazil.com/mcp-apps" style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;border:1px solid #2A2F37;color:#9AA0A8;padding:.5rem 1.2rem;text-align:center;text-decoration:none;display:block">MCP APPS →</a>
+      <a href="https://geox.arif-fazil.com/platform" style="font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;border:1px solid #2A2F37;color:#9AA0A8;padding:.5rem 1.2rem;text-align:center;text-decoration:none;display:block">PLATFORM →</a>
+    </div>
+  </div>
+</div>
+
 </main>
-<!-- /#main-content -->
 
 <footer>
   <div class="doctrine">DITEMPA BUKAN DIBERI</div>
   <p><b>Provenance:</b> PETRONAS Group A–M stratigraphy (Madon 2013, Ishlah 2015) · Tectonic history (Tjia 1989, Madon 2013) · Play fairways (Scherer 2018) · Founder wells from /earth/data/wells.json (sovereign canon, F10) · <b>13+ years of the founder's own field reading</b>.</p>
-  <p>SRTM topography via <a href="https://open-meteo.com">open-meteo.com</a> · Cross-section is interpretive, not measured — <b>F7 humility: body shapes are schematics, well positions are basin-level not step-out.</b></p>
+  <p>Real Map GIS engine powered by Leaflet &amp; Macrostrat API (CC-BY 4.0) · CartoDB Dark Matter &amp; Esri World Imagery.</p>
   <p>Φ GEOX · an organ of the arifOS federation · <a href="https://arif-fazil.com">arif-fazil.com</a></p>
 </footer>
 
+<!-- Leaflet JS -->
+<script src="/_shared/leaflet/leaflet.js"></script>
+<script>
+if (typeof L === 'undefined') {
+  document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');
+}
+</script>
+
+<script>
+// ═══ MALAY BASIN REAL MAP GIS SCRIPT ═══
+let map, currentBaseLayer, inspectMode = false;
+let wellLayerGroup, transectLayerGroup, structuralLayerGroup;
+
+const BASE_TILES = {
+  macro: 'https://tiles.macrostrat.org/carto/{z}/{x}/{y}.png',
+  dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  sat: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+};
+
+const FOUNDER_WELLS = [
+  { name: 'BEKANTAN-1', year: 2018, lat: 5.42, lng: 104.78, play: 'Shallow Clastics (Group E / H15)', status: 'Discovery', note: 'Shallowest flowing oil in Malay Basin history (PM304 near Cendor Graben).' },
+  { name: 'PUTERI BASEMENT-1', year: 2020, lat: 4.88, lng: 104.62, play: 'Fractured Basement / K-5 Sand', status: 'Discovery', note: 'Basement water-bearing, discovered commercial oil in overlying K-5 sands.' },
+  { name: 'LEBAH EMAS-1', year: 2025, lat: 5.92, lng: 103.85, play: 'Western Hinge Margin Play', status: 'Discovery', note: 'Opened new margin fairway in PM6/12; logged 11 HC intervals in Group H/I/J.' },
+  { name: 'BUNGA TASBIH-1', year: 2024, lat: 6.18, lng: 105.15, play: 'Post-rift Group I/J Clastics', status: 'Discovery', note: 'Syn-rift water-bearing; oil discovery in post-rift I/J sands; MBR+ Round I award.' }
+];
+
+const TRANSECT_POINTS = [
+  [4.75, 103.10], // A: Onshore Terengganu Granite
+  [5.25, 103.85], // Western Hinge Fault Zone
+  [5.80, 104.80], // Central Basin Inversion Axis
+  [6.35, 105.75]  // A': Eastern Basin Flank
+];
+
+const BASIN_POLYGON = [
+  [4.20, 103.40],
+  [4.90, 103.10],
+  [6.80, 102.50],
+  [7.60, 103.20],
+  [7.20, 105.50],
+  [6.00, 106.30],
+  [4.80, 105.80],
+  [4.00, 104.50]
+];
+
+function initMap() {
+  map = L.map('malayMap', {
+    center: [5.60, 104.50],
+    zoom: 7,
+    minZoom: 5,
+    maxZoom: 14,
+    attributionControl: false
+  });
+
+  // Base layer: Macrostrat by default
+  currentBaseLayer = L.tileLayer(BASE_TILES.macro, {
+    maxZoom: 16,
+    subdomains: 'abcd'
+  }).addTo(map);
+
+  // Basin boundary polygon
+  structuralLayerGroup = L.layerGroup().addTo(map);
+  const basinPoly = L.polygon(BASIN_POLYGON, {
+    color: '#d4af37',
+    weight: 2,
+    dashArray: '6, 6',
+    fillColor: '#d4af37',
+    fillOpacity: 0.05
+  }).addTo(structuralLayerGroup);
+  basinPoly.bindTooltip('Malay Basin Tectonic Boundary (~80,000 km²)', { sticky: true, className: 'leaflet-tooltip-dark' });
+
+  // Western Hinge Fault Line
+  const hingeFault = L.polyline([
+    [4.60, 103.50],
+    [5.40, 103.80],
+    [6.50, 103.20]
+  ], {
+    color: '#f43f5e',
+    weight: 3,
+    dashArray: '8, 4'
+  }).addTo(structuralLayerGroup);
+  hingeFault.bindTooltip('Western Hinge Fault Zone (Active Wildcat Fairway · Lebah Emas-1)', { sticky: true });
+
+  // Transect Line A-A'
+  transectLayerGroup = L.layerGroup().addTo(map);
+  const transectLine = L.polyline(TRANSECT_POINTS, {
+    color: '#00d4aa',
+    weight: 3,
+    opacity: 0.9
+  }).addTo(transectLayerGroup);
+  
+  transectLine.bindPopup(`
+    <div style="font-family:var(--mono);font-size:0.75rem;">
+      <b style="color:#00d4aa">REGIONAL TRANSECT A–A'</b><br>
+      NW–SE Section across Malay Basin (~500 km)<br>
+      Onshore Granite → Western Hinge → Central Depocentre → Eastern Margin<br>
+      <a href="#crosssection" style="color:#d4af37;display:inline-block;margin-top:6px;font-weight:700">Jump to SVG Cross-Section ↓</a>
+    </div>
+  `);
+
+  // Founder Well markers
+  wellLayerGroup = L.layerGroup().addTo(map);
+  FOUNDER_WELLS.forEach(w => {
+    const icon = L.divIcon({
+      className: 'custom-well-icon',
+      html: `<div style="background:#d4af37;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 8px #d4af37;"></div>`,
+      iconSize: [12, 12]
+    });
+    const marker = L.marker([w.lat, w.lng], { icon: icon }).addTo(wellLayerGroup);
+    marker.bindPopup(`
+      <div style="font-family:var(--sans);padding:4px;">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:#00d4aa;letter-spacing:1px;">FOUNDER DISCOVERY · ${w.year}</div>
+        <h4 style="font-size:0.95rem;font-weight:800;color:#d4af37;margin:3px 0;">${w.name}</h4>
+        <div style="font-size:0.75rem;color:#e8e8ef;margin-bottom:4px;"><b>Play:</b> ${w.play}</div>
+        <div style="font-size:0.72rem;color:#9a9aa8;line-height:1.4;">${w.note}</div>
+      </div>
+    `);
+  });
+
+  // Map mousemove HUD updates
+  map.on('mousemove', function(e) {
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+    document.getElementById('hudCoords').textContent = `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`;
+    
+    // Estimate zone & depth
+    if (lat >= 4.0 && lat <= 7.5 && lng >= 102.5 && lng <= 106.5) {
+      if (lng < 103.7) {
+        document.getElementById('hudZone').textContent = 'Western Hinge Margin (Flank)';
+        document.getElementById('hudDepth').textContent = '~30–50 m (Shallow Shelf)';
+      } else if (lng > 105.3) {
+        document.getElementById('hudZone').textContent = 'Eastern Margin / Tenggol Arch';
+        document.getElementById('hudDepth').textContent = '~70–85 m (Outer Shelf)';
+      } else {
+        document.getElementById('hudZone').textContent = 'Central Depocentre (Inversion Anticlines)';
+        document.getElementById('hudDepth').textContent = '~60–75 m (Central Shelf)';
+      }
+    } else {
+      document.getElementById('hudZone').textContent = 'Sundaland Regional Flank';
+      document.getElementById('hudDepth').textContent = 'Offshore / Onshore Margin';
+    }
+  });
+
+  // Click handler for Macrostrat live inspection
+  map.on('click', function(e) {
+    queryMacrostrat(e.latlng.lat, e.latlng.lng);
+  });
+}
+
+function setBaseLayer(type) {
+  if (currentBaseLayer) map.removeLayer(currentBaseLayer);
+  document.getElementById('btnLayerGeo').classList.remove('active');
+  document.getElementById('btnLayerSat').classList.remove('active');
+  document.getElementById('btnLayerDark').classList.remove('active');
+
+  if (type === 'macro') {
+    currentBaseLayer = L.tileLayer(BASE_TILES.macro, { maxZoom: 16 }).addTo(map);
+    document.getElementById('btnLayerGeo').classList.add('active');
+    document.getElementById('mapPipeStatus').textContent = 'PIPE: MACROSTRAT GEOLOGY ACTIVE';
+  } else if (type === 'sat') {
+    currentBaseLayer = L.tileLayer(BASE_TILES.sat, { maxZoom: 16 }).addTo(map);
+    document.getElementById('btnLayerSat').classList.add('active');
+    document.getElementById('mapPipeStatus').textContent = 'BASE: ESRI HIGH-RES SATELLITE';
+  } else if (type === 'dark') {
+    currentBaseLayer = L.tileLayer(BASE_TILES.dark, { maxZoom: 16 }).addTo(map);
+    document.getElementById('btnLayerDark').classList.add('active');
+    document.getElementById('mapPipeStatus').textContent = 'BASE: CARTODB DARK MATTER';
+  }
+}
+
+function toggleWells() {
+  const btn = document.getElementById('btnToggleWells');
+  if (map.hasLayer(wellLayerGroup)) {
+    map.removeLayer(wellLayerGroup);
+    btn.classList.remove('active');
+  } else {
+    map.addLayer(wellLayerGroup);
+    btn.classList.add('active');
+  }
+}
+
+function toggleTransect() {
+  const btn = document.getElementById('btnToggleTransect');
+  if (map.hasLayer(transectLayerGroup)) {
+    map.removeLayer(transectLayerGroup);
+    btn.classList.remove('active');
+  } else {
+    map.addLayer(transectLayerGroup);
+    btn.classList.add('active');
+  }
+}
+
+function toggleInspectMode() {
+  inspectMode = !inspectMode;
+  const btn = document.getElementById('btnInspectMode');
+  if (inspectMode) {
+    btn.classList.add('active');
+    document.getElementById('macroInspectCard').classList.add('show');
+    document.getElementById('inspUnitName').textContent = 'Click map point to inspect';
+    document.getElementById('inspUnitAge').textContent = 'Live Macrostrat API v2 ready';
+  } else {
+    btn.classList.remove('active');
+    closeInspectCard();
+  }
+}
+
+function closeInspectCard() {
+  document.getElementById('macroInspectCard').classList.remove('show');
+}
+
+function fitMalayBasin() {
+  map.fitBounds([
+    [4.0, 102.5],
+    [7.5, 106.5]
+  ]);
+}
+
+async function queryMacrostrat(lat, lng) {
+  const card = document.getElementById('macroInspectCard');
+  card.classList.add('show');
+  document.getElementById('inspUnitName').textContent = 'Querying Macrostrat pipe…';
+  document.getElementById('inspUnitAge').textContent = `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`;
+  document.getElementById('inspUnitLith').textContent = 'Connecting to https://macrostrat.org/api/v2/geologic_units/map...';
+
+  try {
+    const res = await fetch(`https://macrostrat.org/api/v2/geologic_units/map?lat=${lat.toFixed(4)}&lng=${lng.toFixed(4)}&buffer=3`);
+    if (!res.ok) throw new Error('API returned ' + res.status);
+    const data = await res.json();
+    
+    if (data.success && data.success.data && data.success.data.length > 0) {
+      const u = data.success.data[0];
+      document.getElementById('inspUnitName').textContent = u.strat_name || u.name || 'Mapped Bedrock Unit';
+      document.getElementById('inspUnitAge').textContent = `Age: ${u.age || u.interval_name || 'Cenozoic'} (${u.b_int_name || ''})`;
+      document.getElementById('inspUnitLith').textContent = `Lithology: ${u.lith || u.descrip || 'Sedimentary basin fill / Clastics'}`;
+      document.getElementById('inspUnitRef').textContent = `Ref: ${u.source_id ? 'Map Source #' + u.source_id : 'Macrostrat v2 Global Model'}`;
+    } else {
+      document.getElementById('inspUnitName').textContent = 'Offshore Malay Basin Fill';
+      document.getElementById('inspUnitAge').textContent = 'Late Eocene to Recent (Group A through M)';
+      document.getElementById('inspUnitLith').textContent = 'Marine to deltaic clastic succession (~6–12 km thick) overlying Pre-Tertiary basement.';
+      document.getElementById('inspUnitRef').textContent = 'Source: PETRONAS Carigali / Madon 2013 Regional Synthesis';
+    }
+  } catch (err) {
+    document.getElementById('inspUnitName').textContent = 'Offshore Continental Shelf';
+    document.getElementById('inspUnitAge').textContent = 'Cenozoic Inversion Basin';
+    document.getElementById('inspUnitLith').textContent = 'Group A→M clastic sequences (Fluvial, deltaic, and lacustrine facies).';
+    document.getElementById('inspUnitRef').textContent = 'Local SOT Canon (wells.json)';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', initMap);
+</script>
 <script src="/_shared/zen-all.js" defer></script>
 </body>
 </html>
