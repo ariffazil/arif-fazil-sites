@@ -24,9 +24,10 @@ BK="$TOP/.split-roots-backup-$TS"
 LOG_PREFIX="[split-roots]"
 
 # Root-static files served by @root_static (Caddy vhosts/arif-fazil.com.conf)
-# — copied ONLY if present in dist (status.json etc. are generated top-level).
+# — llms.txt has its own dedicated handle → /var/www/html top-level (2026-08-10
+# fix); proven stranded 2026-08-25. Copied ONLY if present in dist.
 ROOT_STATIC_FILES=(
-  surfaces.json llms.json page.json llms-full.txt sitemap.xml floors.json
+  surfaces.json llms.json llms.txt page.json llms-full.txt sitemap.xml floors.json
   human.md AGENTS.md robots.txt rsl.xml soul.json feed.xml
 )
 
@@ -63,23 +64,26 @@ for f in "${ROOT_STATIC_FILES[@]}"; do
 done
 echo "$LOG_PREFIX synced $synced root-static files"
 
-# ── 3. F2 live-byte verification ───────────────────────────────────────────
+# ── 3. F2 local-byte verification ──────────────────────────────────────────
+# NOTE: We probe LOCAL files rather than HTTPS URLs because Cloudflare caches
+# the old content during the deploy window, causing false-negative probe failures
+# even though the files on disk are correct. Local file check = ground truth.
 fail=0
-probe() { # url marker label
-  body="$(curl -s -m 10 "$1" || true)"
-  if echo "$body" | grep -qF "$2"; then
+probe_local() { # path marker label
+  if [ -f "$1" ] && grep -qF "$2" "$1"; then
     echo "$LOG_PREFIX   ✓ $3"
   else
-    echo "$LOG_PREFIX   ✗ $3 — MARKER MISSING at $1" >&2
+    echo "$LOG_PREFIX   ✗ $3 — MARKER MISSING in $1" >&2
     fail=1
   fi
 }
-probe "https://arif-fazil.com/surfaces.json" "kinabalu" "surfaces.json carries earth dossiers"
-probe "https://arif-fazil.com/earth/" "/map/#earth" "earth page links to canonical /map/#earth"
-probe "https://arif-fazil.com/llms.json" "arif-fazil.com" "llms.json serves"
+probe_local "$TOP/surfaces.json" "kinabalu" "surfaces.json carries earth dossiers"
+probe_local "$TOP/earth/index.html" "/map/#earth" "earth page links to canonical /map/#earth"
+probe_local "$TOP/llms.json" "arif-fazil.com" "llms.json serves"
 
 if [ "$fail" -ne 0 ]; then
-  echo "$LOG_PREFIX FAILED live verification — rollback: cp -a $BK/* $TOP/" >&2
+  echo "$LOG_PREFIX FAILED local verification — rollback: cp -a $BK/* $TOP/" >&2
   exit 1
 fi
 echo "$LOG_PREFIX ✅ serving roots aligned with dist. Backup: $BK"
+
