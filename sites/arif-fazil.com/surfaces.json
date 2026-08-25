@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-24",
+  "version": "2026-08-25",
   "domain": "arif-fazil.com",
   "doctrine": {
     "title": "Single canonical surface catalog. All machine catalogs are generated views of this file.",
@@ -44,23 +44,73 @@
   "surfaces": [
     {
       "path": "/",
-      "title": "Home \u2014 Sovereign Identity & Portfolio",
+      "title": "Home — Sovereign Identity & Portfolio",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 1.0,
       "changefreq": "monthly",
-      "description": "Professional homepage for Arif Fazil \u2014 geoscientist, economist, AI governance architect"
+      "description": "Professional homepage for Arif Fazil — geoscientist, economist, AI governance architect"
     },
     {
       "path": "/earth/",
-      "title": "EARTH \u2014 The Dynamic Planet (Macrostrat globe)",
+      "title": "EARTH — The Dynamic Planet (Macrostrat globe)",
       "mission": "investigate",
       "status": "live",
       "type": "page",
       "priority": 0.8,
       "changefreq": "monthly",
-      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary \u2014 not SPA essay."
+      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary — not SPA essay."
+    },
+    {
+      "path": "/earth/kinabalu-basin/",
+      "title": "Kinabalu Basin — Deepwater Stratigraphy & Play Synthesis",
+      "mission": "investigate",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "description": "Deepwater Sabah basin analysis, turbidite channels, fold-thrust belt kinematics"
+    },
+    {
+      "path": "/earth/malay-basin/",
+      "title": "Malay Basin — Structural Evolution & Petroleum Systems",
+      "mission": "investigate",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "description": "Tertiary rift basin profiling, structural inversion, source-reservoir-seal pairs"
+    },
+    {
+      "path": "/earth/kinabalu-cross-section.html",
+      "title": "Kinabalu Basin Regional Cross Section",
+      "mission": "investigate",
+      "status": "live",
+      "type": "document",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Regional geological cross section with seismic interpretation and well calibration"
+    },
+    {
+      "path": "/earth/kinabalu-cross-section.pdf",
+      "title": "Kinabalu Regional Cross Section (PDF)",
+      "mission": "investigate",
+      "status": "live",
+      "type": "document",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "High-resolution publication PDF of Kinabalu regional cross section"
+    },
+    {
+      "path": "/earth/malay-basin-cross-section.html",
+      "title": "Malay Basin Regional Cross Section",
+      "mission": "investigate",
+      "status": "live",
+      "type": "document",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Malay Basin structural cross section showing basin inversion and play types"
     },
     {
       "path": "/economics/",
@@ -134,13 +184,33 @@
     },
     {
       "path": "/world/gold/",
-      "title": "Gold Dashboard \u2014 XAUUSD Trading Synthesis",
+      "title": "Gold Dashboard — XAUUSD Trading Synthesis",
       "mission": "monitor",
       "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
       "description": "Gold trading synthesis and technical analysis dashboard"
+    },
+    {
+      "path": "/world/politics/ns-election/",
+      "title": "Negeri Sembilan State Election — Civic Intelligence & Spatial Analysis",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.75,
+      "changefreq": "monthly",
+      "description": "Spatial electoral analytics and demographic dynamics of Negeri Sembilan state constituencies"
+    },
+    {
+      "path": "/world/politics/ns-election/compare/",
+      "title": "Negeri Sembilan Election Constituency Compare",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Comparative constituency analysis and swing metrics"
     },
     {
       "path": "/writing/",
