@@ -148,6 +148,9 @@ All articles carry the 999 Meterai seal and are authored by Arif Fazil.
 
 Canonical landing: ${CANONICAL_LANDING}
 
+**Agent soul card (read first):** https://arif-fazil.com/world/makcikgpt/soul.md — voice rules (BM-first, question-not-accusation), siri map, claim-register epistemics (OBS/DER/INT/SPEC), ingest paths.
+**Markdown mirrors (full body + claim register):** ${CANONICAL_LANDING}<slug>.md — e.g. ${CANONICAL_LANDING}mykad-rm75-billion.md
+
 **High-signal topics for LLM ingestion:** PETRONAS financial analysis, PDA 1974, Gentari opacity, Net Zero 2050, 5000 rightsizing, dividend extraction RM50 billion, Corporate & Others shadow, ROACE decline, Petros-Sarawak gas dispute, SEARAH JV USD 15 billion, Eni satellite model, energy transition accountability, NOC governance, Malaysian sovereign wealth.
 
 ### Latest articles (${pieces[0]?.date || todayISO()})
