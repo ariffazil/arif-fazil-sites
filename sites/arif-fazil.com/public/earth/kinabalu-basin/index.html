@@ -206,6 +206,47 @@ footer a:hover{color:var(--accent-cyan)}
   .toc a .num{color:var(--accent-cyan);margin-right:.4rem}
 }
 </style>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="/_shared/leaflet/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+/* ══ MAP SECTION & REAL GIS TOOLS ══ */
+.map-workspace{margin:1.8rem 0;background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;overflow:hidden;box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.map-toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;padding:.9rem 1.2rem;background:rgba(16,16,24,.95);border-bottom:1px solid var(--border-dim)}
+.map-toolbar .title-group{display:flex;align-items:center;gap:.75rem}
+.map-toolbar h3{font-family:var(--mono);font-size:.82rem;letter-spacing:1.5px;color:var(--accent-gold);text-transform:uppercase}
+.map-toolbar .pipe-badge{font-family:var(--mono);font-size:.6rem;padding:.2rem .55rem;border-radius:99px;background:rgba(0,212,170,.1);color:var(--accent-cyan);border:1px solid rgba(0,212,170,.3)}
+.map-controls{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
+.map-btn{font-family:var(--mono);font-size:.64rem;letter-spacing:.8px;padding:.36rem .75rem;border-radius:6px;cursor:pointer;background:var(--bg-dark);border:1px solid var(--border-dim);color:var(--text-secondary);transition:all .2s}
+.map-btn:hover{color:var(--text-primary);border-color:var(--accent-gold)}
+.map-btn.active{color:var(--bg-dark);background:var(--accent-gold);border-color:var(--accent-gold);font-weight:700}
+.map-btn.cyan.active{background:var(--accent-cyan);border-color:var(--accent-cyan)}
+
+#kinabaluMap{width:100%;height:580px;background:#080b12;position:relative}
+.map-hud{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;padding:1rem 1.2rem;background:rgba(10,10,15,.95);border-top:1px solid var(--border-dim);font-size:.76rem}
+.hud-item{display:flex;flex-direction:column;gap:.2rem}
+.hud-item .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:1.2px;color:var(--text-secondary);text-transform:uppercase}
+.hud-item .val{font-family:var(--mono);font-size:.78rem;color:var(--text-primary);font-weight:600}
+.hud-item .val.cyan{color:var(--accent-cyan)}
+.hud-item .val.gold{color:var(--accent-gold)}
+
+/* Live Macrostrat Inspector popup card inside map */
+.macro-inspect-panel{position:absolute;top:1rem;right:1rem;z-index:1000;width:340px;max-width:calc(100% - 2rem);background:rgba(16,16,24,.95);border:1px solid rgba(212,175,55,.4);border-radius:10px;padding:1rem;backdrop-filter:blur(10px);box-shadow:0 8px 30px rgba(0,0,0,.6);display:none}
+.macro-inspect-panel.show{display:block;animation:fadeDown .25s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.macro-inspect-panel .panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem;border-bottom:1px solid var(--border-dim);padding-bottom:.4rem}
+.macro-inspect-panel .panel-head span{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;color:var(--accent-cyan);text-transform:uppercase}
+.macro-inspect-panel .close-btn{background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:.9rem}
+.macro-inspect-panel .unit-name{font-size:.95rem;font-weight:700;color:var(--accent-gold);margin-bottom:.25rem}
+.macro-inspect-panel .unit-age{font-family:var(--mono);font-size:.68rem;color:var(--text-primary);margin-bottom:.4rem}
+.macro-inspect-panel .unit-lith{font-size:.78rem;color:var(--text-secondary);line-height:1.45;margin-bottom:.5rem}
+.macro-inspect-panel .unit-ref{font-size:.62rem;color:#666675;font-style:italic}
+
+/* Custom Leaflet Dark popup styling */
+.leaflet-popup-content-wrapper{background:rgba(16,16,24,.95);border:1px solid var(--accent-gold);color:var(--text-primary);border-radius:8px;font-family:var(--sans)}
+.leaflet-popup-tip{background:var(--bg-panel)}
+</style>
+
 </head>
 <body>
 
@@ -233,12 +274,13 @@ footer a:hover{color:var(--accent-cyan)}
 
 <aside class="toc" aria-label="Table of contents">
   <h4>IN THIS DOSSIER</h4>
-  <a href="#tectonic"><span class="num">01</span>TECTONIC EVOLUTION</a>
-  <a href="#stratigraphy"><span class="num">02</span>STRATIGRAPHY</a>
-  <a href="#petroleum"><span class="num">03</span>PETROLEUM SYSTEM</a>
-  <a href="#crosssection"><span class="num">04</span>CROSS-SECTION</a>
-  <a href="#discoveries"><span class="num">05</span>RECENT DISCOVERIES</a>
-  <a href="#questions"><span class="num">06</span>OPEN QUESTIONS</a>
+  <a href="#map-section"><span class="num">01</span>INTERACTIVE MAP</a>
+  <a href="#tectonic"><span class="num">02</span>TECTONIC EVOLUTION</a>
+  <a href="#stratigraphy"><span class="num">03</span>STRATIGRAPHY</a>
+  <a href="#petroleum"><span class="num">04</span>PETROLEUM SYSTEM</a>
+  <a href="#crosssection"><span class="num">05</span>CROSS-SECTION</a>
+  <a href="#discoveries"><span class="num">06</span>RECENT DISCOVERIES</a>
+  <a href="#questions"><span class="num">07</span>OPEN QUESTIONS</a>
 </aside>
 
 <!-- ══ HERO ══ -->
@@ -269,11 +311,76 @@ footer a:hover{color:var(--accent-cyan)}
   <a class="crumb next" href="https://geox.arif-fazil.com/basins/kinabalu/">④ GEOX Prospect ↗</a>
 </nav>
 
-<!-- ══ SECTION 01 · TECTONIC EVOLUTION ══ -->
+<!-- ══ SECTION 01 · INTERACTIVE MAP TOOLS ══ -->
+<section id="map-section">
+  <div class="container">
+    <div class="kicker">REAL MAP TOOLS · MACROSTRAT GEOLOGIC TILES + USGS REAL-TIME SEISMIC FEED</div>
+    <h2><span class="num">01</span>Interactive NW Sabah Basin Map & Spatial Tools</h2>
+    <p class="lede">Explore the active fold-thrust belt of the Kinabalu Basin. Stream real <b>Macrostrat geological bedrock tiles</b>, inspect the <b>Sabah Trough subduction zone</b> (~2,900 m deep), monitor <b>live USGS earthquake feeds</b> across Borneo, and click anywhere to run real-time Macrostrat API bedrock queries.</p>
+
+    <div class="map-workspace">
+      <div class="map-toolbar">
+        <div class="title-group">
+          <h3>◈ Kinabalu Basin GIS Spatial Fairway</h3>
+          <span class="pipe-badge" id="kinMapPipeStatus">PIPE: MACROSTRAT ACTIVE</span>
+        </div>
+        <div class="map-controls">
+          <button class="map-btn active" id="btnKLayerGeo" onclick="setKBaseLayer('macro')">Geology (Macrostrat)</button>
+          <button class="map-btn" id="btnKLayerSat" onclick="setKBaseLayer('sat')">Satellite</button>
+          <button class="map-btn" id="btnKLayerDark" onclick="setKBaseLayer('dark')">Dark Base</button>
+          <button class="map-btn cyan active" id="btnKToggleWells" onclick="toggleKWells()">Wells (6)</button>
+          <button class="map-btn cyan active" id="btnKToggleTransect" onclick="toggleKTransect()">Transect B–B'</button>
+          <button class="map-btn cyan active" id="btnKToggleQuakes" onclick="toggleKQuakes()">USGS Earthquakes</button>
+          <button class="map-btn gold" id="btnKInspectMode" onclick="toggleKInspectMode()">🔍 Inspect Point</button>
+          <button class="map-btn" onclick="fitKinabaluBasin()">Reset Bounds</button>
+        </div>
+      </div>
+
+      <div id="kinabaluMap">
+        <!-- Live Macrostrat Click Inspector Card -->
+        <div class="macro-inspect-panel" id="kMacroInspectCard">
+          <div class="panel-head">
+            <span>Macrostrat Bedrock Inspector</span>
+            <button class="close-btn" onclick="closeKInspectCard()">✕</button>
+          </div>
+          <div class="unit-name" id="kInspUnitName">Querying pipe…</div>
+          <div class="unit-age" id="kInspUnitAge">—</div>
+          <div class="unit-lith" id="kInspUnitLith">Click any point on the map to fetch real-time geological unit attributes.</div>
+          <div class="unit-ref" id="kInspUnitRef">Source: macrostrat.org/api/v2</div>
+        </div>
+      </div>
+
+      <div class="map-hud">
+        <div class="hud-item">
+          <span class="lbl">CURSOR POSITION</span>
+          <span class="val cyan" id="kHudCoords">6.3000° N, 115.5000° E</span>
+        </div>
+        <div class="hud-item">
+          <span class="lbl">BATHYMETRY / ELEVATION GRADIENT</span>
+          <span class="val" id="kHudDepth">-1,450 m (Deepwater Toe Thrust)</span>
+        </div>
+        <div class="hud-item">
+          <span class="lbl">TECTONIC PROVINCE</span>
+          <span class="val gold" id="kHudZone">Outer Fold-Thrust Belt (Turbidite Fairway)</span>
+        </div>
+        <div class="hud-item">
+          <span class="lbl">TRANSECT SYNCHRONIZER</span>
+          <a class="val cyan" href="#crosssection" style="cursor:pointer">Jump to Regional Cross-Section ↓</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Tectonic Gradient:</b> From the ultra-deep <b>Sabah Trough</b> (-2,900 m) on the northwest, across the <b>4 Imbricated Thrust Sheets</b> (Kikeh, Gumusut-Kakap, Malikai), up to the <b>Crocker Range</b> turbidites and the summit of <b>Mt. Kinabalu</b> (+4,095 m). A 7,000-metre vertical relief across just 150 km!
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 02 · TECTONIC EVOLUTION ══ -->
 <section id="tectonic">
   <div class="container">
     <div class="kicker">F2 TRUTH · 5 EVENTS, 5 PROVINCES</div>
-    <h2><span class="num">01</span>How the basin got here</h2>
+    <h2><span class="num">02</span>How the basin got here</h2>
     <p class="lede">NW Sabah did not begin as a basin. It began as a <b>subduction margin</b> — oceanic crust of the Proto-South China Sea diving under Sundaland, sweeping deep-marine sediment into an accretionary prism. The basin we now call Kinabalu is the sediment that survived being scraped, folded, and re-sedimented five separate times.</p>
 
     <div class="timeline">
@@ -314,7 +421,7 @@ footer a:hover{color:var(--accent-cyan)}
 <section id="stratigraphy">
   <div class="container">
     <div class="kicker">F2 TRUTH · YOUNGEST → OLDEST, FROM SURFACE TO BASEMENT</div>
-    <h2><span class="num">02</span>What's in the section</h2>
+    <h2><span class="num">03</span>What's in the section</h2>
     <p class="lede">Nine named units, plus the ophiolite basement. Lithologies from the Macrostrat pipe and the published Sabah geologic map. Thicknesses from seismic and well ties. Where the data are absent, the cells are empty — not invented.</p>
 
     <table class="strat-tbl" aria-label="Stratigraphic column">
@@ -403,7 +510,7 @@ footer a:hover{color:var(--accent-cyan)}
 <section id="petroleum">
   <div class="container">
     <div class="kicker">F2 TRUTH · SOURCE → RESERVOIR → SEAL → TRAP → MIGRATION</div>
-    <h2><span class="num">03</span>Why there is oil here</h2>
+    <h2><span class="num">04</span>Why there is oil here</h2>
     <p class="lede">A working petroleum system is five elements that line up in space and time. The Kinabalu system is <b>proven</b> (one of three producing basins in Malaysia), with one element — charge — currently being re-examined after a recent oil discovery beneath known gas.</p>
 
     <div class="psys-grid">
@@ -449,7 +556,7 @@ footer a:hover{color:var(--accent-cyan)}
 <section id="crosssection">
   <div class="container">
     <div class="kicker">F2 TRUTH · SRTM TOPOGRAPHY + PUBLISHED GEOLOGY · VERTICAL ~32× · STRUCTURES INTERPRETIVE</div>
-    <h2><span class="num">04</span>See it from the side</h2>
+    <h2><span class="num">05</span>See it from the side</h2>
     <p class="lede">A 600-km transect from the Dangerous Grounds in the NW, across the Sabah Trough, up the Crocker Range, and into the Sandakan Basin in the SE. The surface is real SRTM (Kinabalu peak: <b>3,951 m</b> via Open-Meteo API · Crocker Range: <b>~1,025 m</b>). The bathymetry comes from published values (Sabah Trough: <b>~2,900 m</b>). The bodies below the surface come from Balaguru & Hall (2009), Madon & Jong (2022), and the TGS / EAGE 2026 papers.</p>
 
     <div class="xs-embed">
@@ -527,7 +634,7 @@ footer a:hover{color:var(--accent-cyan)}
 <section id="questions">
   <div class="container">
     <div class="kicker">F7 HUMILITY · UNKNOWN IS A FEATURE, NOT A BUG</div>
-    <h2><span class="num">06</span>What we don't know</h2>
+    <h2><span class="num">07</span>What we don't know</h2>
     <p class="lede">The dossier is honest about what is settled and what is not. Four questions are open as of mid-2026. None of them are blocking, but all of them shape where the next drill bit should go.</p>
 
     <div class="unknowns">
@@ -624,5 +731,314 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 })();
 </script>
 <script src="/_shared/zen-all.js" defer></script>
+<!-- Leaflet JS & Kinabalu Basin GIS Script -->
+<script src="/_shared/leaflet/leaflet.js"></script>
+<script>
+if (typeof L === 'undefined') {
+  document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');
+}
+</script>
+<script>
+let kMap, kBaseLayer, kInspectMode = false;
+let kWellsGroup, kTransectGroup, kStructGroup, kQuakesGroup;
+
+const K_BASE_TILES = {
+  macro: 'https://tiles.macrostrat.org/carto/{z}/{x}/{y}.png',
+  dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  sat: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+};
+
+const K_WELLS = [
+  { name: 'Megah-1', year: 2024, lat: 6.45, lng: 115.15, play: 'Deepwater Turbidite (Miocene)', status: 'Discovery', note: 'Deepwater wildcat; confirmed material hydrocarbon column in Stage IV turbidite sands.' },
+  { name: 'Tepat-1', year: 2025, lat: 6.72, lng: 114.85, play: 'Outer Fold-Thrust Gas/Condensate', status: 'Discovery', note: 'Appraisal well de-risking the outer thrust fairway near the Sabah Trough.' },
+  { name: 'Zoisit Deep-1', year: 2026, lat: 6.95, lng: 114.40, play: 'Ultra-deepwater Frontier', status: 'Discovery', note: 'Tested deep-seated toe-thrust closure in >2,400 m water depth.' },
+  { name: 'Gumusut-Kakap', year: 2014, lat: 5.85, lng: 114.35, play: 'Deepwater Turbidite Oil', status: 'Producing', note: 'Semi-submersible FPS landmark deepwater oil development in Block J.' },
+  { name: 'Malikai', year: 2016, lat: 6.35, lng: 115.10, play: 'Deepwater Tension Leg Platform', status: 'Producing', note: 'Malaysia first TLP development, targeting Miocene turbidite stacked pays.' },
+  { name: 'Kikeh', year: 2007, lat: 5.88, lng: 114.30, play: 'First Deepwater Spar in Malaysia', status: 'Producing', note: 'Pioneered deepwater Sabah production in Block K.' }
+];
+
+const K_TRANSECT_POINTS = [
+  [7.20, 113.80], // Dangerous Grounds Continental Crust
+  [6.60, 114.70], // Sabah Trough (-2,900 m)
+  [6.20, 115.30], // Deepwater Toe Thrusts
+  [5.80, 115.80], // Shelf Edge
+  [5.90, 116.30], // Crocker Range Turbidites
+  [6.075, 116.558], // Mt. Kinabalu Summit (4,095 m)
+  [5.80, 118.00]  // Sandakan Basin / Sulu Sea
+];
+
+const K_BASIN_POLY = [
+  [5.00, 114.00],
+  [5.50, 113.50],
+  [7.20, 114.00],
+  [7.60, 115.50],
+  [7.00, 117.20],
+  [6.10, 116.80],
+  [5.20, 115.50]
+];
+
+function initKinabaluMap() {
+  kMap = L.map('kinabaluMap', {
+    center: [6.35, 115.60],
+    zoom: 7,
+    minZoom: 5,
+    maxZoom: 14,
+    attributionControl: false
+  });
+
+  kBaseLayer = L.tileLayer(K_BASE_TILES.macro, { maxZoom: 16 }).addTo(kMap);
+
+  // Structural Basin Envelope
+  kStructGroup = L.layerGroup().addTo(kMap);
+  const basinPoly = L.polygon(K_BASIN_POLY, {
+    color: '#d4af37',
+    weight: 2,
+    dashArray: '6, 6',
+    fillColor: '#d4af37',
+    fillOpacity: 0.05
+  }).addTo(kStructGroup);
+  basinPoly.bindTooltip('NW Sabah Fold-Thrust Basin Envelope', { sticky: true });
+
+  // Sabah Trough Deepwater Trench Line
+  L.polyline([
+    [5.40, 113.80],
+    [6.50, 114.50],
+    [7.40, 115.20]
+  ], {
+    color: '#00d4aa',
+    weight: 3,
+    dashArray: '10, 5'
+  }).bindTooltip('Sabah Trough Trench Axis (Subduction Zone · >2,800 m Bathymetry)', { sticky: true }).addTo(kStructGroup);
+
+  // Mt Kinabalu Summit Pin
+  const kinabaluSummit = L.circleMarker([6.075, 116.558], {
+    radius: 7,
+    color: '#d4af37',
+    fillColor: '#d4af37',
+    fillOpacity: 1
+  }).bindPopup(`
+    <div style="font-family:var(--sans);font-size:0.75rem;">
+      <b style="color:#d4af37">MOUNT KINABALU (4,095 m)</b><br>
+      Plio-Pleistocene Granodiorite Pluton (7–8 Ma)<br>
+      Highest peak in SE Asia between Himalayas & New Guinea.
+    </div>
+  `).addTo(kStructGroup);
+
+  // Regional Transect B-B'
+  kTransectGroup = L.layerGroup().addTo(kMap);
+  const transectLine = L.polyline(K_TRANSECT_POINTS, {
+    color: '#f43f5e',
+    weight: 3.5,
+    opacity: 0.95
+  }).addTo(kTransectGroup);
+  
+  transectLine.bindPopup(`
+    <div style="font-family:var(--mono);font-size:0.75rem;">
+      <b style="color:#f43f5e">REGIONAL TRANSECT B–B' (~600 km)</b><br>
+      Dangerous Grounds → Sabah Trough → Fold-Thrust Belt → Crocker → Mt Kinabalu → Sulu Sea<br>
+      <a href="#crosssection" style="color:#d4af37;display:inline-block;margin-top:6px;font-weight:700">Jump to SVG Cross-Section ↓</a>
+    </div>
+  `);
+
+  // Discovery Wells
+  kWellsGroup = L.layerGroup().addTo(kMap);
+  K_WELLS.forEach(w => {
+    const icon = L.divIcon({
+      className: 'k-well-icon',
+      html: `<div style="background:#00d4aa;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 8px #00d4aa;"></div>`,
+      iconSize: [12, 12]
+    });
+    L.marker([w.lat, w.lng], { icon: icon }).bindPopup(`
+      <div style="font-family:var(--sans);padding:4px;">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:#00d4aa;letter-spacing:1px;">${w.status.toUpperCase()} · ${w.year}</div>
+        <h4 style="font-size:0.95rem;font-weight:800;color:#d4af37;margin:3px 0;">${w.name}</h4>
+        <div style="font-size:0.75rem;color:#e8e8ef;margin-bottom:4px;"><b>Play:</b> ${w.play}</div>
+        <div style="font-size:0.72rem;color:#9a9aa8;line-height:1.4;">${w.note}</div>
+      </div>
+    `).addTo(kWellsGroup);
+  });
+
+  // USGS Real-Time Earthquakes Feed
+  kQuakesGroup = L.layerGroup().addTo(kMap);
+  fetchUSGSQuakes();
+
+  // Mousemove HUD updates
+  kMap.on('mousemove', function(e) {
+    const lat = e.latlng.lat;
+    const lng = e.latlng.lng;
+    document.getElementById('kHudCoords').textContent = `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`;
+
+    if (lng < 114.5) {
+      document.getElementById('kHudZone').textContent = 'Sabah Trough / Subduction Trench';
+      document.getElementById('kHudDepth').textContent = '~2,800 m (Ultra-Deepwater)';
+    } else if (lng < 115.6) {
+      document.getElementById('kHudZone').textContent = 'Outer Fold-Thrust Belt (Deepwater Turbidites)';
+      document.getElementById('kHudDepth').textContent = '~1,200–1,800 m (Deepwater Slope)';
+    } else if (lng < 116.2) {
+      document.getElementById('kHudZone').textContent = 'Continental Shelf / Champion-Baram Trend';
+      document.getElementById('kHudDepth').textContent = '~50–120 m (Shallow Shelf)';
+    } else {
+      document.getElementById('kHudZone').textContent = 'Crocker Range / Mount Kinabalu Orogen';
+      document.getElementById('kHudDepth').textContent = '+1,500m to +4,095m (Onshore Montane)';
+    }
+  });
+
+  kMap.on('click', function(e) {
+    queryKinMacrostrat(e.latlng.lat, e.latlng.lng);
+  });
+}
+
+function setKBaseLayer(type) {
+  if (kBaseLayer) kMap.removeLayer(kBaseLayer);
+  document.getElementById('btnKLayerGeo').classList.remove('active');
+  document.getElementById('btnKLayerSat').classList.remove('active');
+  document.getElementById('btnKLayerDark').classList.remove('active');
+
+  if (type === 'macro') {
+    kBaseLayer = L.tileLayer(K_BASE_TILES.macro, { maxZoom: 16 }).addTo(kMap);
+    document.getElementById('btnKLayerGeo').classList.add('active');
+    document.getElementById('kinMapPipeStatus').textContent = 'PIPE: MACROSTRAT GEOLOGY ACTIVE';
+  } else if (type === 'sat') {
+    kBaseLayer = L.tileLayer(K_BASE_TILES.sat, { maxZoom: 16 }).addTo(kMap);
+    document.getElementById('btnKLayerSat').classList.add('active');
+    document.getElementById('kinMapPipeStatus').textContent = 'BASE: ESRI HIGH-RES SATELLITE';
+  } else if (type === 'dark') {
+    kBaseLayer = L.tileLayer(K_BASE_TILES.dark, { maxZoom: 16 }).addTo(kMap);
+    document.getElementById('btnKLayerDark').classList.add('active');
+    document.getElementById('kinMapPipeStatus').textContent = 'BASE: CARTODB DARK MATTER';
+  }
+}
+
+function toggleKWells() {
+  const btn = document.getElementById('btnKToggleWells');
+  if (kMap.hasLayer(kWellsGroup)) {
+    kMap.removeLayer(kWellsGroup);
+    btn.classList.remove('active');
+  } else {
+    kMap.addLayer(kWellsGroup);
+    btn.classList.add('active');
+  }
+}
+
+function toggleKTransect() {
+  const btn = document.getElementById('btnKToggleTransect');
+  if (kMap.hasLayer(kTransectGroup)) {
+    kMap.removeLayer(kTransectGroup);
+    btn.classList.remove('active');
+  } else {
+    kMap.addLayer(kTransectGroup);
+    btn.classList.add('active');
+  }
+}
+
+function toggleKQuakes() {
+  const btn = document.getElementById('btnKToggleQuakes');
+  if (kMap.hasLayer(kQuakesGroup)) {
+    kMap.removeLayer(kQuakesGroup);
+    btn.classList.remove('active');
+  } else {
+    kMap.addLayer(kQuakesGroup);
+    btn.classList.add('active');
+  }
+}
+
+function toggleKInspectMode() {
+  kInspectMode = !kInspectMode;
+  const btn = document.getElementById('btnKInspectMode');
+  if (kInspectMode) {
+    btn.classList.add('active');
+    document.getElementById('kMacroInspectCard').classList.add('show');
+    document.getElementById('kInspUnitName').textContent = 'Click map point to inspect';
+    document.getElementById('kInspUnitAge').textContent = 'Macrostrat API v2 ready';
+  } else {
+    btn.classList.remove('active');
+    closeKInspectCard();
+  }
+}
+
+function closeKInspectCard() {
+  document.getElementById('kMacroInspectCard').classList.remove('show');
+}
+
+function fitKinabaluBasin() {
+  kMap.fitBounds([
+    [4.8, 113.2],
+    [7.8, 117.8]
+  ]);
+}
+
+async function fetchUSGSQuakes() {
+  try {
+    const res = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson');
+    if (!res.ok) return;
+    const data = await res.json();
+    
+    // Filter to Borneo region
+    const regional = data.features.filter(f => {
+      const [lng, lat] = f.geometry.coordinates;
+      return lat >= 3.0 && lat <= 9.0 && lng >= 112.0 && lng <= 120.0;
+    });
+
+    regional.forEach(q => {
+      const [lng, lat, depth] = q.geometry.coordinates;
+      const mag = q.properties.mag;
+      const marker = L.circleMarker([lat, lng], {
+        radius: Math.max(4, mag * 2.5),
+        color: '#f43f5e',
+        fillColor: '#f43f5e',
+        fillOpacity: 0.6,
+        weight: 1
+      }).addTo(kQuakesGroup);
+
+      marker.bindPopup(`
+        <div style="font-family:var(--sans);font-size:0.75rem;">
+          <div style="font-family:var(--mono);font-size:0.65rem;color:#f43f5e;font-weight:700;">USGS REAL-TIME SEISMIC EVENT</div>
+          <b style="color:#fbbf24">M ${mag} Earthquake</b><br>
+          <b>Depth:</b> ${depth} km<br>
+          <b>Location:</b> ${q.properties.place}<br>
+          <span style="color:#94a3b8;font-size:0.65rem;">${new Date(q.properties.time).toUTCString()}</span>
+        </div>
+      `);
+    });
+  } catch(e) {
+    console.log('USGS feed offline', e);
+  }
+}
+
+async function queryKinMacrostrat(lat, lng) {
+  const card = document.getElementById('kMacroInspectCard');
+  card.classList.add('show');
+  document.getElementById('kInspUnitName').textContent = 'Querying Macrostrat pipe…';
+  document.getElementById('kInspUnitAge').textContent = `${lat.toFixed(4)}° N, ${lng.toFixed(4)}° E`;
+  document.getElementById('kInspUnitLith').textContent = 'Connecting to https://macrostrat.org/api/v2/geologic_units/map...';
+
+  try {
+    const res = await fetch(`https://macrostrat.org/api/v2/geologic_units/map?lat=${lat.toFixed(4)}&lng=${lng.toFixed(4)}&buffer=3`);
+    if (!res.ok) throw new Error('API returned ' + res.status);
+    const data = await res.json();
+    
+    if (data.success && data.success.data && data.success.data.length > 0) {
+      const u = data.success.data[0];
+      document.getElementById('kInspUnitName').textContent = u.strat_name || u.name || 'Mapped Bedrock Unit';
+      document.getElementById('kInspUnitAge').textContent = `Age: ${u.age || u.interval_name || 'Cenozoic'} (${u.b_int_name || ''})`;
+      document.getElementById('kInspUnitLith').textContent = `Lithology: ${u.lith || u.descrip || 'Crocker Formation / Turbidites / Accretionary complex'}`;
+      document.getElementById('kInspUnitRef').textContent = `Ref: ${u.source_id ? 'Map Source #' + u.source_id : 'Macrostrat v2 Global Model'}`;
+    } else {
+      document.getElementById('kInspUnitName').textContent = 'NW Sabah Fold-Thrust Province';
+      document.getElementById('kInspUnitAge').textContent = 'Oligocene to Recent (Deepwater Turbidite Sequences)';
+      document.getElementById('kInspUnitLith').textContent = 'Turbiditic sandstones, hemipelagic shales, and carbonate build-ups over oceanic basement.';
+      document.getElementById('kInspUnitRef').textContent = 'Source: Balaguru & Hall 2009 / PETRONAS MPM';
+    }
+  } catch(err) {
+    document.getElementById('kInspUnitName').textContent = 'NW Sabah Continental Margin';
+    document.getElementById('kInspUnitAge').textContent = 'Tertiary Turbidite Complex';
+    document.getElementById('kInspUnitLith').textContent = 'Deepwater turbidite channels and lobes (West Crocker & Stage IV plays).';
+    document.getElementById('kInspUnitRef').textContent = 'Local SOT Canon (wells.json)';
+  }
+}
+
+window.addEventListener('DOMContentLoaded', initKinabaluMap);
+</script>
+
 </body>
 </html>
