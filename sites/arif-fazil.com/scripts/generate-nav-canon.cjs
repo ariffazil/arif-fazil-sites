@@ -20,6 +20,15 @@ function mapItems(items) {
 }
 
 try {
+  if (!fs.existsSync(CANON)) {
+    // CI runners have no /root/web-canon — the derived navCanon.ts is committed,
+    // so regeneration is VPS-only. Fatal on the VPS (canon must exist), skip in CI.
+    if (process.env.CI) {
+      console.log('ℹ generate-nav-canon: canon not present in CI — using committed navCanon.ts');
+      process.exit(0);
+    }
+    throw new Error(`canon not found at ${CANON}`);
+  }
   const nav = JSON.parse(fs.readFileSync(CANON, 'utf8'));
   const primary = mapItems(nav.primary_links?.items);
   const secondary = mapItems(nav.secondary_links?.items);
