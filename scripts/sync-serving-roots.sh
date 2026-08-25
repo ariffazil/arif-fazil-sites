@@ -42,6 +42,16 @@ else
   echo "$LOG_PREFIX WARN: no earth/ in dist — skipping (build first?)" >&2
 fi
 
+# ── 1b. _shared tree (handle /_shared/* roots at /var/www/html — proven broken
+# 2026-08-25: dossier pages vendored Leaflet under /_shared/leaflet, top-level
+# copy missing → live maps dead while pages returned 200) ────────────────────
+if [ -d "$DIST/_shared" ]; then
+  mkdir -p "$BK"
+  [ -d "$TOP/_shared" ] && cp -a "$TOP/_shared" "$BK/_shared"
+  rsync -a "$DIST/_shared/" "$TOP/_shared/"
+  echo "$LOG_PREFIX synced _shared/ ($(find "$TOP/_shared" -type f | wc -l) files)"
+fi
+
 # ── 2. root-static files (@root_static handler) ────────────────────────────
 synced=0
 for f in "${ROOT_STATIC_FILES[@]}"; do
