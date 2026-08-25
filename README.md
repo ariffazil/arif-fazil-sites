@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.08.09
-last_verified: 2026-08-10T12:10:00Z
-live_commit: pending
+federation_release: v2026.08.25
+last_verified: 2026-08-25T12:13:00Z
+live_commit: ad0e18a54fd35babba1b8d49b75cfe9cf57d61c9
 scope: /root/arif-fazil.com → ariffazil/arif-fazil.com
 epistemic_status: OBS
 truth_rule: live git push + Cloudflare deploy beat any static count in prose
