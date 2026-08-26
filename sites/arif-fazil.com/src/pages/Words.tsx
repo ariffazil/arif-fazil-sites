@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import { CompassLexigramCodex } from '@/components/CompassLexigramCodex'
 import essaysData from '@/data/essays.json'
 
 const SERIES_LABELS: Record<string, string> = {
@@ -79,6 +80,11 @@ export function Words() {
             Long-form essays, formal derivations, philosophical treatises, and the Arif Fazil Wiki knowledge base.
             Every word published directly.
           </p>
+
+          {/* Hero Visual: Compass Lexigram Codex */}
+          <div className="my-8">
+            <CompassLexigramCodex />
+          </div>
 
           {/* Tab Switcher */}
           <div className="flex flex-wrap items-center gap-3 mt-8">
