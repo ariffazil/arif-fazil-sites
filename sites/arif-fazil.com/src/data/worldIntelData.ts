@@ -54,7 +54,7 @@ export interface MacroIndicator {
   change: string;
   isPositive: boolean;
   role: string;
-  status: 'SEAL' | 'SABAR' | 'HOLD';
+  status: 'SEAL' | 'SABAR' | 'HOLD' | 'BREACHED';
   link: string;
   benchmark: string;
 }
@@ -67,8 +67,8 @@ export const MACRO_INDICATORS: MacroIndicator[] = [
     id: 'oil',
     code: 'BRENT / USD',
     name: 'Brent Crude Oil',
-    value: '$82.40',
-    change: '+1.24%',
+    value: '$85.48',
+    change: '+1.20%',
     isPositive: true,
     role: 'Global Primary Energy Baseline & Petrochemical Feedstock',
     status: 'SEAL',
@@ -77,15 +77,15 @@ export const MACRO_INDICATORS: MacroIndicator[] = [
   },
   {
     id: 'gas',
-    code: 'JKM / LNG',
-    name: 'Natural Gas / Asia LNG',
-    value: '$13.20',
-    change: '+0.82%',
+    code: 'HH / GAS',
+    name: 'Natural Gas (Henry Hub)',
+    value: '$2.86',
+    change: '+0.80%',
     isPositive: true,
-    role: 'Sarawak & Western Pacific Baseload Transition Artery',
-    status: 'SEAL',
+    role: 'Global Gas Benchmark & Transition Baseload Reference',
+    status: 'SABAR',
     link: '/world/economics/gas',
-    benchmark: 'Platts Japan Korea Marker (JKM Spot Index)',
+    benchmark: 'Henry Hub Spot Reference & LNG Parity Index',
   },
   {
     id: 'gold',
@@ -103,7 +103,7 @@ export const MACRO_INDICATORS: MacroIndicator[] = [
     id: 'usdmyr',
     code: 'USD / MYR',
     name: 'Ringgit Forex Rate',
-    value: '4.4250',
+    value: '4.047',
     change: '-0.30%',
     isPositive: false,
     role: 'National Sovereign Purchasing Power & Import Parity',
@@ -115,7 +115,7 @@ export const MACRO_INDICATORS: MacroIndicator[] = [
     id: 'klci',
     code: 'FBM KLCI',
     name: 'FTSE Bursa Malaysia',
-    value: '1,598.40',
+    value: '1,749.20',
     change: '+0.51%',
     isPositive: true,
     role: 'Domestic Capital, Utilities & Data Center Infrastructure Bellwether',
@@ -134,6 +134,18 @@ export const MACRO_INDICATORS: MacroIndicator[] = [
     status: 'HOLD',
     link: '/world',
     benchmark: 'US 10-Year Benchmark Constant Maturity',
+  },
+  {
+    id: 'petronas-sovereign-extraction',
+    code: 'PETRONAS / DIV/PAT',
+    name: 'PETRONAS Sovereign Extraction',
+    value: '70.5%',
+    change: '-37.5% YoY',
+    isPositive: false,
+    role: 'Single Largest Federal Dividend Source · ~20-25% of Federal Revenue · Bond Spread / Sovereign Rating Cascade Anchor',
+    status: 'BREACHED',
+    link: '/vitals',
+    benchmark: 'FY2025 Audited IFR · div RM32.0B / PAT RM45.4B · tripwire 60% · next audit 1H FY2026 (~29 Aug 2026)',
   },
 ];
 
