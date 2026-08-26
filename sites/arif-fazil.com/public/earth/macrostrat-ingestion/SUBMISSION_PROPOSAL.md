@@ -3,6 +3,7 @@
 **To:** Prof. Shanan Peters, Dr. Daven Quinn & The Macrostrat Team (University of Wisconsin–Madison)  
 **From:** Muhammad Arif bin Fazil (Exploration Geoscientist, PETRONAS Subsurface Alum & arifOS Federation Architect)  
 **Date:** 2026-08-26  
+**Target Repository:** `https://github.com/UW-Macrostrat/macrostrat` (Macrostrat Ingestion Track)  
 **Subject:** High-Resolution Map Ingestion Submission: National Geological Map of Malaysia (JMG 1:500k Bedrock & Major Faults)
 
 ---
@@ -13,9 +14,9 @@ Currently, Macrostrat's global coverage over Southeast Asia and Malaysia is larg
 
 This submission provides the complete, authoritative, official national geoscientific dataset from the **Department of Mineral and Geoscience Malaysia (Jabatan Mineral dan Geosains Malaysia - JMG)** under the **MyGEMS** National Geospatial Framework:
 * **Nominal Scale:** 1:500,000 (Medium/Regional Scale).
-* **Coverage:** All 14 States of Malaysia across Sundaland (Peninsular Malaysia) and Borneo (Sabah and Sarawak), spanning **330,803 km²** of terrestrial bedrock.
+* **Coverage:** All 14 States of Malaysia across Sundaland (Peninsular Malaysia) and Borneo (Sabah and Sarawak), covering the national terrestrial extent (~330,803 km²).
 * **Structural Lineaments:** Suture zones, major shear systems, and thrust faults (Bentong-Raub Suture, Bukit Tinggi Fault, Bok Bak Fault, Lupar Line, Crocker Fold-Thrust Belt).
-* **Spatial Reference:** EPSG:4326 (WGS84) Geodetic.
+* **Spatial Reference:** EPSG:4326 (WGS84) Geodetic / Web Mercator EPSG:3857.
 
 ---
 
@@ -23,7 +24,8 @@ This submission provides the complete, authoritative, official national geoscien
 
 * **Source Name:** Geological Map of Malaysia (1:500k JMG National Series)
 * **Publishing Agency:** Jabatan Mineral dan Geosains Malaysia (JMG)
-* **Primary GIS Service:** `https://mygems.jmg.gov.my/server/rest/services/Demarcation/Litology_by_Negeri/MapServer`
+* **Primary Web Portal:** `https://mygems.jmg.gov.my/portal/apps/webappviewer/index.html?id=90702a483ab6489bbaab210e038c2ed9`
+* **GIS Service Endpoint:** `https://mygems.jmg.gov.my/server/rest/services/Demarcation/Litology_by_Negeri/MapServer`
 * **Structural Fault Service:** `https://mygems.jmg.gov.my/server/rest/services/GeologiAsas/Major_Fault/MapServer/5`
 * **Licensing:** Open Government Data (Malaysia) / Public Domain Geoscience / CC-BY 4.0 Compatible.
 * **Bounding Box:** `[99.5, 0.8, 119.5, 7.5]` (WGS84 Lat/Lng).
@@ -53,15 +55,17 @@ The dataset is subdivided into key geotectonic domains:
 
 ---
 
-## 4. Integration Files & Manifest
+## 4. Integration Artifacts & Manifest
 
 1. `macrostrat_ingestion_manifest.json`: Standardized Macrostrat Source & Layer mapping specification.
-2. `export_jmg_macrostrat.py`: Automated GIS vector extractor script formatting all 14 state layers into Macrostrat GeoPackage/Shapefile schema with clean topological boundary resolution.
+2. `jmg_malaysia_states_summary.json`: Detailed 14-state layer catalog with verified ArcGIS Server endpoints and bounding extents.
+3. `export_jmg_macrostrat.py`: Automated GIS vector extractor script formatting all 14 state layers into Macrostrat GeoPackage/Shapefile schema with clean topological boundary resolution.
 
 ---
 
 ## 5. Contact & Coordination
 
 * **Submitter:** Muhammad Arif bin Fazil
-* **Email:** `arif@arif-fazil.com` / `https://arif-fazil.com/earth/`
-* **GitHub Submission:** Prepared for submission to `https://github.com/UW-Macrostrat/map-integration`
+* **Email:** `arif@arif-fazil.com`
+* **Canonical Web Surface:** `https://arif-fazil.com/earth/macrostrat-ingestion/`
+* **Upstream Submission:** Intended for submission as an Issue on [UW-Macrostrat/macrostrat](https://github.com/UW-Macrostrat/macrostrat/issues).

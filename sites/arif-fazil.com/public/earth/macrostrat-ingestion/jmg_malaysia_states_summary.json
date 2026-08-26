@@ -26,26 +26,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11138559.357866902,
       "ymin": 153294.31469405795,
       "xmax": 11620069.55094983,
-      "ymax": 751301.8772923112,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 751301.8772923112
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Kedah",
@@ -74,26 +61,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11012830.268900359,
       "ymin": 564828.6176693751,
       "xmax": 11258072.618799414,
-      "ymax": 730580.9882243557,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 730580.9882243557
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Pulau Pinang",
@@ -122,26 +96,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11151556.013071163,
       "ymin": 570889.3683575394,
       "xmax": 11193365.738729572,
-      "ymax": 622814.0278782491,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 622814.0278782491
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Perak",
@@ -170,26 +131,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11171773.758731952,
       "ymin": 408205.34295788733,
       "xmax": 11327752.227663694,
-      "ymax": 661891.298762317,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 661891.298762317
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Kelantan",
@@ -218,26 +166,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11279962.18991876,
       "ymin": 506573.3296149101,
       "xmax": 11429016.144376187,
-      "ymax": 695696.235103025,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 695696.235103025
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Terengganu",
@@ -266,26 +201,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11396847.655203175,
       "ymin": 432279.9670502219,
       "xmax": 11543053.858994158,
-      "ymax": 665462.7431315238,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 665462.7431315238
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Pahang",
@@ -314,26 +236,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11280234.186910303,
       "ymin": 273383.71509517374,
       "xmax": 11602341.71405846,
-      "ymax": 532978.5378646598,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 532978.5378646598
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Selangor",
@@ -362,26 +271,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11222060.75200954,
       "ymin": 288592.305702164,
       "xmax": 11351489.818234509,
-      "ymax": 431300.4277101047,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 431300.4277101047
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Putrajaya",
@@ -410,26 +306,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11316862.299125655,
       "ymin": 320307.92070585804,
       "xmax": 11325013.23075628,
-      "ymax": 332270.6439457255,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 332270.6439457255
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Kuala Lumpur",
@@ -458,26 +341,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11311885.706127364,
       "ymin": 337826.0142246448,
       "xmax": 11327937.95706321,
-      "ymax": 361415.6065176838,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 361415.6065176838
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Negeri Sembilan",
@@ -506,26 +376,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11321502.827777974,
       "ymin": 266217.8237786188,
       "xmax": 11432980.756572263,
-      "ymax": 366628.75070039596,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 366628.75070039596
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Melaka",
@@ -554,26 +411,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11351180.847934017,
       "ymin": 227897.909482276,
       "xmax": 11420984.03311388,
-      "ymax": 278366.913844587,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 278366.913844587
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Johor",
@@ -603,26 +447,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 11406677.340060854,
       "ymin": 140502.7410914589,
       "xmax": 11638809.223843496,
-      "ymax": 315655.5929105462,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 315655.5929105462
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Sabah",
@@ -648,26 +479,13 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 12815226.633579472,
       "ymin": 458209.99804554664,
       "xmax": 13276438.65359547,
-      "ymax": 822107.0646560577,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 822107.0646560577
+    },
+    "status": "VERIFIED_ONLINE"
   },
   {
     "state": "Sarawak",
@@ -693,25 +511,12 @@
       "Shape.STArea()",
       "Shape.STLength()"
     ],
-    "extent": {
+    "extent_wkid_3857": {
       "xmin": 12193688.186143119,
       "ymin": 95220.84644231653,
       "xmax": 12876815.78783084,
-      "ymax": 556151.8239078671,
-      "spatialReference": {
-        "wkid": 102100,
-        "latestWkid": 3857,
-        "xyTolerance": 0.001,
-        "zTolerance": 0.001,
-        "mTolerance": 0.001,
-        "falseX": -20037700,
-        "falseY": -30241100,
-        "xyUnits": 148923141.92838538,
-        "falseZ": -100000,
-        "zUnits": 10000,
-        "falseM": -100000,
-        "mUnits": 10000
-      }
-    }
+      "ymax": 556151.8239078671
+    },
+    "status": "VERIFIED_ONLINE"
   }
 ]

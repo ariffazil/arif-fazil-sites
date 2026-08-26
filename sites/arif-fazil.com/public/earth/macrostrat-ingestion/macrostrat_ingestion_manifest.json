@@ -1,24 +1,28 @@
 {
-  "$schema": "https://macrostrat.org/schemas/map-ingestion/v2.json",
-  "source": {
+  "macrostrat_source_spec": {
+    "source_id": "jmg_malaysia_1_500k",
     "name": "Geological Map of Malaysia (JMG 1:500k Series)",
     "primary_table": "jmg_malaysia_bedrock",
     "url": "https://mygems.jmg.gov.my/portal/apps/webappviewer/index.html?id=90702a483ab6489bbaab210e038c2ed9",
+    "service_url": "https://mygems.jmg.gov.my/server/rest/services/Demarcation/Litology_by_Negeri/MapServer",
     "ref_title": "Geological Map of Peninsular Malaysia (1:500,000) and Geological Map of Sabah and Sarawak (1:500,000)",
     "authors": "Department of Mineral and Geoscience Malaysia (Jabatan Mineral dan Geosains Malaysia - JMG)",
     "ref_year": 2024,
     "ref_source": "JMG MyGEMS National Geoscience Spatial Infrastructure",
-    "isbn_doi": "https://mygems.jmg.gov.my/server/rest/services/Demarcation/Litology_by_Negeri/MapServer",
     "scale": "medium",
     "nominal_scale": 500000,
-    "licence": "Open Government Data (Malaysia) / Educational & Scientific Research (CC-BY 4.0 compatible)",
-    "area_km2": 330803,
+    "licence": "Open Government Data (Malaysia) / Educational & Scientific Research",
+    "coverage_note": "National terrestrial coverage across 14 states (approx. 330,803 km²); per-state polygons served by JMG MyGEMS ArcGIS MapServer",
     "bbox": [99.5, 0.8, 119.5, 7.5],
-    "coordinate_system": "EPSG:4326 (WGS84)",
+    "coordinate_system": "EPSG:4326 (WGS84) / Web Mercator EPSG:3857",
     "contact": {
-      "name": "Arif Fazil (Exploration Geoscientist & arifOS Federation Architect)",
+      "name": "Muhammad Arif bin Fazil (Exploration Geoscientist)",
       "email": "arif@arif-fazil.com",
       "affiliation": "arifOS Federation / GEOX Earth Intelligence"
+    },
+    "upstream_target": {
+      "repository": "https://github.com/UW-Macrostrat/macrostrat",
+      "submission_track": "Macrostrat Map Ingestion / Maps Pipeline"
     }
   },
   "layers": [
