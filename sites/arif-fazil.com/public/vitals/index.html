@@ -676,35 +676,40 @@ if (EXTRACTION_LOCK_ACTIVE) {
 
 /* render attention list from the three lowest scores */
 const attentionList=document.getElementById("attention-list");
-attentionList.replaceChildren();
-RANKED_TRIPWIRES.slice(0,3).forEach(t=>{
-  const sc=score(t),b=isBreached(t),v=verdict(sc,b),li=document.createElement("li");
-  const badge=b?`<b style="color:var(--void)">BREACHED</b>`: `<b class="attention-score">${sc.toFixed(0)}/100</b>`;
-  li.innerHTML=`<span><span class="attention-layer">${HUMAN_LABELS[t.layer]}</span> · ${t.name}</span>${badge}`;
-  attentionList.appendChild(li);
-});
+if (attentionList) {
+  attentionList.replaceChildren();
+  RANKED_TRIPWIRES.slice(0,3).forEach(t=>{
+    const sc=score(t),b=isBreached(t),v=verdict(sc,b),li=document.createElement("li");
+    const badge=b?`<b style="color:var(--void)">BREACHED</b>`: `<b class="attention-score">${sc.toFixed(0)}/100</b>`;
+    li.innerHTML=`<span><span class="attention-layer">${HUMAN_LABELS[t.layer]}</span> · ${t.name}</span>${badge}`;
+    attentionList.appendChild(li);
+  });
+}
 
 /* render one ranked 9-tripwire grid */
 const g=document.getElementById("grid9");
-RANKED_TRIPWIRES.forEach(t=>{
-  const sc=score(t),b=isBreached(t),v=verdict(sc,b),sd=daysSince(t.sealed);
-  const tense=b||sc<=25?"tense":"";
-  const staleCls=sd>STALE_DAYS?" stale-cell":"";
-  const c=document.createElement("div");
-  c.className="tripcell "+tense+staleCls;
-  const staleTag=sd>STALE_DAYS?`<span style="color:var(--hold);font-size:8px"> ⚠ STALE ${sd}d</span>`:"";
-  const statusDetail=b
-    ? `BREACHED (+${(t.dir==="above"?t.now-t.trip:t.trip-t.now).toFixed(1)}${t.unit} over tripwire)`
-    : (sc<=25?"LOW MARGIN":sc.toFixed(0)+"/100");
-  c.dataset.layer=t.layer;
-  c.innerHTML=`<div class="idx mono">#${t.id}</div>
-    <div class="title">${t.name}</div><div class="layer">${HUMAN_LABELS[t.layer]} · ${t.tag}${staleTag}</div>
-    <div class="gauge"><div class="gauge-fill" style="width:${sc}%;background:${v.c}"></div><div class="gauge-trip" style="left:2%"></div></div>
-    <div class="metrics"><span>${t.now}${t.unit}</span><span>trip ${t.dir==="below"?"&lt;":">"}${t.trip}${t.unit}</span></div>
-    <div class="verdict" style="color:${v.c}">${v.w} · ${statusDetail}</div>
-    <div class="seal-date">sealed ${t.sealed}</div>`;
-  g.appendChild(c);
-});
+if (g) {
+  g.replaceChildren();
+  RANKED_TRIPWIRES.forEach(t=>{
+    const sc=score(t),b=isBreached(t),v=verdict(sc,b),sd=daysSince(t.sealed);
+    const tense=b||sc<=25?"tense":"";
+    const staleCls=sd>STALE_DAYS?" stale-cell":"";
+    const c=document.createElement("div");
+    c.className="tripcell "+tense+staleCls;
+    const staleTag=sd>STALE_DAYS?`<span style="color:var(--hold);font-size:8px"> ⚠ STALE ${sd}d</span>`:"";
+    const statusDetail=b
+      ? `BREACHED (+${(t.dir==="above"?t.now-t.trip:t.trip-t.now).toFixed(1)}${t.unit} over tripwire)`
+      : (sc<=25?"LOW MARGIN":sc.toFixed(0)+"/100");
+    c.dataset.layer=t.layer;
+    c.innerHTML=`<div class="idx mono">#${t.id}</div>
+      <div class="title">${t.name}</div><div class="layer">${HUMAN_LABELS[t.layer]} · ${t.tag}${staleTag}</div>
+      <div class="gauge"><div class="gauge-fill" style="width:${sc}%;background:${v.c}"></div><div class="gauge-trip" style="left:2%"></div></div>
+      <div class="metrics"><span>${t.now}${t.unit}</span><span>trip ${t.dir==="below"?"&lt;":">"}${t.trip}${t.unit}</span></div>
+      <div class="verdict" style="color:${v.c}">${v.w} · ${statusDetail}</div>
+      <div class="seal-date">sealed ${t.sealed}</div>`;
+    g.appendChild(c);
+  });
+}
 
 /* ============================================================
    NET-CASH SCENARIOS — modeled after ExxonMobil IR cash-flow kit
