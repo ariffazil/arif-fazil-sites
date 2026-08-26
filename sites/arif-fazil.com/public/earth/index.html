@@ -644,7 +644,7 @@ const skipBtn=$("veilSkip");
 if(skipBtn)skipBtn.addEventListener("click",()=>{boot.ready.engine=true;dismissVeil("skip");});
 
 /* ── tile engines ── */
-const TILE_GEO=(x,y,z)=>`https://images.weserv.nl/?url=tiles.macrostrat.org/carto/${z}/${x}/${y}.png`;
+const TILE_GEO=(x,y,z)=>`/earth/tiles/macrostrat/carto/${z}/${x}/${y}.png`;
 const TILE_SAT=(x,y,z)=>`https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}`;
 let base="geo";
 
@@ -654,6 +654,7 @@ let world=null;
 try{
   if(typeof Globe!=="function")throw new Error("globe.gl not loaded");
   world=Globe({rendererConfig:{antialias:true}})(el)
+    .globeImageUrl("https://unpkg.com/three-globe/example/img/earth-night.jpg")
     .globeTileEngineUrl((x,y,z)=>TILE_GEO(x,y,z))
     .showAtmosphere(true).atmosphereColor("#00d4aa").atmosphereAltitude(0.16)
     .backgroundColor("#0a0a0f")
@@ -849,7 +850,7 @@ async function loadPlates(){
 
       try{
         world.polygonsData(platePolygons)
-          .polygonGeoJson(d=>d.geometry)
+          .polygonGeoJsonGeometry(d=>d.geometry)
           .polygonCapColor(()=>"rgba(255,255,255,0.04)")
           .polygonSideColor(()=>"rgba(255,255,255,0.05)")
           .polygonStrokeColor(()=>"rgba(212,175,55,0.18)")
