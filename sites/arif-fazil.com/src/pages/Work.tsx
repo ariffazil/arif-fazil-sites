@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { agenticMirrors } from '@/components/ArrowNavbar'
 import { discoveries } from '@/data/discoveries'
+import { SeismicAmplitudeCanvas } from '@/components/SeismicAmplitudeCanvas'
 
 export function Work() {
   return (
     <div className="min-h-screen bg-[#0A0B0D] text-[#EDEAE2] py-16 md:py-24">
       <div className="mx-auto max-w-[1280px] px-6">
         {/* Header */}
-        <div className="mb-12 border-b border-[#1F2733] pb-8">
+        <div className="mb-12 border-b border-[#1F2733] pb-10">
           <div className="flex items-center gap-2 font-mono text-xs text-[#31C48D] uppercase tracking-widest mb-3">
             <span>WORK · SYSTEMS · THE WELLS</span>
             <span>·</span>
@@ -16,10 +17,15 @@ export function Work() {
           <h1 className="font-display text-4xl md:text-5xl font-black uppercase tracking-tight text-[#EDEAE2] mb-4">
             The Work & The Record
           </h1>
-          <p className="font-sans text-lg text-[#9AA0A8] max-w-3xl leading-relaxed">
+          <p className="font-sans text-lg text-[#9AA0A8] max-w-3xl leading-relaxed mb-8">
             Thirteen years of offshore petroleum drilling decisions and the computational architecture built to govern autonomous intelligence.
             Every well flowed. Systems are built to leave an audit trail.
           </p>
+
+          {/* Hero Visual: Interactive Seismic Amplitude Canvas Map */}
+          <div className="my-6">
+            <SeismicAmplitudeCanvas />
+          </div>
         </div>
 
         {/* Section 1: The Wells Record */}
