@@ -548,14 +548,28 @@
     <p class="lede">Geology is the only science whose laboratory is a planet and whose stopwatch is a billion years. Every rock on that globe is <b>mid-journey</b> between being made, being buried, and being destroyed. The bar below is the entire history of Earth, linear scale. All of written human history fits in the last <b>0.0001%</b> — thinner than the line that ends it.</p>
 
     <div class="deeptime">
-      <div class="bar" title="Linear scale, Ma before present">
-        <div class="e" style="width:12.4%;background:#8a4b8f">HADEAN<small>4567–4000 Ma</small></div>
-        <div class="e" style="width:32.8%;background:#c23b6e">ARCHEAN<small>4000–2500 Ma</small></div>
-        <div class="e" style="width:42.8%;background:#d4af37">PROTEROZOIC<small>2500–539 Ma</small></div>
-        <div class="e" style="width:12%;background:#00d4aa">PHANEROZOIC<small>539–0 Ma · us</small></div>
-      </div>
-      <div class="scale"><span>4567 Ma · accretion</span><span>linear scale</span><span>0 · today</span></div>
       <p class="eon-note">All of written human history fits in the last <b>0.0001%</b> of that bar — thinner than the line that ends it. Humility is not a posture here; it is a measurement. <b>Ω₀ ≈ 0.04.</b></p>
+
+      <!-- GEOX Timescale · PR #1, 2026-08-26 (in-session staging, F2/F13 audited) -->
+      <div id="geox-ts-mount" class="geox-ts-mount" data-source="ics2023+pbdb" aria-label="Interactive geologic timescale (ICS 2023)">
+        <!-- chart mounts here; provenance + queue inspector appended by JS -->
+        <div class="geox-ts-queue" id="geox-ts-queue-inspector">
+          <div class="geox-ts-queue-head">
+            <span>Draft claims queued</span>
+            <span class="count" id="geox-ts-count">0</span>
+            <button type="button" id="geox-ts-clear" title="Clear local IndexedDB queue (no sovereign write)">CLEAR</button>
+          </div>
+          <ul class="geox-ts-list" id="geox-ts-list">
+            <li class="geox-ts-empty">No draft claims queued yet. Click an interval.</li>
+          </ul>
+        </div>
+        <aside class="geox-ts-provenance" aria-label="timescale provenance">
+          <p class="provenance-head"><strong>Provenance · F2 TRUTH</strong> — Intervals from the <a href="https://stratigraphy.org/ICSchart/ChronostratChart2023-09.jpg" target="_blank" rel="noopener">International Chronostratigraphic Chart (ICS 2023)</a>, condensed from the <a href="https://paleobiodb.org" target="_blank" rel="noopener">Paleobiology Database</a>.</p>
+          <p class="provenance-body">Per-interval provenance is <em>not</em> provided by upstream — treat each age as <strong>DEFERRABLE</strong>, not <strong>SEALED</strong>. Uncertainties ≥ ±1&nbsp;Ma for Phanerozoic ages, larger for Precambrian. To convert a queued draft into a sealed claim, an <code>arif_init(mode=&quot;init&quot;, requested_authority=&quot;OPERATOR&quot;)</code> session must drain the queue via the A-FORGE interpreter (Hermes lane).</p>
+        </aside>
+      </div>
+      <div class="geox-ts-flash" id="geox-ts-flash" role="status" aria-live="polite"></div>
+      <div class="scale"><span>4567 Ma · accretion</span><span>linear scale · ICS 2023</span><span>0 · today</span></div>
     </div>
 
     <details class="collapsible" style="margin-top:2rem">
@@ -754,6 +768,9 @@
   <p>Numbers on this page are read from live pipes at load time and withheld if a pipe fails. Nothing here is claimed unobserved. Ω₀ ≈ 0.04.</p>
   <p>An organ of the arifOS federation · <a href="/map/#earth">site map</a> · <a href="https://arif-fazil.com">arif-fazil.com</a> · <a href="https://geox.arif-fazil.com/">GEOX ↗</a></p>
 </footer>
+
+<!-- ══ GEOX TIMESCALE (PR #1, 2026-08-26, F2/F13 audited, no sovereign write) ══ -->
+<script type="module" src="/earth/_shared/timescale/glue.js"></script>
 
 <!-- ══ GLOBE ENGINE + ALL LIVE PIPES (unchanged — this is the living heart) ══ -->
 <script src="https://unpkg.com/globe.gl@2.46.1/dist/globe.gl.min.js"></script>
