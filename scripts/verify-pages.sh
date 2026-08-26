@@ -33,6 +33,10 @@ INTENTIONAL_EXCLUSIONS=(
     "/world/makcikgpt/"
     "/pulse/"
     "/audit/"
+    "/forge/"
+    "/forge"
+    "/propa/"
+    "/propa"
 )
 
 FAIL_COUNT=0

@@ -49,3 +49,13 @@
 # /institution is SPA route — handled by React Router via fallback
 # (no static rewrite needed; Cloudflare Pages fallback to /index.html)
 
+# 2026-08-26: /forge route closure for PETRONAS dossier / SPA fallback
+/forge            /world/makcikgpt/petronas-full-reality-rakyat-dossier    200
+/forge/*          /world/makcikgpt/petronas-full-reality-rakyat-dossier    200
+
+# 2026-08-26: /propa canonical redirect to /vitals (Patch 4)
+/propa            /vitals/                                                 301
+/propa/*          /vitals/                                                 301
+
+
+
