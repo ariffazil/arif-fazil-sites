@@ -240,6 +240,23 @@ export function Home() {
                   <p className="font-sans text-sm text-[#9AA0A8] leading-relaxed line-clamp-3">
                     {d.summary}
                   </p>
+                  {/* Evidence drawer — claim → evidence → source → limitations (read-only, native) */}
+                  <details className="mt-3">
+                    <summary className="cursor-pointer select-none font-mono text-[11px] uppercase tracking-wider text-[#9AA0A8] hover:text-[#E4572E] transition-colors">
+                      Evidence drawer ▾
+                    </summary>
+                    <ul className="mt-2 space-y-1.5 border-l-2 border-[#1F2733] pl-3">
+                      {d.evidence.map((e) => (
+                        <li key={e} className="text-xs text-[#9AA0A8]/80 leading-relaxed">
+                          — {e}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-2 font-mono text-[10px] uppercase tracking-wider text-[#9AA0A8]/60">
+                      source · {d.linkLabel ?? 'Explore GEOX'} · {d.year} · limitations ·{' '}
+                      {d.limits ?? 'Internal technical detail withheld.'}
+                    </div>
+                  </details>
                 </div>
                 <div className="pt-4 mt-4 border-t border-[#1F2733] flex items-center justify-between">
                   <span className="font-mono text-[11px] text-[#9AA0A8]/70">

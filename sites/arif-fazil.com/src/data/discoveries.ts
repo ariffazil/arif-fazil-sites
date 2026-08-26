@@ -8,6 +8,7 @@ export interface Discovery {
   location: string;
   summary: string;
   evidence: string[];
+  limits?: string;
   link?: string;
   linkLabel?: string;
 }
@@ -28,6 +29,7 @@ export const discoveries: Discovery[] = [
       'Established the shallowest productive oil reservoir interval in the Malay Basin',
       'Calibrated structural and stratigraphic trapping models across the Cendor Graben margin'
     ],
+    limits: 'Technical pack withheld.',
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Explore GEOX →'
   },
@@ -45,6 +47,7 @@ export const discoveries: Discovery[] = [
       'Basement interval confirmed granite/granodiorite and tested water-bearing, establishing critical charge/seal risk bounds',
       'De-risked adjacent structural trends and contributed to PM318 asset evaluation'
     ],
+    limits: 'Subsurface sections withheld.',
     link: 'https://geox.arif-fazil.com/viewer/',
     linkLabel: 'Open Viewer →'
   },
@@ -63,6 +66,7 @@ export const discoveries: Discovery[] = [
       'Opened a new hinge fault play fairway along the western margin of the Malay Basin',
       'Block PM6/12 subsequently included in commercial farm-out arrangements'
     ],
+    limits: 'Full technical pack and internal ranking withheld.',
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Explore GEOX →'
   },
@@ -80,6 +84,7 @@ export const discoveries: Discovery[] = [
       'Primary syn-rift objective tested water-bearing, providing crucial calibration to downgrade regional syn-rift risk',
       'Post-drill resource evaluation supported inclusion and award in MBR+ Round I Small Field Asset PSC (2024)'
     ],
+    limits: 'Award-phase details withheld.',
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Explore GEOX →'
   },
@@ -99,6 +104,7 @@ export const discoveries: Discovery[] = [
       'Integrated structural inversion, fault seal (SGR), and Group A→M stratigraphy synthesis',
       'Applied epistemic uncertainty and cognitive bias auditing to subsurface prospect mapping'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://geox.arif-fazil.com/map/',
     linkLabel: 'Open Map →'
   },
@@ -116,6 +122,7 @@ export const discoveries: Discovery[] = [
       'Evaluated collision-related wedge deformation and mass transport deposits',
       'Calibrated deepwater prospect risk matrices against regional well results'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Explore GEOX →'
   },
@@ -133,6 +140,7 @@ export const discoveries: Discovery[] = [
       'Turbidite channel architecture and reservoir connectivity modeling',
       'Supported commercial and volumetric maturation for deepwater development'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Explore GEOX →'
   },
@@ -152,6 +160,7 @@ export const discoveries: Discovery[] = [
       'Physics-9 witness architecture enforcing falsifiable prospect hypotheses',
       'Deterministic verification gates across well ingest, petrophysics, and geomechanics'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Launch GEOX Surface ↗'
   },
@@ -169,6 +178,7 @@ export const discoveries: Discovery[] = [
       '8 canonical kernel MCP verbs with Ed25519 cryptographic session leases',
       'Full open-source kernel published on PyPI and GitHub'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://arifos.arif-fazil.com',
     linkLabel: 'Visit Observatory ↗'
   },
@@ -186,6 +196,7 @@ export const discoveries: Discovery[] = [
       'Thermodynamic capital decay modeling and risk-weighted decision trees',
       'Federated MCP integration with governance guardrails'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://wealth.arif-fazil.com',
     linkLabel: 'Explore WEALTH ↗'
   },
@@ -203,6 +214,7 @@ export const discoveries: Discovery[] = [
       'Strict read-only safety guarantees preventing automated feedback intrusion',
       'Dignity floor enforcement (F6) with sovereign privacy boundaries'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://well.arif-fazil.com',
     linkLabel: 'Explore WELL ↗'
   },
@@ -220,6 +232,7 @@ export const discoveries: Discovery[] = [
       'Dynamic-state checks verifying live process port boundaries',
       'Multi-agent protocol governance and audit trail witness'
     ],
+    limits: 'Internal technical detail withheld.',
     link: 'https://aaa.arif-fazil.com',
     linkLabel: 'Open AAA Cockpit ↗'
   }
