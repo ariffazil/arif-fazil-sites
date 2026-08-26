@@ -1,5 +1,5 @@
 {
-  "macrostrat_source_spec": {
+  "source": {
     "source_id": "jmg_malaysia_1_500k",
     "name": "Geological Map of Malaysia (JMG 1:500k Series)",
     "primary_table": "jmg_malaysia_bedrock",

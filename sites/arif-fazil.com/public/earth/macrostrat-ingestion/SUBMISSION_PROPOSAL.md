@@ -3,6 +3,7 @@
 **To:** Prof. Shanan Peters, Dr. Daven Quinn & The Macrostrat Team (University of Wisconsin–Madison)  
 **From:** Muhammad Arif bin Fazil (Exploration Geoscientist, PETRONAS Subsurface Alum & arifOS Federation Architect)  
 **Date:** 2026-08-26  
+**Last Updated:** 2026-08-26T09:08:00+08:00 (v1.2 — Section 6 maintainer questions added & source envelope verified)  
 **Target Repository:** `https://github.com/UW-Macrostrat/macrostrat` (Macrostrat Ingestion Track)  
 **Subject:** High-Resolution Map Ingestion Submission: National Geological Map of Malaysia (JMG 1:500k Bedrock & Major Faults)
 
@@ -74,6 +75,6 @@ The dataset is subdivided into key geotectonic domains:
 
 ## 6. Schema & Pipeline Coordination Questions for Maintainers
 
-1. **Target Ingestion Specification**: What is the Macrostrat team's preferred table structure / GeoPackage schema for contributor-submitted national vector datasets? (We have currently mapped fields into `jmg_bedrock_lithology` and `jmg_major_faults` layers).
+1. **Target Ingestion Specification**: What is the Macrostrat team's preferred table structure / GeoPackage schema for contributor-submitted national vector datasets? (We have currently mapped fields into `jmg_bedrock_lithology` and `jmg_major_faults` layers under standard `source` envelope).
 2. **Lithology Dictionary Alignment**: Are there specific lithological vocabularies or strat name IDs in the Macrostrat dictionary you would like us to pre-match against before merging?
 3. **Delivery Mechanism**: We can provide either a direct PostGIS dump, merged GeoPackage (.gpkg), or automated REST harvesting scripts against JMG MyGEMS endpoints.
