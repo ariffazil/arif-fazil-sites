@@ -69,3 +69,11 @@ The dataset is subdivided into key geotectonic domains:
 * **Email:** `arif@arif-fazil.com`
 * **Canonical Web Surface:** `https://arif-fazil.com/earth/macrostrat-ingestion/`
 * **Upstream Submission:** Intended for submission as an Issue on [UW-Macrostrat/macrostrat](https://github.com/UW-Macrostrat/macrostrat/issues).
+
+---
+
+## 6. Schema & Pipeline Coordination Questions for Maintainers
+
+1. **Target Ingestion Specification**: What is the Macrostrat team's preferred table structure / GeoPackage schema for contributor-submitted national vector datasets? (We have currently mapped fields into `jmg_bedrock_lithology` and `jmg_major_faults` layers).
+2. **Lithology Dictionary Alignment**: Are there specific lithological vocabularies or strat name IDs in the Macrostrat dictionary you would like us to pre-match against before merging?
+3. **Delivery Mechanism**: We can provide either a direct PostGIS dump, merged GeoPackage (.gpkg), or automated REST harvesting scripts against JMG MyGEMS endpoints.
