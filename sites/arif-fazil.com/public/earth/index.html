@@ -27,6 +27,11 @@
 .hero-title h1 span{color:var(--accent-gold)}
 .hero-title p{margin-top:.4rem;color:#9AA0A8;font-size:.88rem;line-height:1.5}
 .hero-title .hint{font-family:var(--mono);font-size:.65rem;color:var(--accent-gold);margin-top:.8rem;letter-spacing:.5px;font-weight:500}
+/* ── provenance metadata line under pipe counters (P0: fetch time + pipe status + cache state) ── */
+.stat-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#9a9aa8;margin-top:.9rem;display:flex;gap:1.25rem;flex-wrap:wrap}
+.stat-meta b{color:var(--accent-gold);font-weight:600}
+/* ── persistent reader-state chip beside the draft-claim queue (human action authority, visible) ── */
+.state-chip{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-gold);border:1px solid var(--accent-gold);border-radius:999px;padding:.2rem .6rem;white-space:nowrap;background:rgba(212,175,55,.06)}
 
 /* control deck */
 .deck{position:absolute;top:6.5rem;right:2rem;z-index:10;width:230px;background:rgba(16,16,24,.88);border:1px solid var(--border-dim);
@@ -351,7 +356,7 @@
       <cite>— <strong>Carl Sagan</strong>, <em>Pale Blue Dot</em> (1994)</cite>
     </blockquote>
 
-    <div class="hint">▸ CLICK ANYWHERE ON LAND — ASK THE ROCKS WHAT THEY ARE · ◈ <span id="wellCount">…</span> WELLS MAPPED</div>
+    <div class="hint">▸ CLICK ANYWHERE ON LAND — ASK THE ROCKS WHAT THEY ARE · ◈ <span id="wellCount">…</span> WELLS MAPPED · COORDINATES WITHHELD</div>
   </div>
 
   <div class="deck">
@@ -510,6 +515,7 @@
       <div class="stat"><div class="num" id="stMeas">—</div><div class="lbl">Measurements on record</div><div class="src">macrostrat.org/api/v2/stats · live</div></div>
       <div class="stat"><div class="num gold" id="stQuakes">—</div><div class="lbl">Earthquakes · last 24 h</div><div class="src">earthquake.usgs.gov · live feed</div></div>
     </div>
+    <div class="stat-meta" id="statMeta" role="status" aria-live="polite">FETCHED · — <b>MYT</b> · macrostrat <b>checking</b> · usgs <b>checking</b> · <b>no cache</b></div>
   </div>
 </section>
 
@@ -556,7 +562,7 @@
         <div class="geox-ts-queue" id="geox-ts-queue-inspector">
           <div class="geox-ts-queue-head">
             <span>Draft claims queued</span>
-            <span class="count" id="geox-ts-count">0</span>
+            <span class="count" id="geox-ts-count">0</span><span class="state-chip">READ-ONLY · NO CLAIMS PUBLISHED</span>
             <button type="button" id="geox-ts-clear" title="Clear local IndexedDB queue (no sovereign write)">CLEAR</button>
           </div>
           <ul class="geox-ts-list" id="geox-ts-list">
@@ -965,10 +971,12 @@ fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
    if(world&&$("lyrQuakes").checked){world.pointsData(quakePts);world.ringsData(quakeRings);}
    pipe("pipeUsgs","ok","USGS · "+feats.length+" EVENTS/24H");
    const stq=$("stQuakes");if(stq)stq.textContent=feats.length.toLocaleString();
+   window.__us="OK";statMeta();
    setVeilStep("usgs","ok",feats.length+" EV");
  }).catch(()=>{
    pipe("pipeUsgs","bad","USGS · FAIL");
    const stq=$("stQuakes");if(stq)stq.textContent="UNVERIFIED";
+   window.__us="FAIL";statMeta();
    setVeilStep("usgs","bad","FAIL");
  });
 $("lyrQuakes").addEventListener("change",e=>{
@@ -1105,6 +1113,7 @@ $("lyrMotion").addEventListener("change",e=>{
 });
 
 /* ── macrostrat live stats ── */
+const statMeta=()=>{const s=$("statMeta");if(!s)return;const t=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kuala_Lumpur",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(new Date());s.innerHTML="FETCHED · "+t+" <b>MYT</b> · macrostrat <b>"+(window.__ms||"…")+"</b> · usgs <b>"+(window.__us||"…")+"</b> · <b>no cache</b>";};
 fetch("https://macrostrat.org/api/v2/stats?all")
  .then(r=>r.json()).then(j=>{
    const rows=(j.success&&j.success.data)||[];
@@ -1113,9 +1122,11 @@ fetch("https://macrostrat.org/api/v2/stats?all")
    $("stPkgs").textContent=sum("packages").toLocaleString();
    $("stMeas").textContent=sum("measurements").toLocaleString();
    pipe("pipeApi","ok","MACROSTRAT API · OK");
+   window.__ms="OK";statMeta();
  }).catch(()=>{
    pipe("pipeApi","bad","MACROSTRAT API · FAIL");
    ["stCols","stPkgs","stMeas"].forEach(i=>$(i).textContent="UNVERIFIED");
+   window.__ms="FAIL";statMeta();
  });
 
 /* ══ WELLS & REGIONS — sovereign canon ══ */

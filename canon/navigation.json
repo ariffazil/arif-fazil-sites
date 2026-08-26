@@ -1,19 +1,19 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "4.0.0",
-  "as_of": "2026-08-04",
-  "description": "Hybrid IA \u2014 Arrow-of-Time shell + live route graph. One primary strip. Trinity is DRAFT only.",
+  "version": "7.0.0",
+  "as_of": "2026-08-14",
+  "description": "Organ-mirror nav v7 FINAL: HOME(AAA cockpit) EARTH(GEOX) WORDS(arifOS) WORLD(WEALTH) WORK(WELL). Organs belong to agents \u2014 machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06.",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
     "agent_doors": "footer machine_links + /.well-known/* + llms.txt + missions.json",
     "preserve": [
       "politics/ns-election",
-      "world/makcikgpt",
-      "commodities oil|gas|gold|klci|usdmyr",
-      "vitals PETRONAS singleton",
-      "000 genesis",
-      "999 vault"
+      "world/makcikgpt (Voice domain)",
+      "commodities gold|oil|gas|klci|usdmyr (Capital domain)",
+      "propa PETRONAS (Capital domain, canonical)",
+      "000 origin",
+      "999 proof"
     ]
   },
   "frame": {
@@ -97,48 +97,51 @@
     ]
   },
   "secondary_links": {
-    "description": "Footer human secondary \u2014 real live surfaces, not aspirational paths",
+    "description": "Footer + hidden nav. Organs are agent-owned surfaces \u2014 present, not promoted.",
     "items": [
       {
-        "label": "Politics \u00b7 NS",
-        "href": "/politics/ns-election/",
-        "role": "secondary",
-        "mode": "spa"
-      },
-      {
-        "label": "VITALS \u00b7 PETRONAS",
-        "href": "/vitals/",
-        "role": "secondary",
-        "mode": "static"
-      },
-      {
-        "label": "Read",
-        "href": "/read",
-        "role": "secondary",
-        "mode": "spa"
-      },
-      {
-        "label": "000 Genesis",
+        "label": "Origin",
         "href": "/000/",
-        "role": "secondary",
         "mode": "static"
       },
       {
         "label": "Map",
         "href": "/map/",
-        "role": "secondary",
         "mode": "static"
       },
       {
-        "label": "Connect",
-        "href": "https://mcp.arif-fazil.com/",
-        "role": "secondary",
-        "mode": "external"
+        "label": "PETRONAS",
+        "href": "/propa/",
+        "mode": "static",
+        "agent_organ": true
+      },
+      {
+        "label": "Malaysia",
+        "href": "/malaysia/",
+        "mode": "static",
+        "agent_organ": true
+      },
+      {
+        "label": "Politics",
+        "href": "/politics/",
+        "mode": "static"
+      },
+      {
+        "label": "Signal",
+        "href": "/connect/",
+        "mode": "static"
+      },
+      {
+        "label": "Organs",
+        "href": "/organs/",
+        "mode": "static",
+        "organ": "federation",
+        "question": "Where are the organs? (one system)"
       }
     ]
   },
   "machine_links": {
-    "description": "Quiet machine doors \u2014 agents and WebMCP",
+    "description": "Agent doors \u2014 organs live HERE, not in human nav. Pages are for humans; contexts are for agents.",
     "items": [
       {
         "label": "llms.txt",
@@ -165,8 +168,24 @@
         "href": "/.well-known/did.json"
       },
       {
-        "label": "PyPI arifos",
-        "href": "https://pypi.org/project/arifos/"
+        "label": "arifOS",
+        "href": "/canon/",
+        "agent_organ": true
+      },
+      {
+        "label": "GEOX",
+        "href": "https://geox.arif-fazil.com",
+        "agent_organ": true
+      },
+      {
+        "label": "WEALTH",
+        "href": "https://wealth.arif-fazil.com",
+        "agent_organ": true
+      },
+      {
+        "label": "WELL",
+        "href": "https://well.arif-fazil.com",
+        "agent_organ": true
       }
     ]
   },
@@ -250,66 +269,58 @@
       },
       {
         "url": "/economics",
-        "breadcrumb": "home \u203a economics"
+        "breadcrumb": "home \u203a capital"
       },
       {
         "url": "/world/makcikgpt",
-        "breadcrumb": "home \u203a world \u203a makcikgpt"
+        "breadcrumb": "home \u203a voice \u203a makcikgpt"
       },
       {
         "url": "/politics/ns-election",
-        "breadcrumb": "home \u203a politics \u203a ns-election"
+        "breadcrumb": "home \u203a voice \u203a politics \u203a ns-election"
       },
       {
-        "url": "/vitals/",
-        "breadcrumb": "home \u203a vitals"
+        "url": "/propa/",
+        "breadcrumb": "home \u203a capital \u203a petronas"
       },
       {
         "url": "/doctrine",
-        "breadcrumb": "home \u203a doctrine"
+        "breadcrumb": "home \u203a law \u203a doctrine"
       },
       {
         "url": "/missions",
-        "breadcrumb": "home \u203a missions"
+        "breadcrumb": "home \u203a work \u203a missions"
       }
     ]
   },
   "keyboard_shortcuts": [
     {
-      "combo": "g e",
-      "action": "navigate to /earth"
+      "combo": "g h",
+      "action": "navigate to / (Home)"
     },
     {
-      "combo": "g c",
-      "action": "navigate to /economics"
+      "combo": "g e",
+      "action": "navigate to /earth (Earth \u2014 GEOX)"
     },
     {
       "combo": "g w",
-      "action": "navigate to /world"
+      "action": "navigate to /writing (Words \u2014 arifOS)"
     },
     {
-      "combo": "g r",
-      "action": "navigate to /writing"
+      "combo": "g o",
+      "action": "navigate to /world (World \u2014 WEALTH)"
     },
     {
-      "combo": "g d",
-      "action": "navigate to /doctrine"
-    },
-    {
-      "combo": "g m",
-      "action": "navigate to /missions"
-    },
-    {
-      "combo": "g 9",
-      "action": "navigate to /999/"
-    },
-    {
-      "combo": "g v",
-      "action": "navigate to /vitals/"
+      "combo": "g k",
+      "action": "navigate to /missions (Work \u2014 WELL)"
     },
     {
       "combo": "g p",
-      "action": "navigate to /politics/ns-election/"
+      "action": "navigate to /propa/ (PETRONAS organ)"
+    },
+    {
+      "combo": "g m",
+      "action": "navigate to /malaysia/ (Malaysia organ)"
     },
     {
       "combo": "?",
@@ -342,6 +353,7 @@
       }
     ]
   },
+  "derives_from": "world-model.yaml v1.0.0 \u2014 vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)",
   "agentic_mirrors": {
     "description": "Portals to agentic machine web organs",
     "items": [

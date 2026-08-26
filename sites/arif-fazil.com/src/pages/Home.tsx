@@ -37,7 +37,7 @@ const SYSTEMS: SystemCard[] = [
     sigil: 'Ψ',
     accent: '#E4572E',
     badge: 'PORT 8088 · KERNEL',
-    blurb: 'The constitutional law layer for AI systems. Thirteen hard floors (F1–F13) that every consequential tool call must pass.',
+    blurb: 'Governance with a human veto. Thirteen hard floors (F1–F13) that every consequential call must pass — humans decide.',
     to: '/AAA',
     toLabel: 'Read Doctrine',
     mirror: 'https://arifos.arif-fazil.com',
@@ -48,7 +48,7 @@ const SYSTEMS: SystemCard[] = [
     sigil: 'G',
     accent: '#E4572E',
     badge: 'PORT 7072 · EARTH',
-    blurb: 'Earth intelligence grounded in rocks, wells and seismic data. Zoeppritz physics, interpretation, deep-time basin models.',
+    blurb: 'Earth evidence, checked before trust. Rocks, wells, seismic and basin models — verified against public records before any number is minted.',
     to: '/earth',
     toLabel: 'View Earth',
     mirror: 'https://geox.arif-fazil.com',
@@ -59,7 +59,7 @@ const SYSTEMS: SystemCard[] = [
     sigil: 'W',
     accent: '#C9A227',
     badge: 'PORT 7074 · CAPITAL',
-    blurb: 'Capital signals — commodity physics (oil, gas, gold), claims registry, and macroeconomic reality. It computes; it never allocates.',
+    blurb: 'Market reality, computed — oil, gas, gold and macro signals on a claims registry. It computes; it never allocates.',
     to: '/world',
     toLabel: 'View World',
     mirror: 'https://wealth.arif-fazil.com',
@@ -70,7 +70,7 @@ const SYSTEMS: SystemCard[] = [
     sigil: '◉',
     accent: '#31C48D',
     badge: 'PORT 7075 · VITALITY',
-    blurb: 'Substrate telemetry and homeostasis — wear-and-tear monitoring, readiness, and self-repair signals.',
+    blurb: 'The human mirror. Vitality, fatigue and dignity monitoring — the machine watches the operator, not just itself.',
     to: '/work',
     toLabel: 'View Substrate',
     mirror: 'https://well.arif-fazil.com',
@@ -81,7 +81,7 @@ const SYSTEMS: SystemCard[] = [
     sigil: 'F',
     accent: '#E4572E',
     badge: 'PORT 7071 · EXECUTION',
-    blurb: 'The hands. Controlled mutation, canary deployments, and rollback — execution only after governance clears it.',
+    blurb: 'The hands. Controlled build, canary and rollback — execution only after governance clears it.',
     to: '/work',
     toLabel: 'View Executions',
     mirror: 'https://forge.arif-fazil.com',
@@ -92,7 +92,7 @@ const SYSTEMS: SystemCard[] = [
     sigil: 'A',
     accent: '#91B0F2',
     badge: 'AGENCY & SKILLS',
-    blurb: 'Sovereign agency — agent cards (333-AGI, 555-ASI, 777-FORGE, 888-APEX) and the skill-catalog mesh.',
+    blurb: 'The ledger of agents. Cards, skills and identity for the federation — display and route only, never judge.',
     to: '/AAA',
     toLabel: 'View Canon',
     mirror: 'https://aaa.arif-fazil.com',
@@ -144,13 +144,13 @@ export function Home() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/work"
-                  className="px-5 py-2.5 rounded bg-[#E4572E] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#E4572E]/90 transition-colors"
+                  className="inline-flex items-center justify-center px-5 min-h-[44px] rounded bg-[#E4572E] text-white font-mono text-xs uppercase tracking-wider font-semibold hover:bg-[#E4572E]/90 transition-colors"
                 >
                   Explore the Work →
                 </Link>
                 <Link
                   to="/earth"
-                  className="px-5 py-2.5 rounded border border-[#1F2733] bg-transparent text-[#9AA0A8] font-mono text-xs uppercase tracking-wider hover:text-[#EDEAE2] hover:border-[#EDEAE2]/30 transition-colors"
+                  className="inline-flex items-center justify-center px-5 min-h-[44px] rounded border border-[#1F2733] bg-transparent text-[#9AA0A8] font-mono text-xs uppercase tracking-wider hover:text-[#EDEAE2] hover:border-[#EDEAE2]/30 transition-colors"
                 >
                   See the Wells
                 </Link>

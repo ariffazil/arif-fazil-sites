@@ -14,6 +14,20 @@ export const agenticMirrors = [
   { label: 'forge', name: 'A-FORGE', href: 'https://forge.arif-fazil.com', icon: '👐', desc: 'Execution & Mutation Shell' },
 ]
 
+// Human-first glosses for canonical nav tokens (annotation only — the nav list itself stays canon-derived).
+// Purpose: a first-time visitor gets a plain-language hint for 999/000/AAA/words/work without diluting identity.
+const navHints: Record<string, string> = {
+  '/': 'Home — sovereign surface',
+  '/earth': 'Earth — live geology globe, wells & basins',
+  '/world': 'World — economics & civic intelligence',
+  '/words': 'Words — essays & analysis',
+  '/work': 'Work — projects, systems & the substrate',
+  '/999': '999 — proof, audit & verification',
+  '/000': '000 — machine context (for agents)',
+  '/AAA': 'AAA — canon & agent federation',
+  '/aaa': 'AAA — canon & agent federation',
+}
+
 function NavItemLink({
   item,
   className,
@@ -38,6 +52,7 @@ function NavItemLink({
   }
   const hrefNorm = item.href.replace(/\/$/, '') || '/'
   const accent = territoryAccent[hrefNorm] || 'decoration-ember'
+  const hint = navHints[hrefNorm]
   const base =
     className ??
     'font-mono text-[11px] lg:text-[12px] uppercase tracking-[0.06em] transition-colors text-ink-soft hover:text-ink'
@@ -54,6 +69,8 @@ function NavItemLink({
     return (
       <a
         href={item.href}
+        title={hint}
+        aria-label={hint}
         onClick={onClick}
         className={base}
         {...(item.external || item.mode === 'external'
@@ -68,6 +85,8 @@ function NavItemLink({
   return (
     <NavLink
       to={item.href}
+      title={hint}
+      aria-label={hint}
       onClick={onClick}
       className={({ isActive }) =>
         `${base} ${isActive ? active : ''} ${mobile ? 'font-display text-3xl tracking-[-0.02em] normal-case no-underline' : ''}`
