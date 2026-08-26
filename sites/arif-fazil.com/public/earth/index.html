@@ -19,12 +19,14 @@
 /* hero / globe */
 .hero{position:relative;height:100vh;min-height:640px}
 #globeViz{position:absolute;inset:0;cursor:crosshair}
-.hero-title{position:absolute;top:6.5rem;left:2rem;z-index:10;max-width:520px;pointer-events:none}
-.hero-title .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:3px;color:var(--accent-cyan);margin-bottom:.6rem}
-.hero-title h1{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800;line-height:1.05;
-  background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hero-title p{margin-top:.8rem;color:var(--text-secondary);font-size:.95rem;max-width:420px}
-.hero-title .hint{font-family:var(--mono);font-size:.68rem;color:var(--accent-gold);margin-top:.7rem;letter-spacing:.5px}
+.hero-title{position:absolute;top:5.8rem;left:2rem;z-index:10;max-width:500px;
+  background:rgba(10,11,15,0.85);border:1px solid #1F2733;border-radius:14px;padding:1.4rem 1.6rem;
+  backdrop-filter:blur(14px);box-shadow:0 16px 40px rgba(0,0,0,0.75)}
+.hero-title .kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:2.5px;color:var(--accent-cyan);margin-bottom:.4rem;font-weight:600}
+.hero-title h1{font-family:'Cabinet Grotesk',Inter,sans-serif;font-size:clamp(2rem,3.8vw,2.8rem);font-weight:900;line-height:1.05;color:#EDEAE2;margin:0 0 .5rem;text-transform:uppercase;letter-spacing:-0.02em}
+.hero-title h1 span{color:var(--accent-gold)}
+.hero-title p{margin-top:.4rem;color:#9AA0A8;font-size:.88rem;line-height:1.5}
+.hero-title .hint{font-family:var(--mono);font-size:.65rem;color:var(--accent-gold);margin-top:.8rem;letter-spacing:.5px;font-weight:500}
 
 /* control deck */
 .deck{position:absolute;top:6.5rem;right:2rem;z-index:10;width:230px;background:rgba(16,16,24,.88);border:1px solid var(--border-dim);
@@ -112,60 +114,226 @@
   .pipes{left:1rem;bottom:auto;top:5.2rem;max-width:46vw;font-size:.55rem}
   #unitPanel{left:1rem;right:1rem;width:auto}
 }
-/* ── Nav separator + organ links (human-first design) ── */
-.nav-sep{width:1px;height:18px;background:var(--border-dim);margin:0 .2rem;flex-shrink:0}
-.nav-organ{font-size:.62rem !important;opacity:.6;letter-spacing:.8px !important}
-.nav-organ:hover{opacity:1}
-@media(max-width:720px){.nav-sep{display:none}.nav-organ{display:none}}
+/* ── CANONICAL FEDERATION NAVBAR ── */
+.fed-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 1.5rem;
+  background: rgba(10, 11, 13, 0.95);
+  border-bottom: 1px solid #1F2733;
+  backdrop-filter: blur(12px);
+  font-family: "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+  box-sizing: border-box;
+}
+.fed-navbar .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #EDEAE2;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.fed-navbar .nav-brand:hover { color: #E4572E; }
+.fed-navbar .nav-brand .psi-badge {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(154, 160, 168, 0.3);
+  color: #9AA0A8;
+}
+.fed-navbar .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.fed-navbar .nav-links a {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9AA0A8;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.fed-navbar .nav-links a:hover { color: #EDEAE2; }
+.fed-navbar .nav-links a.active {
+  color: #EDEAE2;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #E4572E;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+.fed-navbar .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.fed-navbar .live-clock-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #9AA0A8;
+}
+.fed-navbar .live-clock-badge .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #31C48D;
+  display: inline-block;
+}
+.fed-navbar .agentic-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(154, 160, 168, 0.2);
+  background: rgba(154, 160, 168, 0.05);
+  color: #9AA0A8;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.fed-navbar .agentic-link:hover {
+  color: #EDEAE2;
+  border-color: rgba(154, 160, 168, 0.4);
+}
+
+/* ── ZEN FLOATING SUB-DOCK ── */
+.earth-zen-dock {
+  position: absolute;
+  top: 4.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(13, 15, 22, 0.88);
+  border: 1px solid #1F2733;
+  border-radius: 9999px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  max-width: 92vw;
+}
+.earth-zen-dock a {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9AA0A8;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.earth-zen-dock a:hover {
+  color: #EDEAE2;
+  background: rgba(255, 255, 255, 0.06);
+}
+.earth-zen-dock a.active {
+  color: #C9A227;
+  background: rgba(201, 162, 39, 0.15);
+  font-weight: 600;
+}
+
+/* ── CARL SAGAN QUOTE ZEN CARD ── */
+.earth-sagan-quote {
+  margin-top: 1.1rem;
+  border-left: 2px solid #C9A227;
+  padding: 0.75rem 1rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: #EDEAE2;
+  line-height: 1.5;
+  background: rgba(13, 15, 22, 0.85);
+  border-radius: 0 8px 8px 0;
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(201, 162, 39, 0.15);
+  border-right: 1px solid rgba(201, 162, 39, 0.15);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+}
+.earth-sagan-quote cite {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-style: normal;
+  font-size: 0.68rem;
+  color: #C9A227;
+  margin-top: 0.4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media(max-width:768px){
+  .fed-navbar .nav-links { display: none; }
+  .earth-zen-dock { top: 4.2rem; }
+}
 </style>
 </head>
 <body>
 
-<nav class="earth-site-nav" aria-label="Site">
-  <a class="brand" href="/">ARIF FAZIL</a>
-  <div style="display:flex;flex-wrap:wrap;gap:0.75rem 1.1rem">
-    <a class="accent-earth" href="/earth">Earth</a>
-    <a href="/economics">Economics</a>
+<!-- ══ CANONICAL FEDERATION NAVBAR (ALIGNED WITH ALL SURFACES) ══ -->
+<header class="fed-navbar" aria-label="Federation primary navigation">
+  <a class="nav-brand" href="/">
+    <span class="psi-badge">Ψ</span>
+    <span>ARIF FAZIL</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Primary Navigation">
+    <a href="/">Home</a>
+    <a href="/earth" class="active">Earth</a>
     <a href="/world">World</a>
-    <a href="/writing">Writing</a>
-    <a href="/doctrine">Doctrine</a>
-    <a href="/missions">Missions</a>
+    <a href="/words">Words</a>
+    <a href="/work">Work</a>
     <a href="/999/">999</a>
-    <a href="/machines/">Machines</a>
-  </div>
-</nav>
-
-
-<a class="skip-link" href="#main-content">Skip to main content</a>
-
-<!-- ══ HEADER · human verbs first, organ links secondary ══ -->
-<header class="earth-header">
-  <div class="earth-brand">arif-fazil.com<b>/ EARTH</b></div>
-  <nav class="earth-nav" aria-label="Earth navigation">
-    <a href="#top" class="active">◈ Globe</a>
-    <a href="#dossiers">Read</a>
-    <a href="#deeptime">See</a>
-    <a href="#geox">Tools</a>
-    <a href="/map/#earth">Map</a>
-    <span class="nav-sep" aria-hidden="true"></span>
-    <a href="https://geox.arif-fazil.com" class="nav-organ" title="GEOX organ — agent tools">GEOX</a>
-    <a href="https://arif-fazil.com" class="nav-organ" title="arif-fazil.com home">Home</a>
+    <a href="/000/">000</a>
+    <a href="/AAA">AAA</a>
   </nav>
+
+  <div class="nav-right">
+    <a href="https://geox.arif-fazil.com" target="_blank" rel="noreferrer" class="agentic-link">
+      <span>🪞 GEOX</span>
+      <span style="font-size:9px;opacity:0.7">↗</span>
+    </a>
+    <div class="live-clock-badge">
+      <span class="pulse-dot"></span>
+      <span id="fedNavClock">--:--:-- MYT</span>
+    </div>
+  </div>
 </header>
 
-<!-- ══ STICKY EARTH TOC · mirrors header verbs ══ -->
-<nav class="earth-toc" aria-label="On this page" id="earthToc">
-  <a href="#top" class="nav-globe active">◈ Globe</a>
+<!-- ══ ZEN FLOATING SUB-DOCK (PAGE JUMP) ══ -->
+<nav class="earth-zen-dock" aria-label="Earth sections" id="earthToc">
+  <a href="#top" class="active">◈ Globe</a>
   <a href="#what">What Can I Do</a>
-  <a href="#real">Why Real</a>
-  <a href="#dynamic">Dynamic Earth</a>
+  <a href="#real">Real Earth</a>
+  <a href="#dynamic">Dynamic Planet</a>
   <a href="#deeptime">Deep Time</a>
   <a href="#malay">Malay Basin</a>
   <a href="#dossiers">Dossiers</a>
-  <a href="#geox">Cockpits</a>
-  <a href="#studies">Studies</a>
-  <a href="/map/#earth">Map</a>
+  <a href="#geox">GEOX Tools</a>
+  <a href="/map/#earth">Map ↗</a>
 </nav>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <main id="main-content">
 
@@ -174,13 +342,15 @@
   <div id="globeViz"></div>
 
   <div class="hero-title">
-    <div class="kicker">EARTH INTELLIGENCE · LIVE</div>
+    <div class="kicker">EARTH INTELLIGENCE · LIVE MACROSTRAT</div>
     <h1>The Dynamic<br>Earth.</h1>
-    <p>This is not a picture of the planet. It is a live, source-linked representation of selected planetary layers — the global geologic map streamed from the Macrostrat pipeline, the plates that carry it (PB2002), and the earthquakes reported in the latest USGS feed.</p>
-    <blockquote style="margin-top: 1rem; border-left: 2px solid #D4A853; padding-left: 0.8rem; font-style: italic; font-size: 0.82rem; color: #d0d0d8; line-height: 1.4; background: rgba(16,16,24,0.6); padding-top: 0.4rem; padding-bottom: 0.4rem; border-radius: 0 4px 4px 0;">
-      "Look again at that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives... on a mote of dust suspended in a sunbeam."
-      <div style="font-style: normal; font-size: 0.72rem; color: #D4A853; margin-top: 0.3rem; font-weight: 600;">— Carl Sagan, <em>Pale Blue Dot</em> (1994)</div>
+    <p>This is not a picture of the planet. It is a live, source-linked planetary model streaming the Macrostrat geologic bedrock, PB2002 plate boundaries, and USGS real-time seismic feeds.</p>
+    
+    <blockquote class="earth-sagan-quote">
+      <p>“Look again at that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives... on a mote of dust suspended in a sunbeam.”</p>
+      <cite>— <strong>Carl Sagan</strong>, <em>Pale Blue Dot</em> (1994)</cite>
     </blockquote>
+
     <div class="hint">▸ CLICK ANYWHERE ON LAND — ASK THE ROCKS WHAT THEY ARE · ◈ <span id="wellCount">…</span> WELLS MAPPED</div>
   </div>
 
@@ -1071,11 +1241,27 @@ function wireClose(){const b=panel.querySelector(".close");if(b)b.addEventListen
     links.forEach(a=>a.classList.remove("active"));
     if(active)active.link.classList.add("active");
   }
-  window.addEventListener("scroll",update,{passive:true});
+  window.addEventListener("scroll", update, { passive: true });
   update();
+})();
+
+/* ── live navbar clock ── */
+(function(){
+  const clock = document.getElementById("fedNavClock");
+  if(!clock) return;
+  function updateClock(){
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const myt = new Date(utc + (3600000 * 8));
+    const h = String(myt.getHours()).padStart(2, '0');
+    const m = String(myt.getMinutes()).padStart(2, '0');
+    const s = String(myt.getSeconds()).padStart(2, '0');
+    clock.textContent = `${h}:${m}:${s} MYT`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
 })();
 })();
 </script>
-<script src="/_shared/zen-all.js" defer></script>
 </body>
 </html>
