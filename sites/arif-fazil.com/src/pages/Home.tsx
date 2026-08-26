@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { LiveClock } from '@/components/LiveClock'
+import { LiveClockHero } from '@/components/LiveClockHero'
 import { discoveries } from '@/data/discoveries'
 import { agenticMirrors } from '@/components/ArrowNavbar'
 
@@ -156,29 +157,28 @@ export function Home() {
               </div>
             </div>
 
-            {/* Right: original voice + creed (replaces external quotation) */}
-            <div className="lg:col-span-5 lg:border-l lg:border-[#1F2733] lg:pl-10 space-y-6">
-              <blockquote className="border-l-2 border-[#C9A227]/50 pl-4">
-                <p className="font-serif text-lg md:text-xl text-[#EDEAE2]/85 italic leading-relaxed">
-                  “The first responsibility is to see what is there — including what contradicts you.”
-                </p>
-              </blockquote>
+            {/* Right: Live Dynamic Clock Hero */}
+            <div className="lg:col-span-5 lg:border-l lg:border-[#1F2733] lg:pl-8 space-y-6">
+              <LiveClockHero />
 
-              <div className="rounded-lg border border-[#1F2733] bg-[#11151C] p-5 space-y-3">
-                <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8]">
-                  Operating Law
+              <div className="rounded-lg border border-[#1F2733] bg-[#11151C]/80 p-4 space-y-2.5">
+                <div className="font-mono text-[10px] uppercase tracking-widest text-[#9AA0A8] flex items-center justify-between">
+                  <span>Operating Constitution</span>
+                  <span className="text-[#C9A227]">F1 — F13</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#31C48D]" />
-                  <span className="font-mono text-xs uppercase text-[#EDEAE2]">Evidence before narrative</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#C9A227]" />
-                  <span className="font-mono text-xs uppercase text-[#EDEAE2]">Humans decide</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#E4572E]" />
-                  <span className="font-mono text-xs uppercase text-[#EDEAE2]">Ditempa bukan diberi</span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 font-mono text-[11px] uppercase">
+                  <div className="flex items-center gap-2 text-[#EDEAE2]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#31C48D]" />
+                    <span>Evidence 1st</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#EDEAE2]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227]" />
+                    <span>Humans Rule</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#EDEAE2]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E4572E]" />
+                    <span>Ditempa</span>
+                  </div>
                 </div>
               </div>
             </div>
