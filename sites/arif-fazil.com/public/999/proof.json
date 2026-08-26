@@ -1,0 +1,75 @@
+{
+  "$schema": "https://arif-fazil.com/schemas/v1/ProofManifest.json",
+  "version": "2026.08.26",
+  "epoch": "2026.08",
+  "doctrine": "DITEMPA BUKAN DIBERI — Don't trust this site. Verify it.",
+  "sovereign_identity": {
+    "name": "Muhammad Arif bin Fazil",
+    "f13_floor": "SOVEREIGN_FINAL_AUTHORITY",
+    "did": "did:web:arif-fazil.com",
+    "did_configuration": "https://arif-fazil.com/.well-known/did-configuration.json",
+    "signing_key_id": "did:web:arif-fazil.com#owner-20260503",
+    "primary_human_role": "Senior Exploration Geoscientist & Sovereign Systems Architect"
+  },
+  "truth_plane": {
+    "domain": "arif-fazil.com",
+    "layer": "Layer 4 (Central Truth Plane & Machine Observer)",
+    "single_source_of_truth": "https://arif-fazil.com/surfaces.json",
+    "surfaces_count": 65,
+    "live_surfaces": 31,
+    "redirect_surfaces": 19,
+    "machine_surfaces": 14,
+    "deprecated_wounds": 1,
+    "machine_manifests": {
+      "llms_overview": "https://arif-fazil.com/llms.txt",
+      "llms_full_content": "https://arif-fazil.com/llms-full.txt",
+      "llms_json_structured": "https://arif-fazil.com/llms.json",
+      "page_json": "https://arif-fazil.com/page.json",
+      "missions_catalog": "https://arif-fazil.com/missions.json",
+      "sitemap_xml": "https://arif-fazil.com/sitemap.xml",
+      "rss_feed": "https://arif-fazil.com/feed.xml"
+    }
+  },
+  "federation_topography": {
+    "arifos": {
+      "role": "Constitutional governance kernel (MIND / 888_JUDGE)",
+      "url": "https://arifos.arif-fazil.com",
+      "mcp_gateway": "https://mcp.arif-fazil.com/mcp"
+    },
+    "aaa": {
+      "role": "Agent control plane & A2A protocol identity (BODY)",
+      "url": "https://aaa.arif-fazil.com",
+      "agent_card": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
+    },
+    "a_forge": {
+      "role": "Governed execution & mutation shell (ACTUATOR)",
+      "url": "https://forge.arif-fazil.com"
+    },
+    "geox": {
+      "role": "Physics-gated earth & geoscience intelligence",
+      "url": "https://geox.arif-fazil.com"
+    },
+    "wealth": {
+      "role": "Capital thermodynamics & economic terminal",
+      "url": "https://wealth.arif-fazil.com"
+    },
+    "well": {
+      "role": "Human dignity & machine vitality reflection",
+      "url": "https://well.arif-fazil.com"
+    }
+  },
+  "design_system_architecture": {
+    "specification": "W3C Design Tokens Community Group (DTCG)",
+    "tokens_stylesheet": "https://arif-fazil.com/_shared/design-system/tokens.css",
+    "color_law": "SOVEREIGN_DECREES §04 (Komda Color Law)",
+    "entropy_bound": "Delta S <= 0"
+  },
+  "verification_protocol": {
+    "tri_witness": ["Theory (Constitution F1-F13)", "Code (Physical Host / VPS)", "Intent (Sovereign F13)"],
+    "epistemic_bands": ["OBS (Observed)", "DER (Derived)", "INT (Interpreted)", "SPEC (Speculative)"],
+    "fail_closed_wounds": {
+      "/pulse/": "HTTP 410 Gone (Eliminating phantom routes per F1 Security)"
+    },
+    "confidence_target": "P(truth) >= 0.99"
+  }
+}

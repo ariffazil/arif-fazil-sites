@@ -91,15 +91,20 @@
 
   // Insert after trinity-nav if present, otherwise as first child of body
   function insert() {
+    if (details.parentNode) return;
     var trinityNav = document.querySelector('.trinity-nav');
-    if (trinityNav) {
+    if (trinityNav && trinityNav.parentNode) {
       if (trinityNav.nextSibling) {
         trinityNav.parentNode.insertBefore(details, trinityNav.nextSibling);
       } else {
         trinityNav.parentNode.appendChild(details);
       }
     } else if (document.body) {
-      document.body.insertBefore(details, document.body.firstChild);
+      if (document.body.firstChild) {
+        document.body.insertBefore(details, document.body.firstChild);
+      } else {
+        document.body.appendChild(details);
+      }
     }
   }
 
