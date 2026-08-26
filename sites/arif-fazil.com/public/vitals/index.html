@@ -80,7 +80,7 @@
   <div id="extraction-crisis-banner" style="margin:0 0 14px;padding:14px 18px;border:3px solid var(--void,#f0506e);border-radius:8px;background:rgba(240,80,110,.08);color:var(--ink);font-family:var(--mono)" data-agent-role="sealed-reading" aria-live="assertive">
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
       <strong style="font-size:14px;color:var(--void,#f0506e);letter-spacing:.06em;text-transform:uppercase">⚠ FY2025 SEALED READING · EXTRACTION 70.5% · 2 OF 6 PACEMAKERS ENGAGED</strong>
-      <span style="font-size:11px;color:var(--dim,#8a8378)">Sealed 2026-08-03 · AMEND-2026-08-03-001 · F13 veto remains final</span>
+      <span style="font-size:11px;color:var(--dim,#8a8378)">Sealed 2026-08-26 · AMEND-2026-08-03-001 · F13 veto remains final</span>
     </div>
     <div style="font-size:12px;line-height:1.6;color:var(--dim,#8a8378)">
       <strong style="color:var(--void,#f0506e)">FY2025 audited IFR:</strong> dividend RM32.0B / PAT RM45.4B = <strong style="color:var(--void,#f0506e)">70.5% extraction</strong> — breached the 65% pacemaker threshold. Financial-capacity score overridden to 0/100 (VOID). Composite pulse overridden to VOID. Governance Capacity at 1.00/3 (0.33, no independent NEDs) also engaged. <strong style="color:var(--void,#f0506e)">FY2025 was the last audited period.</strong> The board acted in February 2026 — the corrective the pacemaker demands, decided without the pacemaker, public five months before this seal.
@@ -103,7 +103,7 @@
     </div>
     <div class="pulse-bar"><div class="pulse-fill" id="pulsefill" style="width:0%;background:var(--void)"></div></div>
     <div class="pulse-bands"><span style="color:var(--void);font-weight:700">0 VOID</span><span>40 HOLD</span><span>60 SABAR</span><span>80 SEAL</span><span>100</span></div>
-    <div class="pulse-meta"><span class="stale-tag fresh" id="sealbadge" aria-live="polite">FRESH</span> · sealed <b id="sealdate">2026-08-03</b> · next audit 2026-11-03 · <span style="color:var(--void)">LOCKED: AMEND-2026-08-03-001</span></div>
+    <div class="pulse-meta"><span class="stale-tag fresh" id="sealbadge" aria-live="polite">FRESH</span> · sealed <b id="sealdate">2026-08-26</b> · next audit 2026-11-03 · <span style="color:var(--void)">LOCKED: AMEND-2026-08-03-001</span></div>
     <div class="subscores">
       <div class="sub-card" data-pillar="BODY"><div class="lab">Financial capacity</div><div class="val mono" id="sb-body" style="color:var(--void)">0 ⚠</div><div class="wt">0.40 · FCF·gearing·CFFO · <span style="color:var(--void);font-weight:700">OVERRIDE ACTIVE</span></div><span class="epi-tag-small" style="background:var(--void);color:#fff">VOID</span></div>
       <div class="sub-card"><div class="lab">Operating resilience</div><div class="val mono" id="sb-spine">34</div><div class="wt">0.35 · production·recycling·payout</div><span class="epi-tag-small MIXED">MIXED</span></div>
@@ -122,7 +122,7 @@
     <div style="margin-top:18px;padding:14px 16px;border:2px solid var(--void,#f0506e);border-radius:8px;background:rgba(240,80,110,.06);font-family:var(--mono)" data-agent-role="pacemaker-panel">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:10px">
         <strong style="font-size:11px;color:var(--void);letter-spacing:.08em;text-transform:uppercase">⚡ Pacemaker Panel · live state</strong>
-        <span style="font-size:10px;color:var(--faint)">2 of 6 ENGAGED · sealed 2026-08-03</span>
+        <span style="font-size:10px;color:var(--faint)">2 of 6 ENGAGED · sealed 2026-08-26</span>
       </div>
       <div style="font-size:.74rem;line-height:1.7;color:var(--dim,#8a8378)">
         <div style="color:var(--void);font-weight:700">■ ACTIVE &nbsp; Sovereign Extraction · 70.5% PAT &gt; 65% pacemaker trigger</div>
@@ -471,7 +471,7 @@
 
     <!-- PACEMAKER PANEL — LIVE STATE -->
     <div style="background:var(--surface3);border:2px solid rgba(240,80,110,.5);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.75rem;line-height:1.7;color:var(--dim);overflow-x:auto">
-<pre style="margin:0;color:var(--ink)">[ PACEMAKER PANEL · 3 Aug 2026 reseal · HARD LOCK ENGAGED · AMEND-2026-08-03-001 ]
+<pre style="margin:0;color:var(--ink)">[ PACEMAKER PANEL · 26 Aug 2026 reseal · HARD LOCK ENGAGED · AMEND-2026-08-03-001 ]
 
   <span style="color:var(--void);font-weight:700">■ ACTIVE · HARD LOCK  </span>  Sovereign Extraction   70.5% PAT  >  65% pacemaker     → DIVIDEND STOP ADVISORY · F13 VETO FINAL
   <span style="color:var(--void);font-weight:700">■ ACTIVE · QUORUM    </span>  Governance Capacity    1.00/3  ≤  0.50 floor       → 100% INDEPENDENT NED QUORUM on capital authority
@@ -577,7 +577,7 @@
    LAYER 0 — DATA AS CONSTITUTION
    sealed: ISO date of last now-value update (XOM discipline)
    ============================================================ */
-const SEAL_BASE="2026-08-03"; // global last-sealed date (re-seal: 3 Aug 2026)
+const SEAL_BASE="2026-08-26"; // global last-sealed date (re-seal: 3 Aug 2026)
 const STALE_DAYS=90;
 
 const TRIPWIRES=[
@@ -1171,7 +1171,7 @@ live();
   "constitutional_basis":{
     "amendment_id":"AMEND-2026-08-03-001",
     "previous_seal":"2026-07-28",
-    "re_seal_date":"2026-08-03",
+    "re_seal_date":"2026-08-26",
     "doctrine":"DITEMPA BUKAN DIBERI · Hope is for the hopeless"
   },
   "external_audience":[
