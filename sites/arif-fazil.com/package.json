@@ -86,7 +86,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tw-animate-css": "^1.4.0",
     "typescript": "~7.0.2",
-    "typescript-eslint": "^8.46.4",
+    "typescript-eslint": "^8.68.0",
     "vite": "^8.2.2",
     "vite-plugin-ssg": "^0.1.0",
     "wait-on": "^9.0.10"
