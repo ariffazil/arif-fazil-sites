@@ -1,164 +1,143 @@
-import { useParams, Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { getMakcikArticle, getMakcikMeta } from '@/data/makcikgpt/index';
+import { useParams, Link } from 'react-router-dom'
+import { useEffect, useMemo } from 'react'
+import { getMakcikArticle, getMakcikMeta, makcikArticlesMeta } from '@/data/makcikgpt/index'
+
+function estimateReadingTime(html: string): number {
+  const text = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+  const words = text.split(' ').length
+  return Math.max(1, Math.round(words / 200))
+}
 
 export function MakcikGptArticle() {
-  const { slug } = useParams<{ slug: string }>();
-  const article = getMakcikArticle(slug || '');
-  const meta = getMakcikMeta(slug || '');
+  const { slug } = useParams<{ slug: string }>()
+  const article = getMakcikArticle(slug || '')
+  const meta = getMakcikMeta(slug || '')
+
+  const readingTime = useMemo(() => {
+    if (!article?.html) return 0
+    return estimateReadingTime(article.html)
+  }, [article])
+
+  const { prev, next } = useMemo(() => {
+    if (!meta) return { prev: null, next: null }
+    const idx = makcikArticlesMeta.findIndex(a => a.slug === meta.slug)
+    return {
+      prev: idx < makcikArticlesMeta.length - 1 ? makcikArticlesMeta[idx + 1] : null,
+      next: idx > 0 ? makcikArticlesMeta[idx - 1] : null,
+    }
+  }, [meta])
 
   useEffect(() => {
     if (meta) {
-      document.title = `${meta.title} — MakcikGPT | arifOS`;
+      document.title = `${meta.title} — MakcikGPT | arif-fazil.com`
+      window.scrollTo(0, 0)
     }
-  }, [meta]);
+  }, [meta])
 
   if (!article || !meta) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="bg-forge-black min-h-screen"
-      >
-        <section className="py-24">
-          <div className="site-frame text-center">
-            <h1 className="text-4xl font-black uppercase mb-4">Article Not Found</h1>
-            <Link to="/world/makcikgpt/" className="text-forge-gold hover:underline font-mono">
-              ← Back to MakcikGPT
-            </Link>
-          </div>
-        </section>
-      </motion.div>
-    );
+      <div className="min-h-screen bg-[#0A0B0D] text-[#EDEAE2] py-24">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <h1 className="font-display text-3xl font-bold uppercase mb-4">Artikel Tidak Dijumpai</h1>
+          <p className="font-sans text-sm text-[#9AA0A8] mb-8">
+            Artikel MakcikGPT yang diminta tiada dalam arkib atau telah dipindahkan.
+          </p>
+          <Link
+            to="/world/makcikgpt/"
+            className="inline-block px-5 py-2 rounded bg-[#E4572E] text-white font-mono text-xs uppercase"
+          >
+            ← Kembali ke MakcikGPT
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="bg-forge-black min-h-screen"
-    >
-      {/* Header */}
-      <section className="py-16 border-b-2 border-forge-iron bg-forge-steel">
-        <div className="site-frame">
+    <div className="min-h-screen bg-[#0A0B0D] text-[#EDEAE2] py-16 md:py-24">
+      <div className="mx-auto max-w-[800px] px-6 makcik-article">
+        {/* Navigation Breadcrumb */}
+        <div className="mb-8 flex items-center justify-between border-b border-[#1F2733] pb-4">
           <Link
             to="/world/makcikgpt/"
-            className="font-mono text-xs text-forge-dim hover:text-forge-red transition-colors mb-6 inline-block"
+            className="font-mono text-xs text-[#D9A62E] hover:underline uppercase tracking-wider flex items-center gap-1.5"
           >
-            ← MakcikGPT
+            <span>←</span>
+            <span>Arkib MakcikGPT</span>
           </Link>
-          <div className="section-label text-forge-red">
-            Civilization Intelligence · Ξ WEALTH · {meta.domain}
+          <span className="font-mono text-[10px] uppercase text-[#E4572E] px-2 py-0.5 rounded border border-[#E4572E]/30 bg-[#E4572E]/10">
+            SEAL {meta.seal || '999'}
+          </span>
+        </div>
+
+        {/* Article Header */}
+        <header className="mb-10">
+          <div className="font-mono text-xs font-bold text-[#D9A62E] uppercase tracking-widest mb-3">
+            {meta.domain || 'CIVIC INTELLIGENCE'} · {meta.date}
           </div>
-          <h1 className="text-3xl md:text-5xl font-black italic uppercase leading-[0.9] tracking-tighter mb-4 mt-2">
+          <h1 className="font-serif text-3xl md:text-5xl font-black text-[#EDEAE2] leading-[1.1] mb-4">
             {meta.title}
           </h1>
-          <p className="font-technical text-sm text-forge-orange mb-4">
-            {meta.subtitle}
-          </p>
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-forge-dim">
-            <span className="px-2 py-0.5 border border-forge-iron">
-              {meta.language === 'ms' ? 'Bahasa Makcik' : 'English'}
-            </span>
-            <span className="px-2 py-0.5 border border-forge-red text-forge-red">
-              Sealed {meta.seal}
-            </span>
-            <time dateTime={meta.date}>
-              {new Date(meta.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-            {meta.tags?.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 border border-forge-iron text-forge-dim"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Article body */}
-      <section className="py-16">
-        <div className="site-frame max-w-3xl">
-          <article
-            className="essay-content prose-invert font-body text-lg leading-relaxed text-forge-white/90 space-y-6"
-            dangerouslySetInnerHTML={{ __html: article.html }}
-          />
-
-          <hr className="border-forge-iron my-12" />
-
-          {/* APEX Evidence Drawer (Stage 4 Human UI) */}
-          {meta.claim_register && meta.claim_register.length > 0 && (
-            <details open className="border border-forge-gold/40 bg-forge-steel/30 p-6 mb-12 rounded-sm font-mono">
-              <summary className="cursor-pointer text-forge-gold font-bold uppercase tracking-wider text-sm flex items-center justify-between">
-                <span>📑 Evidence Drawer & Claim Register</span>
-                <span className="text-xs text-forge-dim">Status: {meta.provenance_status || 'sealed'}</span>
-              </summary>
-              
-              <div className="mt-6 space-y-6 text-xs text-forge-white">
-                <div>
-                  <h4 className="text-forge-orange font-bold mb-2">Claim Register ({meta.claim_register.length} claims)</h4>
-                  <div className="space-y-2">
-                    {meta.claim_register.map((c) => (
-                      <div key={c.claim_id} className="p-3 border border-forge-iron/60 bg-forge-black/40 flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <span className="font-bold text-forge-gold">{c.claim_id}</span>
-                          <span className={`px-2 py-0.5 text-[10px] font-bold uppercase ${
-                            c.tag === 'OBS' ? 'bg-forge-gold/20 text-forge-gold border border-forge-gold/50' :
-                            c.tag === 'INT' ? 'bg-forge-orange/20 text-forge-orange border border-forge-orange/50' :
-                            'bg-forge-red/20 text-forge-red border border-forge-red/50'
-                          }`}>
-                            {c.tag === 'OBS' ? 'OBS (Observed)' : c.tag === 'INT' ? 'INT (Interpretation)' : 'SPEC (Speculation)'}
-                          </span>
-                        </div>
-                        <p className="text-forge-white/90 text-sm font-body my-1">{c.text}</p>
-                        {c.confidence_basis && <p className="text-forge-dim text-[11px]">Basis: {c.confidence_basis}</p>}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {meta.source_ledger && meta.source_ledger.length > 0 && (
-                  <div>
-                    <h4 className="text-forge-orange font-bold mb-2">Source Ledger</h4>
-                    <div className="space-y-2">
-                      {meta.source_ledger.map((s) => (
-                        <div key={s.source_id} className="p-2 border border-forge-iron/40 text-forge-dim flex justify-between items-center">
-                          <span><strong>{s.source_id}</strong> — {s.title}</span>
-                          <a href={s.url} target="_blank" rel="noreferrer" className="text-forge-gold underline hover:text-white">Link</a>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </details>
+          {meta.subtitle && (
+            <p className="font-sans text-lg md:text-xl text-[#9AA0A8] leading-relaxed mb-6">
+              {meta.subtitle}
+            </p>
           )}
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <span className="brutalist-card border border-forge-red/50 px-5 py-3 inline-flex items-center gap-2 font-mono text-sm bg-forge-red/5">
-              <span className="text-forge-red">🔐</span>
-              <span className="text-forge-dim">Published directly on</span>
-              <span className="text-forge-white font-bold">arif-fazil.com</span>
-            </span>
-
-            <Link
-              to="/world/makcikgpt/"
-              className="font-mono text-sm text-forge-dim hover:text-forge-red transition-colors"
-            >
-              ← All MakcikGPT Articles
-            </Link>
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[#1F2733] text-xs font-mono text-[#9AA0A8]">
+            <span>Ditulis oleh: <strong className="text-[#EDEAE2]">MakcikGPT</strong></span>
+            <span>·</span>
+            <span>Bahasa: <strong className="text-[#EDEAE2]">{meta.language === 'ms' ? 'Bahasa Malaysia' : 'English'}</strong></span>
+            {readingTime > 0 && (
+              <>
+                <span>·</span>
+                <span className="reading-time">{readingTime} minit baca</span>
+              </>
+            )}
           </div>
-        </div>
-      </section>
-    </motion.div>
-  );
-}
+        </header>
 
-export default MakcikGptArticle;
+        {/* Article Body (Clean, comfortable reading experience) */}
+        <article className="prose prose-invert max-w-none font-sans text-base md:text-lg leading-relaxed text-[#EDEAE2]/90 space-y-6">
+          <div
+            dangerouslySetInnerHTML={{ __html: article.html || '' }}
+            className="space-y-6 [&>h2]:font-serif [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-[#EDEAE2] [&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:pb-2 [&>h2]:border-b [&>h2]:border-[#1F2733] [&>h3]:font-serif [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-[#D9A62E] [&>h3]:mt-8 [&>h3]:mb-3 [&>p]:leading-relaxed [&>blockquote]:border-l-4 [&>blockquote]:border-[#D9A62E] [&>blockquote]:bg-[#11151C] [&>blockquote]:p-4 [&>blockquote]:italic [&>blockquote]:text-[#EDEAE2] [&>strong]:text-[#D9A62E] [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:space-y-2"
+          />
+        </article>
+
+        {/* Next/Prev Article Navigation */}
+        <div className="article-nav">
+          {prev ? (
+            <Link to={`/world/makcikgpt/${prev.slug}`}>
+              <span className="nav-label">← Artikel sebelumnya</span>
+              <span className="nav-title">{prev.title}</span>
+            </Link>
+          ) : <div />}
+          {next ? (
+            <Link to={`/world/makcikgpt/${next.slug}`} className="nav-next">
+              <span className="nav-label">Artikel seterusnya →</span>
+              <span className="nav-title">{next.title}</span>
+            </Link>
+          ) : <div />}
+        </div>
+
+        {/* Footer & Related links */}
+        <div className="mt-8 pt-6 border-t border-[#1F2733] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+          <Link
+            to="/world/makcikgpt/"
+            className="text-[#D9A62E] hover:underline uppercase font-bold"
+          >
+            ← Kembali ke Semua Artikel Makcik
+          </Link>
+          <Link
+            to="/words"
+            className="text-[#9AA0A8] hover:text-[#EDEAE2] uppercase"
+          >
+            Lihat Esei Intelektual (/words) →
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+export default MakcikGptArticle

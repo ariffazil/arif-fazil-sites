@@ -5,6 +5,7 @@
   "philosophy": "Ditempa Bukan Diberi (Forged, Not Given)",
   "vocation": {
     "primary": "Earth Intelligence & Constitutional AI Governance",
+    "note": "Vocation domains are human work areas. They are not the organ register.",
     "domains": [
       {
         "id": "arifOS",
@@ -28,15 +29,27 @@
       }
     ]
   },
+  "organs": [
+    {"id": "arifos", "label": "arifOS", "role": "constitutional_kernel"},
+    {"id": "aforge", "label": "A-FORGE", "role": "execution_shell"},
+    {"id": "aaa", "label": "AAA", "role": "cockpit_a2a"},
+    {"id": "geox", "label": "GEOX", "role": "earth_intelligence"},
+    {"id": "wealth", "label": "WEALTH", "role": "capital_intelligence"},
+    {"id": "well", "label": "WELL", "role": "vitality_guard"}
+  ],
+  "organ_count": 6,
+  "organ_sot": "https://arif-fazil.com/api/public-state",
   "canonical_endpoints": {
     "human": "https://arif-fazil.com",
     "genesis": "https://arif-fazil.com/000/",
     "proof": "https://arif-fazil.com/999/",
-    "identity": "https://arif-fazil.com/.well-known/did.json"
+    "identity": "https://arif-fazil.com/.well-known/did.json",
+    "public_state": "https://arif-fazil.com/api/public-state"
   },
   "metadata": {
-    "version": "2.0-SOVEREIGN",
-    "last_forged": "2026-05-16",
-    "status": "SEALED"
+    "version": "2.1-SOVEREIGN",
+    "last_forged": "2026-08-17",
+    "status": "SEALED",
+    "note": "organ_count=6 matches GET /api/public-state.organs. Canon federation.json also lists arifFLOW + HERMES (not public HTTP organs)."
   }
 }

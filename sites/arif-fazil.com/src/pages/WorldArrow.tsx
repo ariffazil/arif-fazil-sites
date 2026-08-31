@@ -1,365 +1,569 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { motion, useInView } from 'framer-motion'
-import SectionHeader from '@/components/SectionHeader'
+import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { RealWorldAtlasMap, REAL_HOTSPOTS, type HotspotLocation } from '@/components/RealWorldAtlasMap';
 
-const RED = '#C8102E'
-type FactKind = 'OBS' | 'DER' | 'INT' | 'SPEC'
-
-/* ── Standing honesty bar: applicable tags lit red, others grey ── */
-function HonestyBar({ lit }: { lit: FactKind[] }) {
-  const all: FactKind[] = ['OBS', 'DER', 'INT', 'SPEC']
-  return (
-    <div className="flex gap-1.5">
-      {all.map((k) => (
-        <span
-          key={k}
-          title={
-            k === 'OBS'
-              ? 'Observed — directly verified'
-              : k === 'DER'
-                ? 'Derived — computed from observed data'
-                : k === 'INT'
-                  ? 'Interpretation — expert judgment'
-                  : 'Speculative — unverified estimate'
-          }
-          className="border px-1.5 py-0.5 font-mono text-[10px] leading-none tracking-[0.04em]"
-          style={
-            lit.includes(k)
-              ? { borderColor: RED, color: RED, fontWeight: 600 }
-              : { borderColor: 'rgb(20 17 12 / 0.2)', color: 'rgb(20 17 12 / 0.35)' }
-          }
-        >
-          [{k}]
-        </span>
-      ))}
-    </div>
-  )
+// --- Data Types & Static Signals ---
+interface MacroSignal {
+  id: string;
+  name: string;
+  code: string;
+  value: string;
+  change: string;
+  isPositive: boolean;
+  status: 'SEAL' | 'SABAR' | 'HOLD';
+  role: string;
+  summary: string;
+  link: string;
 }
 
-/* ── Typing dateline ── */
-function Dateline() {
-  const text = 'KUALA LUMPUR · EDISI TERKINI · RSS: /world/makcikgpt/feed.xml'
-  const [n, setN] = useState(0)
-  useEffect(() => {
-    if (n >= text.length) return
-    const id = setTimeout(() => setN(n + 1), 30)
-    return () => clearTimeout(id)
-  }, [n, text.length])
-  return (
-    <span className="font-mono text-[12px] uppercase tracking-[0.06em] text-ink-soft">
-      {text.slice(0, n)}
-      <span className="animate-pulse">▌</span>
-    </span>
-  )
-}
-
-const ARTICLES = {
-  lead: {
-    section: 'TENAGA',
-    date: '2026-02-14',
-    title: 'Minyak kita, siapa punya? Membaca Akta Pembangunan Petroleum 1974 dengan mata rakyat.',
-    gloss: 'Our oil, whose is it? Reading the Petroleum Development Act 1974 with the people’s eyes.',
-    lede: 'Makcik di pasar tahu harga minyak masak. Tetapi minyak bumi Malaysia — siapa sebenarnya pemiliknya, dan ke mana perginya hasilnya? Kami kira semula, sen demi sen.',
-    ledeGloss:
-      'The aunties at the market know the price of cooking oil. But Malaysia’s petroleum — who truly owns it, and where does the money go? We recount it, sen by sen.',
-    lit: ['OBS', 'DER'] as FactKind[],
+const MACRO_SIGNALS: MacroSignal[] = [
+  {
+    id: 'oil',
+    name: 'Brent Crude',
+    code: 'BRENT / USD',
+    value: '$82.40',
+    change: '+1.2%',
+    isPositive: true,
+    status: 'SEAL',
+    role: 'Global Primary Energy Baseline',
+    summary: 'Marginal cost of extraction rising in non-OPEC deepwater. Middle East supply vulnerability keeping floor tight.',
+    link: '/oil',
   },
-  side: [
-    {
-      section: 'POLISI',
-      date: '2026-02-11',
-      title: '70.5%: aritmetik yang jujur tentang aliran PETRONAS kepada kerajaan.',
-      gloss: '70.5%: the honest arithmetic of PETRONAS flows to government. [OBS]',
-      lit: ['OBS'] as FactKind[],
-    },
-    {
-      section: 'RAKYAT',
-      date: '2026-02-08',
-      title: '$750 juta itu simulasi, bukan ramalan — dan perbezaannya penting.',
-      gloss: 'That $750M is a simulation, not a forecast — and the difference matters. [SPEC]',
-      lit: ['SPEC', 'INT'] as FactKind[],
-    },
-  ],
-}
+  {
+    id: 'gas',
+    name: 'Natural Gas / LNG',
+    code: 'JKM / LNG',
+    value: '$13.20',
+    change: '+0.8%',
+    isPositive: true,
+    status: 'SEAL',
+    role: 'Sarawak & Pacific Energy Transition Artery',
+    summary: 'Asian spot demand resilient. Luconia and Bintulu LNG export trains maintain high cash conversion.',
+    link: '/gas',
+  },
+  {
+    id: 'gold',
+    name: 'Gold (Hard Asset)',
+    code: 'XAU / USD',
+    value: '$2,425.80',
+    change: '+0.4%',
+    isPositive: true,
+    status: 'SEAL',
+    role: 'Ultimate Sovereign De-dollarization Hedge',
+    summary: 'Central bank accumulation at multi-decade highs as sovereign balance sheets seek neutral reserve assets.',
+    link: '/gold',
+  },
+  {
+    id: 'usdmyr',
+    name: 'Ringgit Exchange',
+    code: 'USD / MYR',
+    value: '4.4250',
+    change: '-0.3%',
+    isPositive: false,
+    status: 'SABAR',
+    role: 'National Sovereign Purchasing Power',
+    summary: 'Repatriation mandates and trade surplus stabilizing local currency against strong USD index.',
+    link: '/usdmyr',
+  },
+  {
+    id: 'klci',
+    name: 'FTSE Bursa KLCI',
+    code: 'FBMKLCI',
+    value: '1,598.40',
+    change: '+0.5%',
+    isPositive: true,
+    status: 'SEAL',
+    role: 'Domestic Capital & Utilities Bellwether',
+    summary: 'Data center infrastructure inflow and energy dividend stability supporting domestic index multiples.',
+    link: '/klci',
+  },
+];
 
-const INDEX = [
-  { date: '2026-02-05', section: 'TENAGA', title: 'Apa itu PSC Small Field Asset, dan mengapa Bunga Tasbih penting.' },
-  { date: '2026-02-01', section: 'POLISI', title: 'Subsidi minyak: siapa dibantu, siapa membayar.' },
-  { date: '2026-01-28', section: 'RAKYAT', title: 'Kenapa “collapse” tidak disokong oleh bukti — berhenti sebarkan.' },
-  { date: '2026-01-24', section: 'TENAGA', title: 'Lembah Melayu: bumi yang masih menyimpan rahsia.' },
-  { date: '2026-01-20', section: 'POLISI', title: 'Akta 1974, dibaca perlahan-lahan, dalam bahasa pasar.' },
-  { date: '2026-01-16', section: 'RAKYAT', title: 'Surat dari makcik: “Terangkan sekali lagi, dik.”' },
-]
-
-const DOORS = [
-  { name: 'KEPALA', gloss: 'The Head', desc: 'Kepimpinan, perlantikan, hala tuju. — Leadership, appointments, direction.' },
-  { name: 'DALAM', gloss: 'The Inside', desc: 'Kewangan, aliran dana, aritmetik 70.5% [OBS]. — Finances, flows, the extraction arithmetic.' },
-  { name: 'MESIN', gloss: 'The Machine', desc: 'Operasi, aset, pengeluaran. — Operations, assets, production.' },
-]
+const MAKCIK_PICKS = [
+  {
+    id: 'm1',
+    series: 'Siri M1 · PETRONAS DNA',
+    date: '2026-08-02',
+    title: 'Suara Yang Tak Letak Dalam Mulut Manusia',
+    snippet: 'Taufik, Bakke Salleh, Anwar — bahasa korporat yang terlalu licin selalunya menyorok sesuatu. Bila profesor tak nampak, telinga kampung dengar.',
+    seal: 'SEAL 999',
+  },
+  {
+    id: 'm2',
+    series: 'Siri M2 · SEARAH & Gas Sarawak',
+    date: '2026-07-18',
+    title: 'Bernama Baru Sampai. Makcik Dah Lama Tanya.',
+    snippet: '40 hari lepas Makcik dedah isu SEARAH, semalam Bernama copy press release. Bila agensi berita jadi mesin fotostat, siapa jaga rakyat?',
+    seal: 'SEAL 999',
+  },
+  {
+    id: 'm3',
+    series: 'Siri M3 · YTL & Kuasa Data',
+    date: '2026-06-30',
+    title: 'Air Kita, Elektrik Kita, Data Centre Siapa Punya?',
+    snippet: 'Johor dan Cyberjaya banjir pelaburan AI, tapi bil elektrik rakyat naik dan paip air kering. Kiraan sebenar siapa yang untung.',
+    seal: 'SEAL 999',
+  },
+];
 
 export function World() {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-  const gridRef = useRef<HTMLDivElement>(null)
-  const gridInView = useInView(gridRef, { once: true, margin: '-15% 0px' })
-  const doorsRef = useRef<HTMLDivElement>(null)
-  const doorsInView = useInView(doorsRef, { once: true, margin: '-20% 0px' })
-  const manifestoRef = useRef<HTMLDivElement>(null)
-  const manifestoInView = useInView(manifestoRef, { once: true, margin: '-20% 0px' })
+  const [activeTab, setActiveTab] = useState<'atlas' | 'commodities' | 'makcikgpt' | 'institutions' | 'shadow'>('atlas');
+  const [selectedHotspot, setSelectedHotspot] = useState<HotspotLocation>(REAL_HOTSPOTS[0]);
+  const [subscribed, setSubscribed] = useState(false);
+  const [email, setEmail] = useState('');
 
-  const quote =
-    'Language decides who gets to understand. Energy policy written only in boardroom English belongs to the boardroom. MakcikGPT writes it in the language of the pasar — because the petroleum belongs to the rakyat.'
+  // Active status count
+  const signalSummary = useMemo(() => {
+    const seals = MACRO_SIGNALS.filter((s) => s.status === 'SEAL').length;
+    return { seals, total: MACRO_SIGNALS.length };
+  }, []);
 
   return (
-    <div
-      className="text-ink"
-      style={{ backgroundColor: '#0A0B0D', backgroundImage: 'url(/newsprint-texture.png)' }}
-    >
-      {/* ── 01 MASTHEAD ── */}
-      <section className="flex min-h-[80dvh] flex-col justify-center">
-        <div className="mx-auto w-full max-w-[1280px] px-6 py-20">
-          <div className="flex items-center justify-between border-y border-ink/25 py-3">
-            <Dateline />
-            <span className="hidden font-mono text-[12px] uppercase tracking-[0.06em] text-ink-soft md:block">
-              HARGA: PERCUMA — UNTUK RAKYAT
+    <div className="min-h-screen bg-[#0A0B0D] text-[#EAE6DF] font-sans antialiased selection:bg-[#E27D60] selection:text-[#0A0B0D]">
+      
+      {/* ── 01 TOP TICKER / STATE OF THE WORLD BAR ── */}
+      <div className="border-b border-[#222733] bg-[#0E1015] px-4 py-2.5">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 text-xs font-mono">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#4ECCA3] opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#4ECCA3]"></span>
             </span>
+            <span className="text-[#8E95A5] uppercase tracking-wider">STATE OF THE WORLD RADAR:</span>
+            <span className="text-[#4ECCA3] font-semibold">{signalSummary.seals}/{signalSummary.total} SIGNALS SEALED</span>
           </div>
-          <motion.img
-            src="/makcik-masthead.svg"
-            alt="MakcikGPT masthead in bold editorial serif with a red hibiscus"
-            className="mt-10 w-full"
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-8 font-display text-[26px] italic leading-[1.25] tracking-[-0.01em] md:text-[28px]"
-            style={{ color: RED }}
-          >
-            “Berita tenaga untuk rakyat — jujur, jelas, dan berbudi.”
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="mt-5 max-w-[62ch] font-body text-[17px] italic leading-[1.6] text-ink-soft"
-          >
-            MakcikGPT is civic journalism written in Bahasa Makcik — the warm, direct Malay of the
-            aunties — about PETRONAS, the Petroleum Development Act 1974, and who Malaysia’s
-            energy belongs to.
-          </motion.p>
-        </div>
-      </section>
 
-      {/* ── 02 TODAY'S COLUMNS ── */}
-      <section ref={gridRef} className="border-t-2 border-ink/70">
-        <div className="mx-auto max-w-[1280px] px-6 py-24">
-          <SectionHeader number="02" title="TODAY’S COLUMNS · RUANGAN HARI INI" />
-          <div className="mt-12 grid gap-10 lg:grid-cols-[3fr_2fr]">
-            {/* Lead story */}
-            <motion.article
-              initial={{ opacity: 0, y: 30 }}
-              animate={gridInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
-              className="group border-b-2 border-ink/70 pb-10"
-            >
-              <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.06em]">
-                <span className="border border-ink/60 px-2 py-0.5" style={{ color: RED, borderColor: RED }}>
-                  {ARTICLES.lead.section}
+          <div className="flex items-center gap-6 overflow-x-auto py-1 scrollbar-none">
+            {MACRO_SIGNALS.map((sig) => (
+              <Link
+                key={sig.id}
+                to={sig.link}
+                className="group flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <span className="text-[#8E95A5]">{sig.name}:</span>
+                <span className="text-white font-semibold">{sig.value}</span>
+                <span className={`text-[10px] ${sig.isPositive ? 'text-[#4ECCA3]' : 'text-[#E27D60]'}`}>
+                  {sig.change}
                 </span>
-                <span className="tabular-nums text-ink-soft">{ARTICLES.lead.date}</span>
-              </div>
-              <Link to="/world/makcikgpt/">
-                <h2 className="mt-5 font-display text-[36px] leading-[1.05] tracking-[-0.02em] transition-colors group-hover:text-[#C8102E] md:text-[44px]">
-                  {ARTICLES.lead.title}
-                </h2>
+                <span className="rounded bg-[#181C24] px-1.5 py-0.5 text-[9px] text-[#D4AF37] border border-[#2B3242]">
+                  {sig.status}
+                </span>
               </Link>
-              <p className="mt-3 font-body text-[16px] italic text-ink-soft">{ARTICLES.lead.gloss}</p>
-              <p className="mt-6 max-w-[60ch] font-body text-[19px] leading-[1.7]">
-                <span
-                  className="float-left mr-3 mt-1 font-display text-[64px] font-bold leading-[0.8]"
-                  style={{ color: RED }}
-                >
-                  {ARTICLES.lead.lede.charAt(0)}
-                </span>
-                {ARTICLES.lead.lede.slice(1)}
-              </p>
-              <p className="mt-3 max-w-[60ch] font-body text-[16px] italic leading-[1.6] text-ink-soft">
-                {ARTICLES.lead.ledeGloss}
-              </p>
-              <div className="mt-6">
-                <HonestyBar lit={ARTICLES.lead.lit} />
-              </div>
-            </motion.article>
+            ))}
+          </div>
 
-            {/* Side stories */}
-            <div className="flex flex-col gap-10">
-              {ARTICLES.side.map((a, i) => (
-                <motion.article
-                  key={a.title}
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={gridInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.15 * (i + 1) }}
-                  className="group border-b border-ink/20 pb-8"
+          <div className="hidden lg:flex items-center gap-2 text-[#8E95A5]">
+            <span>CANON: F1–F13</span>
+            <span>·</span>
+            <span>AED: SYNC</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── 02 MAIN HERO: THE SOVEREIGN WORLD ATLAS ── */}
+      <section className="relative border-b border-[#222733] px-6 py-12 lg:py-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#2B3242] bg-[#141820] px-3 py-1 font-mono text-xs uppercase tracking-widest text-[#E27D60]">
+                <span>🌐</span> Real GIS Cartography & Macro Atlas
+              </div>
+              <h1 className="mt-4 font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white">
+                ATLAS OF THE WORLD
+              </h1>
+              <p className="mt-3 max-w-2xl text-base sm:text-lg text-[#A0A7B8] font-light leading-relaxed">
+                Real OpenStreetMap, CartoDB Dark Matter, and Esri Satellite GIS engine. 
+                Tracking global maritime chokepoints, offshore hydrocarbon basins, physical gold reserves, and civic accountability under real uncertainty.
+              </p>
+            </div>
+
+            {/* Navigation Tabs */}
+            <div className="flex flex-wrap gap-1 rounded-lg border border-[#222733] bg-[#11141A] p-1.5 font-mono text-xs">
+              {[
+                { key: 'atlas', label: '🗺️ Real GIS Atlas' },
+                { key: 'commodities', label: '📊 5 Core Signals' },
+                { key: 'makcikgpt', label: '📰 MakcikGPT Civic' },
+                { key: 'institutions', label: '🏛️ Institutions' },
+                { key: 'shadow', label: '🗝️ PM Bayang' },
+              ].map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key as any)}
+                  className={`rounded px-4 py-2 uppercase tracking-wider transition-all ${
+                    activeTab === tab.key
+                      ? 'bg-[#E27D60] text-[#0A0B0D] font-bold shadow'
+                      : 'text-[#8E95A5] hover:text-white hover:bg-[#181D26]'
+                  }`}
                 >
-                  <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.06em]">
-                    <span className="border px-2 py-0.5" style={{ color: RED, borderColor: RED }}>
-                      {a.section}
-                    </span>
-                    <span className="tabular-nums text-ink-soft">{a.date}</span>
-                  </div>
-                  <Link to="/world/makcikgpt/">
-                    <h3 className="mt-4 font-display text-[24px] leading-[1.15] tracking-[-0.02em] transition-colors group-hover:text-[#C8102E]">
-                      {a.title}
-                    </h3>
-                  </Link>
-                  <p className="mt-2 font-body text-[15px] italic text-ink-soft">{a.gloss}</p>
-                  <div className="mt-4">
-                    <HonestyBar lit={a.lit} />
-                  </div>
-                </motion.article>
+                  {tab.label}
+                </button>
               ))}
             </div>
           </div>
 
-          {/* Recent index */}
-          <div className="mt-16 grid gap-x-10 gap-y-2 md:grid-cols-3">
-            {INDEX.map((a, i) => (
-              <motion.div
-                key={a.title}
-                initial={{ opacity: 0, y: 24 }}
-                animate={gridInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.4 + i * 0.06 }}
-              >
-                <Link
-                  to="/world/makcikgpt/"
-                  className="group block border-b border-ink/15 py-4 transition-shadow hover:shadow-[4px_4px_0_rgba(20,17,12,0.15)]"
-                >
-                  <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.06em] text-ink-soft">
-                    <span className="tabular-nums">{a.date}</span>
-                    <span style={{ color: RED }}>{a.section}</span>
+          {/* ── TAB 1: REAL GIS INTERACTIVE ATLAS DISPLAY ── */}
+          {activeTab === 'atlas' && (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left Column: Real Leaflet Map Component (8 Cols) */}
+              <div className="lg:col-span-8">
+                <RealWorldAtlasMap
+                  selectedHotspot={selectedHotspot}
+                  onSelectHotspot={setSelectedHotspot}
+                />
+
+                {/* Hotspot Quick Selector Pill Bar */}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {REAL_HOTSPOTS.map((spot) => (
+                    <button
+                      key={spot.id}
+                      onClick={() => setSelectedHotspot(spot)}
+                      className={`rounded-md border px-3 py-1.5 font-mono text-xs transition-colors ${
+                        selectedHotspot.id === spot.id
+                          ? 'border-[#E27D60] bg-[#221815] text-[#E27D60] font-semibold shadow-sm'
+                          : 'border-[#1F2533] bg-[#12151D] text-[#8E95A5] hover:border-[#3A455E] hover:text-white'
+                      }`}
+                    >
+                      {spot.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column: Intelligence & Node Dossier (4 Cols) */}
+              <div className="lg:col-span-4 rounded-2xl border border-[#222733] bg-[#0E1117] p-6 shadow-xl flex flex-col justify-between h-full min-h-[580px]">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#1F2533] pb-3 mb-4">
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-[#E27D60]">
+                      SPATIAL INTELLIGENCE DOSSIER
+                    </span>
+                    <span className="rounded bg-[#1A202C] px-2 py-0.5 font-mono text-[10px] text-[#4ECCA3] border border-[#2B364A]">
+                      {selectedHotspot.category}
+                    </span>
                   </div>
-                  <p className="mt-2 font-display text-[18px] leading-[1.25] tracking-[-0.01em] transition-colors group-hover:text-[#C8102E]">
-                    {a.title}
-                  </p>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── 03 VITALS: THREE DOORS ── */}
-      <section ref={doorsRef} className="border-y-2 border-ink/70" style={{ backgroundColor: RED }}>
-        <div className="mx-auto max-w-[1280px] px-6 py-24">
-          <p className="eyebrow text-white/80">03 ————— THE PETRONAS SIGNAL</p>
-          <h2 className="mt-4 font-display text-4xl tracking-[-0.02em] text-[#111318] md:text-[40px]">
-            /vitals/ — Isyarat Institusi PETRONAS
-          </h2>
-          <div className="mt-12 grid gap-px border border-black/60 bg-black/60 md:grid-cols-3">
-            {DOORS.map((d, i) => (
-              <motion.div
-                key={d.name}
-                initial={{ clipPath: 'inset(0 100% 0 0)' }}
-                animate={doorsInView ? { clipPath: 'inset(0 0% 0 0)' } : {}}
-                transition={{ duration: 0.7, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Link
-                  to="/vitals/"
-                  className="group flex h-full flex-col bg-[#111318] p-8 transition-colors duration-300 hover:bg-[#C8102E]"
-                >
-                  <p className="font-mono text-2xl font-bold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-[#111318]">
-                    {d.name}
-                  </p>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft transition-colors group-hover:text-[#111318]/70">
-                    {d.gloss}
-                  </p>
-                  <p className="mt-5 flex-1 font-body text-[17px] leading-[1.6] text-ink-soft transition-colors group-hover:text-[#111318]/90">
-                    {d.desc}
-                  </p>
-                  <span className="mt-6 font-mono text-[16px]" style={{ color: RED }}>
-                    → <span className="text-[12px] uppercase tracking-[0.06em] group-hover:text-[#111318]">Masuk / Enter</span>
-                  </span>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-          <p className="mt-10 border border-[#111318]/40 px-4 py-3 text-center font-mono text-[12px] uppercase tracking-[0.06em] text-[#111318]">
-            70.5% ialah aritmetik [OBS] · $750M ialah simulasi [SPEC] · “Collapse” TIDAK DISOKONG
-          </p>
-        </div>
-      </section>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedHotspot.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="font-mono text-xs text-[#8E95A5]">{selectedHotspot.region}</span>
+                      <h3 className="mt-1 font-serif text-2xl text-white font-normal leading-snug">
+                        {selectedHotspot.name}
+                      </h3>
 
-      {/* ── 04 WHY BAHASA MAKCIK ── */}
-      <section ref={manifestoRef}>
-        <div className="relative mx-auto max-w-[880px] px-6 py-32">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute left-2 top-8 select-none font-display text-[240px] leading-none"
-            style={{ color: 'rgba(200,16,46,0.10)' }}
-          >
-            “
-          </span>
-          <blockquote className="relative font-display text-[26px] leading-[1.4] tracking-[-0.01em] md:text-[32px]">
-            {quote.split(' ').map((word, i) => (
-              <motion.span
-                key={i}
-                className="inline-block"
-                initial={{ opacity: 0.15 }}
-                animate={manifestoInView ? { opacity: 1 } : {}}
-                transition={{ delay: i * 0.03, duration: 0.3 }}
-              >
-                {word}
-                {'\u00A0'}
-              </motion.span>
-            ))}
-          </blockquote>
-          <p className="mt-8 font-body text-[17px] italic text-ink-soft">
-            — The MakcikGPT manifesto. Bahasa Makcik first, English gloss always.
-          </p>
-        </div>
-      </section>
+                      <div className="mt-4 rounded-lg bg-[#141822] border border-[#202738] p-3 font-mono">
+                        <div className="text-[10px] text-[#8E95A5] uppercase tracking-wider">STRATEGIC VOLUME / CAPACITY</div>
+                        <div className="text-base font-bold text-[#E27D60] mt-0.5">{selectedHotspot.metric}</div>
+                      </div>
 
-      {/* ── 05 SUBSCRIBE / RSS ── */}
-      <section className="border-t-2 border-ink/70">
-        <div className="mx-auto max-w-[1280px] px-6 py-20">
-          <SectionHeader number="05" title="LANGGAN · SUBSCRIBE" />
-          <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-            <div className="font-mono text-[13px] uppercase tracking-[0.06em] text-ink-soft">
-              <p>
-                RSS →{' '}
-                <a href="/world/makcikgpt/feed.xml" className="underline underline-offset-4 hover:text-[#C8102E]">
-                  /world/makcikgpt/feed.xml
-                </a>
-              </p>
-              <p className="mt-2">
-                Telegram →{' '}
-                <a href="https://t.me/ariffazil" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-[#C8102E]">
-                  t.me/ariffazil
-                </a>
-              </p>
+                      <div className="mt-4 flex items-center gap-2 font-mono text-[11px] text-[#8E95A5]">
+                        <span>COORDINATES:</span>
+                        <span className="text-white">
+                          {selectedHotspot.lat.toFixed(2)}°N, {selectedHotspot.lng.toFixed(2)}°E
+                        </span>
+                        <span>·</span>
+                        <span className="text-[#D4AF37] border border-[#2B3242] bg-[#16140D] px-1.5 py-0.5 rounded">
+                          {selectedHotspot.status}
+                        </span>
+                      </div>
+
+                      <h4 className="mt-5 font-serif text-base text-white/90 italic">
+                        "{selectedHotspot.headline}"
+                      </h4>
+
+                      <p className="mt-3 text-sm text-[#A0A7B8] font-light leading-relaxed">
+                        {selectedHotspot.analysis}
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[#1F2533]">
+                  {selectedHotspot.route ? (
+                    <Link
+                      to={selectedHotspot.route}
+                      className="flex items-center justify-between w-full rounded-lg bg-[#E27D60] px-4 py-3 font-mono text-xs font-bold text-[#0A0B0D] uppercase tracking-wider hover:opacity-90 transition-opacity"
+                    >
+                      <span>Buka Laporan Terperinci</span>
+                      <span>→</span>
+                    </Link>
+                  ) : (
+                    <div className="font-mono text-xs text-[#8E95A5] text-center">
+                      SEALED AUDIT LEDGER · F1 TRUTH
+                    </div>
+                  )}
+                </div>
+              </div>
+
             </div>
+          )}
+
+          {/* ── TAB 2: 5 CORE SOVEREIGN COMMODITIES ── */}
+          {activeTab === 'commodities' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {MACRO_SIGNALS.map((sig) => (
+                <div
+                  key={sig.id}
+                  className="rounded-2xl border border-[#222733] bg-[#0E1117] p-6 hover:border-[#384259] transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between border-b border-[#1F2533] pb-3 mb-4">
+                      <span className="font-mono text-xs uppercase text-[#8E95A5]">{sig.code}</span>
+                      <span className="rounded bg-[#1A202C] px-2 py-0.5 font-mono text-[10px] text-[#D4AF37] border border-[#2D364A]">
+                        {sig.status}
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl text-white font-normal">{sig.name}</h3>
+                    <div className="mt-2 flex items-baseline gap-3">
+                      <span className="font-mono text-3xl font-bold text-white">{sig.value}</span>
+                      <span className={`font-mono text-xs font-semibold ${sig.isPositive ? 'text-[#4ECCA3]' : 'text-[#E27D60]'}`}>
+                        {sig.change}
+                      </span>
+                    </div>
+
+                    <div className="mt-4 font-mono text-xs text-[#E27D60]">{sig.role}</div>
+                    <p className="mt-2 text-sm text-[#A0A7B8] font-light leading-relaxed">
+                      {sig.summary}
+                    </p>
+                  </div>
+
+                  <Link
+                    to={sig.link}
+                    className="mt-6 inline-flex items-center justify-between border-t border-[#1F2533] pt-4 font-mono text-xs text-[#E27D60] hover:text-white transition-colors"
+                  >
+                    <span>Masuk Ke Analisis {sig.name}</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              ))}
+
+              {/* Economic Macro Synthesis Card */}
+              <div className="rounded-2xl border border-[#D4AF37]/30 bg-[#16140D] p-6 flex flex-col justify-between">
+                <div>
+                  <div className="font-mono text-xs uppercase text-[#D4AF37] tracking-wider">
+                    THERMODYNAMIC SYNTHESIS
+                  </div>
+                  <h3 className="mt-2 font-serif text-2xl text-white font-normal">
+                    Energy & Currency Causality
+                  </h3>
+                  <p className="mt-3 text-sm text-[#D8D2C2] font-light leading-relaxed">
+                    You cannot print Joules of energy or ounces of physical gold. Every fiat monetary system eventually reconciles with physical reservoir decline and sovereign boundary constraints.
+                  </p>
+                </div>
+                <Link
+                  to="/economics"
+                  className="mt-6 flex items-center justify-between rounded-lg bg-[#D4AF37] px-4 py-2.5 font-mono text-xs font-bold text-[#0A0B0D] uppercase tracking-wider hover:opacity-90"
+                >
+                  <span>Buka /economics/</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* ── TAB 3: MAKCIKGPT CIVIC INVESTIGATIONS ── */}
+          {activeTab === 'makcikgpt' && (
+            <div>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#222733] pb-6 mb-8">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-widest text-[#E27D60]">
+                    CIVIC INTELLIGENCE · BAHASA MAKCIK
+                  </span>
+                  <h2 className="mt-1 font-serif text-3xl text-white">
+                    MakcikGPT: Kewartawanan Siasatan Sivik
+                  </h2>
+                </div>
+                <Link
+                  to="/world/makcikgpt"
+                  className="inline-flex items-center gap-2 rounded-lg bg-[#E27D60] px-5 py-2.5 font-mono text-xs font-bold text-[#0A0B0D] uppercase tracking-wider hover:opacity-90 transition-opacity"
+                >
+                  <span>Masuk Ke Penuh Broadsheet</span>
+                  <span>→</span>
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {MAKCIK_PICKS.map((item) => (
+                  <div
+                    key={item.id}
+                    className="rounded-2xl border border-[#222733] bg-[#0E1117] p-6 flex flex-col justify-between hover:border-[#3A455E] transition-all"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between font-mono text-[11px] text-[#8E95A5] mb-3">
+                        <span className="text-[#E27D60] font-semibold">{item.series}</span>
+                        <span>{item.date}</span>
+                      </div>
+                      <h3 className="font-serif text-xl text-white font-normal leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-sm text-[#A0A7B8] font-light leading-relaxed italic">
+                        "{item.snippet}"
+                      </p>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-[#1F2533] flex items-center justify-between">
+                      <span className="font-mono text-[10px] text-[#D4AF37] border border-[#2D364A] bg-[#16140D] px-2 py-0.5 rounded">
+                        {item.seal}
+                      </span>
+                      <Link
+                        to="/world/makcikgpt"
+                        className="font-mono text-xs text-[#E27D60] hover:text-white transition-colors"
+                      >
+                        Baca Artikel →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ── TAB 4: INSTITUTIONS & SHADOW POWER ── */}
+          {activeTab === 'institutions' && (
+            <div className="rounded-2xl border border-[#222733] bg-[#0E1117] p-8">
+              <div className="max-w-3xl">
+                <span className="font-mono text-xs uppercase tracking-widest text-[#E27D60]">
+                  GOVERNANCE & INSTITUTIONAL FORENSICS
+                </span>
+                <h2 className="mt-2 font-serif text-3xl text-white">
+                  Shadow Cabinet & Structural Power Dynamics
+                </h2>
+                <p className="mt-4 text-base text-[#A0A7B8] font-light leading-relaxed">
+                  Analyzing institutions not by their public relations press releases, but by their audited balance sheets, sovereign debt obligations, regulatory appointments, and real capital flows.
+                </p>
+
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+                  <div className="rounded-xl border border-[#1F2533] bg-[#12151E] p-4">
+                    <div className="text-[#8E95A5] uppercase">PETRONAS & Fiscal Integrity</div>
+                    <div className="mt-1 text-sm font-bold text-white">70.5% Dividends vs Reinvestment</div>
+                    <p className="mt-2 text-[#A0A7B8] font-sans text-xs">
+                      Simulated capital stress thresholds under lower crude benchmark pricing.
+                    </p>
+                  </div>
+                  <div className="rounded-xl border border-[#1F2533] bg-[#12151E] p-4">
+                    <div className="text-[#8E95A5] uppercase">Sarawak Energy Sovereignty</div>
+                    <div className="mt-1 text-sm font-bold text-white">SEARAH Gas Monopoly Transition</div>
+                    <p className="mt-2 text-[#A0A7B8] font-sans text-xs">
+                      Aggregation rights and revenue division between state and federal mechanisms.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── TAB 5: PM BAYANG — SHADOW POLITICS ── */}
+          {activeTab === 'shadow' && (
+            <div className="rounded-2xl border border-[#c9a84c]/30 bg-[#0E1015] p-6 md:p-10">
+              <div className="max-w-3xl">
+                <span className="font-mono text-xs uppercase tracking-widest text-[#c9a84c]">
+                  PSIKOLOGI BAYANG · 9 PERDANA MENTERI · DARI TUNKU KE ANWAR
+                </span>
+                <h2 className="mt-2 font-serif text-3xl md:text-4xl text-white">
+                  PM Bayang
+                </h2>
+                <p className="mt-4 text-base text-[#A0A7B8] font-light leading-relaxed">
+                  Setiap Perdana Menteri ada persona — topeng yang ditunjukkan pada dunia.
+                  Carl Jung kata: makin cantik topeng kau, makin gelap bayang kau. Di sini
+                  9 Perdana Menteri dianalisa melalui Jungian shadow:{' '}
+                  <span style={{ color: 'var(--cyan, #00d4aa)' }}>Persona</span>,{' '}
+                  <span style={{ color: 'var(--red, #ef4444)' }}>Bayang</span>,{' '}
+                  <span style={{ color: 'var(--amber, #f59e0b)' }}>Tragedi</span>,{' '}
+                  Legasi. Atau masuk terus ke 33 bayang Anwar Ibrahim — politik, ekonomi, peribadi.
+                </p>
+                <p className="mt-3 font-mono text-[0.6rem] text-[#8E95A5] uppercase tracking-widest">
+                  Δ-ONLY · Bayang = Nyata · Dari Rekod Umum · 322 Sumber
+                </p>
+              </div>
+
+              {/* 9 PM portrait strip — grayscale, hover reveals color (mirrors hub) */}
+              <div className="mt-8 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2">
+                {[
+                  { name: 'Tunku',        url: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg' },
+                  { name: 'Razak',        url: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Tun_Abdul_Razak_1968.jpg' },
+                  { name: 'Hussein',      url: 'https://upload.wikimedia.org/wikipedia/en/1/12/Tun_Hussein_Onn.jpg' },
+                  { name: 'Mahathir',     url: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Mahathir_Mohamad_13112018_%28cropped%29.jpg' },
+                  { name: 'Badawi',       url: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Abdullah_Ahmad_Badawi_at_the_XIVth_Non-Aligned_Movement_Summit_at_Havana%2C_Cuba_on_September_16%2C_2006.jpg' },
+                  { name: 'Najib',        url: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/Najib_Razak_2008-08-21.jpg' },
+                  { name: 'Muhyiddin',    url: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Muhyiddin_Yassin_%2851087589446%29_%28cropped%29.jpg' },
+                  { name: 'Ismail Sabri', url: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Ismail_Sabri_Yaakob_01042022_%28cropped%29.jpg' },
+                  { name: 'Anwar',        url: 'https://upload.wikimedia.org/wikipedia/commons/c/c1/Anwar_Ibrahim_in_June_2026.jpg' },
+                ].map((pm) => (
+                  <div key={pm.name} className="aspect-[3/4] overflow-hidden rounded border border-[#222733] bg-[#111120] grayscale hover:grayscale-0 transition-all duration-500" title={pm.name}>
+                    <img src={pm.url} alt={pm.name} loading="lazy" className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Two CTAs */}
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Link
+                  to="/world/politics/shadow/"
+                  className="block rounded-lg border border-[#c9a84c]/50 bg-[#16140D] hover:bg-[#1d1a0f] transition-colors p-5"
+                >
+                  <div className="font-mono text-[0.6rem] uppercase tracking-widest text-[#c9a84c] mb-1">
+                    Hub · 9 PM
+                  </div>
+                  <div className="font-serif text-xl text-white leading-tight">
+                    → Semua PM Bayang
+                  </div>
+                  <div className="mt-2 font-body text-sm text-[#8E95A5]">
+                    Dari Tunku (1957) ke Anwar (2022). Persona, Bayang, Tragedi, Legasi untuk setiap satu.
+                  </div>
+                </Link>
+
+                <Link
+                  to="/world/politics/shadow/anwar-ibrahim/"
+                  className="block rounded-lg border border-purple-500/50 bg-[#12100E] hover:bg-[#1a1418] transition-colors p-5"
+                >
+                  <div className="font-mono text-[0.6rem] uppercase tracking-widest text-purple-400 mb-1">
+                    Deep-dive · PM ke-10
+                  </div>
+                  <div className="font-serif text-xl text-white leading-tight">
+                    🗝️ 33 Bayang Anwar Ibrahim
+                  </div>
+                  <div className="mt-2 font-body text-sm text-[#8E95A5]">
+                    11 politik · 11 ekonomi · 11 peribadi. Editorial psychology, bukan tuduhan.
+                  </div>
+                </Link>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </section>
+
+      {/* ── 03 DISPATCH & RSS SUBSCRIBE ── */}
+      <section className="px-6 py-16">
+        <div className="mx-auto max-w-4xl rounded-2xl border border-[#222733] bg-[#0D1016] p-8 md:p-12 text-center">
+          <span className="font-mono text-xs uppercase tracking-widest text-[#E27D60]">
+            SOVEREIGN DISPATCH · RSS & TELEGRAM
+          </span>
+          <h2 className="mt-2 font-serif text-3xl sm:text-4xl text-white font-normal">
+            Kekal Berpijak Pada Realiti Fizikal
+          </h2>
+          <p className="mt-3 max-w-xl mx-auto text-sm sm:text-base text-[#8E95A5] font-light">
+            Dapatkan isyarat makro dan analisis siasatan sivik terus ke emel atau RSS reader anda tanpa sebarang algoritma pihak ketiga.
+          </p>
+
+          <div className="mt-8 flex justify-center">
             {subscribed ? (
-              <motion.div
-                initial={{ scale: 1.4, opacity: 0, rotate: -4 }}
-                animate={{ scale: 1, opacity: 1, rotate: -4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-                className="inline-block border-4 px-6 py-2 font-mono text-xl font-bold uppercase tracking-[0.12em]"
-                style={{ borderColor: RED, color: RED }}
-              >
-                DITERIMA ✓
-              </motion.div>
+              <div className="rounded-lg border border-[#4ECCA3] bg-[#0E1A16] px-6 py-3 font-mono text-sm font-bold text-[#4ECCA3]">
+                DITERIMA ✓ LANGGANAN DIAKTIFKAN
+              </div>
             ) : (
               <form
-                className="flex w-full max-w-[420px] gap-0 border-2 border-ink"
                 onSubmit={(e) => {
-                  e.preventDefault()
-                  if (email.trim()) setSubscribed(true)
+                  e.preventDefault();
+                  if (email.trim()) setSubscribed(true);
                 }}
+                className="flex w-full max-w-md flex-col sm:flex-row gap-2"
               >
                 <input
                   type="email"
@@ -367,27 +571,32 @@ export function World() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="emel@anda.my"
-                  className="w-full bg-transparent px-4 py-3 font-mono text-[14px] outline-none placeholder:text-ink-soft/50"
+                  className="w-full rounded-lg border border-[#2B3242] bg-[#141822] px-4 py-3 font-mono text-sm text-white placeholder:text-[#50596B] focus:border-[#E27D60] focus:outline-none"
                 />
-                <motion.button
+                <button
                   type="submit"
-                  whileTap={{ scale: 0.96 }}
-                  className="shrink-0 px-6 py-3 font-mono text-[13px] font-bold uppercase tracking-[0.08em] text-[#111318] transition-opacity hover:opacity-90"
-                  style={{ backgroundColor: RED }}
+                  className="rounded-lg bg-[#E27D60] px-6 py-3 font-mono text-xs font-bold uppercase tracking-wider text-[#0A0B0D] hover:opacity-90 transition-opacity shrink-0"
                 >
                   Langgan
-                </motion.button>
+                </button>
               </form>
             )}
           </div>
-          <p className="mt-10 font-body text-[15px] italic text-ink-soft">
-            For machines: the MakcikGPT feed is plain RSS. Humans first — but agents are welcome
-            to read along, honestly.
-          </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-[#8E95A5]">
+            <a href="/world/makcikgpt/feed.xml" className="hover:text-[#E27D60] transition-colors">
+              RSS: /world/makcikgpt/feed.xml
+            </a>
+            <span>·</span>
+            <a href="https://t.me/ariffazil" target="_blank" rel="noreferrer" className="hover:text-[#E27D60] transition-colors">
+              Telegram: @ariffazil
+            </a>
+          </div>
         </div>
       </section>
+
     </div>
-  )
+  );
 }
 
 export default World;

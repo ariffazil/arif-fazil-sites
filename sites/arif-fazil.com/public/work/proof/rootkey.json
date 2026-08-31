@@ -1,0 +1,17 @@
+{
+  "key_id": "did-web-arif-fazil-com-arif-fazil",
+  "algorithm": "Ed25519",
+  "type": "Multikey",
+  "public_key_multibase": "z9AafFEn8WYCaE1ooiAud5gVLFapgkyyCvj34HSFgxoBK",
+  "public_key_fingerprint": "sha256:compute-it",  // TODO: recompute fingerprint for new key",
+  "verification_method": "did:web:arif-fazil.com#arif-fazil",
+  "usage": [
+    "assertionMethod",
+    "authentication"
+  ],
+  "issued_at": "2026-05-02T21:05:00Z",
+  "rotation_policy": "Manual 888_HOLD required before publishing a new DID public key or replacing this root key.",
+  "issuer": "did:web:arif-fazil.com",
+  "private_key_status": "not_published_not_requested",
+  "note": "This file publishes only public verification metadata. Private keys must remain in Arif/operator-controlled signing environment."
+}

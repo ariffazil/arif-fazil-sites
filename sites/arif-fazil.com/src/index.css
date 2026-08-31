@@ -370,3 +370,203 @@
   margin-top: 0.5rem;
   text-align: center;
 }
+
+/* ── MakcikGPT Article Surface (2026-08-21) ────────────────────────────────── */
+.makcik-article .cover {
+  background: linear-gradient(135deg, #1a0a0a 0%, #0d1117 50%, #11151c 100%);
+  border: 1px solid #1F2733;
+  border-left: 4px solid #E4572E;
+  border-radius: 12px;
+  padding: 2.5rem 2rem 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.makcik-article .cover::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(228,87,46,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.makcik-article .cover-emoji {
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.75rem;
+}
+.makcik-article .cover-kicker {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #D9A62E;
+  margin-bottom: 1rem;
+}
+.makcik-article .cover-title {
+  font-family: 'Cabinet Grotesk', 'Space Grotesk', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #EDEAE2;
+  margin-bottom: 1rem;
+}
+.makcik-article .cover-subtitle {
+  font-family: 'Satoshi', 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #9AA0A8;
+  max-width: 600px;
+}
+.makcik-article .cover-byline {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: #9AA0A8;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #1F2733;
+}
+.makcik-article .cover-byline strong {
+  color: #D9A62E;
+  font-weight: 600;
+}
+
+/* Fact Box */
+.makcik-article .fact-box {
+  background: #11151C;
+  border: 1px solid #1F2733;
+  border-left: 3px solid #D9A62E;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+}
+.makcik-article .fact-box-title {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #D9A62E;
+  margin-bottom: 0.75rem;
+}
+.makcik-article .fact-box-content {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #EDEAE2;
+}
+.makcik-article .fact-box-content em {
+  color: #9AA0A8;
+  font-size: 0.85rem;
+}
+
+/* Pull Quote */
+.makcik-article .pull-quote {
+  border-left: 3px solid #D9A62E;
+  background: rgba(217,166,46,0.06);
+  border-radius: 0 8px 8px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.75rem 0;
+  font-family: 'Newsreader', 'Georgia', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #EDEAE2;
+}
+
+/* Callout / CTA */
+.makcik-article .callout {
+  background: linear-gradient(135deg, #11151C 0%, #1a1f2e 100%);
+  border: 1px solid #1F2733;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+.makcik-article .callout-title {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #D9A62E;
+  margin-bottom: 0.75rem;
+}
+
+/* Reading Time Badge */
+.reading-time {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: #9AA0A8;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.reading-time::before {
+  content: "⏱";
+  font-size: 0.8rem;
+}
+
+/* Article Nav (next/prev) */
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #1F2733;
+}
+.article-nav a {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: #9AA0A8;
+  transition: color 0.2s ease;
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: #11151C;
+  border: 1px solid #1F2733;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.article-nav a:hover {
+  color: #D9A62E;
+  border-color: #D9A62E;
+}
+.article-nav .nav-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9AA0A8;
+  margin-bottom: 0.35rem;
+}
+.article-nav .nav-title {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #EDEAE2;
+  line-height: 1.4;
+}
+.article-nav .nav-next {
+  text-align: right;
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #9AA0A8;
+}
+.no-results-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.no-results h3 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #EDEAE2;
+  margin-bottom: 0.5rem;
+}
+.no-results p {
+  font-size: 0.9rem;
+  color: #9AA0A8;
+}
