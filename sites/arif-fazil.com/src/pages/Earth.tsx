@@ -27,35 +27,35 @@ type Well = {
 const WELLS: Well[] = [
   {
     name: 'BEKANTAN-1',
-    meta: 'NEW PLAY WILDCAT · FLOWED',
+    meta: 'SHALLOW CLASTIC APPRAISAL · FLOWED',
     summary:
-      'The shallowest flowing oil discovery in the Malay Basin. A shallow prospect everyone stepped over, until someone didn’t.',
+      'The shallowest flowing oil discovery in the Malay Basin. Proving that bypassed shallow clastic reservoirs in mature basins hold material pay.',
     story:
-      'Shallow prospects are the ones mature basins hide in plain sight. The seismic signal was there for years, walked over by deeper, louder ideas. Bekantan-1 was a bet that the humble answer was the right one — and the well flowed oil at a shallower depth than any other discovery in the Malay Basin. The lesson: in exploration, familiarity is not the same as understanding.',
+      'Shallow prospects are frequently overlooked in mature basins in favor of deeper, high-pressure targets. Bekantan-1 targeted Group E and H15 clastic sandstone reservoirs near the Cendor Graben, flowing oil at the shallowest productive depth recorded in the Malay Basin. The lesson: in exploration, familiarity is not the same as exhaustive understanding.',
   },
   {
     name: 'PUTERI BASEMENT-1',
-    meta: 'FRACTURED BASEMENT TEST',
+    meta: 'FRACTURED BASEMENT TEST · OVERLYING PAY',
     summary:
-      'Drilling into the hard, ancient floor of the basin to test whether fractures could hold and give up oil.',
+      'Testing pre-Tertiary fractured granite beneath basin fill. Basement proved water-bearing, but the well discovered oil in overlying K-5 sands.',
     story:
-      'Beneath the soft sedimentary layers sits the basement — rock billions of years old, dense and unforgiving. Oil cannot live in the rock itself; it can only live in its cracks. Puteri Basement-1 asked a precise question: are those fractures connected, and will they give up what they hold? Wells like this are how a basin’s floor stops being a boundary and becomes a frontier.',
+      'Targeting fractured crystalline basement requires testing complex fault and charge models. While the basement itself was water-bearing due to charge timing or seal failure, Puteri Basement-1 proved commercial oil in the overlying K-5 sandstone reservoirs, providing indispensable calibration on basement charge risk and near-field asset potential.',
   },
   {
     name: 'LEBAH EMAS-1',
-    meta: 'NEW PLAY WILDCAT',
+    meta: 'WESTERN HINGE WILDCAT · MULTI-ZONE PAY',
     summary:
-      '“Golden Bee.” A concept-first well: a new play idea carried from map to drill bit.',
+      '“Golden Bee.” Frontier wildcat at the western hinge fault zone that proved a working petroleum system across 11 hydrocarbon-bearing intervals.',
     story:
-      'Some wells begin with data. Lebah Emas began with an idea — a play that existed first as lines on a map and a reasoned argument about where hydrocarbons ought to be. Carrying a concept all the way from interpretation to drill bit is the purest form of exploration: you are not confirming what is known, you are paying to find out if your imagination was accurate.',
+      'Drilling the western hinge fault zone of Block PM6/12 meant testing an unproven structural margin. Lebah Emas-1 intersected 11 hydrocarbon-bearing reservoirs across Groups H, I, and J, confirming active petroleum charge and opening a new margin play fairway.',
   },
   {
     name: 'BUNGA TASBIH-1',
-    meta: 'DISCOVERY → DEVELOPMENT',
+    meta: 'SYN-RIFT TEST · POST-RIFT DISCOVERY',
     summary:
-      'The well that led to a Small Field Asset PSC award — from a seismic anomaly to a sanctioned field.',
+      'Primary syn-rift objective failed, but post-rift I and J sands proved oil — reshaping margin prospectivity and enabling an MBR+ award.',
     story:
-      'A discovery only matters if it becomes a field. Bunga Tasbih-1 turned a seismic anomaly into volumes, and the volumes into a Small Field Asset PSC award — the commercial instrument that sanctions development. This is the full arc of the discipline: rock, to risk, to revenue that flows back to the country that owns the petroleum.',
+      'Exploration value lies as much in honest falsification as in direct hits. While Bunga Tasbih-1 found the primary syn-rift target to be water-bearing, it discovered oil in post-rift Group I and J sands, demonstrating effective post-rift charge and establishing the basis for an MBR+ Small Field Asset award.',
   },
 ]
 

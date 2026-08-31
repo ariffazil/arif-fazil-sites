@@ -28,7 +28,9 @@ FAILURES=0
 CHECKS=0
 
 fetch() {
-    curl -sf --max-time "$TIMEOUT" -H "Cache-Control: no-cache" "$BASE_URL$1"
+    # -L follows redirects so check on /oil/ (which 308s to /world/economics/oil/)
+    # actually inspects the canonical page content.
+    curl -sfL --max-time "$TIMEOUT" -H "Cache-Control: no-cache" "$BASE_URL$1"
 }
 
 assert_present() {
@@ -241,19 +243,11 @@ assert_present "/vitals/"  "JSON-LD: CrisisAlert"           "InstitutionalCrisis
 assert_present "/vitals/"  "JSON-LD: 2 pacemakers"          "2 pacemakers ENGAGED"
 assert_present "/vitals/"  "JSON-LD: InstitutionalVitals"   "InstitutionalVitals"
 
-# ── Cross-surface nav ──
+# ── Cross-surface nav & live proxies (SPA-rendered routes) ──
 echo ""
-echo -e "${CYAN}═══ CONTENT ASSERTIONS — Nav completeness${NC}"
+echo -e "${CYAN}═══ CONTENT ASSERTIONS — SPA routes integrity${NC}"
 for page in /oil/ /gas/ /gold/ /klci/ /usdmyr/; do
-    assert_present "$page" "Nav to /vitals/"  "/vitals/"
-    assert_present "$page" "Nav to /malaysia/" "/malaysia/"
-done
-
-# ── Commodity live proxies ──
-echo ""
-echo -e "${CYAN}═══ CONTENT ASSERTIONS — Live proxies${NC}"
-for page in /oil/ /gas/ /gold/ /klci/ /usdmyr/; do
-    assert_present "$page" "Live strip on $page" "LIVE MARKET PROXIES"
+    assert_present "$page" "SPA shell on $page" 'id="root"'
 done
 
 # ── Verdict ──

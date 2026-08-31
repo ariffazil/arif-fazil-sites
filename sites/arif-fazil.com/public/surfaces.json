@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-31",
+  "version": "2026-08-25",
   "domain": "arif-fazil.com",
   "doctrine": {
     "title": "Single canonical surface catalog. All machine catalogs are generated views of this file.",
@@ -44,27 +44,77 @@
   "surfaces": [
     {
       "path": "/",
-      "title": "Home \u2014 Sovereign Identity & Portfolio",
+      "title": "Home — Sovereign Identity & Portfolio",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 1.0,
       "changefreq": "monthly",
-      "description": "Professional homepage for Arif Fazil \u2014 geoscientist, economist, AI governance architect"
+      "description": "Professional homepage for Arif Fazil — geoscientist, economist, AI governance architect"
     },
     {
       "path": "/earth/",
-      "title": "EARTH \u2014 The Dynamic Planet (Macrostrat globe)",
+      "title": "EARTH — The Dynamic Planet (Macrostrat globe)",
       "mission": "investigate",
       "status": "live",
       "type": "page",
       "priority": 0.8,
       "changefreq": "monthly",
-      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary \u2014 not SPA essay."
+      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary — not SPA essay."
+    },
+    {
+      "path": "/earth/kinabalu-basin/",
+      "title": "Kinabalu Basin — Deepwater Stratigraphy & Play Synthesis",
+      "mission": "investigate",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "description": "Deepwater Sabah basin analysis, turbidite channels, fold-thrust belt kinematics"
+    },
+    {
+      "path": "/earth/malay-basin/",
+      "title": "Malay Basin — Structural Evolution & Petroleum Systems",
+      "mission": "investigate",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "description": "Tertiary rift basin profiling, structural inversion, source-reservoir-seal pairs"
+    },
+    {
+      "path": "/earth/kinabalu-cross-section.html",
+      "title": "Kinabalu Basin Regional Cross Section",
+      "mission": "investigate",
+      "status": "live",
+      "type": "document",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Regional geological cross section with seismic interpretation and well calibration"
+    },
+    {
+      "path": "/earth/kinabalu-basin.pdf",
+      "title": "Kinabalu Regional Cross Section (PDF)",
+      "mission": "investigate",
+      "status": "live",
+      "type": "document",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "High-resolution publication PDF of Kinabalu regional cross section"
+    },
+    {
+      "path": "/earth/malay-basin-cross-section.html",
+      "title": "Malay Basin Regional Cross Section",
+      "mission": "investigate",
+      "status": "live",
+      "type": "document",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Malay Basin structural cross section showing basin inversion and play types"
     },
     {
       "path": "/economics/",
-      "title": "Economics \u2014 WEALTH Capital Briefing",
+      "title": "Economics — WEALTH Capital Briefing",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -84,7 +134,7 @@
     },
     {
       "path": "/world/",
-      "title": "World \u2014 Civic Journalism & Commodities",
+      "title": "World — Civic Journalism & Commodities",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -94,7 +144,7 @@
     },
     {
       "path": "/world/makcikgpt/",
-      "title": "MakcikGPT \u2014 Civic Intelligence in Bahasa Malaysia",
+      "title": "MakcikGPT — Civic Intelligence in Bahasa Malaysia",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -114,7 +164,7 @@
     },
     {
       "path": "/world/oil/",
-      "title": "Oil Dashboard \u2014 Brent Crude Cognitive View",
+      "title": "Oil Dashboard — Brent Crude Cognitive View",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -124,7 +174,7 @@
     },
     {
       "path": "/world/gas/",
-      "title": "Gas Dashboard \u2014 Natural Gas Intelligence",
+      "title": "Gas Dashboard — Natural Gas Intelligence",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -134,7 +184,7 @@
     },
     {
       "path": "/world/gold/",
-      "title": "Gold Dashboard \u2014 XAUUSD Trading Synthesis",
+      "title": "Gold Dashboard — XAUUSD Trading Synthesis",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -143,8 +193,28 @@
       "description": "Gold trading synthesis and technical analysis dashboard"
     },
     {
+      "path": "/world/politics/ns-election/",
+      "title": "Negeri Sembilan State Election — Civic Intelligence & Spatial Analysis",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.75,
+      "changefreq": "monthly",
+      "description": "Spatial electoral analytics and demographic dynamics of Negeri Sembilan state constituencies"
+    },
+    {
+      "path": "/world/politics/ns-election/compare/",
+      "title": "Negeri Sembilan Election Constituency Compare",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Comparative constituency analysis and swing metrics"
+    },
+    {
       "path": "/writing/",
-      "title": "Writing \u2014 Essays & Analysis",
+      "title": "Writing — Essays & Analysis",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -164,7 +234,7 @@
     },
     {
       "path": "/doctrine/",
-      "title": "Doctrine \u2014 Constitution, Federation Topology, Manifesto",
+      "title": "Doctrine — Constitution, Federation Topology, Manifesto",
       "mission": "decide",
       "status": "live",
       "type": "page",
@@ -174,7 +244,7 @@
     },
     {
       "path": "/000/",
-      "title": "000 \u2014 Genesis Archive & Wisdom Canon",
+      "title": "000 — Genesis Archive & Wisdom Canon",
       "mission": "remember",
       "status": "live",
       "type": "page",
@@ -184,27 +254,27 @@
     },
     {
       "path": "/999/",
-      "title": "999 \u2014 Proof & Verification Chamber",
+      "title": "999 — Proof & Verification Chamber",
       "mission": "remember",
       "status": "live",
       "type": "page",
       "priority": 0.6,
       "changefreq": "monthly",
-      "description": "Trust and proof chamber \u2014 verification artifacts, hash commitments, audit records"
+      "description": "Trust and proof chamber — verification artifacts, hash commitments, audit records"
     },
     {
       "path": "/999/verify",
-      "title": "999 Verify \u2014 Live Vault Proof Endpoint",
+      "title": "999 Verify — Live Vault Proof Endpoint",
       "mission": "remember",
       "status": "live",
       "type": "api",
       "priority": 0.5,
       "changefreq": "monthly",
-      "description": "Live vault proof endpoint proxied to arifOS kernel \u2014 cryptographic verification"
+      "description": "Live vault proof endpoint proxied to arifOS kernel — cryptographic verification"
     },
     {
       "path": "/map/",
-      "title": "Map \u2014 Human-Readable Route Tree",
+      "title": "Map — Human-Readable Route Tree",
       "mission": "remember",
       "status": "live",
       "type": "machine",
@@ -215,7 +285,7 @@
     },
     {
       "path": "/machine/",
-      "title": "Machine \u2014 Agent Surfaces Dashboard",
+      "title": "Machine — Agent Surfaces Dashboard",
       "mission": "remember",
       "status": "live",
       "type": "machine",
@@ -238,7 +308,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy canon path \u2014 merged into doctrine"
+      "description": "Legacy canon path — merged into doctrine"
     },
     {
       "path": "/constellation/",
@@ -246,7 +316,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy constellation path \u2014 merged into doctrine"
+      "description": "Legacy constellation path — merged into doctrine"
     },
     {
       "path": "/federation/",
@@ -254,7 +324,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy federation path \u2014 merged into doctrine"
+      "description": "Legacy federation path — merged into doctrine"
     },
     {
       "path": "/discoveries/",
@@ -262,11 +332,11 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy discoveries path \u2014 canonical is /earth"
+      "description": "Legacy discoveries path — canonical is /earth"
     },
     {
       "path": "/wealth/",
-      "title": "Wealth Capital \u2014 Market & Investment Terminal",
+      "title": "Wealth Capital — Market & Investment Terminal",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -280,7 +350,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy wealth article \u2014 canonical is /economics/article/:slug"
+      "description": "Legacy wealth article — canonical is /economics/article/:slug"
     },
     {
       "path": "/essays/",
@@ -288,7 +358,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy essays path \u2014 canonical is /writing"
+      "description": "Legacy essays path — canonical is /writing"
     },
     {
       "path": "/essays/:slug",
@@ -296,7 +366,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy essay \u2014 canonical is /writing/:slug"
+      "description": "Legacy essay — canonical is /writing/:slug"
     },
     {
       "path": "/wealth/makcikgpt/",
@@ -304,7 +374,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT path \u2014 canonical is /world/makcikgpt/"
+      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/"
     },
     {
       "path": "/wealth/makcikgpt/:slug",
@@ -312,7 +382,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug"
+      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug"
     },
     {
       "path": "/economics/makcikgpt/",
@@ -320,7 +390,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT path \u2014 canonical is /world/makcikgpt/"
+      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/"
     },
     {
       "path": "/economics/makcikgpt/:slug",
@@ -328,7 +398,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug"
+      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug"
     },
     {
       "path": "/genesis/",
@@ -336,11 +406,11 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy genesis path \u2014 canonical is /000/"
+      "description": "Legacy genesis path — canonical is /000/"
     },
     {
       "path": "/oil/",
-      "title": "Oil Dashboard \u2014 Brent Crude Live",
+      "title": "Oil Dashboard — Brent Crude Live",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -350,7 +420,7 @@
     },
     {
       "path": "/gas/",
-      "title": "Gas Dashboard \u2014 Natural Gas Live",
+      "title": "Gas Dashboard — Natural Gas Live",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -360,7 +430,7 @@
     },
     {
       "path": "/gold/",
-      "title": "Gold Dashboard \u2014 XAUUSD Live",
+      "title": "Gold Dashboard — XAUUSD Live",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -374,7 +444,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Bare MakcikGPT path \u2014 canonical is /world/makcikgpt/"
+      "description": "Bare MakcikGPT path — canonical is /world/makcikgpt/"
     },
     {
       "path": "/makcikgpt/:slug",
@@ -382,11 +452,11 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Bare MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug"
+      "description": "Bare MakcikGPT article — canonical is /world/makcikgpt/:slug"
     },
     {
       "path": "/vitals/",
-      "title": "PETRONAS \u00b7 VITALS \u2014 Financial capacity and resilience",
+      "title": "PETRONAS · VITALS — Financial capacity and resilience",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -396,7 +466,7 @@
     },
     {
       "path": "/malaysia/",
-      "title": "Malaysia \u2014 Civic & Political Hub",
+      "title": "Malaysia — Civic & Political Hub",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -416,7 +486,7 @@
     },
     {
       "path": "/forge/",
-      "title": "A-FORGE \u2192 subdomain",
+      "title": "A-FORGE → subdomain",
       "mission": "build",
       "status": "redirect",
       "type": "redirect",
@@ -427,38 +497,28 @@
       "redirects_to": "https://forge.arif-fazil.com/"
     },
     {
-      "path": "/politics/shadow/",
-      "title": "PM Bayang \u2014 Shadow Prime Ministers of Malaysia",
+      "path": "/world/politics/shadow/",
+      "title": "PM Bayang — Shadow Prime Ministers of Malaysia",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 0.7,
       "changefreq": "monthly",
-      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis."
+      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis. Static HTML at /var/www/html/world/politics/shadow/index.html."
     },
     {
-      "path": "/politics/shadow/board/",
-      "title": "Shadow Board \u2014 Org-Chart Instrument (PRIMER-1)",
-      "mission": "decide",
-      "status": "live",
-      "type": "page",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Org-chart instrument: 11 seats (9 PM dossiers + DERITA trauma map + Doctrine floors). Setiap kerusi = dossier link. PRIMER-1 instrument registry. Hidden from top nav \u2014 instrument surface."
-    },
-    {
-      "path": "/politics/shadow/derita/",
-      "title": "RASA DERITA \u2014 6-Cohort Generational Trauma Map",
+      "path": "/world/politics/shadow/anwar-ibrahim/",
+      "title": "33 Bayang Anwar Ibrahim — Three-Axis Shadow Analysis",
       "mission": "interpret",
       "status": "live",
       "type": "page",
-      "priority": 0.5,
+      "priority": 0.7,
       "changefreq": "monthly",
-      "description": "Framework analysis: 6 Malaysian generational trauma cohorts (13 Mei 1969 \u2192 1MDB \u2192 Sheraton \u2192 2022 Paradox). Constitutional floors as scars. HYPOTHESIS \u2014 confidence 0.20 [SPEC]. BUKAN FAKTA. HOLD pending VAULT999 seal."
+      "description": "33 shadow cards across 3 axes (Sosiopolitik / Ekonomi / Peribadi) for PM-10 Anwar Ibrahim. Editorial psychology analysis grounded in 322 public sources. Static HTML at /var/www/html/world/politics/shadow/anwar-ibrahim/index.html. Three-pillar DNA: Persona, Bayang, Tragedi, Legasi."
     },
     {
       "path": "/surfaces.json",
-      "title": "surfaces.json \u2014 Canonical Surface Catalog",
+      "title": "surfaces.json — Canonical Surface Catalog",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -468,7 +528,7 @@
     },
     {
       "path": "/llms-full.txt",
-      "title": "llms-full.txt \u2014 Full Content Dump for AI LLMs",
+      "title": "llms-full.txt — Full Content Dump for AI LLMs",
       "status": "live",
       "type": "machine",
       "format": "text/markdown",
@@ -478,7 +538,7 @@
     },
     {
       "path": "/llms.txt",
-      "title": "llms.txt \u2014 AI Site Overview",
+      "title": "llms.txt — AI Site Overview",
       "status": "live",
       "type": "machine",
       "format": "text/markdown",
@@ -488,7 +548,7 @@
     },
     {
       "path": "/llms.json",
-      "title": "llms.json \u2014 Structured Site Overview",
+      "title": "llms.json — Structured Site Overview",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -498,17 +558,17 @@
     },
     {
       "path": "/page.json",
-      "title": "page.json \u2014 Machine Site Overview",
+      "title": "page.json — Machine Site Overview",
       "status": "live",
       "type": "machine",
       "format": "application/json",
       "priority": 0.4,
       "changefreq": "weekly",
-      "description": "Machine-readable site overview \u2014 purpose, route model, content scope"
+      "description": "Machine-readable site overview — purpose, route model, content scope"
     },
     {
       "path": "/missions.json",
-      "title": "missions.json \u2014 Six-Mission Federation Catalog",
+      "title": "missions.json — Six-Mission Federation Catalog",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -518,7 +578,7 @@
     },
     {
       "path": "/sitemap.xml",
-      "title": "sitemap.xml \u2014 XML Sitemap",
+      "title": "sitemap.xml — XML Sitemap",
       "status": "live",
       "type": "machine",
       "format": "application/xml",
@@ -528,7 +588,7 @@
     },
     {
       "path": "/feed.xml",
-      "title": "RSS Feed \u2014 MakcikGPT Articles",
+      "title": "RSS Feed — MakcikGPT Articles",
       "status": "live",
       "type": "machine",
       "format": "application/rss+xml",
@@ -538,7 +598,7 @@
     },
     {
       "path": "/robots.txt",
-      "title": "robots.txt \u2014 Crawler Policy with AI Directives",
+      "title": "robots.txt — Crawler Policy with AI Directives",
       "status": "live",
       "type": "machine",
       "format": "text/plain",
@@ -548,7 +608,7 @@
     },
     {
       "path": "/rsl.xml",
-      "title": "rsl.xml \u2014 Really Simple Licensing 1.0",
+      "title": "rsl.xml — Really Simple Licensing 1.0",
       "status": "live",
       "type": "machine",
       "format": "application/rsl+xml",
@@ -558,7 +618,7 @@
     },
     {
       "path": "/soul.json",
-      "title": "soul.json \u2014 Sovereign Identity Anchor",
+      "title": "soul.json — Sovereign Identity Anchor",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -568,7 +628,7 @@
     },
     {
       "path": "/.well-known/agent-card.json",
-      "title": "Agent Card \u2014 A2A Discovery",
+      "title": "Agent Card — A2A Discovery",
       "redirects_to": "https://arifos.arif-fazil.com/.well-known/agent-card.json",
       "status": "redirect",
       "code": 301,
@@ -595,7 +655,7 @@
       "path": "/machines/",
       "status": "live",
       "type": "page",
-      "title": "For Machines \u2014 Ops guide",
+      "title": "For Machines — Ops guide",
       "description": "Human-readable agent contracts, AUP, disclaimer"
     }
   ],
@@ -644,5 +704,5 @@
     "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
     "did": "did:web:arif-fazil.com"
   },
-  "as_of": "2026-08-04T21:15:00Z"
+  "as_of": "2026-08-25T03:17:16Z"
 }

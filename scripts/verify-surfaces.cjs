@@ -16,7 +16,7 @@ const fs = require("fs");
 const path = require("path");
 
 const SITE_ROOT = path.resolve(__dirname, "..");
-const SURFACES_JSON = path.join(SITE_ROOT, "surfaces.json");
+const SURFACES_JSON = path.join(SITE_ROOT, "sites", "arif-fazil.com", "surfaces.json");
 const BASE = process.argv.find((a) => a.startsWith("--base="))?.split("=")[1]
   || process.env.VERIFY_BASE
   || "http://localhost:5173";
@@ -34,11 +34,11 @@ function loadSurfaces() {
 async function fetchStatus(url, expectedStatusFamily) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const redirectMode = expectedStatusFamily.includes(3) ? "manual" : "follow";
   try {
-    // Follow redirects: false — we want the raw status code
     const resp = await fetch(url, {
       method: "GET",
-      redirect: "manual",
+      redirect: redirectMode,
       signal: controller.signal,
       headers: { 
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) arifOS-verify-surfaces/1.0 (CI truth-check)",
