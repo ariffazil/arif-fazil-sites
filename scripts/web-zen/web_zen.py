@@ -59,12 +59,11 @@ TRUTH_MARKERS: dict[str, list[str]] = {
         "Ditempa Bukan Diberi",
         "Organs",
     ],
-    "https://arif-fazil.com/wealth/vitals/": [
-        "tripwire",
-        "Sovereign extraction",
+    "https://arif-fazil.com/propa/": [
         "PETRONAS",
+        "Shadow Chairman",
     ],
-    "https://mcp.arif-fazil.com/explorer.html": ["Engine room", "missions"],
+    "https://mcp.arif-fazil.com/": ["mcp", "arifOS"],
     "https://arif-fazil.com/000/": ["000", "genesis"],
     "https://arif-fazil.com/999/": ["999", "proof", "seal"],
     "https://arif-fazil.com/gold/api/proxies": ["brent", "timestamp"],
@@ -193,8 +192,9 @@ def cmd_sense(args: argparse.Namespace) -> Report:
         r.add(label, exists, str(path) if exists else f"MISSING {path}")
 
     # Caddy SPA + static registration (chaos killer for /missions 404)
-    if CADDYFILE.exists():
-        caddy = CADDYFILE.read_text(errors="replace")
+    caddy_target = Path("/etc/caddy/vhosts/arif-fazil.com.conf")
+    if caddy_target.exists() or CADDYFILE.exists():
+        caddy = (caddy_target if caddy_target.exists() else CADDYFILE).read_text(errors="replace")
         r.add(
             "caddy.spa_routes.missions",
             "/missions*" in caddy or re.search(r"missions\*", caddy) is not None,

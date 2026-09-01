@@ -16,7 +16,7 @@ const fs = require("fs");
 const path = require("path");
 
 const SITE_ROOT = path.resolve(__dirname, "..");
-const SURFACES_JSON = path.join(SITE_ROOT, "surfaces.json");
+const SURFACES_JSON = path.join(SITE_ROOT, "sites", "arif-fazil.com", "surfaces.json");
 const BASE = process.argv.find((a) => a.startsWith("--base="))?.split("=")[1]
   || process.env.VERIFY_BASE
   || "http://localhost:5173";
