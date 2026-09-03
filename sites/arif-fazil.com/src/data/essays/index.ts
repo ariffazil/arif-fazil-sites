@@ -588,8 +588,27 @@ export const allEssays: EssayMeta[] = [
   }
 ];
 
+const ESSAY_SLUG_ALIASES: Record<string, string> = {
+  'tool-is-the-thought': 'the-tool-is-the-thought',
+  'survival-fittest-tools': 'survival-of-the-fittest-tools',
+  'mind-is-not-model': 'the-mind-is-not-the-model-6-axis-constitutional-coordinate-system',
+  'contrast-governed-anomaly-detection': 'contrast-governed-anomaly-detection-formal-bridge-avo-attention',
+  'physics-constrained-attention': 'physics-constrained-attention-zoeppritz-constitutional-floor',
+  'contrast-primitive-derivation': 'contrast-primitive-derivation-avo-fluid-factor-attention-residual',
+};
+
 export function getEssay(slug: string) {
-  return essayModules.find(e => e.slug === slug);
+  const normalized = ESSAY_SLUG_ALIASES[slug] || slug;
+  const mod = essayModules.find(e => e.slug === normalized || e.slug === slug);
+  if (mod) return mod;
+  const meta = allEssays.find(e => e.slug === normalized || e.slug === slug);
+  if (meta) {
+    return {
+      ...meta,
+      html: `<p class="lead text-xl text-slate-200 leading-relaxed mb-6">${meta.excerpt || ''}</p><p class="text-slate-400">Published in the arifOS sovereign archives. Read the full publication at <a href="${meta.mediumUrl || '/words/'}" target="_blank" rel="noopener noreferrer" class="text-amber-400 hover:underline font-mono font-bold">Medium / Original Publication ↗</a></p>`,
+    };
+  }
+  return undefined;
 }
 
 // ── CURATED 33 — organized by knowledge domain ──

@@ -1,0 +1,15 @@
+{
+  "site": {
+    "version": "v2026.08.01",
+    "name": "arifOS WebMCP"
+  },
+  "webmcp_version": "1.0",
+  "endpoints": {
+    "mcp": "https://mcp.arif-fazil.com/mcp"
+  },
+  "console": {
+    "status": "unavailable",
+    "reason": "public /webmcp* is not proxied; kernel serves /webmcp locally on :8088 only"
+  },
+  "description": "MCP door is live. Public HTML WebMCP console is not exposed."
+}

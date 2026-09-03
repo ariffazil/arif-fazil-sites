@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const MYT_OFFSET = 8; // UTC+8
+const MYT_TZ = 'Asia/Kuala_Lumpur'; // MYT = UTC+8, no DST — Intl formatting is machine-TZ independent (fixes UTC-labelled-MYT bug)
 
 interface LiveClockProps {
   withDate?: boolean;
@@ -8,17 +8,12 @@ interface LiveClockProps {
   className?: string;
 }
 
-function mytNow(): Date {
-  const now = new Date();
-  return new Date(now.getTime() + (MYT_OFFSET - now.getTimezoneOffset() / 60) * 3600000);
-}
-
 function formatTime(d: Date): string {
-  return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  return new Intl.DateTimeFormat('en-GB', { timeZone: MYT_TZ, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(d);
 }
 
 function formatDate(d: Date): string {
-  return d.toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+  return new Intl.DateTimeFormat('en-GB', { timeZone: MYT_TZ, weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' }).format(d);
 }
 
 /**
@@ -28,12 +23,12 @@ function formatDate(d: Date): string {
  *   must be able to read the current epoch without asking)
  */
 export function LiveClock({ withDate = true, withIso = true, className = '' }: LiveClockProps) {
-  const [now, setNow] = useState<Date>(() => mytNow());
+  const [now, setNow] = useState<Date>(() => new Date());
   const [iso, setIso] = useState(() => new Date().toISOString());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setNow(mytNow());
+      setNow(new Date());
       setIso(new Date().toISOString());
     }, 1000);
     return () => clearInterval(interval);

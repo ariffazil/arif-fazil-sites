@@ -10,7 +10,7 @@
 .PHONY: deploy verify build reload status clean help sync-aaa verify-pages
 
 # ── DEFAULT: full deploy ──────────────────────────────────────────────
-deploy: verify sync-aaa build verify-pages reload
+deploy: verify sync-aaa build verify-pages reload split-roots
 	@echo ""
 	@echo "═══════════════════════════════════════════"
 	@echo "  DEPLOY COMPLETE — arif-fazil.com live"
@@ -18,6 +18,14 @@ deploy: verify sync-aaa build verify-pages reload
 	@echo "  Verify:  curl -sI https://arif-fazil.com"
 	@echo "  Status:  make status"
 	@echo ""
+
+# ── Split-root serving sync (2026-08-25 fix) ─────────────────────────
+# Caddy serves /earth* + @root_static from /var/www/html top-level, not
+# /var/www/html/arif. Without this step every deploy silently strands
+# those files at pre-deploy versions. Syncs dist → top-level + verifies.
+split-roots:
+	@echo "[split-roots] Syncing top-level serving roots (earth/, root-static)..."
+	bash scripts/sync-serving-roots.sh
 
 # ── Dry-run deploy (verify only, no mutation) ─────────────────────────
 dry-run: verify
@@ -34,11 +42,11 @@ verify: sync-aaa
 	@echo "[verify] Checking Caddy config..."
 	caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "[verify] Caddy config: VALID"
 	@echo "[verify] M3 fix 2026-08-01: scanning source HTML for dev-only entry points..."
-	@if grep -rE 'src="/src/[^"]*"|src="/@vite/|src="/@id/' sites/ public/ 2>/dev/null; then \
+	@if grep -rE 'src="/src/[^"]*"|src="/@vite/|src="/@id/' public/ 2>/dev/null; then \
 		echo "✗ [verify] DEV-ONLY ENTRY FOUND — refuse to deploy."; \
 		echo "  These paths only exist in Vite dev mode. Run 'make build' first to bundle."; \
 		exit 1; \
-		else \
+	else \
 		echo "[verify] No dev-only entry points — safe to deploy."; \
 	fi
 	@echo "✓ All gates passed."

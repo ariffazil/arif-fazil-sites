@@ -7,7 +7,9 @@
   var src = base.src.replace(/[^\/]*$/, 'unified-header.html?v=20260812T152100Z');
   // Propagate product mode onto body once header is injected
   var product = document.documentElement.getAttribute('data-header') === 'product';
-  fetch(src).then(function(r){return r.text()}).then(function(html){
+
+  function inject(html) {
+    if (!document.body || document.querySelector('header.uh') || document.getElementById('unified-header-nav')) return;
     document.body.classList.add('has-federation-header');
     if (product) document.body.setAttribute('data-header', 'product');
     // CRITICAL: <script> tags inserted via insertAdjacentHTML do NOT execute per HTML5 spec.
@@ -15,7 +17,7 @@
     var tmp = document.createElement('div');
     tmp.innerHTML = html;
     var scripts = Array.prototype.slice.call(tmp.querySelectorAll('script'));
-    scripts.forEach(function(s){ s.parentNode.removeChild(s); });
+    scripts.forEach(function(s){ if (s.parentNode) s.parentNode.removeChild(s); });
     document.body.insertAdjacentHTML('afterbegin', tmp.innerHTML);
     scripts.forEach(function(s){
       var ns = document.createElement('script');
@@ -23,5 +25,13 @@
       ns.textContent = s.textContent;
       document.body.appendChild(ns);
     });
+  }
+
+  fetch(src).then(function(r){return r.text()}).then(function(html){
+    if (document.body) {
+      inject(html);
+    } else {
+      document.addEventListener('DOMContentLoaded', function() { inject(html); });
+    }
   }).catch(function(){});
 })();

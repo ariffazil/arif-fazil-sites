@@ -154,37 +154,12 @@ if [ -f "scripts/generate-makcik-index.cjs" ]; then
   node scripts/generate-makcik-index.cjs && pass "makcikgpt index regenerated" || warn "Index regeneration had issues"
 fi
 
-# Generate individual article HTML files from essays.json
-if [ -f "$ESSAYS_JSON" ]; then
-  python3 -c "
-import json, os
-with open('$ESSAYS_JSON') as f:
-    essays = json.load(f)
-for e in essays:
-    slug = e.get('id', '')
-    title = e.get('title', slug)
-    subtitle = e.get('subtitle', '')
-    date = e.get('date', '')
-    if not slug: continue
-    html_path = os.path.join('$PUBLIC_MD_DIR', f'{slug}.html')
-    if os.path.exists(html_path): continue
-    os.makedirs('$PUBLIC_MD_DIR', exist_ok=True)
-    with open(html_path, 'w') as hf:
-        hf.write(f'''<!DOCTYPE html><html lang=\"ms\">
-<head><meta charset=\"utf-8\"><title>{title} — MakcikGPT</title>
-<meta name=\"description\" content=\"{subtitle}\">
-<link rel=\"canonical\" href=\"https://arif-fazil.com/world/makcikgpt/{slug}\">
-<meta name=\"robots\" content=\"index,follow\">
-<style>body{{background:#0d0d0d;color:#ccc;font-family:sans-serif;max-width:720px;margin:3em auto;padding:0 1em;line-height:1.6}}
-a{{color:#d4a843}}h1{{color:#eee}}time{{color:#888;font-size:0.9em}}</style>
-</head><body>
-<h1>{title}</h1>
-<p><time>{date}</time></p>
-{subtitle and f'<p>{subtitle}</p>' or ''}
-<p><a href=\"/world/makcikgpt/{slug}\">Baca artikel penuh →</a></p>
-</body></html>''')
-    print(f'  Generated: {slug}.html')
-" && pass "Static HTML generated for new articles" || warn "Static HTML generation had issues"
+# Generate full markdown mirrors (frontmatter + claim register + body) from essays.json.
+# Never generate id-named (m1-1, s4-2, …) article shells again — those are legacy
+# redirects owned by lib/makcik-legacy-map.cjs; sealed .md content (e.g. taufik v2)
+# is regenerated from essays.json so it can no longer be clobbered by this pipeline.
+if [ -f "scripts/generate-md-mirrors.cjs" ]; then
+  node scripts/generate-md-mirrors.cjs && pass "markdown mirrors regenerated (body lane)" || warn "Mirror regeneration had issues"
 fi
 
 # ── Phase 4: Build ─────────────────────────────────────────────────

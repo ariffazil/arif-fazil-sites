@@ -21,10 +21,10 @@ const CLAIMS: Claim[] = [
     evidence: 'Public record · career history',
   },
   {
-    claim: 'BEKANTAN-1 — shallowest flowing oil discovery in the Malay Basin',
+    claim: 'BEKANTAN-1 — shallowest flowing oil discovery in the Malay Basin (Group E/H15 clastics, PM304)',
     status: 'SEALED',
     tag: 'OBS',
-    evidence: 'Malay Basin scope · well record',
+    evidence: 'Malay Basin scope · well record & production test',
   },
   {
     claim: 'Every exploration well he has led has flowed',

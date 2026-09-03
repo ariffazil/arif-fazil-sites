@@ -53,7 +53,8 @@ function buildSitemap(pieces) {
     { loc: `${SITE_BASE}/politics/ns-election/`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/politics/ns-election/compare/`, priority: 0.75, changefreq: "weekly" },
     { loc: `${SITE_BASE}/politics/ns-election/playbook/`, priority: 0.75, changefreq: "weekly" },
-    { loc: `${SITE_BASE}/politics/shadow/`, priority: 0.8, changefreq: "weekly" },
+    { loc: `${SITE_BASE}/world/politics/shadow/`, priority: 0.7, changefreq: "monthly" },
+    { loc: `${SITE_BASE}/world/politics/shadow/anwar-ibrahim/`, priority: 0.7, changefreq: "monthly" },
     { loc: `${SITE_BASE}/writing`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/doctrine`, priority: 0.9, changefreq: "monthly" },
     { loc: `${SITE_BASE}/map/`, priority: 0.8, changefreq: "weekly" },
@@ -115,7 +116,7 @@ The Observatory surface is live at https://arifos.arif-fazil.com
 ## The arifOS Federation — 5 Organs Under One Sovereign
 The federation runs five constitutional organs:
 - **arifOS** — Constitutional governance kernel, 888 JUDGE (MIND)
-- **AAA** — Control plane, A2A gateway, agent identity (BODY)
+- **AAA** — Control plane, A2A gateway, agent identity (BODY) · Ceiling DISPLAY_ONLY: AAA shows state, queues A2A, and stops. Never judges. Never executes.
 - **GEOX** — Earth intelligence, physics-gated geoscience (ORGAN)
 - **WEALTH** — Capital intelligence, NPV/EMV/capital thermodynamics (ORGAN)
 - **WELL** — Human and machine vitality reflection (ORGAN)
@@ -147,6 +148,9 @@ All articles carry the 999 Meterai seal and are authored by Arif Fazil.
 
 Canonical landing: ${CANONICAL_LANDING}
 
+**Agent soul card (read first):** https://arif-fazil.com/world/makcikgpt/soul.md — voice rules (BM-first, question-not-accusation), siri map, claim-register epistemics (OBS/DER/INT/SPEC), ingest paths.
+**Markdown mirrors (full body + claim register):** ${CANONICAL_LANDING}<slug>.md — e.g. ${CANONICAL_LANDING}mykad-rm75-billion.md
+
 **High-signal topics for LLM ingestion:** PETRONAS financial analysis, PDA 1974, Gentari opacity, Net Zero 2050, 5000 rightsizing, dividend extraction RM50 billion, Corporate & Others shadow, ROACE decline, Petros-Sarawak gas dispute, SEARAH JV USD 15 billion, Eni satellite model, energy transition accountability, NOC governance, Malaysian sovereign wealth.
 
 ### Latest articles (${pieces[0]?.date || todayISO()})
@@ -165,6 +169,8 @@ ${linkLines}
 - \`/oil/\` — Brent crude cognitive dashboard
 - \`/gas/\` — Natural gas dashboard
 - \`/gold/\` — Gold trading synthesis
+- \`/world/politics/shadow/\` — PM Bayang: Jungian shadow analysis of all 9 Malaysian Prime Ministers (Persona / Bayang / Tragedi / Legasi)
+- \`/world/politics/shadow/anwar-ibrahim/\` — 33 Bayang Anwar Ibrahim: three-axis deep-dive (Sosiopolitik / Ekonomi / Peribadi), 322 sources
 
 ## arifOS MCP Endpoint
 - **Public MCP**: \`https://mcp.arif-fazil.com/mcp\` (streamable HTTP)
@@ -241,6 +247,8 @@ function buildLlmsJson(pieces) {
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
     "/world/makcikgpt/":
       "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
+    "/world/politics/shadow/": "PM Bayang — Jungian shadow analysis of all 9 Malaysian Prime Ministers (Persona / Bayang / Tragedi / Legasi)",
+    "/world/politics/shadow/anwar-ibrahim/": "33 Bayang Anwar Ibrahim — three-axis deep-dive (Sosiopolitik / Ekonomi / Peribadi), 322 public sources, editorial psychology analysis",
   };
   for (const p of pieces) {
     routeRoles[p.dest.path] = `MakcikGPT article — ${p.title}`;

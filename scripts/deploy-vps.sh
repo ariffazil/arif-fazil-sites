@@ -78,7 +78,7 @@ deploy_site() {
         if [[ -f "$source/package.json" ]]; then
             log_info "  Building $site..."
             cd "$source"
-            npm ci --quiet 2>/dev/null || npm install --quiet
+            npm ci --quiet --legacy-peer-deps 2>/dev/null || npm install --quiet --legacy-peer-deps
             npm run build 2>&1
             build_dir="$source/dist"
         fi

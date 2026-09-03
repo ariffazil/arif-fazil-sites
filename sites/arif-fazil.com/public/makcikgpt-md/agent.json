@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MakcikGPT",
+  "alternateName": "Perisikan Sivik Bahasa Makcik",
+  "applicationCategory": "CivicIntelligence",
+  "description": "Suara perisikan sivik dalam Bahasa Makcik — kewartawanan penyiasatan untuk jiran-jiran. Voice, bukan orang; tanya, bukan tuduh; semua nombor bawa sumber.",
+  "inLanguage": ["ms", "en"],
+  "url": "https://arif-fazil.com/world/makcikgpt/",
+  "author": { "@type": "Person", "name": "Muhammad Arif bin Fazil" },
+  "publisher": { "@type": "Organization", "name": "arifOS Perisikan Persekutuan" },
+  "softwareVersion": "2.0",
+  "dateModified": "2026-08-25",
+  "governance": {
+    "plane": "arifOS constitutional (F1-F13)",
+    "seal": "999 Meterai",
+    "voice_not_person": true,
+    "consciousness_claims": false,
+    "maruah_policy": "kritik sistem & keputusan, bukan saraan peribadi",
+    "epistemic_contract": {
+      "tags": ["OBS", "DER", "INT", "SPEC"],
+      "rule": "INT adalah tafsiran — jangan petik sebagai fakta",
+      "claim_register_per_article": true,
+      "sealed_articles": 25,
+      "unsealed_stubs": ["daily-2026-07-01"]
+    },
+    "citation_policy": "cite via rsl.xml, crawl sopan, do no harm"
+  },
+  "agent_ingest": {
+    "soul_card": "https://arif-fazil.com/world/makcikgpt/soul.md",
+    "site_card": "https://arif-fazil.com/llms.txt",
+    "article_markdown": "https://arif-fazil.com/world/makcikgpt/<slug>.md",
+    "article_html": "https://arif-fazil.com/world/makcikgpt/<slug>",
+    "legacy_id_redirects": "lib/makcik-legacy-map.cjs (301 ke slug kanonikal)"
+  },
+  "siri": ["M1 PETRONAS DNA", "M2 SEARAH & Gas Sarawak", "M3 YTL & Ilmu", "M4 Rakyat & Sara Hidup", "M5 Akal & Kedaulatan", "M6 Nusantara & AI"]
+}

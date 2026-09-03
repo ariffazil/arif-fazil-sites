@@ -6,18 +6,27 @@
 <title>Map — arif-fazil.com Route Tree</title>
 <meta name="description" content="Human-readable route map of arif-fazil.com. Every surface, its status, its canonical URL. Generated from surfaces.json.">
 <link rel="canonical" href="https://arif-fazil.com/map/">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"Route Map — arif-fazil.com","description":"Complete route tree with status badges, federation subdomains, and deprecated route history. Generated from surfaces.json canonical catalog.","url":"https://arif-fazil.com/map/","author":{"@type":"Person","name":"Muhammad Arif bin Fazil","url":"https://arif-fazil.com"}}
 </script>
 <style>
 :root {
-  --bg: #0a0a0a; --bg-alt: #111; --bg-card: #1a1a1a; --bg-hover: #242424;
-  --border: #2a2a2a; --border-light: #1e1e1e;
-  --fg: #f0f0f0; --fg-muted: #9a9a9a; --fg-subtle: #666;
-  --red: #e0301e; --blue: #1f3fd4; --yellow: #f2b705;
-  --green: #1a8a3f;
-  --body: 'Inter', system-ui, sans-serif;
-  --mono: 'JetBrains Mono', 'Courier New', monospace;
+  --bg: var(--color-bg, #0a0a0a);
+  --bg-alt: var(--color-surface-subtle, #111);
+  --bg-card: var(--color-surface, #1a1a1a);
+  --bg-hover: #242424;
+  --border: var(--color-border, #2a2a2a);
+  --border-light: #1e1e1e;
+  --fg: var(--color-fg, #f0f0f0);
+  --fg-muted: var(--color-fg-muted, #9a9a9a);
+  --fg-subtle: #666;
+  --red: var(--color-red, #e0301e);
+  --blue: var(--color-blue, #1f3fd4);
+  --yellow: var(--color-gold, #f2b705);
+  --green: var(--color-green, #1a8a3f);
+  --body: var(--font-sans, 'Inter', system-ui, sans-serif);
+  --mono: var(--font-mono, 'JetBrains Mono', 'Courier New', monospace);
   --geometry: orthogonal;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -192,12 +201,16 @@ function badgeLabel(s){
   if(s.status==='gone')return'gone';
   return s.status;
 }
+function anchorId(path){
+  return String(path||'').replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home';
+}
 function renderCard(s){
   const d=depth(s.path);
+  const aid=anchorId(s.path);
   if(s.status==='gone'){
-    return `<div class="wound-card"><div class="path">${s.path}</div><div class="note">${s.description||s.title||''}</div></div>`;
+    return `<div class="wound-card" id="${aid}"><div class="path">${s.path}</div><div class="note">${s.description||s.title||''}</div></div>`;
   }
-  return `<div class="surface-card">
+  return `<div class="surface-card" id="${aid}">
     <div><span class="path">${s.status==='redirect'?'↳ ':''}<code>${s.path}</code></span>${s.title?` <span class="title">— ${s.title}</span>`:''}</div>
     <div><span class="depth-chip">depth ${d}</span></div>
     <div class="meta"><span class="badge ${badge(s)}">${badgeLabel(s)}</span>${s.redirects_to?`<br><span style="font-size:10px">→ ${s.redirects_to}</span>`:''}</div>

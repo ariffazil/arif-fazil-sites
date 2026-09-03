@@ -29,3 +29,109 @@
 .earth-site-nav a:hover { color: #EDEAE2; }
 .earth-site-nav .brand { color: #EDEAE2; font-weight: 600; letter-spacing: -0.02em; text-transform: none; font-size: 0.95rem; }
 .earth-site-nav .accent-earth { color: #E4572E; }
+
+/* ── GEOX TIMESCALE (PR #1, 2026-08-26, F2/F13) ─────────────────── */
+.geox-ts-mount {
+  margin-top: 1.5rem;
+  border: 1px solid rgba(237, 234, 226, 0.12);
+  border-radius: 10px;
+  padding: 1rem 1rem 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+.geox-ts-chart { width: 100%; overflow-x: auto; }
+.geox-ts-chart svg { display: block; max-width: 100%; height: auto; }
+.geox-ts-provenance {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #9AA0A8;
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 2px solid var(--earth-gold, #C9A227);
+  border-radius: 4px;
+}
+.geox-ts-provenance .provenance-head { margin: 0 0 0.35rem; color: #EDEAE2; }
+.geox-ts-provenance .provenance-body { margin: 0; }
+.geox-ts-provenance a { color: var(--earth-gold, #C9A227); }
+.geox-ts-provenance code {
+  font-family: "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+}
+.geox-ts-queue {
+  margin-top: 0.65rem;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.72rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 6px;
+  color: #9AA0A8;
+}
+.geox-ts-queue-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #EDEAE2;
+}
+.geox-ts-queue-head .count {
+  font-size: 1.05rem;
+  color: var(--earth-ember, #E4572E);
+  font-weight: 600;
+}
+.geox-ts-queue-head button {
+  background: transparent;
+  border: 1px solid rgba(237, 234, 226, 0.2);
+  color: #9AA0A8;
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 0.65rem;
+  cursor: pointer;
+}
+.geox-ts-queue-head button:hover { color: #EDEAE2; border-color: rgba(237, 234, 226, 0.4); }
+.geox-ts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.3rem;
+}
+.geox-ts-row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  gap: 0.6rem;
+  font-family: "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+  font-size: 0.68rem;
+  align-items: baseline;
+  border-top: 1px dashed rgba(237, 234, 226, 0.08);
+  padding-top: 0.25rem;
+}
+.geox-ts-row code { color: var(--earth-ember, #E4572E); }
+.geox-ts-row .geox-ts-context { color: #EDEAE2; overflow: hidden; text-overflow: ellipsis; }
+.geox-ts-row .geox-ts-meta { color: #6E737D; white-space: nowrap; }
+.geox-ts-empty { color: #6E737D; font-style: italic; margin: 0; }
+.geox-ts-flash {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(0.5rem);
+  background: var(--earth-ember, #E4572E);
+  color: #0A0B0D;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-family: "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 200;
+}
+.geox-ts-flash.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (max-width: 720px) {
+  .geox-ts-row { grid-template-columns: 1fr; gap: 0.15rem; }
+}

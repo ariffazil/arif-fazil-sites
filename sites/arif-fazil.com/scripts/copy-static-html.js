@@ -1,16 +1,4 @@
 // post-build: copy static HTML pages into dist subdirectories
-// These are standalone HTML pages not processed by Vite's React pipeline.
-//
-// Two-stage copy:
-//   1. Mirror ALL of public/*/ → dist/*/ (recursive) so every static
-//      index.html, llms.txt, surfaces.json, etc. ends up under dist/.
-//      Excludes React-build dirs (assets/, data/) and bundler temp.
-//   2. Explicit copies for files that live outside public/ (canon/, etc.).
-//
-// The mirror approach prevents the silent drift we saw on 2026-08-02
-// where 88 static subpages got the unified nav header injected in source
-// but never reached the live site because copy-static-html.js only
-// hard-coded 8 paths.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -26,6 +14,21 @@ const SKIP_DIRS = new Set([
   ".git",
 ]);
 
+// SPA canonical routes that MUST use the React SPA bundle (dist/index.html)
+const SPA_ROUTES = [
+  "home",
+  "words",
+  "world",
+  "work",
+  "AAA",
+  "aaa",
+  "000",
+  "999",
+  "world/makcikgpt",
+  "missions",
+  "economics",
+];
+
 const SKIP_FILES = new Set([
   "feed.xml",
   "llms.json",
@@ -39,11 +42,21 @@ const SKIP_FILES = new Set([
   "soul.json",
 ]);
 
+// Static index.html files that MUST be copied verbatim from public/ → dist/
+// instead of being treated as SPA fallback targets. These are non-React pages
+// (e.g. /world/politics/shadow/ PM Bayang hub + 33 Bayang Anwar Ibrahim).
+const STATIC_INDEX_ALLOWLIST = new Set([
+  "world/politics/shadow/index.html",
+  "world/politics/shadow/anwar-ibrahim/index.html",
+]);
+
 function shouldSkip(relativePath, isDir) {
   const parts = relativePath.split(path.sep);
   if (isDir && parts.some(p => SKIP_DIRS.has(p))) return true;
-  // ONLY skip root index.html (the Vite-built SPA entry) — copy all subfolder index.html files!
-  if (!isDir && relativePath === "index.html") return true;
+  // index.html: skip UNLESS on the static allowlist (those are non-React pages)
+  if (!isDir && relativePath === "index.html") {
+    return !STATIC_INDEX_ALLOWLIST.has(relativePath);
+  }
   if (!isDir && SKIP_FILES.has(parts[parts.length - 1])) return true;
   return false;
 }
@@ -63,37 +76,26 @@ function mirrorDir(srcDir, destDir, baseRel = "") {
     } else if (e.isFile()) {
       fs.mkdirSync(path.dirname(dp), { recursive: true });
       fs.copyFileSync(sp, dp);
-      console.log("postbuild: mirror", path.relative(root, sp), "->", path.relative(root, dp));
     }
   }
 }
 
-let copied = 0;
-
-// 1. Mirror public/ → dist/ (except root index.html and SPA-managed assets)
+// 1. Mirror public/ → dist/
 if (fs.existsSync(publicRoot)) {
-  console.log("postbuild: mirroring public/ → dist/ (skipping root index.html, assets/, data/)...");
+  console.log("postbuild: mirroring public/ → dist/...");
   mirrorDir(publicRoot, distRoot);
 }
 
-// 2. Explicit copies for paths outside public/ that the mirror does not handle.
-//    NOTE: 999/, 000/, canon/, etc. all live BOTH at public/<path>/ AND at the
-//    repo-root (e.g. sites/arif-fazil.com/999/index.html). The mirror covers
-//    public/, so the legacy root-level files are SKIPPED here to prevent the
-//    stale Jul-25 copy from overwriting the fresh public/ version.
-//    If a path is NOT in public/, list it here.
-const staticCopies = [
-  ["canon/index.html", "dist/canon/index.html"],  // canon/ is not mirrored (lives at sites/arif-fazil.com/canon/)
-];
-
-for (const [src, dest] of staticCopies) {
-  const srcPath = path.join(root, src);
-  const destPath = path.join(root, dest);
-  if (fs.existsSync(srcPath)) {
-    fs.mkdirSync(path.dirname(destPath), { recursive: true });
-    fs.copyFileSync(srcPath, destPath);
-    console.log("postbuild: copied", src, "->", dest);
-    copied++;
+// 2. Ensure all canonical SPA routes use the compiled React SPA entry (dist/index.html)
+const spaEntryPath = path.join(distRoot, "index.html");
+if (fs.existsSync(spaEntryPath)) {
+  const spaHtml = fs.readFileSync(spaEntryPath, "utf8");
+  for (const route of SPA_ROUTES) {
+    const routeDir = path.join(distRoot, route);
+    fs.mkdirSync(routeDir, { recursive: true });
+    const targetFile = path.join(routeDir, "index.html");
+    fs.writeFileSync(targetFile, spaHtml, "utf8");
+    console.log(`postbuild: injected SPA shell for /${route} -> ${path.relative(root, targetFile)}`);
   }
 }
 

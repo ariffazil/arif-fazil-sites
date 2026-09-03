@@ -1,19 +1,19 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "4.0.0",
-  "as_of": "2026-08-04",
-  "description": "Hybrid IA — Arrow-of-Time shell + live route graph. One primary strip. Trinity is DRAFT only.",
+  "version": "7.0.0",
+  "as_of": "2026-08-14",
+  "description": "Organ-mirror nav v7 FINAL: HOME(AAA cockpit) EARTH(GEOX) WORDS(arifOS) WORLD(WEALTH) WORK(WELL). Organs belong to agents \u2014 machine_links. Pages are for humans; contexts are for agents. F13 ratified 2026-08-06.",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
     "agent_doors": "footer machine_links + /.well-known/* + llms.txt + missions.json",
     "preserve": [
       "politics/ns-election",
-      "world/makcikgpt",
-      "commodities oil|gas|gold|klci|usdmyr",
-      "vitals PETRONAS singleton",
-      "000 genesis",
-      "999 vault"
+      "world/makcikgpt (Voice domain)",
+      "commodities gold|oil|gas|klci|usdmyr (Capital domain)",
+      "propa PETRONAS (Capital domain, canonical)",
+      "000 origin",
+      "999 proof"
     ]
   },
   "frame": {
@@ -35,39 +35,158 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "One-line primary navigation rendered by ArrowNavbar (hybrid live 2026-08-04)",
-    "rule": "Max 7. Logo is brand, not a primary item. Politics lives in secondary (World civic depth). Commodities ⊆ World.",
+    "description": "8 canonical human nav items",
+    "rule": "Max 8. Canonical human navigation routes.",
     "items": [
-      { "label": "Earth", "href": "/earth", "role": "primary", "mode": "spa" },
-      { "label": "Economics", "href": "/economics", "role": "primary", "mode": "spa" },
-      { "label": "World", "href": "/world", "role": "primary", "mode": "spa" },
-      { "label": "Writing", "href": "/writing", "role": "primary", "mode": "spa", "aliases": ["/read", "/essays"] },
-      { "label": "Doctrine", "href": "/doctrine", "role": "primary", "mode": "spa", "aliases": ["/canon", "/federation"] },
-      { "label": "Missions", "href": "/missions", "role": "primary", "mode": "spa" },
-      { "label": "999", "href": "/999/", "role": "primary", "mode": "static" }
+      {
+        "label": "Home",
+        "href": "/",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "sovereign"
+      },
+      {
+        "label": "Earth",
+        "href": "/earth",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "earth"
+      },
+      {
+        "label": "World",
+        "href": "/world",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "world"
+      },
+      {
+        "label": "Words",
+        "href": "/words",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "voice"
+      },
+      {
+        "label": "Work",
+        "href": "/work",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "work"
+      },
+      {
+        "label": "999",
+        "href": "/999/",
+        "role": "primary",
+        "mode": "static",
+        "domain": "truth"
+      },
+      {
+        "label": "000",
+        "href": "/000/",
+        "role": "primary",
+        "mode": "static",
+        "domain": "sovereign"
+      },
+      {
+        "label": "AAA",
+        "href": "/AAA",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "canon"
+      }
     ]
   },
   "secondary_links": {
-    "description": "Footer human secondary — real live surfaces, not aspirational paths",
+    "description": "Footer + hidden nav. Organs are agent-owned surfaces \u2014 present, not promoted.",
     "items": [
-      { "label": "Politics · NS", "href": "/politics/ns-election/", "role": "secondary", "mode": "spa" },
-      { "label": "VITALS · PETRONAS", "href": "/vitals/", "role": "secondary", "mode": "static" },
-      { "label": "Read", "href": "/read", "role": "secondary", "mode": "spa" },
-      { "label": "000 Genesis", "href": "/000/", "role": "secondary", "mode": "static" },
-      { "label": "Map", "href": "/map/", "role": "secondary", "mode": "static" },
-      { "label": "Connect", "href": "https://mcp.arif-fazil.com/", "role": "secondary", "mode": "external" }
+      {
+        "label": "Origin",
+        "href": "/000/",
+        "mode": "static"
+      },
+      {
+        "label": "Map",
+        "href": "/map/",
+        "mode": "static"
+      },
+      {
+        "label": "PETRONAS",
+        "href": "/propa/",
+        "mode": "static",
+        "agent_organ": true
+      },
+      {
+        "label": "Malaysia",
+        "href": "/malaysia/",
+        "mode": "static",
+        "agent_organ": true
+      },
+      {
+        "label": "Politics",
+        "href": "/politics/",
+        "mode": "static"
+      },
+      {
+        "label": "Signal",
+        "href": "/connect/",
+        "mode": "static"
+      },
+      {
+        "label": "Organs",
+        "href": "/organs/",
+        "mode": "static",
+        "organ": "federation",
+        "question": "Where are the organs? (one system)"
+      }
     ]
   },
   "machine_links": {
-    "description": "Quiet machine doors — agents and WebMCP",
+    "description": "Agent doors \u2014 organs live HERE, not in human nav. Pages are for humans; contexts are for agents.",
     "items": [
-      { "label": "llms.txt", "href": "/llms.txt" },
-      { "label": "missions.json", "href": "/missions.json" },
-      { "label": "surfaces.json", "href": "/surfaces.json" },
-      { "label": "webmcp", "href": "/.well-known/webmcp.json" },
-      { "label": "mcp", "href": "https://mcp.arif-fazil.com/mcp" },
-      { "label": "did", "href": "/.well-known/did.json" },
-      { "label": "PyPI arifos", "href": "https://pypi.org/project/arifos/" }
+      {
+        "label": "llms.txt",
+        "href": "/llms.txt"
+      },
+      {
+        "label": "missions.json",
+        "href": "/missions.json"
+      },
+      {
+        "label": "surfaces.json",
+        "href": "/surfaces.json"
+      },
+      {
+        "label": "webmcp",
+        "href": "/.well-known/webmcp.json"
+      },
+      {
+        "label": "mcp",
+        "href": "https://mcp.arif-fazil.com/mcp"
+      },
+      {
+        "label": "did",
+        "href": "/.well-known/did.json"
+      },
+      {
+        "label": "arifOS",
+        "href": "/canon/",
+        "agent_organ": true
+      },
+      {
+        "label": "GEOX",
+        "href": "https://geox.arif-fazil.com",
+        "agent_organ": true
+      },
+      {
+        "label": "WEALTH",
+        "href": "https://wealth.arif-fazil.com",
+        "agent_organ": true
+      },
+      {
+        "label": "WELL",
+        "href": "https://well.arif-fazil.com",
+        "agent_organ": true
+      }
     ]
   },
   "trinity_nav": {
@@ -79,7 +198,7 @@
         "href": "/human",
         "scope": "HUMAN",
         "accent": "red",
-        "lede": "Substrate, dignity, witness — DRAFT",
+        "lede": "Substrate, dignity, witness \u2014 DRAFT",
         "role": "trinity-1"
       },
       {
@@ -87,7 +206,7 @@
         "href": "/institution",
         "scope": "INSTITUTION",
         "accent": "yellow",
-        "lede": "WEALTH + arifOS · A-FORGE · AAA — DRAFT",
+        "lede": "WEALTH + arifOS \u00b7 A-FORGE \u00b7 AAA \u2014 DRAFT",
         "role": "trinity-2"
       },
       {
@@ -95,7 +214,7 @@
         "href": "/earth",
         "scope": "EARTH",
         "accent": "teal",
-        "lede": "GEOX + membrane — live path /earth already used in primary",
+        "lede": "GEOX + membrane \u2014 live path /earth already used in primary",
         "role": "trinity-3"
       }
     ],
@@ -112,52 +231,174 @@
     "note": "Not required on public Arrow shell; reserved for organ/cockpit surfaces.",
     "background": "var(--r-700, #7A1F18)",
     "content": [
-      { "label": "Ψ", "href": "https://arif-fazil.com", "role": "logo" },
-      { "label": "arif-fazil.com", "href": "https://arif-fazil.com", "role": "site_name" },
-      { "label": "F13_OK", "value": "F13_OK", "role": "verdict_chip" },
-      { "label": "v2026.08.04", "value": "v2026.08.04", "role": "release_tag" }
+      {
+        "label": "\u03a8",
+        "href": "https://arif-fazil.com",
+        "role": "logo"
+      },
+      {
+        "label": "arif-fazil.com",
+        "href": "https://arif-fazil.com",
+        "role": "site_name"
+      },
+      {
+        "label": "F13_OK",
+        "value": "F13_OK",
+        "role": "verdict_chip"
+      },
+      {
+        "label": "v2026.08.04",
+        "value": "v2026.08.04",
+        "role": "release_tag"
+      }
     ]
   },
   "breadcrumb": {
     "source": "generated_from_url_path",
     "voice": "mono",
-    "separator": "›",
+    "separator": "\u203a",
     "rule": "disagreement between breadcrumb and URL = drift",
     "examples": [
-      { "url": "/", "breadcrumb": "home" },
-      { "url": "/earth", "breadcrumb": "home › earth" },
-      { "url": "/economics", "breadcrumb": "home › economics" },
-      { "url": "/world/makcikgpt", "breadcrumb": "home › world › makcikgpt" },
-      { "url": "/politics/ns-election", "breadcrumb": "home › politics › ns-election" },
-      { "url": "/vitals/", "breadcrumb": "home › vitals" },
-      { "url": "/doctrine", "breadcrumb": "home › doctrine" },
-      { "url": "/missions", "breadcrumb": "home › missions" }
+      {
+        "url": "/",
+        "breadcrumb": "home"
+      },
+      {
+        "url": "/earth",
+        "breadcrumb": "home \u203a earth"
+      },
+      {
+        "url": "/economics",
+        "breadcrumb": "home \u203a capital"
+      },
+      {
+        "url": "/world/makcikgpt",
+        "breadcrumb": "home \u203a voice \u203a makcikgpt"
+      },
+      {
+        "url": "/politics/ns-election",
+        "breadcrumb": "home \u203a voice \u203a politics \u203a ns-election"
+      },
+      {
+        "url": "/propa/",
+        "breadcrumb": "home \u203a capital \u203a petronas"
+      },
+      {
+        "url": "/doctrine",
+        "breadcrumb": "home \u203a law \u203a doctrine"
+      },
+      {
+        "url": "/missions",
+        "breadcrumb": "home \u203a work \u203a missions"
+      }
     ]
   },
   "keyboard_shortcuts": [
-    { "combo": "g e", "action": "navigate to /earth" },
-    { "combo": "g c", "action": "navigate to /economics" },
-    { "combo": "g w", "action": "navigate to /world" },
-    { "combo": "g r", "action": "navigate to /writing" },
-    { "combo": "g d", "action": "navigate to /doctrine" },
-    { "combo": "g m", "action": "navigate to /missions" },
-    { "combo": "g 9", "action": "navigate to /999/" },
-    { "combo": "g v", "action": "navigate to /vitals/" },
-    { "combo": "g p", "action": "navigate to /politics/ns-election/" },
-    { "combo": "?", "action": "show shortcut overlay" },
-    { "combo": "Esc", "action": "close overlays" }
+    {
+      "combo": "g h",
+      "action": "navigate to / (Home)"
+    },
+    {
+      "combo": "g e",
+      "action": "navigate to /earth (Earth \u2014 GEOX)"
+    },
+    {
+      "combo": "g w",
+      "action": "navigate to /writing (Words \u2014 arifOS)"
+    },
+    {
+      "combo": "g o",
+      "action": "navigate to /world (World \u2014 WEALTH)"
+    },
+    {
+      "combo": "g k",
+      "action": "navigate to /missions (Work \u2014 WELL)"
+    },
+    {
+      "combo": "g p",
+      "action": "navigate to /propa/ (PETRONAS organ)"
+    },
+    {
+      "combo": "g m",
+      "action": "navigate to /malaysia/ (Malaysia organ)"
+    },
+    {
+      "combo": "?",
+      "action": "show shortcut overlay"
+    },
+    {
+      "combo": "Esc",
+      "action": "close overlays"
+    }
   ],
   "epistemic_registers": {
-    "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
-    "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing",
+    "human_side_voice": "EMPATHY \u2014 narrative, dignity-first phrasing",
+    "agent_side_voice": "MARUAH \u2014 audit-grade, kernel-first phrasing",
     "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY"
   },
   "mission_footer": {
     "background": "var(--paper)",
     "content": [
-      { "label": "doctrine", "value": "Ditempa Bukan Diberi" },
-      { "label": "missions", "value": "six verbs" },
-      { "label": "kernel", "value": "arifOS F1–F13" }
+      {
+        "label": "doctrine",
+        "value": "Ditempa Bukan Diberi"
+      },
+      {
+        "label": "missions",
+        "value": "six verbs"
+      },
+      {
+        "label": "kernel",
+        "value": "arifOS F1\u2013F13"
+      }
+    ]
+  },
+  "derives_from": "world-model.yaml v1.0.0 \u2014 vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)",
+  "agentic_mirrors": {
+    "description": "Portals to agentic machine web organs",
+    "items": [
+      {
+        "label": "mcp",
+        "name": "MCP Gateway",
+        "href": "https://mcp.arif-fazil.com/mcp",
+        "desc": "Tools & Endpoints"
+      },
+      {
+        "label": "geox",
+        "name": "GEOX",
+        "href": "https://geox.arif-fazil.com",
+        "desc": "Subsurface Intelligence"
+      },
+      {
+        "label": "well",
+        "name": "WELL",
+        "href": "https://well.arif-fazil.com",
+        "desc": "Vitality & Substrate"
+      },
+      {
+        "label": "wealth",
+        "name": "WEALTH",
+        "href": "https://wealth.arif-fazil.com",
+        "desc": "Capital Registry"
+      },
+      {
+        "label": "aaa",
+        "name": "AAA",
+        "href": "https://aaa.arif-fazil.com",
+        "desc": "Sovereign Agency"
+      },
+      {
+        "label": "arifos",
+        "name": "arifOS",
+        "href": "https://arifos.arif-fazil.com",
+        "desc": "F1-F13 Kernel"
+      },
+      {
+        "label": "forge",
+        "name": "A-FORGE",
+        "href": "https://forge.arif-fazil.com",
+        "desc": "Execution Shell"
+      }
     ]
   }
 }

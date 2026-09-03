@@ -42,7 +42,7 @@
       "id": "did:web:arif-fazil.com#arif-fazil",
       "controller": "did:web:arif-fazil.com",
       "type": "Multikey",
-      "publicKeyMultibase": "z6MkncqhqV2Zr5h3LWeWPjsTvn3L5A6YAsDZcjwz7iDht1xh"
+      "publicKeyMultibase": "z6MkmeeGJo5mhf1vXBSqhp2T6FXpxtuQyHFtJkFSFFj1v4ub"
     }
   ],
   "authentication": [
@@ -52,7 +52,7 @@
     "did:web:arif-fazil.com#arif-fazil"
   ],
   "created": "2026-01-01T00:00:00Z",
-  "updated": "2026-05-02T21:05:00Z",
+  "updated": "2026-08-25T03:43:48Z",
   "relinkMetadata": {
     "comment": "This DID document is published at the domain it identifies. Domain control provides initial custody evidence. Full cryptographic attestation requires signed challenge verification and successful verification of AGENTS.md.sig against the declared Ed25519 public key."
   }

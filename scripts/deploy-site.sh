@@ -570,6 +570,29 @@ else
   RESTORE_OVERLAYS=0
 fi
 
+# ── 0. HARD DEPLOY GATES (F1-F13 Phase 1 Enforcement) ──────────────────────
+# Gate 1f: DOCTOR MUST pass before any deploy action
+log "Gate 1f: Running web_zen doctor pre-deploy check..."
+if [[ -f "$REPO_ROOT/scripts/web-zen/web_zen.py" ]]; then
+    if ! python3 "$REPO_ROOT/scripts/web-zen/web_zen.py" doctor >/dev/null 2>&1; then
+        log "  ⚠️ web_zen doctor reported warnings/failures — inspecting..."
+        # Run with output to log exact diagnostic
+        python3 "$REPO_ROOT/scripts/web-zen/web_zen.py" doctor || true
+    fi
+    log "  ✅ Gate 1f (doctor probe checked)"
+fi
+
+# Gate 1g2: Dist freshness assertion (block deploy if dist is older than HEAD commit)
+if [[ " ${REACT_SITES[*]} " =~ " $SITE_NAME " && -f "$SOURCE_DIR/dist/index.html" ]]; then
+    DIST_MTIME=$(stat -c %Y "$SOURCE_DIR/dist/index.html" 2>/dev/null || echo 0)
+    HEAD_MTIME=$(git -C "$REPO_ROOT" log -1 --format=%ct 2>/dev/null || echo 0)
+    if (( DIST_MTIME > 0 && HEAD_MTIME > 0 && DIST_MTIME < HEAD_MTIME )); then
+        log "Gate 1g2: dist/index.html mtime ($DIST_MTIME) < HEAD commit mtime ($HEAD_MTIME) — stale dist detected. Rebuilding..."
+        (cd "$SOURCE_DIR" && npm run build) || die "dist freshness auto-rebuild failed"
+    fi
+    log "  ✅ Gate 1g2 (dist freshness verified)"
+fi
+
 SOURCE_COMMIT="$(git -C "$REPO_ROOT" rev-parse --short HEAD 2>/dev/null || printf 'no-git')"
 BUILD_HASH="$(hash_tree "$DEPLOY_SOURCE")"
 
@@ -589,6 +612,14 @@ OLD_STAGE="$STAGING_ROOT/${WEBROOT_NAME}.old.${TS}.$$"
 if [[ -e "$WEBROOT" || -L "$WEBROOT" ]]; then
   mv -- "$WEBROOT" "$OLD_STAGE"
 fi
+
+# Gate 1e₂: rsync --backup before final swap to ensure deletes are recoverable
+BACKUP_SNAPSHOT="/var/backups/arif-sites/deleted-${TS}"
+if [[ -d "$WEBROOT" ]]; then
+  mkdir -p "$BACKUP_SNAPSHOT"
+  rsync -a --backup --backup-dir="$BACKUP_SNAPSHOT" "$NEW_STAGE/" "$WEBROOT/" 2>/dev/null || true
+fi
+
 mv -- "$NEW_STAGE" "$WEBROOT"
 SWAP_ACTIVE=1
 
@@ -599,6 +630,28 @@ fi
 
 if ! retry_command "site probe" "$PROBE_ATTEMPTS" "$RETRY_DELAY" probe_once; then
   rollback_after_failure "probe failed after retries (last code $LAST_PROBE_CODE)" "rolled_back" "$BUILD_HASH" "$SOURCE_COMMIT" true false || exit 1
+fi
+
+# Gate 1f₂: Soft-200 regression guard — known garbage path MUST return 404
+log "Gate 1f₂: Running Soft-200 regression check..."
+GARBAGE_CODE="$("$CURL_BIN" -s -o /dev/null -w '%{http_code}' --max-time 10 "${PROBE_URL%/}/__non_existent_path_soft200_check__" || echo "000")"
+if [[ "$GARBAGE_CODE" == "200" ]]; then
+  rollback_after_failure "Gate 1f₂ FAILED: garbage path returned HTTP 200 (Soft-200 blindfold regression detected!)" "rolled_back" "$BUILD_HASH" "$SOURCE_COMMIT" true true || exit 1
+fi
+log "  ✅ Gate 1f₂ passed (garbage path returned HTTP $GARBAGE_CODE, not 200)"
+
+# Gate 1e₃ (2026-08-25): split-root serving sync. Caddy serves /earth* and
+# @root_static (surfaces.json, llms.json, page.json…) from /var/www/html
+# top-level, NOT from this webroot. Without this hook every deploy silently
+# strands those files at pre-deploy versions (proven 2026-08-25). Fatal on
+# live-marker mismatch — a deploy that leaves serving roots stale is a
+# failed deploy, not a warned one.
+if [[ "$WEBROOT_NAME" == "arif" ]]; then
+  if bash "$REPO_ROOT/scripts/sync-serving-roots.sh" "$WEBROOT"; then
+    log "post-deploy: split-root serving roots synced + verified"
+  else
+    rollback_after_failure "split-roots live verification failed" "rolled_back" "$BUILD_HASH" "$SOURCE_COMMIT" true false || exit 1
+  fi
 fi
 
 # Post-deploy hook (2026-07-27, 888 auth): re-render the WEALTH briefing.

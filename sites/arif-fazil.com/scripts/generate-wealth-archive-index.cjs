@@ -53,6 +53,15 @@ function renderArchiveIndex(index) {
 }
 
 function main() {
+  if (!fs.existsSync(ARCHIVE_DIR)) {
+    // Archive briefings are cron-generated VPS data (gitignored). CI runners
+    // don't carry them — the built SPA fetches wealth data at runtime.
+    if (process.env.CI) {
+      console.log("ℹ generate-wealth-archive-index: archive not present in CI — skip");
+      return;
+    }
+    throw new Error(`archive directory missing on VPS: ${ARCHIVE_DIR}`);
+  }
   const entries = loadArchiveEntries();
   const output = renderArchiveIndex(buildArchiveIndex(entries));
   fs.writeFileSync(INDEX_PATH, output, "utf8");

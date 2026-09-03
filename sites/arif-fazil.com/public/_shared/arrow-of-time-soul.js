@@ -58,9 +58,15 @@
   bar.setAttribute('aria-label', 'Ψ SOUL temporal overlay — human frame');
 
   function insert() {
+    if (bar.parentNode) return;
     var mainClock = document.getElementById('arrow-of-time');
-    if (mainClock && mainClock.nextSibling) {
-      mainClock.parentNode.insertBefore(bar, mainClock.nextSibling);
+    if (mainClock && mainClock.parentNode) {
+      // mainClock lives inside the .aot-machine disclosure — stay with it.
+      if (mainClock.nextSibling) {
+        mainClock.parentNode.insertBefore(bar, mainClock.nextSibling);
+      } else {
+        mainClock.parentNode.appendChild(bar);
+      }
     } else if (document.body) {
       document.body.appendChild(bar);
     }
